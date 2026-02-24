@@ -38,10 +38,10 @@ export default function Aatmadarshan() {
                             <div className="">
                                 <p className="text-xl text-orange-900 mt-0 mb-4">इस साल 400+ से ज्यादा बाल इसमें हिस्सा ले चुके हैं।</p>
                                 <div className="flex -space-x-2 overflow-hidden">
-                                    <img src="/rajan_swamiji 2.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-                                    <img src="/ramratandasji.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-                                    <img src="/sarkarshree.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-                                    <img src="/rajan_swamiji 2.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                                    <Image src="rajan_swamiji 2.png" width={20} height={20} alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                                    <Image src="ramratandasji.png" alt="" width={20} height={20}  className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                                    <Image src="sarkarshree.png" alt="" width={20} height={20}  className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                                    <Image src="rajan_swamiji 2.png" alt="" width={20} height={20}  className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
                                 </div>
                             </div>
                             <Button
@@ -60,22 +60,22 @@ export default function Aatmadarshan() {
                         {
                             title: "प्रेरणादायक वीडियो",
                             desc: "वीडियो आपके हृदय को छूने वाला होगा, जिससे आप दिव्य अनुभवों और लीलाओं का आनंद लेंगे।",
-                            img: "/adicon1.png"
+                            img: "adicon1.png"
                         },
                         {
                             title: "धर्म के लक्षण",
                             desc: "धर्म और जीवन में इसके अनमोल महत्व को जानें और आत्मा की गहराई में खो जाने का अनुभव करें।",
-                            img: "/adicon2.png"
+                            img: "adicon2.png"
                         },
                         {
                             title: "बच्चों के लिए रचनात्मक खेल",
                             desc: "खेल-खेल में जीवन की महत्वपूर्ण शिक्षाएँ प्राप्त करें। बच्चों के लिए ज्ञानवर्धक और आनंदमयी अनुभव।",
-                            img: "/adicon3.png"
+                            img: "adicon3.png"
                         },
                         {
                             title: "ध्यान और आत्म-आलोचन",
                             desc: "चितवन में खो जाइए, आत्मा के मिठास और शांति का अनुभव कीजिए। ध्यान में गहरे उतरें।",
-                            img: "/adicon4.png"
+                            img: "adicon4.png"
                         },
                     ].map((item, i) => (
                         <div key={i} className="space-y-3 flex flex-col items-center text-center">
@@ -103,10 +103,10 @@ export default function Aatmadarshan() {
                     >
                         <CarouselContent className="-ml-4">
                             {[
-                                { title: "बाल आत्मदर्शनम्", img: "/adimg1.png" },
-                                { title: "बीतक कॉमिक्स", img: "/adimg2.png" },
-                                { title: "बीतक पात्र वेश", img: "/adimg3.png" },
-                                { title: "बाल आत्मदर्शनम्", img: "/adimg1.png" },
+                                { title: "बाल आत्मदर्शनम्", img: "adimg1.png" },
+                                { title: "बीतक कॉमिक्स", img: "adimg2.png" },
+                                { title: "बीतक पात्र वेश", img: "adimg3.png" },
+                                { title: "बाल आत्मदर्शनम्", img: "adimg1.png" },
                             ].map((card, i) => (
                                 <CarouselItem
                                     key={i}

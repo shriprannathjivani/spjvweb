@@ -7,11 +7,11 @@ export const satgurus = [
         subtitle: "परमहंस 108 श्री राम रतन दास जी महाराज",
         role: "सतगुरु व परमहंस",
         shortIntro: "परमहंस 108 श्री राम रतन दास जी महाराज",
-        image: "/satguru3.png",
+        image: "satguru3.png",
         images: [
-            "/sliderimg1.png",
-            "/sliderimg2.png",
-            "/sliderimg3.png",
+            "sliderimg1.png",
+            "sliderimg2.png",
+            "sliderimg3.png",
         ],
         biography:
             `मंगलाचरण - हम ऐसे सद्गुरु को प्रणाम करते हैं जो परब्रह्म के आनंदमई स्वरूप वाले हों, दिव्य ज्ञान के स्वरूप हों, सर्वश्रेष्ठ आनंद देने वाले हों, सर्व प्रकार के द्वंद्वों से परे हों और जिनका स्वरूप सदा निर्मल, एक रस, विशाल हृदय साक्षी रूप, त्रिगुण की माया से सदैव मुक्त हो।
@@ -81,13 +81,13 @@ export const satgurus = [
                 name: "श्री निजानंद पीठ", location: `मोयद, तालुका: प्रांतिज,
                 जिला: साबरकांठा,
                 गुजरात पिन:383120`, 
-                image: "/jalandar_temp.png"
+                image: "jalandar_temp.png"
             },
             {
                 name: "श्री परमहंस आश्रम", location: `गाँव: पुराल, तालुका: हिम्मतनगर,
                 जिला: साबरकंठ,
                 गुजरात 383001`, 
-                image: "/jalandar_temp.png"
+                image: "jalandar_temp.png"
             },
         ],
 
@@ -102,22 +102,22 @@ export const satgurus = [
         name: `सरकार श्री`,
         role: "सतगुरु व परमहंस",
         subtitle: `"सरकार श्री" जगदीश चन्द्र जी`,
-        image: "/satguru6.png",
+        image: "satguru6.png",
         images: [
-            "/guru1.jpg",
-            "/guru1-2.jpg",
-            "/guru1-3.jpg",
+            "guru1.jpg",
+            "guru1-2.jpg",
+            "guru1-3.jpg",
         ],
         temple: [
             {
                 name: "श्री निजानंद पीठ", location: `मोयद, तालुका: प्रांतिज,
 जिला: साबरकांठा,
-गुजरात पिन:383120`, image: "/jalandar_temp.png"
+गुजरात पिन:383120`, image: "jalandar_temp.png"
             },
             {
                 name: "श्री परमहंस आश्रम", location: `गाँव: पुराल, तालुका: हिम्मतनगर,
 जिला: साबरकंठ,
-गुजरात 383001`, image: "/jalandar_temp.png"
+गुजरात 383001`, image: "jalandar_temp.png"
             },
         ],
         biography:
@@ -221,23 +221,23 @@ export const satgurus = [
         name: "श्री राजन स्वामी जी",
         subtitle: "परमहंस 108 श्री राम रतन दास जी महाराज",
         role: "सतगुरु व परमहंस",
-        image: "/satguru8.png",
+        image: "satguru8.png",
         temple: [
             {
                 name: "श्री निजानंद पीठ", location: `मोयद, तालुका: प्रांतिज,
 जिला: साबरकांठा,
-गुजरात पिन:383120`, image: "/jalandar_temp.png"
+गुजरात पिन:383120`, image: "jalandar_temp.png"
             },
             {
                 name: "श्री परमहंस आश्रम", location: `गाँव: पुराल, तालुका: हिम्मतनगर,
 जिला: साबरकंठ,
-गुजरात 383001`, image: "/jalandar_temp.png"
+गुजरात 383001`, image: "jalandar_temp.png"
             },
         ],
         images: [
-            "/guru1.jpg",
-            "/guru1-2.jpg",
-            "/guru1-3.jpg",
+            "guru1.jpg",
+            "guru1-2.jpg",
+            "guru1-3.jpg",
         ],
         description:
             "एक ऐसी दिव्य आत्मा जिन्होंने अपना सम्पूर्ण जीवन मानवता को जागृत करने, प्रेम और सेवा का मार्ग दिखाने तथा मौन के माध्यम से आत्मज्ञान का प्रकाश फैलाने में समर्पित किया।",
@@ -277,23 +277,23 @@ export const satgurus = [
         name: "महामति श्री लालदासजी",
         role: "सतगुरु व परमहंस",
         subtitle: "परमहंस 108 श्री राम रतन दास जी महाराज",
-        image: "/satguru11.png",
+        image: "satguru11.png",
         temple: [
             {
                 name: "श्री निजानंद पीठ", location: `मोयद, तालुका: प्रांतिज,
 जिला: साबरकांठा,
-गुजरात पिन:383120`, image: "/jalandar_temp.png"
+गुजरात पिन:383120`, image: "jalandar_temp.png"
             },
             {
                 name: "श्री परमहंस आश्रम", location: `गाँव: पुराल, तालुका: हिम्मतनगर,
 जिला: साबरकंठ,
-गुजरात 383001`, image: "/jalandar_temp.png"
+गुजरात 383001`, image: "jalandar_temp.png"
             },
         ],
         images: [
-            "/guru1.jpg",
-            "/guru1-2.jpg",
-            "/guru1-3.jpg",
+            "guru1.jpg",
+            "guru1-2.jpg",
+            "guru1-3.jpg",
         ],
         description:
             "एक ऐसी दिव्य आत्मा जिन्होंने अपना सम्पूर्ण जीवन मानवता को जागृत करने, प्रेम और सेवा का मार्ग दिखाने तथा मौन के माध्यम से आत्मज्ञान का प्रकाश फैलाने में समर्पित किया।",
@@ -333,23 +333,23 @@ export const satgurus = [
         name: "श्री कृष्ण प्रियाचार्य जी",
         role: "सतगुरु व परमहंस",
         subtitle: "परमहंस 108 श्री राम रतन दास जी महाराज",
-        image: "/satguru1.png",
+        image: "satguru1.png",
         temple: [
             {
                 name: "श्री निजानंद पीठ", location: `मोयद, तालुका: प्रांतिज,
 जिला: साबरकांठा,
-गुजरात पिन:383120`, image: "/jalandar_temp.png"
+गुजरात पिन:383120`, image: "jalandar_temp.png"
             },
             {
                 name: "श्री परमहंस आश्रम", location: `गाँव: पुराल, तालुका: हिम्मतनगर,
 जिला: साबरकंठ,
-गुजरात 383001`, image: "/jalandar_temp.png"
+गुजरात 383001`, image: "jalandar_temp.png"
             },
         ],
         images: [
-            "/guru1.jpg",
-            "/guru1-2.jpg",
-            "/guru1-3.jpg",
+            "guru1.jpg",
+            "guru1-2.jpg",
+            "guru1-3.jpg",
         ],
         description:
             "एक ऐसी दिव्य आत्मा जिन्होंने अपना सम्पूर्ण जीवन मानवता को जागृत करने, प्रेम और सेवा का मार्ग दिखाने तथा मौन के माध्यम से आत्मज्ञान का प्रकाश फैलाने में समर्पित किया।",
@@ -389,23 +389,23 @@ export const satgurus = [
         name: "श्री गोपाल मणि जी",
         role: "सतगुरु व परमहंस",
         subtitle: "परमहंस 108 श्री राम रतन दास जी महाराज",
-        image: "/satguru2.png",
+        image: "satguru2.png",
         temple: [
             {
                 name: "श्री निजानंद पीठ", location: `मोयद, तालुका: प्रांतिज,
 जिला: साबरकांठा,
-गुजरात पिन:383120`, image: "/jalandar_temp.png"
+गुजरात पिन:383120`, image: "jalandar_temp.png"
             },
             {
                 name: "श्री परमहंस आश्रम", location: `गाँव: पुराल, तालुका: हिम्मतनगर,
 जिला: साबरकंठ,
-गुजरात 383001`, image: "/jalandar_temp.png"
+गुजरात 383001`, image: "jalandar_temp.png"
             },
         ],
         images: [
-            "/guru1.jpg",
-            "/guru1-2.jpg",
-            "/guru1-3.jpg",
+            "guru1.jpg",
+            "guru1-2.jpg",
+            "guru1-3.jpg",
         ],
         description:
             "एक ऐसी दिव्य आत्मा जिन्होंने अपना सम्पूर्ण जीवन मानवता को जागृत करने, प्रेम और सेवा का मार्ग दिखाने तथा मौन के माध्यम से आत्मज्ञान का प्रकाश फैलाने में समर्पित किया।",
@@ -445,23 +445,23 @@ export const satgurus = [
         name: "श्री मंगल दास जी",
         role: "सतगुरु व परमहंस",
         subtitle: "परमहंस 108 श्री राम रतन दास जी महाराज",
-        image: "/satguru4.png",
+        image: "satguru4.png",
         temple: [
             {
                 name: "श्री निजानंद पीठ", location: `मोयद, तालुका: प्रांतिज,
 जिला: साबरकांठा,
-गुजरात पिन:383120`, image: "/jalandar_temp.png"
+गुजरात पिन:383120`, image: "jalandar_temp.png"
             },
             {
                 name: "श्री परमहंस आश्रम", location: `गाँव: पुराल, तालुका: हिम्मतनगर,
 जिला: साबरकंठ,
-गुजरात 383001`, image: "/jalandar_temp.png"
+गुजरात 383001`, image: "jalandar_temp.png"
             },
         ],
         images: [
-            "/guru1.jpg",
-            "/guru1-2.jpg",
-            "/guru1-3.jpg",
+            "guru1.jpg",
+            "guru1-2.jpg",
+            "guru1-3.jpg",
         ],
         description:
             "एक ऐसी दिव्य आत्मा जिन्होंने अपना सम्पूर्ण जीवन मानवता को जागृत करने, प्रेम और सेवा का मार्ग दिखाने तथा मौन के माध्यम से आत्मज्ञान का प्रकाश फैलाने में समर्पित किया।",
@@ -501,23 +501,23 @@ export const satgurus = [
         name: "श्री बाबा दयाराम साहब जी",
         role: "सतगुरु व परमहंस",
         subtitle: "परमहंस 108 श्री राम रतन दास जी महाराज",
-        image: "/satguru7.png",
+        image: "satguru7.png",
         temple: [
             {
                 name: "श्री निजानंद पीठ", location: `मोयद, तालुका: प्रांतिज,
 जिला: साबरकांठा,
-गुजरात पिन:383120`, image: "/jalandar_temp.png"
+गुजरात पिन:383120`, image: "jalandar_temp.png"
             },
             {
                 name: "श्री परमहंस आश्रम", location: `गाँव: पुराल, तालुका: हिम्मतनगर,
 जिला: साबरकंठ,
-गुजरात 383001`, image: "/jalandar_temp.png"
+गुजरात 383001`, image: "jalandar_temp.png"
             },
         ],
         images: [
-            "/guru1.jpg",
-            "/guru1-2.jpg",
-            "/guru1-3.jpg",
+            "guru1.jpg",
+            "guru1-2.jpg",
+            "guru1-3.jpg",
         ],
         description:
             "एक ऐसी दिव्य आत्मा जिन्होंने अपना सम्पूर्ण जीवन मानवता को जागृत करने, प्रेम और सेवा का मार्ग दिखाने तथा मौन के माध्यम से आत्मज्ञान का प्रकाश फैलाने में समर्पित किया।",
@@ -557,23 +557,23 @@ export const satgurus = [
         name: "श्री परमेश्वरी बाई जी",
         role: "सतगुरु व परमहंस",
         subtitle: "परमहंस 108 श्री राम रतन दास जी महाराज",
-        image: "/satguru10.png",
+        image: "satguru10.png",
         temple: [
             {
                 name: "श्री निजानंद पीठ", location: `मोयद, तालुका: प्रांतिज,
 जिला: साबरकांठा,
-गुजरात पिन:383120`, image: "/jalandar_temp.png"
+गुजरात पिन:383120`, image: "jalandar_temp.png"
             },
             {
                 name: "श्री परमहंस आश्रम", location: `गाँव: पुराल, तालुका: हिम्मतनगर,
 जिला: साबरकंठ,
-गुजरात 383001`, image: "/jalandar_temp.png"
+गुजरात 383001`, image: "jalandar_temp.png"
             },
         ],
         images: [
-            "/guru1.jpg",
-            "/guru1-2.jpg",
-            "/guru1-3.jpg",
+            "guru1.jpg",
+            "guru1-2.jpg",
+            "guru1-3.jpg",
         ],
         description:
             "एक ऐसी दिव्य आत्मा जिन्होंने अपना सम्पूर्ण जीवन मानवता को जागृत करने, प्रेम और सेवा का मार्ग दिखाने तथा मौन के माध्यम से आत्मज्ञान का प्रकाश फैलाने में समर्पित किया।",
@@ -613,23 +613,23 @@ export const satgurus = [
         name: "श्री महाराजा छत्रसाल जी",
         role: "सतगुरु व परमहंस",
         subtitle: "परमहंस 108 श्री राम रतन दास जी महाराज",
-        image: "/satguru9.png",
+        image: "satguru9.png",
         temple: [
             {
                 name: "श्री निजानंद पीठ", location: `मोयद, तालुका: प्रांतिज,
 जिला: साबरकांठा,
-गुजरात पिन:383120`, image: "/jalandar_temp.png"
+गुजरात पिन:383120`, image: "jalandar_temp.png"
             },
             {
                 name: "श्री परमहंस आश्रम", location: `गाँव: पुराल, तालुका: हिम्मतनगर,
 जिला: साबरकंठ,
-गुजरात 383001`, image: "/jalandar_temp.png"
+गुजरात 383001`, image: "jalandar_temp.png"
             },
         ],
         images: [
-            "/guru1.jpg",
-            "/guru1-2.jpg",
-            "/guru1-3.jpg",
+            "guru1.jpg",
+            "guru1-2.jpg",
+            "guru1-3.jpg",
         ],
         description:
             "एक ऐसी दिव्य आत्मा जिन्होंने अपना सम्पूर्ण जीवन मानवता को जागृत करने, प्रेम और सेवा का मार्ग दिखाने तथा मौन के माध्यम से आत्मज्ञान का प्रकाश फैलाने में समर्पित किया।",
