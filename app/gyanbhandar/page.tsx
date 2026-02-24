@@ -20,7 +20,7 @@ import {
   Pause,
   CirclePlay,
 } from "lucide-react"
-import Image from "next/image";
+import Image from "@/components/BaseImage";
 import {
   Carousel,
   CarouselContent,
@@ -244,7 +244,7 @@ export default function Gyanbhandar() {
                     <div className="h-full rounded-3xl bg-white p-8 flex flex-col items-center text-center cardCustome ">
 
                       {/* Image */}
-                      <img
+                      <Image
                         src={book.image}
                         alt={book.title}
                         width={130}

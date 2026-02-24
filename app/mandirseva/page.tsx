@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import Image from "next/image";
+import Image from "@/components/BaseImage";
 import { Briefcase, Calendar, Globe, Link, MapPin, MapPinHouse, Phone, PhoneCall, School } from "lucide-react";
 import { temples } from "@/lib/temples";
 import { Marquee } from "@/components/ui/marquee";

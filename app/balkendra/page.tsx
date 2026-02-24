@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Image from "next/image";
+import Image from "@/components/BaseImage";
 import { Button } from "@/components/ui/button";
 import { Ripple } from "@/components/ui/ripple";
 import { Marquee } from "@/components/ui/marquee";
