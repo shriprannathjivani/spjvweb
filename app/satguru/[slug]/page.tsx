@@ -5,6 +5,14 @@ import { satgurus } from "@/lib/satguru-data"
 import { notFound } from "next/navigation"
 import { Cake, Church, Landmark, Link, MapPinHouse, Play, Rainbow, School, Youtube } from "lucide-react"
 
+export const dynamicParams = false;
+
+// 🔥 REQUIRED for static export
+export async function generateStaticParams() {
+  return satgurus.map((guru) => ({
+    slug: guru.id.toString(), // because you're matching Number(slug)
+  }));
+}
 
 export default async function SatguruDetails({
   params,

@@ -6,6 +6,16 @@ import { notFound } from "next/navigation"
 import { BookA, BookOpenCheck, Cake, Church, CircleUserRound, Gauge, Landmark, Link, MapPinHouse, MessageCircleQuestionMark, Play, Rainbow, School, Timer, UserPen, Youtube } from "lucide-react"
 import PdfSection from "@/components/PdfReaderSection";
 
+export const dynamicParams = false;
+
+// 🔥 REQUIRED for static export
+export async function generateStaticParams() {
+  return sahiyogitaList.map((sahiyog) => ({
+    slug: sahiyog.id.toString(), // because you're matching Number(slug)
+  }));
+}
+
+
 export default async function SatguruDetails({
   params,
 }: {

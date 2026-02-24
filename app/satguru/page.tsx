@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button";
 import React from "react";
@@ -16,6 +17,7 @@ import {
 import { CarouselDots } from "@/components/carousel-dots";
 import { QuoteIcon } from "lucide-react";
 import { Ripple } from "@/components/ui/ripple"
+
 
 const images = [
     { src: "/satguru1.png", topClass: "image image-left", subClass: "image-container image-1 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },

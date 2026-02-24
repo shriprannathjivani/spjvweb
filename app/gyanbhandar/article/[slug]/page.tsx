@@ -6,6 +6,15 @@ import { notFound } from "next/navigation"
 import { Cake, Calendar, Church, CircleUserRound, Landmark, Link, MapPinHouse, Play, Rainbow, School, UserPen, Youtube } from "lucide-react"
 
 
+export const dynamicParams = false;
+
+// 🔥 REQUIRED for static export
+export async function generateStaticParams() {
+  return articles.map((article) => ({
+    slug: article.id.toString(), // because you're matching Number(slug)
+  }));
+}
+
 export default async function SatguruDetails({
   params,
 }: {

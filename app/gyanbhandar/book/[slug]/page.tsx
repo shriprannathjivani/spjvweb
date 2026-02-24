@@ -6,6 +6,15 @@ import { notFound } from "next/navigation"
 import { BookA, BookOpenCheck, Cake, Church, CircleUserRound, Landmark, Link, MapPinHouse, Play, Rainbow, School, UserPen, Youtube } from "lucide-react"
 import PdfSection from "@/components/PdfReaderSection";
 
+export const dynamicParams = false;
+
+// 🔥 REQUIRED for static export
+export async function generateStaticParams() {
+  return BOOKS.map((book) => ({
+    slug: book.id.toString(), // because you're matching Number(slug)
+  }));
+}
+
 export default async function SatguruDetails({
   params,
 }: {
