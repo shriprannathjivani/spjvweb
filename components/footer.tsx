@@ -61,7 +61,7 @@ export default function Footer() {
 
           {/* RIGHT: OTHER LINKS */}
           <div >
-            <h4 className="text-2xl mb-4">अन्य लिंकस</h4>
+            <h4 className="text-2xl mb-4">अन्य लिंकस </h4>
             <ul className="space-y-2 text-lg text-white/80">
               <li><Link href="/privacypolicy" className="hover:text-orange-500">प्राइवेसी पॉलिसी</Link></li>
               <li><Link href="/faq" className="hover:text-orange-500">अक्सर पूछे जाने वाले सवाल</Link></li>
