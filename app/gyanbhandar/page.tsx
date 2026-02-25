@@ -392,7 +392,7 @@ export default function Gyanbhandar() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5 }}
-                  src={isPlaying ? `${basePath}/old_record.png` : currentSong.cover}
+                  src={isPlaying ? `${basePath}/old_record.png` : `${basePath}${currentSong.cover}`}
                   alt={currentSong.title}
                   className={`w-52 h-52 rounded-full object-cover shadow-2xl ${isPlaying ? "animate-spin-slow" : ""
                     }`}
