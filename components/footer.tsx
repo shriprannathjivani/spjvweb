@@ -15,8 +15,12 @@ export default function Footer() {
   return (
     <footer className="relative bg-[#4b2440] text-white overflow-hidden">
       {/* Decorative patterns */}
-      <div className="absolute top-0 left-0 w-60 h-60 bg-[url('/halfflower.png')] bg-contain bg-no-repeat " />
-      <div className="absolute bottom-0 right-0 z-0 w-100 h-100 bg-[url('/halfflower.png')] bg-no-repeat rotate-[3.142rad]" />
+      <Image src="/halfflower.png" height={40} width={40} alt="halfflower" className="absolute w-100 h-100  bottom-0 top-0 left-0 z-10 motion-safe:animate-wiggle w-[70px] h-auto
+                            sm:w-[8vw] sm:h-auto" />
+      <Image src="/halfflower.png" height={40} width={40} alt="halfflower" className="absolute w-100 h-100  bottom-0 right-0 z-10 motion-safe:animate-wiggle w-[70px] h-auto
+                            sm:w-[11vw] sm:h-auto rotate-[3.142rad]" />
+      {/* <div className="absolute top-0 left-0 w-60 h-60 bg-[url('/halfflower.png')] bg-contain bg-no-repeat " />
+      <div className="absolute bottom-0 right-0 z-0 w-100 h-100 bg-[url('/halfflower.png')] bg-no-repeat rotate-[3.142rad]" /> */}
 
       <div className="relative max-w-7xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-[60%_20%_20%] gap-12">
@@ -137,7 +141,7 @@ export default function Footer() {
             </Link>
           </div>
           <Link href="#" className="text-sm text-white/60 text-start ">
-            <AtSign size={16} className="flex inline-flex"/> 2026 spjv. <p className="flex mt-1 text-white/60">All rights reserved.</p>
+            <AtSign size={16} className="flex inline-flex" /> 2026 spjv. <p className="flex mt-1 text-white/60">All rights reserved.</p>
           </Link>
         </div>
       </div>

@@ -13,13 +13,19 @@ import {
 import Autoplay from "embla-carousel-autoplay"
 import React from "react";
 import { CarouselDots } from "./carousel-dots";
-
+const basePath =
+  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
 export default function PrannathCTA() {
     const [api, setApi] = React.useState<CarouselApi>()
+
     return (
         <section className="relative overflow-hidden">
-            <div className="absolute bottom-0 top-0 left-0 z-10 w-100 h-100 bg-[url('/halfflower.png')] bg-no-repeat " />
-            <div className="absolute bottom-0 right-0 z-10 w-100 h-100 bg-[url('/halfflower.png')] bg-no-repeat rotate-[3.142rad]" />
+            <Image src="/halfflower.png" height={40} width={40} alt="halfflower" className="absolute w-100 h-100  bottom-0 top-0 left-0 z-10 motion-safe:animate-wiggle w-[70px] h-auto
+                      sm:w-[11vw] sm:h-auto" />
+                      <Image src="/halfflower.png" height={40} width={40} alt="halfflower" className="absolute w-100 h-100  bottom-0 right-0 z-10 motion-safe:animate-wiggle w-[70px] h-auto
+                      sm:w-[11vw] sm:h-auto rotate-[3.142rad]" />
+            {/* <div className="absolute bottom-0 top-0 left-0 z-10 w-100 h-100 bg-[url('/halfflower.png')] bg-no-repeat " />
+            <div className="absolute bottom-0 right-0 z-10 w-100 h-100 bg-[url('/halfflower.png')] bg-no-repeat rotate-[3.142rad]" /> */}
             {/* Background Video */}
             <video
                 autoPlay
@@ -28,7 +34,7 @@ export default function PrannathCTA() {
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover z-1"
             >
-                <source src="/hero_loop_nonoise_1920.webm" type="video/webm" />
+                <source src={`${basePath}/hero_loop_nonoise_1920.webm`} type="video/webm" />
             </video>
             {/* Overlay (important for readability) */}
             <div className="absolute inset-0 bg-[#fde9dc]/80 backdrop-blur-sm"></div>

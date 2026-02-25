@@ -18,8 +18,9 @@ export default function Aatmadarshan() {
     return (
         <section className="relative py-20 overflow-hidden">
             {/* Decorative background */}
-            <div className="absolute bottom-0 left-0 w-100 h-100 bg-[url('/halfflower.png')] bg-no-repeat " />
-
+          
+<Image src="/halfflower.png" height={40} width={40} alt="halfflower" className="absolute top-1 left-0 z-0 motion-safe:animate-wiggle w-[70px] h-auto
+          sm:w-[150px] sm:h-auto" />
             <div className="relative max-w-7xl mx-auto px-6">
                 {/* Top Content */}
                 <div className="grid md:grid-cols-2 gap-10 items-start">
