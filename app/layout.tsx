@@ -31,7 +31,10 @@ export const metadata: Metadata = {
   title: "SPJV App",
   description: "SPJV APP made by love for all.",
 };
+const basePath =
+  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
 
+  
 export default function RootLayout({
   children,
 }: {
@@ -39,7 +42,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="hi" className={`${arya.variable}  ${poppins.variable}`}>
-      <link rel="icon" href="/spjv logo favicon.png" sizes="any" />
+      <link rel="icon" href={`${basePath}/spjv logo favicon.png`} sizes="any" />
       <body lang="en" className="hero-bg font-arya" >
         <BodyWrapper>
         <FallingLeaves/>

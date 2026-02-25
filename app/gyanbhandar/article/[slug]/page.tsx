@@ -4,7 +4,7 @@ import DynamicBreadcrumb from "@/components/dynamic-breadcrumb"
 import { articles } from "@/lib/articles";
 import { notFound } from "next/navigation"
 import { Cake, Calendar, Church, CircleUserRound, Landmark, Link, MapPinHouse, Play, Rainbow, School, UserPen, Youtube } from "lucide-react"
-
+import Image from "@/components/BaseImage";
 
 export const dynamicParams = false;
 
@@ -37,17 +37,17 @@ export default async function SatguruDetails({
           <div className="lg:sticky lg:top-24 rounded-3xl p-6 space-y-6 text-center">
             <div className="absolute z-[-1] h-52 w-52 rotate-65 rounded-[100%] bg-pink-500 blur-2xl" style={{ opacity: 0.5 }}></div>
             <div className="relative ">
-              <img
+              <Image height={342} width={608}
                 src={article.image}
-                alt={article.image}
+                alt={article.title}
                 className="rounded-xl w-full object-cover -rotate-3"
               />
             </div>
 
             <div>
               <span className="animate-bounce mb-4 inline-block bg-lime-300 text-black text-xs md:text-sm px-4 py-2 rounded-full font-medium">
-                            {article.tag}
-                          </span>
+                {article.tag}
+              </span>
               <h1 className="text-2xl font-bold">
                 {article.title}
               </h1>
@@ -88,7 +88,7 @@ export default async function SatguruDetails({
             </div>
           </section>
 
-         
+
 
           {/* Quotes */}
           <section>

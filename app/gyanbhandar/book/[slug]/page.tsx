@@ -5,7 +5,7 @@ import { BOOKS, quotes } from "@/lib/gyankendra"
 import { notFound } from "next/navigation"
 import { BookA, BookOpenCheck, Cake, Church, CircleUserRound, Landmark, Link, MapPinHouse, Play, Rainbow, School, UserPen, Youtube } from "lucide-react"
 import PdfSection from "@/components/PdfReaderSection";
-
+import Image from "@/components/BaseImage";
 export const dynamicParams = false;
 
 // 🔥 REQUIRED for static export
@@ -38,10 +38,11 @@ export default async function SatguruDetails({
           <div className="lg:sticky lg:top-24 rounded-3xl p-6 space-y-6 text-center">
             <div className="absolute z-[-1] h-52 w-52 rotate-65 rounded-[100%] bg-pink-500 blur-2xl" style={{ opacity: 0.5 }}></div>
             <div className="relative flex items-center justify-center">
-              <img
+              <Image
                 src={book.image}
                 alt={book.title}
-                height={100}
+                width={130}
+                height={180}
                 className="rounded-xl h-full object-cover -rotate-3"
               />
             </div>

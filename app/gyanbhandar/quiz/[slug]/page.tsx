@@ -5,7 +5,7 @@ import { BOOKS, quotes, sahiyogitaList } from "@/lib/gyankendra"
 import { notFound } from "next/navigation"
 import { BookA, BookOpenCheck, Cake, Church, CircleUserRound, Gauge, Landmark, Link, MapPinHouse, MessageCircleQuestionMark, Play, Rainbow, School, Timer, UserPen, Youtube } from "lucide-react"
 import PdfSection from "@/components/PdfReaderSection";
-
+import Image from "@/components/BaseImage";
 export const dynamicParams = false;
 
 // 🔥 REQUIRED for static export
@@ -44,7 +44,7 @@ export default async function SatguruDetails({
               <div className="group bg-white rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 cursor-pointer cardCustome">
 
                 <div className="flex items-start justify-start gap-2">
-                  <img src="/question.gif" width="60px" />
+                  <Image height={60} width={60} alt="question icon" src="/question.gif" />
                   <div className="text-start">
                     {/* Tag */}
                     <span
@@ -77,7 +77,7 @@ export default async function SatguruDetails({
                       variant="outline"
                       className="rounded-full border-2 border-black px-6 py-5 text-sm  text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
                     >
-                      ओपन इन फुलस्क्रीन
+                      ओपन फुलस्क्रीन
                     </Button>
                   </a>
                 </div>

@@ -5,7 +5,8 @@ import dynamic from "next/dynamic";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 import { ChevronLeft, ChevronRight, Download, Share2, ZoomIn, ZoomOut } from "lucide-react";
-
+const basePath =
+  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
 // ✅ Dynamically import only components (SSR disabled)
 const Document = dynamic(
   () => import("react-pdf").then((mod) => mod.Document),
@@ -38,7 +39,7 @@ export default function PdfSection({
   useEffect(() => {
     async function setupWorker() {
       const { pdfjs } = await import("react-pdf");
-      pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
+      pdfjs.GlobalWorkerOptions.workerSrc = `${basePath}/pdf.worker.min.mjs`;
     }
     setupWorker();
   }, []);

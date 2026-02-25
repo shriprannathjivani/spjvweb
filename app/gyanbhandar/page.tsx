@@ -41,6 +41,10 @@ type Song = {
   cover: string;
   audio: string;
 };
+
+const basePath =
+  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
+
 export default function Gyanbhandar() {
   const [api, setApi] = React.useState<CarouselApi>();
   const [index, setIndex] = useState(0);
@@ -482,7 +486,7 @@ export default function Gyanbhandar() {
                 ref={audioRef}
                 onTimeUpdate={handleTimeUpdate}
               >
-                <source src={currentSong.audio} />
+                <source src={`/${currentSong.audio}`} />
               </audio>
             </div>
 
@@ -503,9 +507,11 @@ export default function Gyanbhandar() {
                         }`}
                     >
                       <div className="flex gap-4 items-center w-full">
-                        <img
+                        <Image
                           src={song.cover}
                           alt={song.title}
+                          height={64}
+                          width={64}
                           className={`w-14 h-14 object-cover rounded-lg ${isActive && isPlaying
                             ? "animate-pulse"
                             : ""
@@ -579,7 +585,7 @@ export default function Gyanbhandar() {
                       <div className="py-2 sm:py-2">
                         <div className="flex items-center gap-2">
                           <div className="shrink-0">
-                            <img className="w-16 h-16 rounded-full bg-orange-200" src="/channel_spjv.jpg" alt="" />
+                            <Image height={64} width={64} className="w-16 h-16 rounded-full bg-orange-200" src="/channel_spjv.jpg" alt="" />
                           </div>
                           <div className="flex-1 min-w-0 ms-0 ">
                             <h3 className="text-xl flex gap-4 items-start mb-2">
@@ -710,7 +716,7 @@ export default function Gyanbhandar() {
                       >
 
                         <div className="flex-1 ">
-                          <img
+                          <Image height={342} width={608} 
                             src={article.image}
                             alt={article.title}
                             className="rounded-l-2xl rounded-b-0 object-cover"
@@ -800,7 +806,7 @@ export default function Gyanbhandar() {
                       className="group bg-white rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 cursor-pointer cardCustome"
                     >
                       <div className="flex items-start justify-start gap-2">
-                        <img src="/question.gif" width="60px" />
+                        <Image height={60} width={60} alt="question icon" src="/question.gif" />
                         <div className="text-start">
                           {/* Tag */}
                           <span
@@ -861,8 +867,6 @@ export default function Gyanbhandar() {
             </div>
           </Carousel>
         </section>
-
-
       </div>
     </>
   );
