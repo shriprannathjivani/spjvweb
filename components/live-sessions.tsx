@@ -29,10 +29,10 @@ export default function LiveSessions() {
               <li className="">
                 <h3 className="text-xl text-orange-900 mt-4 mb-4"> 24000+ सुंदरसाथ जी मिशन प्रतिनिधियों के साथ जुड़े और सीखें</h3>
                 <div className="flex -space-x-2 overflow-hidden">
-                  <Image height={40} width={40} src="rajan_swamiji 2.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-                  <Image height={40} width={40} src="ramratandasji.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-                  <Image height={40} width={40} src="sarkarshree.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-                  <Image height={40} width={40} src="rajan_swamiji 2.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                  <Image height={40} width={40} src="/psimg5.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                  <Image height={40} width={40} src="/psimg6.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                  <Image height={40} width={40} src="/psimg12.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                  <Image height={40} width={40} src="/psimg8.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
                 </div>
               </li>
             </ul>

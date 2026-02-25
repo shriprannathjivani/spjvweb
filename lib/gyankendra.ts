@@ -15,7 +15,7 @@ export const BOOKS = [
     `,
     author: "चर्चा – श्री राजन स्वामी जी (SPJIN)",
     publisher: "द्वारा: श्री प्राणनाथ जी वाणी सेवा परिवार",
-    image: "book1.png",
+    image: "/book1.png",
   },
   {
     id: 2,
@@ -34,7 +34,7 @@ export const BOOKS = [
     `,
     author: "चर्चा – श्री राजन स्वामी जी (SPJIN)",
     publisher: "द्वारा: श्री प्राणनाथ जी वाणी सेवा परिवार",
-    image: "book2.png",
+    image: "/book2.png",
   },
   {
     id: 3,
@@ -48,7 +48,7 @@ export const BOOKS = [
     link: "",
     author: "चर्चा – श्री राजन स्वामी जी (SPJIN)",
     publisher: "द्वारा: श्री प्राणनाथ जी वाणी सेवा परिवार",
-    image: "book3.png",
+    image: "/book3.png",
   },
   {
     id: 4,
@@ -63,7 +63,7 @@ export const BOOKS = [
     link: "",
     author: "चर्चा – श्री राजन स्वामी जी (SPJIN)",
     publisher: "द्वारा: श्री प्राणनाथ जी वाणी सेवा परिवार",
-    image: "book2.png",
+    image: "/book2.png",
   },
   {
     id: 5,
@@ -75,7 +75,7 @@ export const BOOKS = [
     link: "",
     author: "चर्चा – श्री राजन स्वामी जी (SPJIN)",
     publisher: "द्वारा: श्री प्राणनाथ जी वाणी सेवा परिवार",
-    image: "book1.png",
+    image: "/book1.png",
   },
   {
     id: 6,
@@ -90,7 +90,7 @@ export const BOOKS = [
     link: "",
     author: "चर्चा – श्री राजन स्वामी जी (SPJIN)",
     publisher: "द्वारा: श्री प्राणनाथ जी वाणी सेवा परिवार",
-    image: "book2.png",
+    image: "/book2.png",
   }
 ];
 
@@ -98,22 +98,22 @@ export const quotes = [
   {
     text: "यामें अपनी बीतक सब है, श्री देवचन्द्र को मेरो तेरो नाम। जा दिन जो बीती हम तीनों में, सो सब लिखी तमाम।।",
     name: "श्री देवचन्द्र जी",
-    image: "rajan_swamiji 2.png"
+    image: "/rajan_swamiji 2.png"
   },
   {
     text: "श्री प्राणनाथ जी की वाणी अमृत समान है। श्री प्राणनाथ जी की वाणी अमृत समान है।",
     name: "श्री प्राणनाथ जी",
-    image: "ramratandasji.png"
+    image: "/ramratandasji.png"
   },
   {
     text: "जो निज नाम ध्यावे, सो भवसागर तर जावे।। श्री प्राणनाथ जी की वाणी अमृत समान है।",
     name: "महामति जी",
-    image: "sarkarshree.png"
+    image: "/sarkarshree.png"
   },
   {
     text: "जो निज नाम ध्यावे, सो भवसागर तर जावे।। श्री प्राणनाथ जी की वाणी अमृत समान है।",
     name: "महामति जी",
-    image: "rajan_swamiji 2.png"
+    image: "/rajan_swamiji 2.png"
   },
 ];
 

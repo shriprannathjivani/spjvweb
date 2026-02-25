@@ -62,10 +62,10 @@ export default function Page() {
               <li className="">
                 <h3 className="text-xl text-orange-900 mt-4 mb-4"> इस साल 25,000+ से ज्यादा सुंदरसाथ इसमें हिस्सा ले चुके हैं।</h3>
                 <div className="flex -space-x-2 overflow-hidden">
-                  <img src="/rajan_swamiji 2.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-                  <img src="/ramratandasji.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-                  <img src="/sarkarshree.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-                  <img src="/rajan_swamiji 2.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                  <Image height={40} width={40} src="/psimg13.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                                <Image height={40} width={40} src="/psimg9.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                                <Image height={40} width={40} src="/psimg10.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                                <Image height={40} width={40} src="/psimg1.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
                 </div>
               </li>
             </ul>
@@ -200,9 +200,11 @@ export default function Page() {
               {/* 🔸 Right Image */}
               <div className="order-1 md:order-2">
                 <div className="rounded-4xl overflow-hidden ">
-                  <img
+                  <Image
                     src="/gallery1.png"
                     alt="गौरा पूर्णिमा"
+                    height={400}
+                    width={300}
                     className="w-full h-[300px] md:h-[400px] object-cover"
                   />
                 </div>
@@ -311,8 +313,10 @@ export default function Page() {
               </button>
 
               <div className="flex items-center gap-4">
-                <img
-                  src="/rajan_swamiji 2.png"
+                <Image
+                  src="/psimg1.png"
+                  height={40}
+                  width={40}
                   className="w-12 h-12 rounded-full object-cover"
                   alt="सदस्य"
                 />
@@ -344,8 +348,10 @@ export default function Page() {
               </button>
 
               <div className="flex items-center gap-4">
-                <img
-                  src="/rajan_swamiji 2.png"
+                <Image
+                  src="/psimg2.png"
+                  height={40}
+                  width={40}
                   className="w-12 h-12 rounded-full object-cover"
                   alt="सदस्य"
                 />
@@ -377,8 +383,10 @@ export default function Page() {
               </button>
 
               <div className="flex items-center gap-4">
-                <img
-                  src="/rajan_swamiji 2.png"
+                <Image
+                  src="/psimg3.png"
+                  height={40}
+                  width={40}
                   className="w-12 h-12 rounded-full object-cover"
                   alt="सदस्य"
                 />
@@ -410,8 +418,10 @@ export default function Page() {
               </button>
 
               <div className="flex items-center gap-4">
-                <img
-                  src="/rajan_swamiji 2.png"
+                <Image
+                  src="/psimg4.png"
+                  height={40}
+                  width={40}
                   className="w-12 h-12 rounded-full object-cover"
                   alt="सदस्य"
                 />
@@ -443,8 +453,10 @@ export default function Page() {
               </button>
 
               <div className="flex items-center gap-4">
-                <img
-                  src="/rajan_swamiji 2.png"
+                <Image
+                  src="/psimg5.png"
+                  height={40}
+                  width={40}
                   className="w-12 h-12 rounded-full object-cover"
                   alt="सदस्य"
                 />
@@ -476,8 +488,10 @@ export default function Page() {
               </button>
 
               <div className="flex items-center gap-4">
-                <img
-                  src="/rajan_swamiji 2.png"
+                <Image
+                  src="/psimg6.png"
+                  height={40}
+                  width={40}
                   className="w-12 h-12 rounded-full object-cover"
                   alt="सदस्य"
                 />
@@ -518,9 +532,11 @@ export default function Page() {
 
                       <div className="relative">
                         {/* Image */}
-                        <img
+                        <Image
                           src={calendar.link}
                           alt={calendar.link}
+                          height={419}
+                          width={296}
                           className="rounded-l-2xl rounded-b-0 object-cover"
                         />
                         <h3 className="animate-bounce  absolute bottom-2 left-5  bg-lime-300 text-black text-xs md:text-sm px-4 py-2 rounded-full font-medium">

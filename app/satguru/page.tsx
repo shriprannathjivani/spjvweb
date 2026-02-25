@@ -21,18 +21,18 @@ import { Ripple } from "@/components/ui/ripple"
 
 
 const images = [
-    { src: "satguru1.png", topClass: "image image-left", subClass: "image-container image-1 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
-    { src: "satgurutwo.jpg", topClass: "image image-middle-right", subClass: "image-container transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5 image-2" },
-    { src: "satguruthree.jpg", topClass: "image middle-right", subClass: "image-container image-3 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
-    { src: "satguru2.png", topClass: "image image-right", subClass: "image-container image-4 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
-    { src: "satguru3.png", topClass: "image image-left", subClass: "image-container image-5 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
-    { src: "satguru11.png", topClass: "image image-left", subClass: "image-container image-6 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
-    { src: "satguru5.png", topClass: "image image-left", subClass: "image-container image-7 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
-    { src: "satguru6.png", topClass: "image image-left", subClass: "image-container image-8 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
-    { src: "satguru7.png", topClass: "image image-left", subClass: "image-container image-9 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
-    { src: "satguru8.png", topClass: "image image-left", subClass: "image-container image-10 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
-    { src: "satguru9.png", topClass: "image image-left", subClass: "image-container image-11 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
-    { src: "satguru10.png", topClass: "image image-left", subClass: "image-container image-12 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
+    { src: "/satguru1.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-1 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
+    { src: "/satgurutwo.jpg", topClass: "image image-middle-right border-4 border-white rounded-[38px]", subClass: "image-container transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5 image-2" },
+    { src: "/satguruthree.jpg", topClass: "image middle-right border-4 border-white rounded-[38px]", subClass: "image-container image-3 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
+    { src: "/satguru2.png", topClass: "image image-right border-4 border-white rounded-[38px]", subClass: "image-container image-4 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
+    { src: "/satguru3.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-5 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
+    { src: "/satguru11.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-6 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
+    { src: "/satguru5.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-7 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
+    { src: "/satguru6.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-8 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
+    { src: "/satguru7.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-9 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
+    { src: "/satguru8.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-10 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
+    { src: "/satguru9.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-11 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
+    { src: "/satguru10.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-12 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
 ]
 
 const satgureInto = {

@@ -170,7 +170,7 @@ export default function Page() {
               <div className="group !bg-orange-100 rounded-2xl !p-4 !px-6 transition-all duration-300 hover:-translate-y-1 cursor-pointer cardCustome">
 
                 <div className="flex items-start justify-start gap-2">
-                  <img src={item.babyG === "b" ? "/babyboy.png" : "/babygirl.png"} width="60px" className="scale-x-[-1]"/>
+                  <Image alt={item.babyG} src={item.babyG === "b" ? "/babyboy.png" : "/babygirl.png"} width={60} height={60} className="scale-x-[-1]" />
                   <div className="text-start">
                     {/* Tag */}
                     <span
@@ -292,19 +292,23 @@ export default function Page() {
               <div className="">
                 <p className="text-xl text-orange-900 mt-0 mb-4">इस साल 400+ से ज्यादा बाल इसमें हिस्सा ले चुके हैं।</p>
                 <div className="flex -space-x-2 overflow-hidden">
-                  <img src="/rajan_swamiji 2.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-                  <img src="/ramratandasji.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-                  <img src="/sarkarshree.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-                  <img src="/rajan_swamiji 2.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                  <Image height={40} width={40} src="/psbimg1.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                  <Image height={40} width={40} src="/psbimg2.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                  <Image height={40} width={40} src="/psbimg3.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                  <Image height={40} width={40} src="/psbimg4.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                  <Image height={40} width={40} src="/psbimg5.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                  <Image height={40} width={40} src="/psbimg6.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
                 </div>
               </div>
             </div>
 
             {/* Center Image */}
             <div className="relative">
-              <img
+              <Image
                 src="/balkendraAD.png"
                 alt="बच्चा पढ़ाई करते हुए"
+                height={416}
+                width={739}
                 className=" w-full object-cover "
               />
               {/* Badge Top */}
@@ -366,9 +370,11 @@ export default function Page() {
               </p>
 
               <div className="relative">
-                <img
+                <Image
                   src="/AD_dyk.png"
                   alt="Learning"
+                  height={232}
+                  width={341}
                   className="rounded-2xl w-full object-cover"
                 />
 
@@ -400,9 +406,11 @@ export default function Page() {
               </p>
 
               <div className="relative">
-                <img
+                <Image
                   src="/AD_wug.png"
                   alt="Learning"
+                  height={232}
+                  width={341}
                   className="rounded-2xl w-full object-cover"
                 />
 
@@ -435,9 +443,11 @@ export default function Page() {
               </p>
 
               <div className="relative">
-                <img
+                <Image
                   src="/AD_htc.png"
                   alt="Learning"
+                  height={232}
+                  width={341}
                   className="rounded-2xl w-full object-cover"
                 />
 
@@ -568,7 +578,11 @@ export default function Page() {
                 >
                   {msg.role === "ai" && (
                     <div className="w-20 h-20 overflow-hidden ">
-                      <img src="/Cute Tiger.gif" />
+                      <Image src="/Cute Tiger.gif"
+                        height={80}
+                        width={80}
+                        alt="Cute"
+                      />
                     </div>
                   )}
 
@@ -583,7 +597,11 @@ export default function Page() {
 
                   {msg.role === "user" && (
                     <div className="w-12 h-12  overflow-hidden bg-white rounded-full ">
-                      <img src="/profile_girl.png"  />
+                      <Image src="/profile_girl.png"
+                        height={80}
+                        width={80}
+                        alt="Cute"
+                      />
                     </div>
                   )}
                 </div>
@@ -592,7 +610,11 @@ export default function Page() {
               {isTyping && (
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 rounded-full overflow-hidden">
-                    <img src="/Cute Tiger.gif" />
+                    <Image src="/Cute Tiger.gif"
+                      height={80}
+                      width={80}
+                      alt="Cute"
+                    />
                   </div>
                   <div className="bg-gray-100 px-4 py-2 rounded-2xl flex gap-1">
                     <span className="dot"></span>

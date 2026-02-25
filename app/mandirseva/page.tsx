@@ -132,33 +132,33 @@ export default function Page() {
             <Marquee pauseOnHover className="[--duration:20s]">
               <div className="rounded-2xl border px-5 py-4 min-w-[180px] backdrop-blur-sm bg-gradient-to-br from-amber-50/60 to-yellow-50/80 border-amber-200/25">
                 <div className="shrink-0">
-                  <img className="w-12 h-12 rounded-full bg-orange-200" src="/rajan_swamiji 2.png" alt="" />
+                  <Image height={48} width={48} className="w-12 h-12 rounded-full bg-orange-200" src="/psbimg1.png" alt="" />
                 </div>
-                <h4 className="font-medium text-gray-800 font-sans text-base mb-1 leading-normal">karan</h4>
-                <p className="text-sm text-gray-600">Video Editor</p>
+                <h4 className="font-medium text-gray-800 font-sans text-base mb-1 leading-normal">रूपा नाइक</h4>
+                <p className="text-sm text-gray-600">वीडियो एडिटर </p>
               </div>
               <div className="rounded-2xl border px-5 py-4 min-w-[180px] backdrop-blur-sm bg-gradient-to-br from-emerald-50/60 to-green-50/80 border-emerald-200/25">
                 <div className="shrink-0">
-                  <img className="w-12 h-12 rounded-full bg-orange-200" src="/ramratandasji.png" alt="" />
+                  <Image height={48} width={48} className="w-12 h-12 rounded-full bg-orange-200" src="/psimg12.png" alt="" />
                 </div>
-                <h4 className="font-medium text-gray-800 font-sans text-base mb-1 leading-normal">Mayur </h4>
-                <p className="text-sm text-gray-600">Video Editor</p>
+                <h4 className="font-medium text-gray-800 font-sans text-base mb-1 leading-normal">रेश्मा वानरे </h4>
+                <p className="text-sm text-gray-600">वीडियो एडिटर </p>
               </div>
             </Marquee>
             <Marquee reverse pauseOnHover className="[--duration:20s]">
               <div className="rounded-2xl border px-5 py-4 min-w-[180px] backdrop-blur-sm bg-gradient-to-br from-emerald-50/60 to-green-50/80 border-emerald-200/25">
                 <div className="shrink-0">
-                  <img className="w-12 h-12 rounded-full bg-orange-200" src="/sarkarshree.png" alt="" />
+                  <Image height={48} width={48} className="w-12 h-12 rounded-full bg-orange-200" src="/psimg8.png" alt="" />
                 </div>
-                <h4 className="font-medium text-gray-800 font-sans text-base mb-1 leading-normal"> Jadav</h4>
-                <p className="text-sm text-gray-600">Video Editor</p>
+                <h4 className="font-medium text-gray-800 font-sans text-base mb-1 leading-normal"> मनीष अग्रवाल</h4>
+                <p className="text-sm text-gray-600">वीडियो एडिटर </p>
               </div>
               <div className="rounded-2xl border px-5 py-4 min-w-[180px] backdrop-blur-sm bg-gradient-to-br from-amber-50/60 to-yellow-50/80 border-amber-200/25">
                 <div className="shrink-0">
-                  <img className="w-12 h-12 rounded-full bg-orange-200" src="/ramratandasji.png" alt="" />
+                  <Image height={48} width={48} className="w-12 h-12 rounded-full bg-orange-200" src="/psimg10.png" alt="" />
                 </div>
-                <h4 className="font-medium text-gray-800 font-sans text-base mb-1 leading-normal">Prem </h4>
-                <p className="text-sm text-gray-600">Video Editor</p>
+                <h4 className="font-medium text-gray-800 font-sans text-base mb-1 leading-normal">शिल्पा कामथ </h4>
+                <p className="text-sm text-gray-600">वीडियो एडिटर </p>
               </div>
             </Marquee>
             <div className="from-[#fceee8] pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r"></div>
@@ -197,7 +197,7 @@ export default function Page() {
                       <div className="py-2 sm:py-2">
                         <div className="flex items-center gap-2">
                           <div className="shrink-0">
-                            <img className="w-16 h-16 rounded-full bg-orange-200" src="jobicon3.png" alt="" />
+                            <Image height={64} width={64} className="w-16 h-16 rounded-full bg-orange-200" src="/jobicon3.png" alt="" />
                           </div>
                           <div className="flex-1 min-w-0 ms-0">
                             <h3 className="text-xl flex gap-4 items-center mb-2">

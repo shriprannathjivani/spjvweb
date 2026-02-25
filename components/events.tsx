@@ -87,10 +87,10 @@ export default function Events() {
               </Button>
             </div>
             <div className="flex -space-x-2 overflow-hidden">
-              <img src="/rajan_swamiji 2.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-              <img src="/ramratandasji.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-              <img src="/sarkarshree.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-              <img src="/rajan_swamiji 2.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+              <Image height={40} width={40} src="/psimg1.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+              <Image height={40} width={40} src="/psimg2.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+              <Image height={40} width={40} src="/psimg3.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+              <Image height={40} width={40} src="/psimg4.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
             </div>
           </div>
         </div>
@@ -131,10 +131,10 @@ export default function Events() {
                 )}
               >
                 <div className="text-base text-gray-800">
-                  
 
-                 <p className="text-xl text-orange-900 mt-0 mb-2">{event.title}</p> 
-                 {event.location}
+
+                  <p className="text-xl text-orange-900 mt-0 mb-2">{event.title}</p>
+                  {event.location}
                 </div>
                 <div className="text-orange-700 font-medium text-xl">
                   {event.date}
