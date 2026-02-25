@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from "@/components/BaseImage";
 import Link from "next/link"
 import {
   Facebook,
@@ -25,7 +25,7 @@ export default function Footer() {
           <div className="">
             <div className="flex items-center gap-16">
               <Image
-                src="/logo-footer.png"
+                src="logo-footer.png"
                 alt="Shri Prannath Ji Vani"
                 width={125}
                 height={156}

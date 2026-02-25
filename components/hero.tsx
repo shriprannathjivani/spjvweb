@@ -9,7 +9,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
-
+import Image from "@/components/BaseImage";
 import Autoplay from "embla-carousel-autoplay";
 import { CarouselDots } from "@/components/carousel-dots";
 import { useEffect, useRef, useState } from "react";
@@ -102,9 +102,11 @@ export default function Hero() {
 
                   {/* RIGHT */}
                   <div className="rounded-3xl overflow-hidden shadow-xl bg-white relative">
-                    <img
+                    <Image
                       src={slide.image}
                       alt={slide.highlight}
+                      height={392}
+                      width={588}
                       className="top-0 left-0  rounded-md bg-white/5 ring-1 ring-white/10"
                     />
                   </div>

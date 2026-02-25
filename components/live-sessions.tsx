@@ -6,7 +6,7 @@ export default function LiveSessions() {
     <section className="relative  py-10 ">
       {/* Decorative gradient bg-[radial-gradient(circle_at_top_left,rgba(255,128,0,0.35),transparent_70%)] */}
       <div className="absolute left-0 top-0 h-48 w-48 " />
-      <img src="/halfflower.png" className="absolute top-1 left-0 z-0 motion-safe:animate-wiggle w-[70px] h-auto
+      <Image src="/halfflower.png" height={40} width={40} alt="halfflower" className="absolute top-1 left-0 z-0 motion-safe:animate-wiggle w-[70px] h-auto
     sm:w-[150px] sm:h-auto" />
       <div className="relative max-w-7xl mx-auto px-6">
         {/* Header */}
@@ -29,10 +29,10 @@ export default function LiveSessions() {
               <li className="">
                 <h3 className="text-xl text-orange-900 mt-4 mb-4"> 24000+ सुंदरसाथ जी मिशन प्रतिनिधियों के साथ जुड़े और सीखें</h3>
                 <div className="flex -space-x-2 overflow-hidden">
-                  <img src="/rajan_swamiji 2.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-                  <img src="/ramratandasji.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-                  <img src="/sarkarshree.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-                  <img src="/rajan_swamiji 2.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                  <Image height={40} width={40} src="rajan_swamiji 2.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                  <Image height={40} width={40} src="ramratandasji.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                  <Image height={40} width={40} src="sarkarshree.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                  <Image height={40} width={40} src="rajan_swamiji 2.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
                 </div>
               </li>
             </ul>

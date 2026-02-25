@@ -4,7 +4,7 @@ import DynamicBreadcrumb from "@/components/dynamic-breadcrumb"
 import { satgurus } from "@/lib/satguru-data"
 import { notFound } from "next/navigation"
 import { Cake, Church, Landmark, Link, MapPinHouse, Play, Rainbow, School, Youtube } from "lucide-react"
-
+import Image from "@/components/BaseImage";
 export const dynamicParams = false;
 
 // 🔥 REQUIRED for static export
@@ -37,7 +37,7 @@ export default async function SatguruDetails({
           <div className="lg:sticky lg:top-24 rounded-3xl p-6 space-y-6 text-center">
             <div className="absolute z-[-1] h-52 w-52 rotate-65 rounded-[100%] bg-pink-500 blur-2xl" style={{ opacity: 0.5 }}></div>
             <div className="relative ">
-              <img
+              <Image
                 src={guru.image}
                 alt={guru.name}
                 height={100}

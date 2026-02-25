@@ -38,10 +38,10 @@ export default function Aatmadarshan() {
                             <div className="">
                                 <p className="text-xl text-orange-900 mt-0 mb-4">इस साल 400+ से ज्यादा बाल इसमें हिस्सा ले चुके हैं।</p>
                                 <div className="flex -space-x-2 overflow-hidden">
-                                    <Image src="rajan_swamiji 2.png" width={20} height={20} alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-                                    <Image src="ramratandasji.png" alt="" width={20} height={20}  className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-                                    <Image src="sarkarshree.png" alt="" width={20} height={20}  className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-                                    <Image src="rajan_swamiji 2.png" alt="" width={20} height={20}  className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                                    <Image height={40} width={40} src="rajan_swamiji 2.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                                                      <Image height={40} width={40} src="ramratandasji.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                                                      <Image height={40} width={40} src="sarkarshree.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                                                      <Image height={40} width={40} src="rajan_swamiji 2.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
                                 </div>
                             </div>
                             <Button
