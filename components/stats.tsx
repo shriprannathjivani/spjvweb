@@ -63,17 +63,17 @@ export default function Stats() {
     <section className="pt-0 py-10">
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
-        <h2 className="text-3xl font-bold text-black mb-3">
+        <h2 className="text-2xl sm:text-3xl font-bold text-black mb-3 sm:mb-4">
           हमारी यात्रा
         </h2>
-        <p className="text-muted-foreground text-xl max-w-3xl mb-12">
+        <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mb-8 sm:mb-12 leading-relaxed">
           आज, श्री प्राणनाथ जी के मिशन ने लाखों लोगों के जीवन को छुआ है।
           लोगों के साथ सीधे संपर्क और इंटरनेट पर अलग-अलग माध्यमों से,
           वह सभी को स्पष्टता देते रहते हैं।
         </p>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 gap-4 sm:gap-6">
           {STATS.map((item, index) => (
             <Card
               key={index}
@@ -104,7 +104,7 @@ export default function Stats() {
                     {item.subtitle}
                   </p>
 
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full border border-orange-500 text-orange-500 cursor-pointer hover:bg-orange-600 hover:text-white">
+                  <span className="sm:flex hidden  flex h-8 w-8 items-center justify-center rounded-full border border-orange-500 text-orange-500 cursor-pointer hover:bg-orange-600 hover:text-white">
                     <ArrowUpRight size={16} />
                   </span>
                 </div>

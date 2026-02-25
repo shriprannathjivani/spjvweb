@@ -39,11 +39,11 @@ export default function Earticle() {
     <section className="py-20">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
-        <div className="grid md:grid-cols-2 gap-10 items-start">
+        <div className="grid md:grid-cols-2 gap-1 sm:gap-10 items-start">
           {/* Left */}
           <h2 className="text-3xl md:text-4xl font-bold leading-snug">
             ई-मंथन लेखन
-            <p className="text-xl text-gray-500 mt-4">
+            <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mb-8 sm:mb-12 leading-relaxed">
               जिनके शब्द, विचार और दृष्टिकोण, इस दुनिया को निरंतर पहले से बेहतर बना रहे हैं। वे जिनकी लेखनी, वाणी और सोच इस संसार को और सुख-शीतल बना रही है।
             </p>
           </h2>
@@ -60,7 +60,7 @@ export default function Earticle() {
         </div>
 
         {/* Articles Grid */}
-        <div className="mt-12 grid md:grid-cols-2 gap-6">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
           {articles.map((item, i) => (
             <div
               key={i}
@@ -75,7 +75,7 @@ export default function Earticle() {
               />
 
               <div className="flex-1 p-4 ">
-                <h3 className="text-2xl leading-snug">
+                <h3 className="text-2xl leading-snug line-clamp-2 md:line-clamp-4">
                   {item.title}
                 </h3>
 
@@ -105,7 +105,7 @@ export default function Earticle() {
         <div className="mt-16 bg-gradient-to-r from-[#eef3f8] to-[#fde6c8]
                         rounded-3xl overflow-hidden grid md:grid-cols-2">
 
-          <div className="relative h-100 md:h-auto">
+          <div className="relative h-40 sm:h-100 md:h-auto">
             <Image
               src="/articlebig.png"
               alt="घर पर सत्संग"
@@ -115,11 +115,11 @@ export default function Earticle() {
           </div>
 
           <div className="p-8 md:p-12 flex flex-col justify-center">
-            <h3 className="text-3xl mb-4 md:text-4xl  font-bold leading-snug">
+            <h3 className="text-2xl sm:text-3xl font-bold text-black mb-3 sm:mb-4">
               घर पर सत्संग – एक आध्यात्मिक सभा का आयोजन करें
             </h3>
 
-            <p className="mb-12 text-lg text-muted-foreground">
+            <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mb-8 sm:mb-12 leading-relaxed">
               सुंदरदास जी को अपने घर या कॉलोनी पर एक आध्यात्मिक सभा के लिए
               आमंत्रित करें। साथ में भगवान के पवित्र नामों का जाप करें और
               श्री प्राणनाथ जी की शिक्षाओं पर ज्ञानवर्धक प्रवचन सुनें।

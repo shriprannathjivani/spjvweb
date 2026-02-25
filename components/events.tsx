@@ -124,19 +124,17 @@ export default function Events() {
                 key={index}
                 onClick={() => setActiveIndex(index)}
                 className={clsx(
-                  "flex items-center justify-between py-4 text-left transition cursor-pointer",
+                  "flex items-center md:flex-row flex-col justify-between py-4 text-left transition cursor-pointer",
                   activeIndex === index
                     ? "opacity-100"
-                    : "opacity-50 hover:opacity-80"
+                    : "opacity-50 hover:opacity-80 hidden md:flex"
                 )}
               >
                 <div className="text-base text-gray-800">
-
-
                   <p className="text-xl text-orange-900 mt-0 mb-2">{event.title}</p>
                   {event.location}
                 </div>
-                <div className="text-orange-700 font-medium text-xl">
+                <div className="text-orange-700 mt-5 sm:mt-0 font-medium text-xl">
                   {event.date}
                 </div>
               </button>

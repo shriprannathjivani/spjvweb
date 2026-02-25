@@ -41,6 +41,7 @@ export default async function SatguruDetails({
                 src={guru.image}
                 alt={guru.name}
                 height={100}
+                width={100}
                 className="rounded-xl w-full object-cover -rotate-3"
               />
             </div>
@@ -172,7 +173,7 @@ export default async function SatguruDetails({
             <div className="grid md:grid-cols-2 gap-6">
               {guru.temple?.map((temp, i) => (
                 <div key={i}>
-                  <img src={temp.image} className="object-container mb-8  border-4 border-white rounded-[38px]" />
+                  <Image height={221} width={383} src={temp.image} alt="" className="object-container mb-8  border-4 border-white rounded-[38px]" />
                   <h3 className="text-xl flex gap-4 items-center mb-2"><School size={16} className="text-red-600" />{temp.name}</h3>
                   <p className="text-base flex gap-4 items-start text-gray-500 whitespace-pre-line"><MapPinHouse size={16} className="text-gray-600" />{temp.location}</p>
                 </div>

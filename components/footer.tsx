@@ -27,7 +27,7 @@ export default function Footer() {
 
           {/* LEFT: LOGO + TEXT */}
           <div className="">
-            <div className="flex items-center gap-16">
+            <div className="flex items-center gap-4 sm:gap-16">
               <Image
                 src="/logo-footer.png"
                 alt="Shri Prannath Ji Vani"
@@ -36,13 +36,11 @@ export default function Footer() {
               />
               <div className="mt-6 text-orange-300 text-sm">
                 <MessageSquareQuote size={32} className="text-orange-500 mb-4" />
-                <p className="text-3xl leading-relaxed text-orange-300 font-medium opacity-70 ">
+                <p className="sm:text-3xl text-xl leading-relaxed text-orange-300 font-medium opacity-70 ">
                   सुंदरसाथ द्वारा, <br />
                   सुंदरसाथ के लिए, सुंदरसाथ को समर्पित
                 </p>
               </div>
-
-
             </div>
 
 

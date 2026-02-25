@@ -71,7 +71,7 @@ export default function PrannathCTA() {
                 </div>
 
                 {/* RIGHT IMAGE */}
-                <div className="flex justify-center">
+                <div className="flex justify-center md:flex hidden">
                     <Carousel
                         setApi={setApi}
                         opts={{

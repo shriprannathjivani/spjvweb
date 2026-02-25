@@ -94,6 +94,22 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  console.log(pathname)
+
+  const isActive = (path: string) =>
+    pathname === path || pathname.startsWith(path + "/");
+  const menuClass = (path: string) =>
+    `flex flex-col p-3 items-center justify-center rounded-xl transition ${isActive(path)
+      ? "bg-orange-500 text-white"
+      : "bg-orange-100 hover:text-orange-500"
+    }`;
+
+  const tabmenuClass = (path: string) =>
+    `flex flex-col items-center justify-center hover:text-orange-500 transition ${isActive(path)
+      ? "text-orange-600 font-bold"
+      : ""
+    }`;
+
   return (
     <>
       {/* ================= HEADER ================= */}
@@ -121,7 +137,7 @@ export default function Navbar() {
           <nav className="hidden lg:flex items-center gap-6 text-lg">
             <NavigationMenu>
               <NavigationMenuList>
-                <NavigationMenuItem>
+                <NavigationMenuItem >
                   <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
                   text-lg
                   px-4
@@ -130,7 +146,7 @@ export default function Navbar() {
                   focus:bg-transparent
                   data-[state=open]:bg-transparent
                   data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/satguru" className={`link ${pathname === '/' ? 'active' : ''}` + "hover:text-orange-500"} >सतगुरु व परमहंस</Link>} />
+                  hover:text-orange-500`} render={<Link href="/satguru" className={`link ${pathname === '/satguru/' ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"} >सतगुरु व परमहंस</Link>} />
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
@@ -141,7 +157,7 @@ export default function Navbar() {
                   focus:bg-transparent
                   data-[state=open]:bg-transparent
                   data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/karyakram" className="hover:text-orange-500">कार्यक्रम</Link>} />
+                  hover:text-orange-500`} render={<Link href="/karyakram" className={`link ${pathname === '/karyakram/' ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>कार्यक्रम</Link>} />
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
@@ -152,7 +168,7 @@ export default function Navbar() {
                   focus:bg-transparent
                   data-[state=open]:bg-transparent
                   data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/balkendra" className="hover:text-orange-500"> बाल केंद्र</Link>} />
+                  hover:text-orange-500`} render={<Link href="/balkendra" className={`link ${pathname === '/balkendra/' ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}> बाल केंद्र</Link>} />
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
@@ -163,7 +179,7 @@ export default function Navbar() {
                   focus:bg-transparent
                   data-[state=open]:bg-transparent
                   data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/mandirseva" className="hover:text-orange-500">मंदिर व सेवा</Link>} />
+                  hover:text-orange-500`} render={<Link href="/mandirseva" className={`link ${pathname === '/mandirseva/' ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>मंदिर व सेवा</Link>} />
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
@@ -174,7 +190,7 @@ export default function Navbar() {
                   focus:bg-transparent
                   data-[state=open]:bg-transparent
                   data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/gyanbhandar" className="hover:text-orange-500">ज्ञान भंडार </Link>} />
+                  hover:text-orange-500`} render={<Link href="/gyanbhandar" className={`link ${pathname === '/gyanbhandar/' ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>ज्ञान भंडार </Link>} />
                 </NavigationMenuItem>
                 {/* <NavigationMenuItem>
                   <NavigationMenuTrigger className="
@@ -223,31 +239,65 @@ export default function Navbar() {
               <SheetContent side="bottom" className="w-[100vw] sm:w-[100%]">
                 <span className="text-xl p-2 px-10 mt-2">क्विक मेनू</span>
                 <nav className=" grid grid-cols-3 gap-4 text-lg mb-8 px-8">
-                  <Link href="/" className="flex flex-col p-2 items-center justify-center hover:text-orange-500 bg-orange-100 rounded-xl" onClick={() => setIsMenuOpen(false)}>
+                  <Link
+                    href="/"
+                    className={menuClass("/")}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                     <Home size={24} />
                     <span className="text-base mt-2">होम</span>
                   </Link>
-                  <Link href="/satguru" className="flex flex-col p-3 items-center justify-center hover:text-orange-500 bg-orange-100 rounded-xl" onClick={() => setIsMenuOpen(false)}>
+
+                  <Link
+                    href="/satguru"
+                    className={menuClass("/satguru")}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                     <Users size={24} />
                     <span className="text-base mt-2">सतगुरु</span>
                   </Link>
-                  <Link href="/karyakram" className="flex flex-col p-3 items-center justify-center hover:text-orange-500 bg-orange-100 rounded-xl" onClick={() => setIsMenuOpen(false)}>
+
+                  <Link
+                    href="/karyakram"
+                    className={menuClass("/karyakram")}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                     <Calendar size={24} />
                     <span className="text-base mt-2">कार्यक्रम</span>
                   </Link>
-                  <Link href="/balkendra" className="flex flex-col p-3 items-center justify-center hover:text-orange-500 bg-orange-100 rounded-xl" onClick={() => setIsMenuOpen(false)}>
+
+                  <Link
+                    href="/balkendra"
+                    className={menuClass("/balkendra")}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                     <Baby size={24} />
                     <span className="text-base mt-2">बाल केंद्र</span>
                   </Link>
-                  <Link href="/mandirseva" className="flex flex-col p-3 items-center justify-center hover:text-orange-500 bg-orange-100 rounded-xl" onClick={() => setIsMenuOpen(false)}>
+
+                  <Link
+                    href="/mandirseva"
+                    className={menuClass("/mandirseva")}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                     <University size={24} />
                     <span className="text-base mt-2">मंदिर व सेवा</span>
                   </Link>
-                  <Link href="/gyanbhandar" className="flex flex-col p-3 items-center justify-center hover:text-orange-500 bg-orange-100 rounded-xl" onClick={() => setIsMenuOpen(false)}>
+
+                  <Link
+                    href="/gyanbhandar"
+                    className={menuClass("/gyanbhandar")}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                     <BookOpen size={24} />
                     <span className="text-base mt-2">ज्ञान भंडार</span>
                   </Link>
-                  <Link href="/contact" className="flex flex-col p-3 items-center justify-center hover:text-orange-500 bg-orange-100 rounded-xl" onClick={() => setIsMenuOpen(false)}>
+
+                  <Link
+                    href="/contact"
+                    className={menuClass("/contact")}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                     <PhoneCall size={24} />
                     <span className="text-base mt-2">संपर्क करें</span>
                   </Link>
@@ -269,19 +319,19 @@ export default function Navbar() {
         }
       >
         <div className="grid grid-cols-5 h-16">
-          <Link href="/" className="flex flex-col items-center justify-center hover:text-orange-500">
+          <Link href="/" className={tabmenuClass("/")}>
             <Home size={20} />
             <span className="text-sm mt-1">होम</span>
           </Link>
-          <Link href="/satguru" className="flex flex-col items-center justify-center hover:text-orange-500">
+          <Link href="/satguru" className={tabmenuClass("/satguru")}>
             <Users size={20} />
             <span className="text-sm mt-1">सतगुरु</span>
           </Link>
-          <Link href="/karyakram" className="flex flex-col items-center justify-center hover:text-orange-500">
+          <Link href="/karyakram" className={tabmenuClass("/karyakram")}>
             <Calendar size={20} />
             <span className="text-sm mt-1">कार्यक्रम</span>
           </Link>
-          <Link href="/balkendra" className="flex flex-col items-center justify-center hover:text-orange-500">
+          <Link href="/balkendra" className={tabmenuClass("/balkendra")}>
             <Baby size={20} />
             <span className="text-sm mt-1">बाल केंद्र</span>
           </Link>

@@ -33,20 +33,34 @@ const slides = [
 
 export default function Hero() {
   const [api, setApi] = useState<CarouselApi>();
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
   const autoplay = useRef(
     Autoplay({
       delay: 5000,
       stopOnInteraction: false,
+      stopOnMouseEnter: true,
     })
   );
 
+  // 🔵 Sync dots with Embla
   useEffect(() => {
     if (!api) return;
+
+    const onSelect = () => {
+      setSelectedIndex(api.selectedScrollSnap());
+    };
+
+    api.on("select", onSelect);
+    api.on("reInit", onSelect);
+
+    onSelect();
   }, [api]);
 
   return (
-    <section className="relative">
-      <div className="max-w-7xl mx-auto px-6 sm:px-6 py-20 pb-10 lg:py-20 lg:py-30 lg:pb-10">
+    // bg-gradient-to-r from-[#fde6da] via-[#f3e9ff] to-[#fdebe1]
+    <section className="relative ">
+      <div className="max-w-7xl mx-auto px-6 py-10  pt-20 sm:pt-30">
         <Carousel
           setApi={setApi}
           opts={{ loop: true }}
@@ -56,69 +70,21 @@ export default function Hero() {
           <CarouselContent>
             {slides.map((slide, index) => (
               <CarouselItem key={index}>
-                
-                {/* MOBILE OVERLAY VERSION */}
-                <div className="relative lg:hidden rounded-3xl overflow-hidden">
-
-                  {/* Background Image */}
-                  <Image
-                    src={slide.image}
-                    alt={slide.highlight}
-                    width={200}
-                    height={300}
-                    className="w-full h-full object-cover"
-                  />
-
-                  {/* Dark Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-
-                  {/* Text Content */}
-                  <div className="absolute bottom-0 p-6 text-white">
-                    <h1 className="text-2xl font-bold leading-snug">
-                      {slide.title}{" "}
-                      <span className="text-orange-400">
-                        {slide.highlight}
-                      </span>
-                    </h1>
-
-                    <p className="mt-3 text-sm text-gray-200">
-                      {slide.description}
-                    </p>
-
-                    <div className="mt-8 flex gap-4">
-                      <Button
-                        variant="outline"
-                        className="rounded-full border-2 border-orange px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
-                      >
-                        प्रवचन देखें
-                      </Button>
-                      <Button
-                        variant="outline"
-                        className="rounded-full border-2 border-orange text-black px-6 py-5 text-sm font-medium hover:bg-black hover:text-white cursor-pointer"
-                      >
-                        जीवनी पढ़ें
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* DESKTOP VERSION */}
-                <div className="hidden lg:grid lg:grid-cols-2 gap-14 items-center">
-                  
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center">
                   {/* LEFT */}
-                  <div>
-                    <h1 className="text-5xl font-bold leading-tight">
+                  <div className="order-2 lg:order-1 text-center lg:text-left">
+                    <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold leading-snug lg:leading-tight">
                       {slide.title}{" "}
                       <span className="text-orange-500">
                         {slide.highlight}
                       </span>
                     </h1>
 
-                    <p className="mt-6 text-gray-700 text-2xl max-w-xl">
+                    <p className="mt-4 lg:mt-6 text-gray-700 text-base sm:text-lg lg:text-2xl max-w-xl mx-auto lg:mx-0">
                       {slide.description}
                     </p>
 
-                    <div className="mt-8 flex gap-4">
+                    <div className="mt-8 flex gap-4 justify-center sm:justify-start">
                       <Button
                         variant="outline"
                         className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
@@ -135,31 +101,38 @@ export default function Hero() {
                   </div>
 
                   {/* RIGHT */}
-                  <div className="rounded-3xl overflow-hidden shadow-xl">
+                  <div className="rounded-3xl overflow-hidden shadow-xl bg-white relative">
                     <Image
                       src={slide.image}
                       alt={slide.highlight}
-                      width={800}
-                      height={500}
-                      className="w-full h-auto object-cover"
+                      height={392}
+                      width={588}
+                      className="top-0 left-0  rounded-md bg-white/5 ring-1 ring-white/10"
                     />
                   </div>
                 </div>
-
               </CarouselItem>
             ))}
           </CarouselContent>
 
-          {/* Controls */}
+          {/* Custom Controls */}
           <div className="mt-6 flex items-center justify-between">
             <CarouselDots api={api} />
 
-            <div className="hidden lg:flex gap-3">
-              <CarouselPrevious className="static mt-5 h-10 w-10 rounded-full border border-gray-300 text-gray-500 hover:bg-orange-50 hover:text-orange-500" />
-              <CarouselNext className="static mt-5 h-10 w-10 rounded-full border border-orange-500 text-orange-500 hover:bg-orange-50" />
+            {/* Arrows */}
+            <div className="flex gap-3">
+              <CarouselPrevious
+                className="static mt-5 h-10 w-10 rounded-full border border-gray-300
+                 text-gray-500 hover:bg-orange-50 hover:text-orange-500 cursor-pointer"
+              />
+              <CarouselNext
+                className="static mt-5 h-10 w-10 rounded-full border border-orange-500
+                 text-orange-500 hover:bg-orange-50 cursor-pointer"
+              />
             </div>
           </div>
         </Carousel>
+
       </div>
     </section>
   );

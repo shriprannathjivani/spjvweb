@@ -16,16 +16,16 @@ import React from "react";
 export default function Aatmadarshan() {
     const [api, setApi] = React.useState<CarouselApi>()
     return (
-        <section className="relative py-20 overflow-hidden">
+        <section className="relative py-10 sm:py-24 overflow-hidden">
             {/* Decorative background */}
           
 <Image src="/halfflower.png" height={40} width={40} alt="halfflower" className="absolute top-1 left-0 z-0 motion-safe:animate-wiggle w-[70px] h-auto
           sm:w-[150px] sm:h-auto" />
             <div className="relative max-w-7xl mx-auto px-6">
                 {/* Top Content */}
-                <div className="grid md:grid-cols-2 gap-10 items-start">
+                <div className="grid md:grid-cols-2 gap-5 sm:gap-10 items-start">
                     {/* Left */}
-                    <h2 className="text-3xl md:text-4xl font-bold leading-snug">
+                    <h2 className="text-2xl sm:text-3xl font-bold text-black mb-3 sm:mb-4">
                         'बाल आत्मदर्शनम्'<br />
                         हर रविवार की दिव्य दोपहर:
                     </h2>

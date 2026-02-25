@@ -12,11 +12,11 @@ export default function LiveSessions() {
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-16">
           <div className="max-w-2xl">
-            <h2 className="text-3xl lg:text-4xl font-bold text-black mb-6 leading-snug">
+            <h2 className="text-2xl sm:text-3xl font-bold text-black mb-3 sm:mb-4">
               श्री प्राणनाथ जी वाणी <br />
               के साथ लाइव लाइव सेशन
             </h2>
-            <ul className="space-y-3 text-xl text-gray-500">
+            <ul className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mb-8 sm:mb-12 leading-relaxed">
               <li>
                 1. श्री प्राणनाथ जी वाणी के दो सेशन और हर दिन 10+ हिंदी लाइव सेशन
               </li>
@@ -27,7 +27,7 @@ export default function LiveSessions() {
                 3. हर महीने GOOGLE विज्ञापन पर 70+ एंगेजमेंट
               </li>
               <li className="">
-                <h3 className="text-xl text-orange-900 mt-4 mb-4"> 24000+ सुंदरसाथ जी मिशन प्रतिनिधियों के साथ जुड़े और सीखें</h3>
+                <h3 className="text-xl text-orange-900 mt-4 sm:mt-0 mb-4"> 24000+ सुंदरसाथ जी मिशन प्रतिनिधियों के साथ जुड़े और सीखें</h3>
                 <div className="flex -space-x-2 overflow-hidden">
                   <Image height={40} width={40} src="/psimg5.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
                   <Image height={40} width={40} src="/psimg6.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
@@ -47,7 +47,7 @@ export default function LiveSessions() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
           {[
             {
               title: "चितवन \nश्री राजन स्वामी जी",

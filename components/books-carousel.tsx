@@ -62,7 +62,7 @@ const BOOKS = [
 export default function BooksCarousel() {
   const [api, setApi] = React.useState<CarouselApi>()
   return (
-    <section className="relative py-24 pt-0">
+    <section className="relative py-10 sm:py-24 pt-0">
 
       <Image src="/halfflower.png" height={40} width={40} alt="halfflower" className="absolute top-1 right-0 z-0 motion-safe:animate-wiggle w-[70px] h-auto
           sm:w-[150px] sm:h-auto rotate-[3.142rad]" />
@@ -148,9 +148,9 @@ export default function BooksCarousel() {
         </Carousel>
 
         {/* Quote */}
-        <div className="mt-20 max-w-4xl">
-          <MessageSquareQuote size={76} className="text-orange-500 mb-4" />
-          <p className="text-4xl leading-relaxed text-[#7a2f18] font-medium">
+        <div className="mt-10 sm:mt-20 max-w-4xl">
+          <MessageSquareQuote  className="text-orange-500 mb-4 w-10 h-10 sm:w-14 sm:h-14 lg:w-[76px] lg:h-[76px]" />
+          <p className="text-base sm:text-4xl  leading-relaxed text-[#7a2f18] font-medium">
             यामें अपनी बीतक सब है, श्री देवचन्द्र को मेरो तेरो नाम। <br/> जा दिन जो बीती हम तीनों में, सो सब लिखी तमाम।।
           </p>
         </div>
