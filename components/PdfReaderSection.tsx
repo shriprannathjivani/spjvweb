@@ -34,6 +34,7 @@ export default function PdfSection({
   const [pageNumber, setPageNumber] = useState(1);
   const [progress, setProgress] = useState(0);
   const [scale, setScale] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
 
   // ✅ Set worker only on client
   useEffect(() => {
@@ -42,6 +43,17 @@ export default function PdfSection({
       pdfjs.GlobalWorkerOptions.workerSrc = `${basePath}/pdf.worker.min.mjs`;
     }
     setupWorker();
+  }, []);
+
+  useEffect(() => {
+    const checkScreen = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint
+    };
+
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+
+    return () => window.removeEventListener("resize", checkScreen);
   }, []);
 
   // ✅ Restore page
@@ -61,66 +73,85 @@ export default function PdfSection({
 
   return (
     <section className="max-w-4xl mx-auto mt-[-50] relative">
-      <div className="sticky top-20 left-0 right-0 flex justify-center z-50 pointer-events-none">
-        <div className="pointer-events-auto bg-white  rounded-full px-6 py-3 flex items-center gap-5 border">
-          { /* Progress */}
-          <div className="h-2  w-20 mx-auto  bg-orange-100 rounded-3xl">
+      <div className="sticky top-16 sm:top-20 left-0 right-0 flex justify-center z-50 px-3 pointer-events-none">
+
+        <div className="
+            pointer-events-auto 
+            bg-white 
+            rounded-full 
+            px-3 sm:px-6 
+            py-2 sm:py-3 
+            flex items-center 
+            gap-3 sm:gap-5 
+            border 
+            shadow-sm
+            max-w-full
+            overflow-x-auto
+          ">
+          {/* Progress */}
+          <div className="h-1.5 sm:h-2 w-16 sm:w-20 bg-orange-100 rounded-3xl shrink-0">
             <div
               className="h-full bg-orange-500 transition-all duration-300 rounded-3xl"
               style={{ width: `${progress}%` }}
             />
           </div>
+
+          {/* Prev */}
           <button
             onClick={() => setPageNumber((p) => Math.max(1, p - 1))}
-            className="hover:text-orange-500 cursor-pointer"
+            className="hover:text-orange-500 cursor-pointer shrink-0"
           >
-            <ChevronLeft />
+            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
 
-          <span className="text-sm font-medium">
+          {/* Page Counter */}
+          <span className="text-xs sm:text-sm font-medium whitespace-nowrap">
             {pageNumber} / {numPages}
           </span>
 
+          {/* Next */}
           <button
             onClick={() => setPageNumber((p) => Math.min(numPages, p + 1))}
-            className="hover:text-orange-500 cursor-pointer"
+            className="hover:text-orange-500 cursor-pointer shrink-0"
           >
-            <ChevronRight />
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
 
-          <div className="h-6 w-px bg-gray-300 cursor-pointer" />
+          <div className="hidden sm:block h-6 w-px bg-gray-300" />
 
+          {/* Zoom In */}
           <button
-            onClick={() =>
-              setScale((s) => Math.min(3, s + 0.1))
-            }
-            className="hover:text-orange-500 cursor-pointer"
+            onClick={() => setScale((s) => Math.min(3, s + 0.1))}
+            className="hover:text-orange-500 cursor-pointer shrink-0"
           >
-            <ZoomIn />
+            <ZoomIn className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
 
+          {/* Zoom Out */}
           <button
-            onClick={() =>
-              setScale((s) => Math.max(0.5, s - 0.1))
-            }
-            className="hover:text-orange-500 cursor-pointer"
+            onClick={() => setScale((s) => Math.max(0.5, s - 0.1))}
+            className="hover:text-orange-500 cursor-pointer shrink-0"
           >
-            <ZoomOut />
+            <ZoomOut className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
 
-          <div className="h-6 w-px bg-gray-300" />
+          <div className="hidden sm:block h-6 w-px bg-gray-300" />
 
-          <a href={pdfUrl} download>
-            <Download className="hover:text-orange-500 cursor-pointer" />
+          {/* Download */}
+          <a href={pdfUrl} download className="shrink-0">
+            <Download className="hover:text-orange-500 cursor-pointer w-4 h-4 sm:w-5 sm:h-5" />
           </a>
 
+          {/* Share */}
           <button
             onClick={() =>
               navigator.share?.({ title: "PDF", url: window.location.href })
             }
+            className="shrink-0"
           >
-            <Share2 className="hover:text-orange-500 cursor-pointer" />
+            <Share2 className="hover:text-orange-500 cursor-pointer w-4 h-4 sm:w-5 sm:h-5" />
           </button>
+
         </div>
       </div>
 
@@ -132,11 +163,9 @@ export default function PdfSection({
             setNumPages(numPages)
           }
         >
-          <Page pageNumber={pageNumber} width={700} scale={scale} />
+          <Page pageNumber={pageNumber} width={isMobile ? 320 : 700} scale={scale} />
         </Document>
       </div>
-
-
     </section>
   );
 }

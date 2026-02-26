@@ -15,6 +15,9 @@ export async function generateStaticParams() {
   }));
 }
 
+const basePath =
+  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
+
 export default async function SatguruDetails({
   params,
 }: {
@@ -91,7 +94,7 @@ export default async function SatguruDetails({
         <div className="lg:col-span-2 ">
           <div className="leading-8 text-base text-gray-500 whitespace-pre-line font-poppins">
             <PdfSection
-              pdfUrl="/Prem Rasayan.pdf"
+              pdfUrl={`${basePath}${book.link}`}
               title="श्री प्राणनाथ वाणी"
               storageKey="prannath-vani-progress"
             />

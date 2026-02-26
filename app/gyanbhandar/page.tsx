@@ -273,7 +273,9 @@ export default function Gyanbhandar() {
                         height={180}
                         className="mb-6 object-contain"
                       />
-
+                      <span className="relative mb-1 rounded-full inline-flex items-center bg-white px-2 py-1 text-xs font-xl inset-ring text-red-600  inset-ring-red-500/10">
+                        {book.languages}
+                      </span>
                       {/* Text */}
                       <h3 className="font-semibold text-lg text-black mb-2">
                         {book.title}
