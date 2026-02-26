@@ -49,6 +49,8 @@ export default function Gyanbhandar() {
   const [api, setApi] = React.useState<CarouselApi>();
   const [index, setIndex] = useState(0);
 
+  const [isMobile, setIsMobile] = useState(false);
+
   const [mounted, setMounted] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
   const [waveHeights, setWaveHeights] = useState<number[]>([]);
@@ -74,6 +76,18 @@ export default function Gyanbhandar() {
       });
     }, 19000);
     return () => clearInterval(interval);
+  }, []);
+
+
+  useEffect(() => {
+    const checkScreen = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint
+    };
+
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+
+    return () => window.removeEventListener("resize", checkScreen);
   }, []);
 
   const handleItemClick = (clickedIndex: number) => {
@@ -200,15 +214,20 @@ export default function Gyanbhandar() {
 
   return (
     <>
-      <LetterGlitch
-        glitchSpeed={50}
-        centerVignette={true}
-        outerVignette={true}
-        smooth={true}
-        glitchColors={["#ff6b00", "#ff0000", "#c713d7"]}
-        characters={"श्री प्राणनाथ जी वाणी परिवार"}
-        fontFamily="font-arya"
-      />
+      {!isMobile ? (
+        <LetterGlitch
+          glitchSpeed={50}
+          centerVignette
+          outerVignette
+          smooth
+          glitchColors={["#ff6b00", "#ff0000", "#c713d7"]}
+          characters="श्री प्राणनाथ जी वाणी परिवार"
+          fontFamily="font-arya"
+        />
+      ) : (
+        <></>
+      )}
+
       <div className="relative max-w-7xl mx-auto px-6 py-10 overflow-hidden pt-30 text-center font-arya ">
 
         <section className="relative  pt-0">
@@ -485,7 +504,7 @@ export default function Gyanbhandar() {
                 ref={audioRef}
                 onTimeUpdate={handleTimeUpdate}
               >
-                <source src={`${basePath}${currentSong.audio}`}/>
+                <source src={`${basePath}${currentSong.audio}`} />
               </audio>
             </div>
 
@@ -715,7 +734,7 @@ export default function Gyanbhandar() {
                       >
 
                         <div className="flex-1 ">
-                          <Image height={342} width={608} 
+                          <Image height={342} width={608}
                             src={article.image}
                             alt={article.title}
                             className="rounded-l-2xl rounded-b-0 object-cover"

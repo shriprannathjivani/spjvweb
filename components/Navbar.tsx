@@ -146,7 +146,7 @@ export default function Navbar() {
                   focus:bg-transparent
                   data-[state=open]:bg-transparent
                   data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/satguru" className={`link ${pathname === '/satguru/' ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"} >सतगुरु व परमहंस</Link>} />
+                  hover:text-orange-500`} render={<Link href="/satguru" className={`link ${pathname?.includes("/satguru") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"} >सतगुरु व परमहंस</Link>} />
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
@@ -157,7 +157,7 @@ export default function Navbar() {
                   focus:bg-transparent
                   data-[state=open]:bg-transparent
                   data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/karyakram" className={`link ${pathname === '/karyakram/' ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>कार्यक्रम</Link>} />
+                  hover:text-orange-500`} render={<Link href="/karyakram" className={`link ${pathname?.includes("/karyakram") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>कार्यक्रम</Link>} />
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
@@ -168,7 +168,7 @@ export default function Navbar() {
                   focus:bg-transparent
                   data-[state=open]:bg-transparent
                   data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/balkendra" className={`link ${pathname === '/balkendra/' ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}> बाल केंद्र</Link>} />
+                  hover:text-orange-500`} render={<Link href="/balkendra" className={`link ${pathname?.includes("/balkendra") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}> बाल केंद्र</Link>} />
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
@@ -179,7 +179,7 @@ export default function Navbar() {
                   focus:bg-transparent
                   data-[state=open]:bg-transparent
                   data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/mandirseva" className={`link ${pathname === '/mandirseva/' ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>मंदिर व सेवा</Link>} />
+                  hover:text-orange-500`} render={<Link href="/mandirseva" className={`link ${pathname?.includes("/mandirseva") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>मंदिर व सेवा</Link>} />
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
@@ -190,7 +190,7 @@ export default function Navbar() {
                   focus:bg-transparent
                   data-[state=open]:bg-transparent
                   data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/gyanbhandar" className={`link ${pathname === '/gyanbhandar/' ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>ज्ञान भंडार </Link>} />
+                  hover:text-orange-500`} render={<Link href="/gyanbhandar" className={`link ${pathname?.includes("/gyanbhandar") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>ज्ञान भंडार </Link>} />
                 </NavigationMenuItem>
                 {/* <NavigationMenuItem>
                   <NavigationMenuTrigger className="

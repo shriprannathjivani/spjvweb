@@ -314,14 +314,14 @@ html {
   left: 0;
   width: 16px;
   height: 16px;
-  background: url('/leaf_one.webp') no-repeat;
+  background: url('../public/leaf_one.webp') no-repeat;
   background-size: 100%;
   transform-style: preserve-3d;
   backface-visibility: visible;
 }
 
 .leaf-scene div:nth-child(odd) {
-  background: url('/leaf_two.webp') no-repeat;
+  background: url('../public/leaf_two.webp') no-repeat;
   background-size: 100%;
 }
 
