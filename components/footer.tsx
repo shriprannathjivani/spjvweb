@@ -75,7 +75,7 @@ export default function Footer() {
 
         {/* SOCIAL + EMAIL */}
         <div className="md:mt-12 mt-5 pt-6 border-t border-white/20 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-[auto_auto_auto_auto_1fr] gap-16">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-[auto_auto_auto_auto_1fr] gap-2 md:gap-16">
             {/* Facebook */}
             <Link
               href="https://www.facebook.com/ShriPrannathJiVani/"
