@@ -111,7 +111,6 @@ export default function PrivacyPolicy() {
 
                 <TabsList variant="line" >
                     {items.map((item) => (
-                        <>
                             <TabsTrigger className="text-xl relative px-4 py-2
                             data-[state=active]:text-orange-600
                             after:absolute after:left-0 after:bottom-0
@@ -120,12 +119,11 @@ export default function PrivacyPolicy() {
                             after:bg-orange-500
                             after:transition-all
                              cursor-pointer " 
-                            value={item.value}>{item.trigger}</TabsTrigger>
-                        </>
+                            value={item.value} key={item.value}>{item.trigger}</TabsTrigger>
                     ))}
                 </TabsList>
                 {items.map((item) => (
-                    <TabsContent className="text-xl text-muted-foreground mt-6 rounded-2xl  bg-white p-6 leading-relaxed whitespace-pre-line" value={item.value}>{item.content}</TabsContent>
+                    <TabsContent className="text-xl text-muted-foreground mt-6 rounded-2xl  bg-white p-6 leading-relaxed whitespace-pre-line" value={item.value} key={item.value}>{item.content}</TabsContent>
                 ))}
             </Tabs>
 

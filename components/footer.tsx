@@ -22,11 +22,11 @@ export default function Footer() {
       {/* <div className="absolute top-0 left-0 w-60 h-60 bg-[url('/halfflower.png')] bg-contain bg-no-repeat " />
       <div className="absolute bottom-0 right-0 z-0 w-100 h-100 bg-[url('/halfflower.png')] bg-no-repeat rotate-[3.142rad]" /> */}
 
-      <div className="relative max-w-7xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-[60%_20%_20%] gap-12">
+      <div className="relative max-w-7xl mx-auto px-6 py-8 md:py-16">
+        <div className="grid grid-cols-2 md:grid-cols-[60%_20%_20%] gap-8 md:gap-12">
 
           {/* LEFT: LOGO + TEXT */}
-          <div className="">
+          <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-4 sm:gap-16">
               <Image
                 src="/logo-footer.png"
@@ -74,11 +74,12 @@ export default function Footer() {
         </div>
 
         {/* SOCIAL + EMAIL */}
-        <div className="mt-12 pt-6 border-t border-white/20 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
+        <div className="md:mt-12 mt-5 pt-6 border-t border-white/20 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-[auto_auto_auto_auto_1fr] gap-16">
             {/* Facebook */}
             <Link
-              href="#"
+              href="https://www.facebook.com/ShriPrannathJiVani/"
+              target="_blank"
               className="group flex flex-row items-center gap-2 text-start transition transition"
             >
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white 
@@ -86,60 +87,60 @@ export default function Footer() {
                 <Facebook size={16} />
               </div>
               <span className="text-base leading-snug text-white/80 group-hover:text-orange-400">
-                फेसबुक<p className="text-xs flex mt-1 text-white/60">मिलियन+ सब्सक्राइबर्स</p>
+                फेसबुक<p className="text-xs flex mt-1 text-white/60">7.2K + सब्सक्राइबर्स</p>
               </span>
             </Link>
 
             {/* YouTube */}
-            <Link href="#" className="group flex flex-row items-center gap-2 text-start transition">
+            <Link href="https://www.youtube.com/@ShriPrannathJiVani/videos" target="_blank" className="group flex flex-row items-center gap-2 text-start transition">
               <div className="flex h-8 w-8  items-center justify-center rounded-full bg-white/10
       group-hover:bg-rose-500 group-hover:scale-110 transition-all">
                 <Youtube size={16} />
               </div>
               <span className="text-base text-white/80 group-hover:text-orange-400">
-                यूट्यूब<p className="text-xs flex mt-1 text-white/60">12.4M+ फॉलोअर्स</p>
+                यूट्यूब<p className="text-xs flex mt-1 text-white/60">27k+ फॉलोअर्स</p>
               </span>
             </Link>
 
             {/* Instagram */}
-            <Link href="#" className="group flex flex-row items-center gap-2 text-start transition">
+            <Link href="https://www.instagram.com/shriPrannathJiVani/" target="_blank" className="group flex flex-row items-center gap-2 text-start transition">
               <div className="flex h-8 w-8  items-center justify-center rounded-full bg-white/10
       group-hover:bg-pink-600 group-hover:scale-110 transition-all">
                 <Instagram size={16} />
               </div>
               <span className="text-base text-white/90 group-hover:text-orange-400">
-                इंस्टाग्राम<p className="text-xs flex mt-1 text-white/60">12.4M+ फॉलोअर्स</p>
+                इंस्टाग्राम<p className="text-xs flex mt-1 text-white/60">1300+ फॉलोअर्स</p>
               </span>
             </Link>
 
             {/* WhatsApp */}
-            <Link href="#" className="group flex flex-row items-center gap-2 text-start transition">
+            <Link href="#" target="_blank" className="group flex flex-row items-center gap-2 text-start transition">
               <div className="flex h-8 w-8  items-center justify-center rounded-full bg-white/10
       group-hover:bg-green-600 group-hover:scale-110 transition-all">
                 <MessageCircleHeart size={16} />
               </div>
               <span className="text-base text-white/80 group-hover:text-green-400">
-                व्हाट्सएप चैनल<p className="flex mt-1 text-white/60 text-xs">मिलियन+ फॉलोअर्स </p>
+                व्हाट्सएप चैनल<p className="flex mt-1 text-white/60 text-xs">24k+ फॉलोअर्स </p>
               </span>
             </Link>
 
             {/* Email */}
             <Link
               href="mailto:shriprannathjivani@gmail.com"
-              className="group flex flex-row items-center gap-2 text-start transition"
+              className="group flex flex-row items-center gap-2 text-start transition col-span-2 md:col-span-1"
             >
               <div className="flex h-8 w-8  items-center justify-center rounded-full bg-white/10
       group-hover:bg-red-500 group-hover:scale-110 transition-all">
                 <Mail size={16} />
               </div>
-              <span className="text-xs text-white/80 group-hover:text-orange-400 break-all">
+              <span className="text-base text-white/80 group-hover:text-orange-400 break-all">
                 shriprannathjivani@gmail.com
-                <p className="flex mt-1 text-xs text-white/60">मिलियन+ फॉलोअर्स </p>
+                <p className="flex mt-1 text-xs text-white/60">मार्गदर्शन हेतु या किसी भी सुझाव</p>
               </span>
             </Link>
           </div>
-          <Link href="#" className="text-sm text-white/60 text-start ">
-            <AtSign size={16} className="flex inline-flex" /> 2026 spjv. <p className="flex mt-1 text-white/60">All rights reserved.</p>
+          <Link href="#" className="text-sm text-white/60 text-center md:text-start">
+            <AtSign size={16} className="flex inline-flex" /> 2026 spjv. made with love. <p className="md:flex inline-flex mt-1 text-white/60">All rights reserved.</p>
           </Link>
         </div>
       </div>
