@@ -7,6 +7,7 @@ import Events from "@/components/events";
 import Hero from "@/components/hero";
 import LiveSessions from "@/components/live-sessions";
 import Stats from "@/components/stats";
+import ReviewsCarousel from "@/components/reviews";
 
 export default function HomePage() {
   return (
@@ -15,10 +16,9 @@ export default function HomePage() {
       <Stats/>
       <LiveSessions/>
       <BooksCarousel/>
-      <Aatmadarshan/>
-      <Events/>
       <PrannathCTA/>
       <Earticle/>
+      <ReviewsCarousel/>
     </>
   );
 }

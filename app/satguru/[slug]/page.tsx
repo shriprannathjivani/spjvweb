@@ -206,7 +206,7 @@ export default async function SatguruDetails({
 
               <iframe
                 src={guru.mapEmbed}
-                className="w-full h-[400px] rounded-3xl"
+                className="w-full h-[400px] rounded-3xl border-4 border-white "
                 loading="lazy"
               />
             </section>

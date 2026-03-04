@@ -157,7 +157,7 @@ export default function Navbar() {
                   focus:bg-transparent
                   data-[state=open]:bg-transparent
                   data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/karyakram" className={`link ${pathname?.includes("/karyakram") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>कार्यक्रम</Link>} />
+                  hover:text-orange-500`} render={<Link href="/karyakram" className={`link ${pathname?.includes("/karyakram") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>खेल & प्रश्नोत्तरी</Link>} />
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
@@ -168,7 +168,7 @@ export default function Navbar() {
                   focus:bg-transparent
                   data-[state=open]:bg-transparent
                   data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/balkendra" className={`link ${pathname?.includes("/balkendra") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}> बाल केंद्र</Link>} />
+                  hover:text-orange-500`} render={<Link href="/balkendra" className={`link ${pathname?.includes("/balkendra") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}> आत्मदर्शनम्</Link>} />
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
@@ -263,7 +263,7 @@ export default function Navbar() {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <Calendar size={24} />
-                    <span className="text-base mt-2">कार्यक्रम</span>
+                    <span className="text-base mt-2">खेल & प्रश्नोत्तरी</span>
                   </Link>
 
                   <Link
@@ -272,7 +272,7 @@ export default function Navbar() {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <Baby size={24} />
-                    <span className="text-base mt-2">बाल केंद्र</span>
+                    <span className="text-base mt-2">आत्मदर्शनम्</span>
                   </Link>
 
                   <Link
@@ -329,11 +329,11 @@ export default function Navbar() {
           </Link>
           <Link href="/karyakram" className={tabmenuClass("/karyakram")}>
             <Calendar size={20} />
-            <span className="text-sm mt-1">कार्यक्रम</span>
+            <span className="text-sm mt-1">खेल & प्रश्नोत्तरी</span>
           </Link>
           <Link href="/balkendra" className={tabmenuClass("/balkendra")}>
             <Baby size={20} />
-            <span className="text-sm mt-1">बाल केंद्र</span>
+            <span className="text-sm mt-1">आत्मदर्शनम्</span>
           </Link>
 
 

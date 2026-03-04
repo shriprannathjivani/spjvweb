@@ -9,9 +9,11 @@ import {
   MessageSquareQuote,
   MessageCircleHeart,
   AtSign,
+  Copyright,
 } from "lucide-react"
 
 export default function Footer() {
+  const year = new Date().getFullYear();
   return (
     <footer className="relative bg-[#4b2440] text-white overflow-hidden">
       {/* Decorative patterns */}
@@ -140,7 +142,7 @@ export default function Footer() {
             </Link>
           </div>
           <Link href="#" className="text-sm text-white/60 text-center md:text-start">
-            <AtSign size={16} className="flex inline-flex" /> 2026 spjv. made with love. <p className="md:flex inline-flex mt-1 text-white/60">All rights reserved.</p>
+            <Copyright size={14} className="flex inline-flex" /> {year} spjv. made with love. <p className="md:flex inline-flex mt-1 text-white/60">All rights reserved.</p>
           </Link>
         </div>
       </div>

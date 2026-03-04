@@ -58,7 +58,7 @@ export default function Aatmadarshan() {
                 </div>
 
                 {/* Features */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center mt-20 items-center">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center mt-20 items-center hidden">
                     {[
                         {
                             title: "प्रेरणादायक वीडियो",

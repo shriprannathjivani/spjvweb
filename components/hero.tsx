@@ -16,17 +16,21 @@ import { useEffect, useRef, useState } from "react";
 
 const slides = [
   {
-    title: "जानिए श्री प्राणनाथ जी का",
-    highlight: "स्वरूप और शिक्षाएँ",
-    description:
-      "श्री प्राणनाथ जी का स्वरूप ज्ञान की दोपहरी का वह सूरज है, जिसके उग जाने पर अध्यात्म जगत में किसी भी प्रकार का अन्धकार रूपी संशय नहीं रहता।",
+    title: "जागिए। उठिए। ",
+    highlight: "पहचानिए अपना सत्य।",
+    description: `
+    श्री प्राणनाथ जी द्वारा आवेशित तारतम वाणी आत्मा को उसके शाश्वत प्रियतम से जोड़ती है और सभी धर्मों के मूल सत्य को एक सूत्र में पिरोती है। हमारे सतगुरु तारतम वाणी से असंख्य हृदयों को जागृत कर रहे हैं। उनके चरणों का अनुसरण करते हुए, 'श्री प्राणनाथ जी वाणी' SPJV से जुड़े सभी सुंदरसाथ जी ज़ूम मीटिंग्स, यूट्यूब चैनल्स और सोशल मीडिया के माध्यम से वाणी की सुगंध का प्रसार कर रहे हैं और सबको प्रेम, सेवा और आत्म-जागृति के मार्ग पर चलने के लिए प्रेरित कर रहे हैं।
+    `,
     image: "/sliderimg1.png",
   },
   {
-    title: "जानिए सेवा, साधना",
-    highlight: "और समर्पण",
+    title: "बाल/युवा ",
+    highlight: "आत्मदर्शनम्",
     description:
-      "श्री प्राणनाथ जी का स्वरूप ज्ञान की दोपहरी का वह सूरज है, जिसके उग जाने पर अध्यात्म जगत में किसी भी प्रकार का अन्धकार रूपी संशय नहीं रहता।",
+      `श्री प्राणनाथ जी की तारतम वाणी शताब्दियों पुरानी होते हुए भी आज की पीढ़ी के लिए उतनी ही प्रासंगिक है। यह धर्म बदलने का संदेश नहीं देती बल्कि सब धर्मों के उपदेशों को एक करके दृष्टि बदलने का आह्वान करती है।
+    
+आज का युवा प्रश्न करता है।
+और वाणी उत्तर देती है - तर्क के साथ, अनुभव के साथ, प्रमाण के साथ।`,
     image: "/sliderimg3.png",
   },
 ];
@@ -56,7 +60,7 @@ export default function Hero() {
           <CarouselContent>
             {slides.map((slide, index) => (
               <CarouselItem key={index}>
-                
+
                 {/* MOBILE OVERLAY VERSION */}
                 <div className="relative lg:hidden rounded-3xl overflow-hidden">
 
@@ -104,7 +108,7 @@ export default function Hero() {
 
                 {/* DESKTOP VERSION */}
                 <div className="hidden lg:grid lg:grid-cols-2 gap-14 items-center">
-                  
+
                   {/* LEFT */}
                   <div>
                     <h1 className="text-5xl font-bold leading-tight">
@@ -114,7 +118,7 @@ export default function Hero() {
                       </span>
                     </h1>
 
-                    <p className="mt-6 text-gray-700 text-2xl max-w-xl">
+                    <p className="mt-6 text-gray-700 text-lg max-w-xl">
                       {slide.description}
                     </p>
 
@@ -155,8 +159,8 @@ export default function Hero() {
             <CarouselDots api={api} />
 
             <div className="hidden lg:flex gap-3">
-              <CarouselPrevious className="static mt-5 h-10 w-10 rounded-full border border-gray-300 text-gray-500 hover:bg-orange-50 hover:text-orange-500" />
-              <CarouselNext className="static mt-5 h-10 w-10 rounded-full border border-orange-500 text-orange-500 hover:bg-orange-50" />
+              <CarouselPrevious className="static mt-5 h-10 w-10 rounded-full border border-gray-300 text-gray-500 hover:bg-orange-50 hover:text-orange-500 cursor-pointer" />
+              <CarouselNext className="static mt-5 h-10 w-10 rounded-full border border-orange-500 text-orange-500 hover:bg-orange-50 cursor-pointer" />
             </div>
           </div>
         </Carousel>
