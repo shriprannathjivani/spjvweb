@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import DynamicBreadcrumb from "@/components/dynamic-breadcrumb"
-import { BOOKS, quotes, sahiyogitaList } from "@/lib/gyankendra"
+import { gamesList, sahiyogitaList } from "@/lib/gamesnquiz"
 import { notFound } from "next/navigation"
 import { BookA, BookOpenCheck, Cake, Church, CircleUserRound, Gauge, Landmark, Link, MapPinHouse, MessageCircleQuestionMark, Play, Rainbow, School, Timer, UserPen, Youtube } from "lucide-react"
 import PdfSection from "@/components/PdfReaderSection";

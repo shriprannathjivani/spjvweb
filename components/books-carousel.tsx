@@ -16,12 +16,13 @@ import React from "react";
 
 import { BOOKS } from "@/lib/gyankendra"
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 
 export default function BooksCarousel() {
   const [api, setApi] = React.useState<CarouselApi>()
   return (
-    <section className="relative py-10 sm:py-20 sm:p-0 pt-0">
+    <section className="relative py-10 sm:py-20 sm:pt-0 pt-0">
 
       <Image src="/halfflower.png" height={40} width={40} alt="halfflower" className="absolute top-1 right-0 z-0 motion-safe:animate-wiggle w-[70px] h-auto
           sm:w-[150px] sm:h-auto rotate-[3.142rad]" />
@@ -46,56 +47,68 @@ export default function BooksCarousel() {
                 key={index}
                 className="pl-4 md:basis-1/4 basis-[85%] relative"
               >
-                <div className="card-circle">{index + 1}</div>
-                <div className="h-full rounded-3xl bg-white p-8 flex flex-col items-center text-center cardCustome ">
+                <motion.div
+                  key={index}
+                  initial={{ y: 60, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: index * 0.2
+                  }}
+                  className="h-full"
+                >
+                  <div className="card-circle">{index + 1}</div>
+                  <div className="h-full rounded-3xl bg-white p-8 flex flex-col items-center text-center cardCustome ">
 
-                  {/* Image */}
-                  <Image
-                    src={book.image}
-                    alt={book.title}
-                    width={130}
-                    height={180}
-                    className="mb-6 object-contain"
-                  />
-                  <span className="relative mb-1 rounded-full inline-flex items-center bg-white px-2 py-1 text-xs font-xl inset-ring text-red-600  inset-ring-red-500/10">
-                    {book.languages}
-                  </span>
-                  {/* Text */}
-                  <h3 className="font-semibold text-lg text-black mb-2">
-                    {book.title}
-                  </h3>
+                    {/* Image */}
+                    <Image
+                      src={book.image}
+                      alt={book.title}
+                      width={130}
+                      height={180}
+                      className="mb-6 object-contain"
+                    />
+                    <span className="relative mb-1 rounded-full inline-flex items-center bg-white px-2 py-1 text-xs font-xl inset-ring text-red-600  inset-ring-red-500/10">
+                      {book.languages}
+                    </span>
+                    {/* Text */}
+                    <h3 className="font-semibold text-lg text-black mb-2">
+                      {book.title}
+                    </h3>
 
-                  <p className="text-sm text-gray-800 mb-2 line-clamp-2">
-                    {book.desc}
-                  </p>
-
-                  <p className="text-sm text-orange-900 font-medium mb-1">
-                    {book.author}
-                  </p>
-
-                  {book.publisher && (
-                    <p className="text-xs text-muted-foreground mb-6">
-                      {book.publisher}
+                    <p className="text-sm text-gray-800 mb-2 line-clamp-2">
+                      {book.desc}
                     </p>
-                  )}
-                  <div className="flex gap-2">
-                    {/* Button */}
-                    <Link href={`/gyanbhandar/book/${book.id}`}>
+
+                    <p className="text-sm text-orange-900 font-medium mb-1">
+                      {book.author}
+                    </p>
+
+                    {book.publisher && (
+                      <p className="text-xs text-muted-foreground mb-6">
+                        {book.publisher}
+                      </p>
+                    )}
+                    <div className="flex gap-2">
+                      {/* Button */}
+                      <Link href={`/gyanbhandar/book/${book.id}`}>
+                        <Button
+                          variant="outline"
+                          className="rounded-full  border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
+                        >
+                          इसे पढ़ें
+                        </Button>
+                      </Link>
                       <Button
                         variant="outline"
-                        className="rounded-full  border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
+                        className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium hover:bg-black hover:text-white cursor-pointer"
                       >
-                        इसे पढ़ें
+                        डाउनलोड करें
                       </Button>
-                    </Link>
-                    <Button
-                      variant="outline"
-                      className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium hover:bg-black hover:text-white cursor-pointer"
-                    >
-                      डाउनलोड करें
-                    </Button>
+                    </div>
                   </div>
-                </div>
+                </motion.div>
+
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -119,12 +132,22 @@ export default function BooksCarousel() {
         </Carousel>
 
         {/* Quote */}
-        <div className="mt-10 sm:mt-20 max-w-4xl">
-          <MessageSquareQuote className="text-orange-500 mb-4 w-10 h-10 sm:w-14 sm:h-14 lg:w-[76px] lg:h-[76px]" />
-          <p className="text-base sm:text-4xl  leading-relaxed text-[#7a2f18] font-medium">
-            यामें अपनी बीतक सब है, श्री देवचन्द्र को मेरो तेरो नाम। <br /> जा दिन जो बीती हम तीनों में, सो सब लिखी तमाम।।
-          </p>
-        </div>
+        <motion.div
+          initial={{ y: 60, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{
+            duration: 0.6,
+            delay: 0.3
+          }}
+        >
+          <div className="mt-10 sm:mt-20 max-w-4xl">
+            <MessageSquareQuote className="text-orange-500 mb-4 w-10 h-10 sm:w-14 sm:h-14 lg:w-[76px] lg:h-[76px]" />
+            <p className="text-base sm:text-4xl  leading-relaxed text-[#7a2f18] font-medium">
+              यामें अपनी बीतक सब है, श्री देवचन्द्र को मेरो तेरो नाम। <br /> जा दिन जो बीती हम तीनों में, सो सब लिखी तमाम।।
+            </p>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );

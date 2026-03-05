@@ -3,6 +3,8 @@
 import CountUp from "react-countup";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowUpRight } from "lucide-react";
+import { TextAnimate } from "./ui/text-animate";
+import { motion } from "framer-motion";
 
 
 const STATS = [
@@ -53,7 +55,7 @@ const STATS = [
     subtitle: `1. श्री प्राणनाथ जी वाणी <br />
               2. श्री प्राणनाथ जी वाणी गायन <br />
               3. SPJV–आत्मदर्शनम् <br />`,
-     large: true,
+    large: true,
   },
   {
     title: "24/7 ज़ूम मीटिंग्स घंटे",
@@ -68,52 +70,70 @@ export default function Stats() {
     <section className="pt-0 py-10">
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
-        <h2 className="text-2xl sm:text-3xl font-bold text-black mb-3 sm:mb-4">
-          हमारी यात्रा
-        </h2>
-        <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mb-3 sm:mb-8 leading-relaxed">
+
+        <TextAnimate
+          animation="blurInUp"
+          startOnView
+          by="line"
+          delay={0.3}
+          className="text-2xl sm:text-3xl font-bold text-black mb-3 sm:mb-4"
+        >
+          {`हमारी यात्रा`}
+        </TextAnimate>
+        <TextAnimate
+          animation="blurInUp"
+          startOnView
+          by="line"
+          delay={0.3} className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mb-3 sm:mb-8 leading-relaxed">
           आज, श्री प्राणनाथ जी के मिशन ने लाखों लोगों के जीवन को छुआ है।
           लोगों के साथ सीधे संपर्क और इंटरनेट पर अलग-अलग माध्यमों से,
           वह सभी को स्पष्टता देते रहते हैं।
-        </p>
+        </TextAnimate>
 
         {/* Cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
           {STATS.map((item, index) => (
-            <Card
+            <motion.div
               key={index}
-              className={`relative rounded-2xl border-0 bg-white shadow-none
+              initial={{ y: 60, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.2
+              }}
+              className={` rounded-2xl gap-6 bg-white shadow-none
                 ${item.large ? "lg:col-span-2" : ""}
               `}
             >
-              <CardContent className="flex flex-col justify-between h-full">
-                {/* Title */}
-                <p className="text-md font-medium text-black mb-0">
-                  {item.title}
-                </p>
+                <CardContent className="flex p-6 flex-col justify-between h-full">
+                  {/* Title */}
+                  <p className="text-md font-medium text-black mb-0">
+                    {item.title}
+                  </p>
 
-                {/* Number */}
-                <div className="text-5xl font-bold text-black">
-                  <CountUp
-                    end={item.value}
-                    duration={2}
-                    enableScrollSpy
-                    scrollSpyOnce
-                  />
-                  {item.suffix}
-                </div>
+                  {/* Number */}
+                  <div className="text-5xl font-bold text-black">
+                    <CountUp
+                      end={item.value}
+                      duration={2}
+                      enableScrollSpy
+                      scrollSpyOnce
+                    />
+                    {item.suffix}
+                  </div>
 
-                {/* Footer */}
-                <div className="flex items-center justify-between mt-0">
-                  <p className="text-base text-orange-900" dangerouslySetInnerHTML={{
-                    __html: item.subtitle ?? ""
-                  }} />
-                  <span className="sm:flex hidden  flex h-8 w-8 items-center justify-center rounded-full border border-orange-500 text-orange-500 cursor-pointer hover:bg-orange-600 hover:text-white">
-                    <ArrowUpRight size={16} />
-                  </span>
-                </div>
-              </CardContent>
-            </Card>
+                  {/* Footer */}
+                  <div className="flex items-center justify-between mt-0">
+                    <p className="text-base text-orange-900" dangerouslySetInnerHTML={{
+                      __html: item.subtitle ?? ""
+                    }} />
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-orange-500 text-orange-500 cursor-pointer hover:bg-orange-600 hover:text-white">
+                      <ArrowUpRight size={16} />
+                    </span>
+                  </div>
+                </CardContent>
+            </motion.div>
+
           ))}
         </div>
       </div>

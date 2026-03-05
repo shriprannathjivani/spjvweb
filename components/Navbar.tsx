@@ -41,6 +41,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cva } from "class-variance-authority";
+import { motion } from "framer-motion";
 
 
 
@@ -123,22 +124,40 @@ export default function Navbar() {
       >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/spjv-logo.svg"
-              alt="spjv logo"
-              width={230}
-              height={500}
-              style={{ marginTop: -9 }}
-            />
-          </Link>
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.6,
+              delay: 0.1
+            }}
+          >
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/spjv-logo.svg"
+                alt="spjv logo"
+                width={230}
+                height={500}
+                style={{ marginTop: -9 }}
+              />
+            </Link>
+          </motion.div>
+
 
           {/* ================= DESKTOP NAV ================= */}
           <nav className="hidden lg:flex items-center gap-6 text-lg">
             <NavigationMenu>
               <NavigationMenuList>
-                <NavigationMenuItem >
-                  <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.1
+                  }}
+                >
+                  <NavigationMenuItem >
+                    <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
                   text-lg
                   px-4
                   bg-transparent
@@ -147,9 +166,18 @@ export default function Navbar() {
                   data-[state=open]:bg-transparent
                   data-[state=open]:hover:bg-transparent
                   hover:text-orange-500`} render={<Link href="/satguru" className={`link ${pathname?.includes("/satguru") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"} >सतगुरु व परमहंस</Link>} />
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
+                  </NavigationMenuItem>
+                </motion.div>
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.2
+                  }}
+                >
+                  <NavigationMenuItem>
+                    <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
                   text-lg
                   px-4
                   bg-transparent
@@ -157,10 +185,19 @@ export default function Navbar() {
                   focus:bg-transparent
                   data-[state=open]:bg-transparent
                   data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/karyakram" className={`link ${pathname?.includes("/karyakram") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>खेल & प्रश्नोत्तरी</Link>} />
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
+                  hover:text-orange-500`} render={<Link href="/gamesnquiz" className={`link ${pathname?.includes("/gamesnquiz") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>गेम्स & क्विज़</Link>} />
+                  </NavigationMenuItem>
+                </motion.div>
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.3
+                  }}
+                >
+                  <NavigationMenuItem>
+                    <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
                   text-lg
                   px-4
                   bg-transparent
@@ -169,9 +206,18 @@ export default function Navbar() {
                   data-[state=open]:bg-transparent
                   data-[state=open]:hover:bg-transparent
                   hover:text-orange-500`} render={<Link href="/balkendra" className={`link ${pathname?.includes("/balkendra") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}> आत्मदर्शनम्</Link>} />
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
+                  </NavigationMenuItem>
+                </motion.div>
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.4
+                  }}
+                >
+                  <NavigationMenuItem>
+                    <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
                   text-lg
                   px-4
                   bg-transparent
@@ -180,9 +226,18 @@ export default function Navbar() {
                   data-[state=open]:bg-transparent
                   data-[state=open]:hover:bg-transparent
                   hover:text-orange-500`} render={<Link href="/mandirseva" className={`link ${pathname?.includes("/mandirseva") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>मंदिर व सेवा</Link>} />
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
+                  </NavigationMenuItem>
+                </motion.div>
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.5
+                  }}
+                >
+                  <NavigationMenuItem>
+                    <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
                   text-lg
                   px-4
                   bg-transparent
@@ -191,7 +246,9 @@ export default function Navbar() {
                   data-[state=open]:bg-transparent
                   data-[state=open]:hover:bg-transparent
                   hover:text-orange-500`} render={<Link href="/gyanbhandar" className={`link ${pathname?.includes("/gyanbhandar") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>ज्ञान भंडार </Link>} />
-                </NavigationMenuItem>
+                  </NavigationMenuItem>
+                </motion.div>
+
                 {/* <NavigationMenuItem>
                   <NavigationMenuTrigger className="
                     text-lg
@@ -215,14 +272,24 @@ export default function Navbar() {
                 </NavigationMenuItem> */}
               </NavigationMenuList>
             </NavigationMenu>
-            <Link href="/contact">
-              <Button
-                variant="outline"
-                className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
-              >
-                संपर्क करें
-              </Button>
-            </Link>
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{
+                duration: 0.6,
+                delay: 0.6
+              }}
+            >
+              <Link href="/contact">
+                <Button
+                  variant="outline"
+                  className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
+                >
+                  संपर्क करें
+                </Button>
+              </Link>
+            </motion.div>
+
           </nav>
 
           {/* ================= MOBILE MENU BUTTON ================= */}
@@ -236,7 +303,7 @@ export default function Navbar() {
                 </SheetTrigger>
               </div>
 
-              <SheetContent side="bottom" className="w-[100vw] sm:w-[100%]">
+              <SheetContent side="bottom" className="w-screen sm:w-full">
                 <span className="text-xl p-2 px-10 mt-2">क्विक मेनू</span>
                 <nav className=" grid grid-cols-3 gap-4 text-lg mb-8 px-8">
                   <Link
@@ -258,12 +325,12 @@ export default function Navbar() {
                   </Link>
 
                   <Link
-                    href="/karyakram"
-                    className={menuClass("/karyakram")}
+                    href="/gamesnquiz"
+                    className={menuClass("/gamesnquiz")}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <Calendar size={24} />
-                    <span className="text-base mt-2">खेल & प्रश्नोत्तरी</span>
+                    <span className="text-base mt-2">गेम्स & क्विज़</span>
                   </Link>
 
                   <Link
@@ -327,9 +394,9 @@ export default function Navbar() {
             <Users size={20} />
             <span className="text-sm mt-1">सतगुरु</span>
           </Link>
-          <Link href="/karyakram" className={tabmenuClass("/karyakram")}>
+          <Link href="/gamesnquiz" className={tabmenuClass("/gamesnquiz")}>
             <Calendar size={20} />
-            <span className="text-sm mt-1">खेल & प्रश्नोत्तरी</span>
+            <span className="text-sm mt-1">गेम्स & क्विज़</span>
           </Link>
           <Link href="/balkendra" className={tabmenuClass("/balkendra")}>
             <Baby size={20} />

@@ -18,6 +18,8 @@ import {
 import { CarouselDots } from "@/components/carousel-dots";
 import { QuoteIcon } from "lucide-react";
 import { Ripple } from "@/components/ui/ripple"
+import { TextAnimate } from "@/components/ui/text-animate";
+import { motion } from "framer-motion";
 
 
 const images = [
@@ -338,9 +340,22 @@ z-index: 4;
       `}</style>
 
             <div className="relative max-w-7xl mx-auto px-6 py-10 overflow-hidden pt-0 text-center font-arya ">
-                <div className=" relative flex h-[500px] w-full flex-col items-center justify-center ">
-                    <h2 className="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">सतगुरु <span className="text-orange-500">व परमहंस</span></h2>
-                    <p className="mt-4 text-muted-foreground text-xl  mb-12">जिनके शब्द, विचार और दृष्टिकोण, इस दुनिया को निरंतर पहले से बेहतर बना रहे हैं।<br /> वे जिनकी लेखनी, वाणी और सोच इस संसार को और सुख-शीतल बना रही है।</p>
+                <div className=" relative flex h-125 w-full flex-col items-center justify-center ">
+                    <h2 className="text-4xl flex flex-row font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">
+                        <TextAnimate animation="blurInUp" startOnView delay={0.3}>
+                            सतगुरु&nbsp;
+                        </TextAnimate>{"  "}
+                        <span className="text-orange-500">
+                            <TextAnimate animation="blurInUp" startOnView delay={0.5}>
+                                व परमहंस
+                            </TextAnimate>
+                        </span>
+                    </h2>
+                    <TextAnimate animation="blurInUp" by="line"
+                        delay={0.3}
+                        segmentClassName="block" startOnView className="mt-4 text-muted-foreground text-xl  mb-12">
+                        {`जिनके शब्द, विचार और दृष्टिकोण, इस दुनिया को निरंतर पहले से बेहतर बना रहे हैं। \nवे जिनकी लेखनी, वाणी और सोच इस संसार को और सुख-शीतल बना रही है।`}
+                    </TextAnimate>
                     <Ripple />
                 </div>
                 <div className="image-collage intersect-once intersect:motion-preset-slide-up intersect:motion-duration-800 intersect:motion-opacity-in-0 intersect:motion-delay-400 yc0y4 hkfg8 lg:text-xl">
@@ -352,10 +367,20 @@ z-index: 4;
                 </div>
 
                 <div className="text-start mt-16 mb-16">
-                    <div
-                        className="prose prose-lg text-base text-gray-500 max-w-none whitespace-pre-line grid grid-cols-1 md:grid-cols-3 gap-6 text-start font-poppins"
-                        dangerouslySetInnerHTML={{ __html: satgureInto.content }}
-                    />
+                    <motion.div
+                        initial={{ y: 60, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        transition={{
+                            duration: 0.6,
+                            delay: 0.2
+                        }}
+                    >
+                        <div
+                            className="prose prose-lg text-base text-gray-500 max-w-none whitespace-pre-line grid grid-cols-1 md:grid-cols-3 gap-6 text-start font-poppins"
+                            dangerouslySetInnerHTML={{ __html: satgureInto.content }}
+                        />
+                    </motion.div>
+
                 </div>
 
 
@@ -373,57 +398,67 @@ z-index: 4;
                                 key={index}
                                 className="pl-4 md:basis-1/4 basis-[85%]"
                             >
+                                <motion.div
+                                    key={index}
+                                    initial={{ y: 60, opacity: 0 }}
+                                    whileInView={{ y: 0, opacity: 1 }}
+                                    transition={{
+                                        duration: 0.6,
+                                        delay: index * 0.2
+                                    }}
+                                    className="h-full"
+                                >
+                                    <div className="max-w-md mx-auto">
+                                        <div className="group relative rounded-3xl  transition-all duration-500  hover:-translate-y-2">
 
-                                <div className="max-w-md mx-auto">
-                                    <div className="group relative rounded-3xl  transition-all duration-500  hover:-translate-y-2">
-
-                                        {/* Image */}
-                                        <div className="relative flex justify-center h-70  z-1 mb-[-50px]">
-                                            <Image
-                                                src={satguru.image}
-                                                alt={satguru.name}
-                                                height={272}
-                                                width={204}
-                                                className="object-container  border-4 border-white rounded-[38px]"
-                                            />
-                                        </div>
-                                        <div className="p-6 pt-16 bg-white rounded-3xl border border-gray-100 ">
-                                            {/* Content */}
-                                            <h3 className="text-2xl font-semibold tracking-tight text-gray-900">
-                                                {satguru.name}
-                                            </h3>
-
-                                            <p className="text-orange-600 mt-2 text-base">
-                                                {satguru.role}
-                                            </p>
-
-                                            <p className="mt-4 text-center text-gray-600 leading-relaxed text-sm font-poppins line-clamp-4 whitespace-pre-line">
-                                                <QuoteIcon className="text-orange-600" />
-                                                {satguru.quote}
-                                            </p>
-
-                                            {/* Divider */}
-                                            <div className="mt-6 h-px w-full bg-gray-100"></div>
-
-                                            {/* Footer  Place: {satguru.timeline[0].year}*/}
-                                            <div className="mt-6 flex items-center justify-between">
-                                                <span className="text-sm text-gray-500">
-                                                    Place:
-                                                </span>
-                                                <Link href={`/satguru/${satguru.id}`}>
-                                                    <Button
-                                                        variant="outline"
-                                                        className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium hover:bg-black hover:text-white cursor-pointer"
-                                                    >
-                                                        जीवनी पढ़ें
-                                                    </Button>
-                                                </Link>
+                                            {/* Image */}
+                                            <div className="relative flex justify-center h-70  z-1 mb-[-50px]">
+                                                <Image
+                                                    src={satguru.image}
+                                                    alt={satguru.name}
+                                                    height={272}
+                                                    width={204}
+                                                    className="object-container  border-4 border-white rounded-[38px]"
+                                                />
                                             </div>
+                                            <div className="p-6 pt-16 bg-white rounded-3xl border border-gray-100 ">
+                                                {/* Content */}
+                                                <h3 className="text-2xl font-semibold tracking-tight text-gray-900">
+                                                    {satguru.name}
+                                                </h3>
+
+                                                <p className="text-orange-600 mt-2 text-base">
+                                                    {satguru.role}
+                                                </p>
+
+                                                <p className="mt-4 text-center text-gray-600 leading-relaxed text-sm font-poppins line-clamp-4 whitespace-pre-line">
+                                                    <QuoteIcon className="text-orange-600" />
+                                                    {satguru.quote}
+                                                </p>
+
+                                                {/* Divider */}
+                                                <div className="mt-6 h-px w-full bg-gray-100"></div>
+
+                                                {/* Footer  Place: {satguru.timeline[0].year}*/}
+                                                <div className="mt-6 flex items-center justify-between">
+                                                    <span className="text-sm text-gray-500">
+                                                        Place:
+                                                    </span>
+                                                    <Link href={`/satguru/${satguru.id}`}>
+                                                        <Button
+                                                            variant="outline"
+                                                            className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium hover:bg-black hover:text-white cursor-pointer"
+                                                        >
+                                                            जीवनी पढ़ें
+                                                        </Button>
+                                                    </Link>
+                                                </div>
+                                            </div>
+
+
                                         </div>
-
-
                                     </div>
-                                </div>
+                                </motion.div>
                             </CarouselItem>
                         ))}
                     </CarouselContent>

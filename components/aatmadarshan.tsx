@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/carousel";
 import { CarouselDots } from "@/components/carousel-dots"
 import React from "react";
+import { TextAnimate } from "./ui/text-animate";
 
 export default function Aatmadarshan() {
     const [api, setApi] = React.useState<CarouselApi>()
@@ -25,10 +26,11 @@ export default function Aatmadarshan() {
                 {/* Top Content */}
                 <div className="grid md:grid-cols-2 gap-5 sm:gap-10 items-start">
                     {/* Left */}
-                    <h2 className="text-2xl sm:text-3xl font-bold text-black mb-3 sm:mb-4">
-                        'बाल आत्मदर्शनम्'<br />
+                    <TextAnimate animation="blurInUp" startOnView delay={0.3} className="text-2xl sm:text-3xl font-bold text-black mb-3 sm:mb-4">
+                        'बाल आत्मदर्शनम्' ``
                         हर रविवार की दिव्य दोपहर:
-                    </h2>
+                    </TextAnimate>
+                    
 
                     {/* Right */}
                     <div className="space-y-4">

@@ -13,8 +13,9 @@ import {
 import Autoplay from "embla-carousel-autoplay"
 import React from "react";
 import { CarouselDots } from "./carousel-dots";
+import { motion } from "framer-motion";
 const basePath =
-  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
+    process.env.NODE_ENV === "production" ? "/spjvweb" : "";
 export default function PrannathCTA() {
     const [api, setApi] = React.useState<CarouselApi>()
 
@@ -22,7 +23,7 @@ export default function PrannathCTA() {
         <section className="relative overflow-hidden ">
             <Image src="/halfflower.png" height={40} width={40} alt="halfflower" className="absolute w-100 h-100  bottom-0 top-0 left-0 z-10 motion-safe:animate-wiggle w-[70px] h-auto
                       sm:w-[11vw] sm:h-auto" />
-                      <Image src="/halfflower.png" height={40} width={40} alt="halfflower" className="absolute w-100 h-100  bottom-0 right-0 z-10 motion-safe:animate-wiggle w-[70px] h-auto
+            <Image src="/halfflower.png" height={40} width={40} alt="halfflower" className="absolute w-100 h-100  bottom-0 right-0 z-10 motion-safe:animate-wiggle w-[70px] h-auto
                       sm:w-[11vw] sm:h-auto rotate-[3.142rad]" />
             {/* <div className="absolute bottom-0 top-0 left-0 z-10 w-100 h-100 bg-[url('/halfflower.png')] bg-no-repeat " />
             <div className="absolute bottom-0 right-0 z-10 w-100 h-100 bg-[url('/halfflower.png')] bg-no-repeat rotate-[3.142rad]" /> */}
@@ -35,41 +36,50 @@ export default function PrannathCTA() {
                 className="absolute inset-0 w-full h-full object-cover z-1"
             >
                 <source src={`${basePath}/satgurubg.mp4`} type="video/webm" />
-                
+
             </video>
             {/* Overlay (important for readability) */}
             <div className="absolute inset-0 bg-[#fde9dc]/80 backdrop-blur-sm"></div>
 
             <div className="relative max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10 items-center z-10">
+                <motion.div
+                    initial={{ y: 60, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{
+                        duration: 0.6,
+                        delay: 0.3
+                    }}
+                >
+                    {/* LEFT CONTENT */}
+                    <div>
+                        <h2 className="text-3xl md:text-4xl font-semibold leading-snug text-white">
+                            हमारे प्रेरणास्रोत
+                            <br />
+                            <span className="font-normal">श्री सतगुरु व परमहंस</span>
+                        </h2>
 
-                {/* LEFT CONTENT */}
-                <div>
-                    <h2 className="text-3xl md:text-4xl font-semibold leading-snug text-white">
-                        हमारे प्रेरणास्रोत
-                        <br />
-                        <span className="font-normal">श्री सतगुरु व परमहंस</span>
-                    </h2>
+                        <p className="mt-4 text-xl text-gray-500  max-w-lg text-white">
+                            जिनके शब्द, विचार और दृष्टिकोण, इस दुनिया को निरंतर पहले से बेहतर बना रहे हैं। वे जिनकी लेखनी, वाणी और सोच इस संसार को और सुख-शीतल बना रही है।
+                        </p>
 
-                    <p className="mt-4 text-xl text-gray-500  max-w-lg text-white">
-                        जिनके शब्द, विचार और दृष्टिकोण, इस दुनिया को निरंतर पहले से बेहतर बना रहे हैं। वे जिनकी लेखनी, वाणी और सोच इस संसार को और सुख-शीतल बना रही है।
-                    </p>
-
-                    {/* Buttons */}
-                    <div className="mt-8 flex gap-4">
-                        <Button
-                            variant="outline"
-                            className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
-                        >
-                            प्रवचन देखें
-                        </Button>
-                        <Button
-                            variant="outline"
-                            className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium hover:bg-black hover:text-white cursor-pointer"
-                        >
-                            जीवनी पढ़ें
-                        </Button>
+                        {/* Buttons */}
+                        <div className="mt-8 flex gap-4">
+                            <Button
+                                variant="outline"
+                                className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
+                            >
+                                प्रवचन देखें
+                            </Button>
+                            <Button
+                                variant="outline"
+                                className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium hover:border-white hover:bg-black hover:text-white cursor-pointer"
+                            >
+                                जीवनी पढ़ें
+                            </Button>
+                        </div>
                     </div>
-                </div>
+                </motion.div>
+
 
                 {/* RIGHT IMAGE */}
                 <div className="flex justify-center md:flex hidden">

@@ -13,6 +13,8 @@ import Image from "@/components/BaseImage";
 import Autoplay from "embla-carousel-autoplay";
 import { CarouselDots } from "@/components/carousel-dots";
 import { useEffect, useRef, useState } from "react";
+import { TextAnimate } from "@/components/ui/text-animate"
+import { motion } from "motion/react";
 
 const slides = [
   {
@@ -24,7 +26,7 @@ const slides = [
     image: "/sliderimg1.png",
   },
   {
-    title: "बाल/युवा ",
+    title: "बाल/युवा/नए सुन्दरसाथ जी",
     highlight: "आत्मदर्शनम्",
     description:
       `श्री प्राणनाथ जी की तारतम वाणी शताब्दियों पुरानी होते हुए भी आज की पीढ़ी के लिए उतनी ही प्रासंगिक है। यह धर्म बदलने का संदेश नहीं देती बल्कि सब धर्मों के उपदेशों को एक करके दृष्टि बदलने का आह्वान करती है।
@@ -36,13 +38,22 @@ const slides = [
 ];
 
 export default function Hero() {
+  const [activeIndex, setActiveIndex] = useState(0)
   const [api, setApi] = useState<CarouselApi>();
   const autoplay = useRef(
     Autoplay({
-      delay: 5000,
+      delay: 6000,
       stopOnInteraction: false,
     })
   );
+
+
+  useEffect(() => {
+    if (!api) return
+    api.on("select", () => {
+      setActiveIndex(api.selectedScrollSnap())
+    })
+  }, [api])
 
   useEffect(() => {
     if (!api) return;
@@ -50,7 +61,7 @@ export default function Hero() {
 
   return (
     <section className="relative">
-      <div className="max-w-7xl mx-auto px-6 sm:px-6 py-20 pb-10 lg:py-20 lg:py-30 lg:pb-10">
+      <div className="max-w-7xl mx-auto px-6 sm:px-6 py-20 pb-10  lg:py-30 lg:pb-10">
         <Carousel
           setApi={setApi}
           opts={{ loop: true }}
@@ -61,11 +72,79 @@ export default function Hero() {
             {slides.map((slide, index) => (
               <CarouselItem key={index}>
 
+
+                {/* DESKTOP VERSION */}
+                <div className="hidden lg:grid lg:grid-cols-2 gap-14 items-center">
+
+                  {/* LEFT */}
+                  <div>
+                    <h1 className="text-5xl font-bold leading-tight">
+                      <TextAnimate animation="blurInUp" startOnView delay={0.3} >
+                        {slide.title}
+                      </TextAnimate>
+                      <span className="text-orange-500">
+                        <TextAnimate animation="blurInUp" startOnView delay={0.3} className="text-5xl font-bold leading-tight text-orange-500">
+                          {slide.highlight}
+                        </TextAnimate>
+                      </span>
+                    </h1>
+                    <TextAnimate animation="fadeIn" by="line" startOnView delay={0.3} className="mt-6 text-gray-700 text-lg max-w-xl">
+                      {slide.description}
+                    </TextAnimate>
+                    <motion.div
+                      key={activeIndex === index ? "active" : "inactive"}
+                      initial={{ y: 60, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{
+                        duration: 0.6,
+                        delay: 0.3
+                      }}
+                      className="space-y-4"
+                    >
+                      <div className="mt-8 flex gap-4">
+                        <Button
+                          variant="outline"
+                          className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
+                        >
+                          प्रवचन देखें
+                        </Button>
+                        <Button
+                          variant="outline"
+                          className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium hover:bg-black hover:text-white cursor-pointer"
+                        >
+                          जीवनी पढ़ें
+                        </Button>
+                      </div>
+                    </motion.div>
+
+                  </div>
+
+                  {/* RIGHT */}
+                  <motion.div
+                      key={activeIndex === index ? "active" : "inactive"}
+                      initial={{ x: 60, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{
+                        duration: 0.6,
+                        delay: 0.3
+                      }}
+                      className="rounded-3xl overflow-hidden"
+                    >
+                    <Image
+                      src={slide.image}
+                      alt={slide.highlight}
+                      width={800}
+                      height={500}
+                      className="w-full h-auto object-cover"
+                    />
+                    </motion.div>
+                </div>
+
                 {/* MOBILE OVERLAY VERSION */}
-                <div className="relative lg:hidden rounded-3xl overflow-hidden">
+                < div className="relative lg:hidden rounded-3xl overflow-hidden" >
 
                   {/* Background Image */}
-                  <Image
+                  < Image
                     src={slide.image}
                     alt={slide.highlight}
                     width={200}
@@ -74,23 +153,35 @@ export default function Hero() {
                   />
 
                   {/* Dark Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                  < div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
                   {/* Text Content */}
-                  <div className="absolute bottom-0 p-6 text-white">
-                    <h1 className="text-2xl font-bold leading-snug">
-                      {slide.title}{" "}
-                      <span className="text-orange-400">
-                        {slide.highlight}
+                  < div className="absolute bottom-0 p-6 text-white" >
+                    <h1 className="text-2xl font-bold leading-snug mt-10">
+                      <TextAnimate animation="blurInUp" startOnView delay={1} >
+                        {slide.title}
+                      </TextAnimate>
+                      <span className="text-orange-500">
+                        <TextAnimate animation="blurInUp" startOnView delay={1} className="font-bold leading-tight text-orange-500">
+                          {slide.highlight}
+                        </TextAnimate>
                       </span>
                     </h1>
-
-                    <p className="mt-3 text-sm text-gray-200">
+                    <TextAnimate animation="fadeIn" by="line" startOnView delay={1} className="mt-3 text-sm text-gray-200 line-clamp-3">
                       {slide.description}
-                    </p>
-
-                    <div className="mt-8 flex gap-4">
-                      <Button
+                    </TextAnimate>
+                    <motion.div
+                      key={activeIndex === index ? "active" : "inactive"}
+                      initial={{ y: 60, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{
+                        duration: 0.6,
+                        delay: 1.5
+                      }}
+                      className="space-y-4"
+                    >
+                      <div className="mt-8 flex gap-4">
+                        <Button
                         variant="outline"
                         className="rounded-full border-2 border-orange px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
                       >
@@ -102,69 +193,29 @@ export default function Hero() {
                       >
                         जीवनी पढ़ें
                       </Button>
-                    </div>
+                      </div>
+                    </motion.div>
                   </div>
                 </div>
 
-                {/* DESKTOP VERSION */}
-                <div className="hidden lg:grid lg:grid-cols-2 gap-14 items-center">
 
-                  {/* LEFT */}
-                  <div>
-                    <h1 className="text-5xl font-bold leading-tight">
-                      {slide.title}{" "}
-                      <span className="text-orange-500">
-                        {slide.highlight}
-                      </span>
-                    </h1>
-
-                    <p className="mt-6 text-gray-700 text-lg max-w-xl">
-                      {slide.description}
-                    </p>
-
-                    <div className="mt-8 flex gap-4">
-                      <Button
-                        variant="outline"
-                        className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
-                      >
-                        प्रवचन देखें
-                      </Button>
-                      <Button
-                        variant="outline"
-                        className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium hover:bg-black hover:text-white cursor-pointer"
-                      >
-                        जीवनी पढ़ें
-                      </Button>
-                    </div>
-                  </div>
-
-                  {/* RIGHT */}
-                  <div className="rounded-3xl overflow-hidden shadow-xl">
-                    <Image
-                      src={slide.image}
-                      alt={slide.highlight}
-                      width={800}
-                      height={500}
-                      className="w-full h-auto object-cover"
-                    />
-                  </div>
-                </div>
 
               </CarouselItem>
-            ))}
-          </CarouselContent>
+            ))
+            }
+          </CarouselContent >
 
           {/* Controls */}
-          <div className="mt-6 flex items-center justify-between">
+          < div className="mt-6 flex items-center justify-between" >
             <CarouselDots api={api} />
 
             <div className="hidden lg:flex gap-3">
               <CarouselPrevious className="static mt-5 h-10 w-10 rounded-full border border-gray-300 text-gray-500 hover:bg-orange-50 hover:text-orange-500 cursor-pointer" />
               <CarouselNext className="static mt-5 h-10 w-10 rounded-full border border-orange-500 text-orange-500 hover:bg-orange-50 cursor-pointer" />
             </div>
-          </div>
-        </Carousel>
-      </div>
-    </section>
+          </div >
+        </Carousel >
+      </div >
+    </section >
   );
 }

@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "@/components/BaseImage";
 import Link from "next/link"
 import {
@@ -11,6 +13,7 @@ import {
   AtSign,
   Copyright,
 } from "lucide-react"
+import { motion } from "framer-motion";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -27,8 +30,16 @@ export default function Footer() {
       <div className="relative max-w-7xl mx-auto px-6 py-8 md:py-16">
         <div className="grid grid-cols-2 md:grid-cols-[60%_20%_20%] gap-8 md:gap-12">
 
-          {/* LEFT: LOGO + TEXT */}
-          <div className="col-span-2 md:col-span-1">
+          <motion.div
+            initial={{ y: 60, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.6,
+              delay: 0.1
+            }}
+            className="col-span-2 md:col-span-1"
+          >
+            {/* LEFT: LOGO + TEXT */}
             <div className="flex items-center gap-4 sm:gap-16">
               <Image
                 src="/logo-footer.png"
@@ -49,22 +60,38 @@ export default function Footer() {
             <p className="mt-8 text-base text-white/80 leading-relaxed">
               श्री प्राणनाथ जी का स्वरूप ज्ञान की दोपहरी का वह सूरज है, जिसके उग जाने पर अध्यात्म जगत में किसी भी प्रकार का अन्धकार रूपी संशय नहीं रहता। वेदों की ऋचायें जिस को खोजती हैं, दर्शन ग्रन्थ जिस सत्य को पाना चाहते हैं, गीता और भागवत जिस परम लक्ष्य उत्तम पुरुष की ओर संकेत करते हैं, कुरान की आयतें जिस अल्लाह तआला का वर्णन करना चाहती हैं, बाइबल जिस प्रेम के स्वरूप का वर्णन करने का प्रयास करती है और सन्तों की वाणियाँ जिस सत्य की ओर संकेत करती हैं, उसकी पूर्ण प्राप्ति श्री प्राणनाथ जी की वाणी में निहित है।
             </p>
-          </div>
+          </motion.div>
 
-          {/* MIDDLE: QUICK LINKS */}
-          <div className="md:border-l md:border-white/20 md:pl-10">
+          <motion.div
+            initial={{ y: 60, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.6,
+              delay: 0.2
+            }}
+            className="md:border-l md:border-white/20 md:pl-10"
+          >
             <h4 className="text-2xl mb-4">क्विक लिंकस</h4>
             <ul className="space-y-2 text-lg text-white/80">
               <li><Link href="/satguru" className="hover:text-orange-500">सतगुरु व परमहंस</Link></li>
-              <li><Link href="/karyakram" className="hover:text-orange-500">कार्यक्रम</Link></li>
-              <li><Link href="/balkendra" className="hover:text-orange-500">बाल केंद्र</Link></li>
+              <li><Link href="/gamesnquiz" className="hover:text-orange-500">गेम्स & क्विज़</Link></li>
+              <li><Link href="/balkendra" className="hover:text-orange-500">आत्मदर्शनम्</Link></li>
               <li><Link href="/mandirseva" className="hover:text-orange-500">मंदिर व सेवा</Link></li>
               <li><Link href="/gyanbhandar" className="hover:text-orange-500">ज्ञान भंडार</Link></li>
+              <li><Link href="/karyakram" className="hover:text-orange-500">कार्यक्रम</Link></li>
             </ul>
-          </div>
+          </motion.div>
+          {/* MIDDLE: QUICK LINKS */}
 
-          {/* RIGHT: OTHER LINKS */}
-          <div >
+          <motion.div
+            initial={{ y: 60, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.6,
+              delay: 0.3
+            }}
+          >
+            {/* RIGHT: OTHER LINKS */}
             <h4 className="text-2xl mb-4">अन्य लिंकस </h4>
             <ul className="space-y-2 text-lg text-white/80">
               <li><Link href="/privacypolicy" className="hover:text-orange-500">प्राइवेसी पॉलिसी</Link></li>
@@ -72,11 +99,20 @@ export default function Footer() {
               <li><Link href="/contact" className="hover:text-orange-500">संपर्क करें</Link></li>
               <li><Link target="_blank" href="https://drive.google.com/drive/folders/1gLm214M5g71RT397XsWfCxHbCyoNxqKv" className="hover:text-orange-500">ज्ञानपीठ वाणी साहित्य</Link></li>
             </ul>
-          </div>
+          </motion.div>
+
         </div>
 
         {/* SOCIAL + EMAIL */}
-        <div className="md:mt-12 mt-5 pt-6 border-t border-white/20 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <motion.div
+          initial={{ y: 60, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{
+            duration: 0.6,
+            delay: 0.4
+          }}
+          className="md:mt-12 mt-5 pt-6 border-t border-white/20 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+        >
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-[auto_auto_auto_auto_1fr] gap-2 md:gap-16">
             {/* Facebook */}
             <Link
@@ -144,7 +180,7 @@ export default function Footer() {
           <Link href="#" className="text-sm text-white/60 text-center md:text-start">
             <Copyright size={14} className="flex inline-flex" /> {year} spjv. made with love. <p className="md:flex inline-flex mt-1 text-white/60">All rights reserved.</p>
           </Link>
-        </div>
+        </motion.div>
       </div>
     </footer>
   )

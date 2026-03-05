@@ -22,9 +22,11 @@ const labelMap: Record<string, string> = {
   book: "पुस्तकालय",
   brahmavani: "ब्रह्मवाणी",
   quiz: "गूगल क्विज़",
+  game: "गेम्स",
   faq: "प्रश्नोत्तर",
   privacypolicy: "नियम व शर्तें",
   satguru: "सतगुरु व परमहंस",
+  gamesnquiz: "गेम्स & क्विज़",
 }
 
 export default function DynamicBreadcrumb({
@@ -33,7 +35,7 @@ export default function DynamicBreadcrumb({
   currentTitle?: string
 }) {
   const pathname = usePathname()
-  const hiddenSegments = new Set(["book", "article", "quiz"])
+  const hiddenSegments = new Set(["book", "article", "quiz", "game"])
 
   const segments = pathname
     .split("/")
