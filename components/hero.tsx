@@ -26,13 +26,12 @@ const slides = [
     image: "/sliderimg1.png",
   },
   {
-    title: "बाल/युवा/नए सुन्दरसाथ जी",
+    title: "बाल/युवा",
     highlight: "आत्मदर्शनम्",
     description:
-      `श्री प्राणनाथ जी की तारतम वाणी शताब्दियों पुरानी होते हुए भी आज की पीढ़ी के लिए उतनी ही प्रासंगिक है। यह धर्म बदलने का संदेश नहीं देती बल्कि सब धर्मों के उपदेशों को एक करके दृष्टि बदलने का आह्वान करती है।
-    
-आज का युवा प्रश्न करता है।
-और वाणी उत्तर देती है - तर्क के साथ, अनुभव के साथ, प्रमाण के साथ।`,
+      `श्री प्राणनाथ जी की तारतम वाणी आज की युवा पीढ़ी के लिए भी उतनी ही प्रासंगिक है - यह धर्म बदलने का नहीं, बल्कि दृष्टि बदलने का संदेश देती है।
+आज का युवा प्रश्न करता है और वाणी तर्क, अनुभव और प्रमाण के साथ उत्तर देती है।
+हमारा उद्देश्य है - डिजिटल सत्संग, चितवन और सरल वाणी अध्ययन के माध्यम से यह प्रकाश घर-घर तक पहुँचाना।`,
     image: "/sliderimg3.png",
   },
 ];
@@ -121,15 +120,15 @@ export default function Hero() {
 
                   {/* RIGHT */}
                   <motion.div
-                      key={activeIndex === index ? "active" : "inactive"}
-                      initial={{ x: 60, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{
-                        duration: 0.6,
-                        delay: 0.3
-                      }}
-                      className="rounded-3xl overflow-hidden"
-                    >
+                    key={activeIndex === index ? "active" : "inactive"}
+                    initial={{ x: 60, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: 0.3
+                    }}
+                    className="rounded-3xl overflow-hidden"
+                  >
                     <Image
                       src={slide.image}
                       alt={slide.highlight}
@@ -137,7 +136,7 @@ export default function Hero() {
                       height={500}
                       className="w-full h-auto object-cover"
                     />
-                    </motion.div>
+                  </motion.div>
                 </div>
 
                 {/* MOBILE OVERLAY VERSION */}
@@ -182,17 +181,17 @@ export default function Hero() {
                     >
                       <div className="mt-8 flex gap-4">
                         <Button
-                        variant="outline"
-                        className="rounded-full border-2 border-orange px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
-                      >
-                        प्रवचन देखें
-                      </Button>
-                      <Button
-                        variant="outline"
-                        className="rounded-full border-2 border-orange text-black px-6 py-5 text-sm font-medium hover:bg-black hover:text-white cursor-pointer"
-                      >
-                        जीवनी पढ़ें
-                      </Button>
+                          variant="outline"
+                          className="rounded-full border-2 border-orange px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
+                        >
+                          प्रवचन देखें
+                        </Button>
+                        <Button
+                          variant="outline"
+                          className="rounded-full border-2 border-orange text-black px-6 py-5 text-sm font-medium hover:bg-black hover:text-white cursor-pointer"
+                        >
+                          जीवनी पढ़ें
+                        </Button>
                       </div>
                     </motion.div>
                   </div>
