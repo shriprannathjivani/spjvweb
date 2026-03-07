@@ -32,6 +32,7 @@ import {
 import { CarouselDots } from "@/components/carousel-dots";
 import { MessageSquareQuote, QuoteIcon } from "lucide-react";
 import LetterGlitch from '../../components/LetterGlitch';
+import { TextAnimate } from "@/components/ui/text-animate";
 type Song = {
   id: number;
   title: string;
@@ -233,10 +234,14 @@ export default function Gyanbhandar() {
         <section className="relative  pt-0">
           <div className="max-w-7xl mx-auto  text-start">
             {/* Heading */}
-            <h2 className="text-3xl font-bold text-black mb-8">
-              पुस्तकालय
-              <p className="mt-2 text-xl text-gray-500">एक कदम अखंड आनंद की ओर</p>
-            </h2>
+            <TextAnimate animation="blurInUp" startOnView delay={0.1} className="text-3xl font-bold text-black mb-2">
+              पुस्तकालय &nbsp;
+            </TextAnimate>
+            <TextAnimate animation="blurInUp" by="line"
+              delay={0.3}
+              segmentClassName="block" startOnView className="text-xl text-gray-500 mb-8">
+              {`एक कदम अखंड आनंद की ओर`}
+            </TextAnimate>
 
             {/* <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden">
               <OrbitingCircles>
@@ -262,56 +267,67 @@ export default function Gyanbhandar() {
                     key={index}
                     className="pl-4 md:basis-1/4 basis-[85%] relative"
                   >
-                    <div className="card-circle">{index + 1}</div>
-                    <div className="h-full rounded-3xl bg-white p-8 flex flex-col items-center text-center cardCustome ">
+                    <motion.div
+                      key={index}
+                      initial={{ y: 60, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      transition={{
+                        duration: 0.6,
+                        delay: index * 0.2
+                      }}
+                      className="h-full"
+                    >
+                      <div className="card-circle">{index + 1}</div>
+                      <div className="h-full rounded-3xl bg-white p-8 flex flex-col items-center text-center cardCustome ">
 
-                      {/* Image */}
-                      <Image
-                        src={book.image}
-                        alt={book.title}
-                        width={130}
-                        height={180}
-                        className="mb-6 object-contain"
-                      />
-                      <span className="relative mb-1 rounded-full inline-flex items-center bg-white px-2 py-1 text-xs font-xl inset-ring text-red-600  inset-ring-red-500/10">
-                        {book.languages}
-                      </span>
-                      {/* Text */}
-                      <h3 className="font-semibold text-lg text-black mb-2">
-                        {book.title}
-                      </h3>
+                        {/* Image */}
+                        <Image
+                          src={book.image}
+                          alt={book.title}
+                          width={130}
+                          height={180}
+                          className="mb-6 object-contain"
+                        />
+                        <span className="relative mb-1 rounded-full inline-flex items-center bg-white px-2 py-1 text-xs font-xl inset-ring text-red-600  inset-ring-red-500/10">
+                          {book.languages}
+                        </span>
+                        {/* Text */}
+                        <h3 className="font-semibold text-lg text-black mb-2">
+                          {book.title}
+                        </h3>
 
-                      <p className="text-sm text-gray-800 mb-2 line-clamp-2">
-                        {book.desc}
-                      </p>
-
-                      <p className="text-sm text-orange-900 font-medium mb-1">
-                        {book.author}
-                      </p>
-
-                      {book.publisher && (
-                        <p className="text-xs text-muted-foreground mb-6">
-                          {book.publisher}
+                        <p className="text-sm text-gray-800 mb-2 line-clamp-2">
+                          {book.desc}
                         </p>
-                      )}
-                      <div className="flex gap-2">
-                        {/* Button */}
-                        <Link href={`/gyanbhandar/book/${book.id}`}>
+
+                        <p className="text-sm text-orange-900 font-medium mb-1">
+                          {book.author}
+                        </p>
+
+                        {book.publisher && (
+                          <p className="text-xs text-muted-foreground mb-6">
+                            {book.publisher}
+                          </p>
+                        )}
+                        <div className="flex gap-2">
+                          {/* Button */}
+                          <Link href={`/gyanbhandar/book/${book.id}`}>
+                            <Button
+                              variant="outline"
+                              className="rounded-full  border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
+                            >
+                              इसे पढ़ें
+                            </Button>
+                          </Link>
                           <Button
                             variant="outline"
-                            className="rounded-full  border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
+                            className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium hover:bg-black hover:text-white cursor-pointer"
                           >
-                            इसे पढ़ें
+                            डाउनलोड करें
                           </Button>
-                        </Link>
-                        <Button
-                          variant="outline"
-                          className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium hover:bg-black hover:text-white cursor-pointer"
-                        >
-                          डाउनलोड करें
-                        </Button>
+                        </div>
                       </div>
-                    </div>
+                    </motion.div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
@@ -356,10 +372,13 @@ export default function Gyanbhandar() {
                   transition={{ duration: 0.6 }}
                   className="flex flex-col items-center"
                 >
+
                   {/* Quote */}
-                  <p className="text-3xl md:text-4xl leading-relaxed text-[#7a2f18] font-medium mb-8">
+                  <TextAnimate animation="blurInUp" by="line"
+                    delay={0.6}
+                    segmentClassName="block" startOnView className="text-3xl md:text-4xl leading-relaxed text-[#7a2f18] font-medium mb-8">
                     {quotes[index].text}
-                  </p>
+                  </TextAnimate>
 
                   {/* Author */}
                   <div className="flex items-center gap-4">
@@ -387,10 +406,14 @@ export default function Gyanbhandar() {
 
         <section className="max-w-7xl mx-auto py-12 mt-16">
           {/* Heading */}
-          <h2 className="text-3xl font-bold text-black mb-8 text-start">
-            ब्रह्मवाणी ऑडियो
-            <p className="mt-2 text-xl text-gray-500">ब्रह्मवाणी की अखण्ड धारा</p>
-          </h2>
+          <TextAnimate animation="blurInUp" startOnView delay={0.1} className="text-3xl font-bold text-black mb-2 text-start">
+            ब्रह्मवाणी ऑडियो &nbsp;
+          </TextAnimate>
+          <TextAnimate animation="blurInUp" by="line"
+            delay={0.3}
+            segmentClassName="block" startOnView className="text-xl text-gray-500 mb-8 text-start">
+            {`ब्रह्मवाणी की अखण्ड धारा`}
+          </TextAnimate>
           <div className="grid lg:grid-cols-3 gap-12 mt-8 items-start">
 
             {/* LEFT PLAYER */}
@@ -567,15 +590,24 @@ export default function Gyanbhandar() {
 
         <section className="max-w-7xl mx-auto py-12 mt-16">
           <div className="mb-12 text-center">
+            <TextAnimate animation="blurInUp" by="line"
+              delay={0.1}
+              segmentClassName="block" startOnView className="text-red-600 text-xl block mb-4">
+              {`|| श्री जी वचन कहे बेसुमार ||`}
+            </TextAnimate>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 mb-3">
-              <span className="text-red-600 text-xl block mb-4">|| श्री जी वचन कहे बेसुमार ||</span>
-              ब्रह्मवाणी वीडियो <span className="text-orange-500"> और  <br />ई-मंथन लेखन सूची </span>
-
+              <TextAnimate animation="blurInUp" startOnView delay={0.3}>
+                ब्रह्मवाणी वीडियो &nbsp;
+              </TextAnimate>{"  "}
+              <TextAnimate animation="blurInUp" startOnView delay={0.5} className="text-orange-500">
+                और ई-मंथन लेखन सूची
+              </TextAnimate>
             </h2>
-
-            <p className="text-muted-foreground text-xl  mb-24">
-              ब्रह्मवाणी वीडियो की अखण्ड धारा और <br />जिनके शब्द, विचार और दृष्टिकोण, इस दुनिया को निरंतर पहले से बेहतर बना रहे हैं।
-            </p>
+            <TextAnimate animation="blurInUp" by="line"
+              delay={0.3}
+              segmentClassName="block" startOnView className="text-muted-foreground text-xl  mb-24">
+              {` ब्रह्मवाणी वीडियो की अखण्ड धारा और\nजिनके शब्द, विचार और दृष्टिकोण, इस दुनिया को निरंतर पहले से बेहतर बना रहे हैं।`}
+            </TextAnimate>
           </div>
           <div className="w-full grid lg:grid-cols-2 gap-12">
             {/* ================= LEFT ROTATING LIST ================= */}
@@ -704,14 +736,16 @@ export default function Gyanbhandar() {
         <section className="max-w-7xl mx-auto py-12 mt-16 text-start">
           <div className="max-w-7xl mx-auto">
             {/* Header */}
-            <div className="grid md:grid-cols-2 gap-10 items-start">
+            <div className=" gap-10 items-start">
               {/* Left */}
-              <h2 className="text-3xl md:text-4xl font-bold leading-snug">
-                ई-मंथन लेखन
-                <p className="text-xl text-gray-500 mt-4">
-                  जिनके शब्द, विचार और दृष्टिकोण, इस दुनिया को निरंतर पहले से बेहतर बना रहे हैं। वे जिनकी लेखनी, वाणी और सोच इस संसार को और सुख-शीतल बना रही है।
-                </p>
-              </h2>
+              <TextAnimate animation="blurInUp" startOnView delay={0.1} className="text-3xl font-bold text-black mb-2">
+                ई-मंथन लेखन &nbsp;
+              </TextAnimate>
+              <TextAnimate animation="blurInUp" by="line"
+                delay={0.3}
+                segmentClassName="block" startOnView className="text-xl text-gray-500 mb-8">
+                {`जिनके शब्द, विचार और दृष्टिकोण, इस दुनिया को निरंतर पहले से बेहतर बना रहे हैं।\nवे जिनकी लेखनी, वाणी और सोच इस संसार को और सुख-शीतल बना रही है।`}
+              </TextAnimate>
             </div>
 
             {/* Articles Grid */}
@@ -729,49 +763,60 @@ export default function Gyanbhandar() {
                       key={index}
                       className="md:basis-1/2 basis-[85%] relative"
                     >
-                      <div className="card-circle">{index + 1}</div>
-                      <div
+                      <motion.div
                         key={index}
-                        className="flex gap-4 bg-white/60 rounded-3xl items-center cardCustome !p-0"
+                        initial={{ y: 60, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        transition={{
+                          duration: 0.6,
+                          delay: index * 0.2
+                        }}
+                        className="h-full"
                       >
+                        <div className="card-circle">{index + 1}</div>
+                        <div
+                          key={index}
+                          className="flex gap-4 bg-white/60 rounded-3xl items-center cardCustome !p-0"
+                        >
 
-                        <div className="flex-1 ">
-                          <Image height={342} width={608}
-                            src={article.image}
-                            alt={article.title}
-                            className="rounded-l-2xl rounded-b-0 object-cover"
-                          />
+                          <div className="flex-1 ">
+                            <Image height={342} width={608}
+                              src={article.image}
+                              alt={article.title}
+                              className="rounded-l-2xl rounded-b-0 object-cover"
+                            />
 
-                          <div className="p-8">
-                            <span className="animate-bounce mb-4 inline-block bg-lime-300 text-black text-xs md:text-sm px-4 py-2 rounded-full font-medium">
-                              {article.tag}
-                            </span>
-                            <h3 className="text-2xl leading-snug line-clamp-1 ">
-                              {article.title}
-                            </h3>
+                            <div className="p-8">
+                              <span className="animate-bounce mb-4 inline-block bg-lime-300 text-black text-xs md:text-sm px-4 py-2 rounded-full font-medium">
+                                {article.tag}
+                              </span>
+                              <h3 className="text-2xl leading-snug line-clamp-1 ">
+                                {article.title}
+                              </h3>
 
-                            <p className="mt-2 text-base text-muted-foreground">
-                              टीका – {article.tikaName}
-                              <br />
-                              लेखक – {article.writer}
-                            </p>
+                              <p className="mt-2 text-base text-muted-foreground">
+                                टीका – {article.tikaName}
+                                <br />
+                                लेखक – {article.writer}
+                              </p>
 
-                            <div className="mt-4 flex items-center justify-between text-base text-muted-foreground">
-                              <span>{article.date}</span>
+                              <div className="mt-4 flex items-center justify-between text-base text-muted-foreground">
+                                <span>{article.date}</span>
 
-                              <Link href={`/gyanbhandar/article/${article.id}`}>
-                                <Button
-                                  variant="outline"
-                                  className="rounded-full  border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
-                                >
-                                  लेख पढ़ें
-                                </Button>
-                              </Link>
+                                <Link href={`/gyanbhandar/article/${article.id}`}>
+                                  <Button
+                                    variant="outline"
+                                    className="rounded-full  border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
+                                  >
+                                    लेख पढ़ें
+                                  </Button>
+                                </Link>
+                              </div>
                             </div>
-                          </div>
 
+                          </div>
                         </div>
-                      </div>
+                      </motion.div>
                     </CarouselItem>
                   ))}
                 </CarouselContent>
@@ -798,7 +843,7 @@ export default function Gyanbhandar() {
         </section>
 
 
-        
+
       </div>
     </>
   );

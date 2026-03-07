@@ -9,6 +9,7 @@ import { Marquee } from "@/components/ui/marquee";
 import { jobs } from "@/lib/jobs";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { TextAnimate } from "@/components/ui/text-animate";
 
 export default function Page() {
   const [selectedTemple, setSelectedTemple] = useState(temples[0]);
@@ -50,14 +51,21 @@ export default function Page() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-10 pt-32">
       {/* 🔶 Heading */}
-      <div className="mb-10">
-        <h2 className="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-          ज्ञान केंद्र / मंदिर <span className="text-orange-500"> व सेवा</span>
-        </h2>
-        <p className="mt-4 text-muted-foreground text-xl">
-          हमारे देश और विदेश भर में फैले ज्ञान केंद्र व मंदिर
-        </p>
-      </div>
+      <h2 className="text-4xl flex flex-row font-semibold tracking-tight text-gray-900 sm:text-5xl">
+        <TextAnimate animation="blurInUp" startOnView delay={0.3}>
+          ज्ञान केंद्र / मंदिर &nbsp;
+        </TextAnimate>{"  "}
+        <span className="text-orange-500">
+          <TextAnimate animation="blurInUp" startOnView delay={0.5}>
+            व सेवा
+          </TextAnimate>
+        </span>
+      </h2>
+      <TextAnimate animation="blurInUp" by="line"
+        delay={0.3}
+        segmentClassName="block" startOnView className="mt-4 text-muted-foreground text-xl  mb-12">
+        {`हमारे देश और विदेश भर में फैले ज्ञान केंद्र व मंदिर`}
+      </TextAnimate>
 
       {/* 🔥 Main Layout */}
       <div className="grid lg:grid-cols-[55%_45%] gap-8">
@@ -69,40 +77,60 @@ export default function Page() {
               onClick={() => setSelectedTemple(temple)}
               className="cursor-pointer"
             >
-              {/* Image */}
-              <div className="relative h-56 w-full">
-                <Image
-                  src={temple.image}
-                  alt={temple.name}
-                  fill
-                  className={`
+              <motion.div
+                key={index}
+                initial={{ y: 60, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.2
+                }}
+                className="h-full"
+              >
+                {/* Image */}
+                <div className="relative h-56 w-full">
+                  <Image
+                    src={temple.image}
+                    alt={temple.name}
+                    fill
+                    className={`
                   ${selectedTemple.id === temple.id ? "border-orange-500" : "border-white"} object-container mb-8  border-4  rounded-[38px]`}
-                />
+                  />
 
-                {/* Badge */}
-                {index === 0 && (
-                  <span className="absolute top-4 right-4 bg-lime-300 text-black text-xs px-3 py-1 rounded-full">
-                    नया
-                  </span>
-                )}
-              </div>
-
-              {/* Content */}
-              <div className="p-5">
-                <h3 className="text-xl flex gap-4 items-center mb-2">
-                  <School size={16} className="text-red-600" />{temple.name}
-                </h3>
-                <div className="text-base flex gap-4 items-start text-gray-500 whitespace-pre-line">
-                  <MapPinHouse size={16} className="text-gray-600" />
-                  {temple.address}
+                  {/* Badge */}
+                  {index === 0 && (
+                    <span className="absolute top-4 right-4 bg-lime-300 text-black text-xs px-3 py-1 rounded-full">
+                      नया
+                    </span>
+                  )}
                 </div>
-              </div>
+
+                {/* Content */}
+                <div className="p-5">
+                  <h3 className="text-xl flex gap-4 items-center mb-2">
+                    <School size={16} className="text-red-600" />{temple.name}
+                  </h3>
+                  <div className="text-base flex gap-4 items-start text-gray-500 whitespace-pre-line">
+                    <MapPinHouse size={16} className="text-gray-600" />
+                    {temple.address}
+                  </div>
+                </div>
+              </motion.div>
             </div>
           ))}
         </div>
 
         {/* ================= RIGHT : MAP ================= */}
-        <div className="sticky top-32 h-[500px] lg:h-[85vh] rounded-3xl overflow-hidden border-4 border-white bg-white">
+        <motion.div
+          key={selectedTemple.id}
+          initial={{ y: 60, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{
+            duration: 0.6,
+            delay: 0.3
+          }}
+          className="sticky top-32 h-[500px] lg:h-[85vh] rounded-3xl overflow-hidden border-4 border-white bg-white"
+        >
           <iframe
             key={selectedTemple.id}
             width="100%"
@@ -112,20 +140,27 @@ export default function Page() {
             className="rounded-3xl"
             src={`https://maps.google.com/maps?q=${selectedTemple.lat},${selectedTemple.lng}&z=13&output=embed`}
           />
-        </div>
+        </motion.div>
       </div>
 
 
       {/* sewakendra post */}
       <div className="mt-24">
-        <div className="mb-12">
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 mb-3">
-            स्वयंसेवकों को धन्यवाद<span className="text-orange-500"> और  <br />सेवा कारखाना सूची </span>
-          </h2>
-          <p className="text-muted-foreground text-xl max-w-3xl mb-12">
-            हम उन समर्पित सेवादारों के प्रति हृदय से कृतज्ञ हैं, जो अपने समय, श्रम और प्रेम से इस दिव्य कार्य को आगे बढ़ा रहे हैं। उनकी निस्वार्थ सेवा ही हमारी शक्ति है। <br />ये वे प्रेरणास्रोत सेवादार हैं, जो प्रतिदिन अपने कर्म से प्रकाश फैला रहे हैं। 🙏
-          </p>
-        </div>
+        <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 mb-3">
+          <TextAnimate animation="blurInUp" startOnView delay={0.3}>
+            स्वयंसेवकों को धन्यवाद और&nbsp;
+          </TextAnimate>{"  "}
+          <span className="text-orange-500">
+            <TextAnimate animation="blurInUp" startOnView delay={0.5}>
+              सेवा कारखाना सूची
+            </TextAnimate>
+          </span>
+        </h2>
+        <TextAnimate animation="blurInUp" by="line"
+          delay={0.3}
+          segmentClassName="block" startOnView className="text-muted-foreground text-xl max-w-3xl mb-12">
+          {` हम उन समर्पित सेवादारों के प्रति हृदय से कृतज्ञ हैं, जो अपने समय, श्रम और प्रेम से इस दिव्य कार्य को आगे बढ़ा रहे हैं। उनकी निस्वार्थ सेवा ही हमारी शक्ति है। \nये वे प्रेरणास्रोत सेवादार हैं, जो प्रतिदिन अपने कर्म से प्रकाश फैला रहे हैं। 🙏`}
+        </TextAnimate>
 
         <div className="sewadar">
           <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">

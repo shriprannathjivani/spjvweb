@@ -385,7 +385,7 @@ export default function Navbar() {
           )
         }
       >
-        <div className="grid grid-cols-5 h-16">
+        <div className="grid grid-cols-[repeat(5,minmax(0,auto))]  h-16">
           <Link href="/" className={tabmenuClass("/")}>
             <Home size={20} />
             <span className="text-sm mt-1">होम</span>
