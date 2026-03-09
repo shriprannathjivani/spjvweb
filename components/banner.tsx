@@ -13,7 +13,7 @@ export default function BottomBanner() {
 
 
   return (
-    <div className={`fixed inset-x-0 bottom-16 z-50 transition-all duration-700  ${open ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+    <div className={`fixed inset-x-0 sm:bottom-0 bottom-15 z-50 transition-all duration-700  ${open ? "translate-y-0 opacity-100" : "translate-y-100 opacity-0 "
       }`}>
       <div className="mx-auto max-w-7xl px-6 pb-4">
         <div className="relative overflow-hidden rounded-2xl border border-white/30 bg-white/20 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.25)]">

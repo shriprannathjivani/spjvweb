@@ -73,7 +73,7 @@ export default function ReviewsCarousel() {
                   >
                     <div className="card-circle">{index + 1}</div>
 
-                    <div className="h-full rounded-3xl bg-white p-8 pb-0! pt-4! flex flex-col items-center text-center cardCustome">
+                    <div className="h-full rounded-3xl bg-white p-8 pb-4! sm:pb-0! pt-4! flex flex-col items-center text-center cardCustome">
                       <div className="bg-white rounded-3xl transition duration-300">
                         <div className="text-orange-500 text-3xl mb-4">❝</div>
 

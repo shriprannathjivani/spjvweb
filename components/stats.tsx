@@ -105,33 +105,37 @@ export default function Stats() {
                 ${item.large ? "lg:col-span-2" : ""}
               `}
             >
-                <CardContent className="flex p-6 flex-col justify-between h-full">
-                  {/* Title */}
-                  <p className="text-md font-medium text-black mb-0">
-                    {item.title}
-                  </p>
+              <CardContent className="flex p-4 sm:p-6 flex-col justify-between h-full">
+                {/* Title */}
+                <p className="text-xs sm:text-sm font-medium text-gray-700 leading-tight">
+                  {item.title}
+                </p>
 
-                  {/* Number */}
-                  <div className="text-5xl font-bold text-black">
-                    <CountUp
-                      end={item.value}
-                      duration={2}
-                      enableScrollSpy
-                      scrollSpyOnce
-                    />
-                    {item.suffix}
-                  </div>
+                {/* Number */}
+                <div className="text-2xl sm:text-5xl font-bold text-black">
+                  <CountUp
+                    end={item.value}
+                    duration={2}
+                    enableScrollSpy
+                    scrollSpyOnce
+                  />
+                  {item.suffix}
+                </div>
 
-                  {/* Footer */}
-                  <div className="flex items-center justify-between mt-0">
-                    <p className="text-base text-orange-900" dangerouslySetInnerHTML={{
+                {/* Footer */}
+                <div className="flex items-center justify-between mt-1 sm:mt-3">
+                  <p
+                    className="text-[14px] sm:text-base text-orange-900 leading-tight"
+                    dangerouslySetInnerHTML={{
                       __html: item.subtitle ?? ""
-                    }} />
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-orange-500 text-orange-500 cursor-pointer hover:bg-orange-600 hover:text-white">
-                      <ArrowUpRight size={16} />
-                    </span>
-                  </div>
-                </CardContent>
+                    }}
+                  />
+
+                  <span className="flex hidden sm:h-8 sm:w-8 items-center justify-center rounded-full border border-orange-500 text-orange-500">
+                    <ArrowUpRight size={14} />
+                  </span>
+                </div>
+              </CardContent>
             </motion.div>
 
           ))}

@@ -23,7 +23,7 @@ export default function Page() {
             </TextAnimate>{"  "}
             <span className="text-orange-500">
               <TextAnimate animation="blurInUp" startOnView delay={0.5}>
-                & क्विज़
+                व क्विज़
               </TextAnimate>
             </span>
           </h2>

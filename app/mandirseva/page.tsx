@@ -10,9 +10,16 @@ import { jobs } from "@/lib/jobs";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { TextAnimate } from "@/components/ui/text-animate";
-
+type Temple = {
+  id: number
+  name: string
+  address: string
+  image: string
+  lat: number
+  lng: number
+}
 export default function Page() {
-  const [selectedTemple, setSelectedTemple] = useState(temples[0]);
+  const [selectedTemple, setSelectedTemple] = useState<Temple | null>(null)
   const [displayJobs, setDisplayJobs] = useState(jobs);
   const CENTER_INDEX = Math.floor(displayJobs.length / 2);
   // Always keep center index fixed
@@ -68,51 +75,51 @@ export default function Page() {
       </TextAnimate>
 
       {/* 🔥 Main Layout */}
-      <div className="grid lg:grid-cols-[55%_45%] gap-8">
+      <div className="flex flex-col-reverse lg:grid lg:grid-cols-[55%_45%] gap-8">
         {/* ================= LEFT : CARD GRID ================= */}
         <div className="grid sm:grid-cols-2 gap-6">
           {temples.map((temple, index) => (
             <div
               key={temple.id}
               onClick={() => setSelectedTemple(temple)}
-              className="cursor-pointer"
+              className="cursor-pointer relative"
             >
               <motion.div
                 key={index}
                 initial={{ y: 60, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{
-                  duration: 0.6,
-                  delay: index * 0.2
+                  duration: 0.2,
+                  delay: index * 0.0
                 }}
-                className="h-full"
+                className="h-full "
               >
-                {/* Image */}
-                <div className="relative h-56 w-full">
-                  <Image
-                    src={temple.image}
-                    alt={temple.name}
-                    fill
-                    className={`
-                  ${selectedTemple.id === temple.id ? "border-orange-500" : "border-white"} object-container mb-8  border-4  rounded-[38px]`}
-                  />
-
-                  {/* Badge */}
-                  {index === 0 && (
-                    <span className="absolute top-4 right-4 bg-lime-300 text-black text-xs px-3 py-1 rounded-full">
-                      नया
-                    </span>
-                  )}
+                <div className="h-6 w-6 lg:h-8 lg:w-8 text-xs lg:text-base text-white flex items-center justify-center rounded-full border-2 bg-orange-500 border-black absolute left-4 top-4 z-10">
+                  {index + 1}
                 </div>
+                <div className="flex lg:block gap-4 items-start">
+                  {/* Image */}
+                  <div className="relative w-24 h-20 lg:w-full lg:h-56 shrink-0">
+                    <Image
+                      src={temple.image}
+                      alt={temple.name}
+                      fill
+                      className={`${selectedTemple?.id === temple.id ? "border-orange-500" : "border-white"}
+                        object-container border-2 lg:border-4 rounded-xl lg:rounded-[38px]`}
+                    />
 
-                {/* Content */}
-                <div className="p-5">
-                  <h3 className="text-xl flex gap-4 items-center mb-2">
-                    <School size={16} className="text-red-600" />{temple.name}
-                  </h3>
-                  <div className="text-base flex gap-4 items-start text-gray-500 whitespace-pre-line">
-                    <MapPinHouse size={16} className="text-gray-600" />
-                    {temple.address}
+                  </div>
+
+                  {/* Text */}
+                  <div className="flex-1 p-2 pt-0 sm:p-5">
+                    <h3 className="text-base lg:text-xl flex gap-2 items-center mb-1">
+                      <School size={14} className="text-red-600" />
+                      {temple.name}
+                    </h3>
+                    <div className="text-base lg:text-base flex gap-2 items-start text-gray-500 whitespace-pre-line">
+                      <MapPinHouse size={14} className="text-gray-600" />
+                      {temple.address}
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -122,23 +129,39 @@ export default function Page() {
 
         {/* ================= RIGHT : MAP ================= */}
         <motion.div
-          key={selectedTemple.id}
+          key={selectedTemple?.id}
           initial={{ y: 60, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{
             duration: 0.6,
             delay: 0.3
           }}
-          className="sticky top-32 h-[500px] lg:h-[85vh] rounded-3xl overflow-hidden border-4 border-white bg-white"
+          className="sm:sticky relative top-0 sm:top-24 h-125 lg:h-[85vh] overflow-hidden rounded-3xl"
         >
+          {
+
+          }
+          <Button
+            onClick={() => setSelectedTemple(null)}
+            variant="outline"
+            className={`absolute shadow z-20 top-10 right-10 rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-red-500 hover:bg-red-600 hover:text-white cursor-pointer 
+              ${selectedTemple?.id ? "" : "hidden"}` }
+          >
+            सभी मंदिर देखें
+          </Button>
+
           <iframe
-            key={selectedTemple.id}
+            key={selectedTemple?.id}
             width="100%"
             height="100%"
             loading="lazy"
             allowFullScreen
-            className="rounded-3xl"
-            src={`https://maps.google.com/maps?q=${selectedTemple.lat},${selectedTemple.lng}&z=13&output=embed`}
+            className="rounded-3xl relative top-[-72]  border-4 border-white bg-white"
+            src={
+              selectedTemple
+                ? `https://maps.google.com/maps?q=${selectedTemple.lat},${selectedTemple.lng}&z=14&output=embed`
+                : "https://www.google.com/maps/d/embed?mid=19TzA22vYxGZxDL563O8-3btZxEEAhEk&femb=1&ll=27.162925238697834%2C80.38932441757342&z=5"
+            }
           />
         </motion.div>
       </div>

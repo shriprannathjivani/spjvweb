@@ -185,7 +185,7 @@ export default function Navbar() {
                   focus:bg-transparent
                   data-[state=open]:bg-transparent
                   data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/gamesnquiz" className={`link ${pathname?.includes("/gamesnquiz") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>गेम्स & क्विज़</Link>} />
+                  hover:text-orange-500`} render={<Link href="/gamesnquiz" className={`link ${pathname?.includes("/gamesnquiz") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>गेम्स व क्विज़</Link>} />
                   </NavigationMenuItem>
                 </motion.div>
                 <motion.div
@@ -330,7 +330,7 @@ export default function Navbar() {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <Calendar size={24} />
-                    <span className="text-base mt-2">गेम्स & क्विज़</span>
+                    <span className="text-base mt-2">गेम्स व क्विज़</span>
                   </Link>
 
                   <Link
@@ -396,7 +396,7 @@ export default function Navbar() {
           </Link>
           <Link href="/gamesnquiz" className={tabmenuClass("/gamesnquiz")}>
             <Calendar size={20} />
-            <span className="text-sm mt-1">गेम्स & क्विज़</span>
+            <span className="text-sm mt-1">गेम्स व क्विज़</span>
           </Link>
           <Link href="/balkendra" className={tabmenuClass("/balkendra")}>
             <Baby size={20} />
