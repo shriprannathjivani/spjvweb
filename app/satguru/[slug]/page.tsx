@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import DynamicBreadcrumb from "@/components/dynamic-breadcrumb"
 import { satgurus } from "@/lib/satguru-data"
 import { notFound } from "next/navigation"
-import { Cake, Church, Landmark, Link, MapPinHouse, Play, Rainbow, School, Youtube } from "lucide-react"
+import { Award, Cake, Church, Clock1, ClockFading, Hourglass, Landmark, Link, MapPinHouse, Play, Rainbow, School, Youtube } from "lucide-react"
 import Image from "@/components/BaseImage";
 export const dynamicParams = false;
 
@@ -64,16 +64,17 @@ export default async function SatguruDetails({
                   <p className="text-xl">{guru.birth}</p>
                 </div>
               </div>
+              {guru.samadi && (
+                <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+                  <Rainbow size={16} className="text-red-600" />
 
-              <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-                <Rainbow size={16} className="text-red-600" />
+                  <div className="mt-1.5 sm:mt-0">
+                    <p className="text-gray-500 text-base">समाधि</p>
 
-                <div className="mt-1.5 sm:mt-0">
-                  <p className="text-gray-500 text-base">समाधि</p>
-
-                  <p className="text-xl">{guru.samadi}</p>
+                    <p className="text-xl">{guru.samadi}</p>
+                  </div>
                 </div>
-              </div>
+              )}
 
               <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
                 <Landmark size={16} className="text-red-600" />
@@ -136,23 +137,20 @@ export default async function SatguruDetails({
             </div>
           </section>
 
-          {/* Journey Section */}
+          {/* timeline Section */}
+          {guru.timeline && (
           <section>
             <h2 className="text-2xl font-semibold mb-4">
               आध्यात्मिक यात्रा
             </h2>
 
-            <div className="relative flex flex-col items-center md:mt-16">
-              <div className="absolute -top-[32px] left-0 hidden h-0.5 bg-gray-300/50 md:block w-full" ></div>
-              <div className="grid gap-6 md:grid-cols-4">
+            <div className="relative flex flex-col items-center md:mt-6">
+              <div className="grid gap-6 md:grid-cols-3">
                 {guru.timeline?.map((timeline, i) => (
-                  <div key={i} className="relative space-y-2">
-                    <div className="absolute top-0 -left-[9px] z-10 mb-5 flex size-5 items-center justify-center rounded-full bg-red-600 p-1 md:-top-10 md:left-0">
-                      <div className="size-full rounded-full bg-background">
-                      </div>
-                    </div>
+                  <div key={i} className="relative rounded-3xl bg-white p-8 ">
+                    <ClockFading  size={32} className="rounded-full bg-orange-200 text-orange-900 p-1 mb-2 border border-orange-600"/>
                     <div className="pl-7 md:pl-0">
-                      <p className="text-sm text-muted-foreground text-orange-900">{timeline.year}</p>
+                      <p className="text-sm text-muted-foreground text-muted-foreground">{timeline.year}</p>
                       <h2 className="text-xl font-bold tracking-tighter text-orange-600 text-foreground">{timeline.title}</h2>
                       <p className="text-muted-foreground mt-4">{timeline.content}</p>
                     </div>
@@ -163,8 +161,35 @@ export default async function SatguruDetails({
 
             </div>
           </section>
+          )}
+
+          {/* achievments  */}
+          {guru.achievement && (
+            <section>
+              <h2 className="text-2xl font-semibold mb-6">
+              सेवा ही साधना
+              </h2>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                {guru.achievement?.map((achiev, i) => (
+                  <div key={i}>
+                    <Image height={221} width={383} src={achiev.image} alt="" className="object-cover mb-8  border-4 border-white rounded-[38px] h-60" />
+                    <h3 className="text-xl flex gap-4 items-achiev mb-2">{achiev.name}</h3>
+                    <p className="text-base flex gap-4 items-start text-gray-500 whitespace-pre-line">{achiev.location}</p>
+                    <a
+                      href={achiev.link} target="_blank"
+                      className="rounded-full mt-5 inline-flex border-2 border-black px-5 py-2 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
+                    >
+                       अधिक जानिए 
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* Temples */}
+          {guru.temple && (
           <section>
             <h2 className="text-2xl font-semibold mb-6">
               स्थापित पीठ एवं मंदिर
@@ -173,13 +198,14 @@ export default async function SatguruDetails({
             <div className="grid md:grid-cols-2 gap-6">
               {guru.temple?.map((temp, i) => (
                 <div key={i}>
-                  <Image height={221} width={383} src={temp.image} alt="" className="object-container mb-8  border-4 border-white rounded-[38px]" />
+                  <Image height={221} width={383} src={temp.image} alt="" className="object-cover mb-8  border-4 border-white rounded-[38px] h-60" />
                   <h3 className="text-xl flex gap-4 items-center mb-2"><School size={16} className="text-red-600" />{temp.name}</h3>
                   <p className="text-base flex gap-4 items-start text-gray-500 whitespace-pre-line"><MapPinHouse size={16} className="text-gray-600" />{temp.location}</p>
                 </div>
               ))}
             </div>
           </section>
+          )}
 
           {/* Quotes */}
           <section>

@@ -219,8 +219,8 @@ export default function Page() {
                 <p className="text-sm text-gray-600">वीडियो एडिटर </p>
               </div>
             </Marquee>
-            <div className="from-[#fceee8] pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r"></div>
-            <div className="from-[#fdf8f9] pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l"></div>
+            <div className="from-[#fdf8fa] pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-linear-to-r"></div>
+            <div className="from-[#fdf8f9] pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-linear-to-l"></div>
           </div>
         </div>
 
@@ -276,7 +276,7 @@ export default function Page() {
               </motion.ul>
 
               {/* Fade Top */}
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#fdf3f1] to-transparent" />
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#fdf8fa] to-transparent" />
 
               {/* Fade Bottom */}
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#fdf8f9] to-transparent" />

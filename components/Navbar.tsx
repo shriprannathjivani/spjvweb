@@ -95,7 +95,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  console.log(pathname)
+  //console.log(pathname)
 
   const isActive = (path: string) =>
     pathname === path || pathname.startsWith(path + "/");

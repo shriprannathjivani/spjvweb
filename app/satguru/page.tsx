@@ -431,7 +431,7 @@ z-index: 4;
                                                     {satguru.role}
                                                 </p>
 
-                                                <p className="mt-4 text-center text-gray-600 leading-relaxed text-sm font-poppins line-clamp-4 whitespace-pre-line">
+                                                <p className="mt-4 text-center text-gray-600 leading-relaxed text-sm font-poppins line-clamp-2 whitespace-pre-line">
                                                     <QuoteIcon className="text-orange-600" />
                                                     {satguru.quote}
                                                 </p>
@@ -442,7 +442,7 @@ z-index: 4;
                                                 {/* Footer  Place: {satguru.timeline[0].year}*/}
                                                 <div className="mt-6 flex items-center justify-between">
                                                     <span className="text-sm text-gray-500">
-                                                        Place:
+                                                     स्थान: <b>{satguru.place}</b> 
                                                     </span>
                                                     <Link href={`/satguru/${satguru.id}`}>
                                                         <Button

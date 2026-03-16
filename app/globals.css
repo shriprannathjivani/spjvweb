@@ -445,3 +445,30 @@ html {
   animation: spin-slow 10s linear infinite;
 }
 
+.custom-text-quote {
+  display: block;
+  text-align: left;
+  font-family: 'Arya';
+  font-size: 22px;
+  color: #9C27B0;
+}
+
+.custom-text-quote-talkone {
+  display: block;
+  font-family: 'Arya';
+  font-size: 22px;
+  color: #b02763;
+}
+.custom-text-quote-talktwo {
+  display: block;
+  font-family: 'Arya';
+  font-size: 22px;
+  color: #d6510f;
+}
+.spjv-title {
+    color: #ff6900;
+    font-size: 2.25rem;
+    font-family: "arya";
+    display: block;
+    text-align: left;
+}

@@ -5,12 +5,18 @@ import Link from "next/link";
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import CountUp from "react-countup";
 import { ArrowUpRight, Facebook, Instagram, Mail, MapPin, MessageCircle, MessageCircleHeart, Phone, PhoneCall, WheatIcon, Youtube } from "lucide-react";
 import DynamicBreadcrumb from "@/components/dynamic-breadcrumb";
 import { TextAnimate } from "@/components/ui/text-animate";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser"
+import Lottie from "lottie-react"
+import successAnimation from "@/public/Email icon animation.json"
+import doneAnimation from "@/public/Success Icon.json"
+import { toast } from "sonner"
+
 const socialLinks = [
   {
     name: "फेसबुक",
@@ -33,7 +39,46 @@ const socialLinks = [
 ];
 
 export default function Page() {
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setLoading(true);
 
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      tel: formData.get("tel"),
+      message: formData.get("message"),
+    };
+
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await res.json();
+
+    setLoading(false);
+
+    if (result.success) {
+      setIsSuccess(true);
+
+      form.reset();
+
+      setTimeout(() => {
+        setIsSuccess(false);
+      }, 5000);
+    } else {
+      toast.error("संदेश भेजने में समस्या हुई.", { position: "top-right" });
+    }
+  };
   return (
     <>
       <div className="max-w-7xl mx-auto px-6 py-24 pt-32">
@@ -66,40 +111,77 @@ export default function Page() {
           >
             <div className="rounded-3xl bg-white p-8 ">
 
-              <form className="space-y-4">
-                <label className="mb-2 flex">नाम*</label>
-                <Input
-                  type="text"
-                  placeholder="पूरा नाम*"
-                  className="w-full rounded-xl border px-4 py-6  focus:outline-none focus:ring-2 focus:ring-orange-400"
-                />
-                <label className="mb-2 flex">ईमेल</label>
-                <Input
-                  type="email"
-                  placeholder="ईमेल"
-                  className="w-full rounded-xl border px-4 py-6  focus:outline-none focus:ring-2 focus:ring-orange-400"
-                />
-                <label className="mb-2 flex">मोबाइल नंबर</label>
-                <Input
-                  type="tel"
-                  placeholder="नंबर"
-                  className="w-full rounded-xl border px-4 py-6 focus:outline-none focus:ring-2 focus:ring-orange-400"
-                />
-                <label className="mb-2 flex">संदेश</label>
-                <Textarea
-                  placeholder="अपना संदेश लिखें"
-                  rows={4}
-                  className="w-full rounded-xl border px-4 py-6 focus:outline-none focus:ring-2 focus:ring-orange-400"
-                />
+              {isSuccess ? (
 
-                <Button
-                  variant="outline"
-                  type="submit"
-                  className="rounded-full mt-4 border-2 border-black px-12 py-5 text-sm font-xl text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
-                >
-                  संदेश भेजें
-                </Button>
-              </form>
+                <div className="flex flex-col items-center justify-center py-16 text-center">
+
+                  <div className="w-40">
+                    <Lottie
+                      animationData={successAnimation}
+                      loop={false}
+                    />
+                  </div>
+
+                  <h3 className="text-xl font-semibold mb-2">
+                    संदेश सफलतापूर्वक भेजा गया
+                  </h3>
+
+                  <p className="text-gray-600">
+                    हम शीघ्र ही आपसे संपर्क करेंगे 🙏
+                  </p>
+
+                </div>
+
+              ) : (
+
+                <form onSubmit={handleSubmit} className="space-y-4">
+
+                  <label className="mb-2 flex">नाम*</label>
+                  <Input
+                    type="text"
+                    name="name"
+                    required
+                    placeholder="पूरा नाम*"
+                    className="w-full rounded-xl border px-4 py-6 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                  />
+
+                  <label className="mb-2 flex">ईमेल</label>
+                  <Input
+                    type="email"
+                    name="email"
+                    placeholder="ईमेल"
+                    className="w-full rounded-xl border px-4 py-6 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                  />
+
+                  <input type="text" name="company" className="hidden" />
+
+                  <label className="mb-2 flex">मोबाइल नंबर</label>
+                  <Input
+                    type="tel"
+                    name="tel"
+                    placeholder="नंबर"
+                    className="w-full rounded-xl border px-4 py-6 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                  />
+
+                  <label className="mb-2 flex">संदेश</label>
+                  <Textarea
+                    name="message"
+                    rows={4}
+                    placeholder="अपना संदेश लिखें"
+                    className="w-full rounded-xl border px-4 py-6 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                  />
+
+                  <Button
+                    variant="outline"
+                    type="submit"
+                    disabled={loading}
+                    className="rounded-full mt-4 border-2 border-black px-12 py-5 text-sm font-xl text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
+                  >
+                    {loading ? "भेजा जा रहा है..." : "संदेश भेजें"}
+                  </Button>
+
+                </form>
+              )}
             </div>
           </motion.div>
 

@@ -6,6 +6,8 @@ import Navbar from "@/components/Navbar";
 import FallingLeaves from "@/components/falling-leaves";
 import BottomBanner from "@/components/banner";
 import BodyWrapper from "@/components/BodyWrapper";
+import ScrollToTop from "@/components/ScrollToTop"
+import { Toaster } from "sonner";
 
 const arya = Arya({
   subsets: ["devanagari"],
@@ -44,11 +46,13 @@ export default function RootLayout({
     <html lang="hi" className={`${arya.variable}  ${poppins.variable}`}>
       <link rel="icon" href={`${basePath}/spjv logo favicon.png`} sizes="any" />
       <body lang="en" className="hero-bg font-arya" >
+        <Toaster />
         <BodyWrapper>
         <FallingLeaves/>
         <BottomBanner/> 
         <Navbar />
         {children}
+        <ScrollToTop />
         <Footer/>
         </BodyWrapper>
       </body>
