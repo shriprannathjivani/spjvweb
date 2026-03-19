@@ -683,7 +683,7 @@ export default function Gyanbhandar() {
                       <>
                         <div className="bg-[#ffffff] p-6 rounded-3xl">
                           <div className="max-w-4xl mx-auto">
-                            {/* VIDEO CONTAINER */}
+                            {/* VIDEO MAX-W-7XL */}
                             <div className="relative rounded-3xl overflow-hidden bg-white shadow-xl">
                               <iframe
                                 className="w-full h-[320px]"
@@ -761,7 +761,7 @@ export default function Gyanbhandar() {
                   {articles.map((article, index) => (
                     <CarouselItem
                       key={index}
-                      className="md:basis-1/2 basis-[85%] relative"
+                      className="md:basis-1/3 basis-[85%] relative"
                     >
                       <motion.div
                         key={index}

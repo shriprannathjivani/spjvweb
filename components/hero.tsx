@@ -57,7 +57,7 @@ export default function Hero() {
 
   return (
     <section className="relative">
-      <div className="max-w-7xl mx-auto px-6 sm:px-6 py-20 pb-10  lg:py-30 lg:pb-10">
+      <div className="max-w-7xl mx-auto px-6 sm:px-6 py-20 pb-10  lg:py-30 lg:pb-0">
         <Carousel
           setApi={setApi}
           opts={{ loop: true }}
@@ -140,7 +140,7 @@ export default function Hero() {
                 < div className="relative lg:hidden rounded-3xl overflow-hidden" >
 
                   {/* Background Image */}
-                  < Image
+                  <Image
                     src={slide.image}
                     alt={slide.highlight}
                     width={200}

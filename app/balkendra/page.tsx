@@ -49,7 +49,7 @@ export default function Page() {
   const [gender, setGender] = useState<BabyGender | null>(null);
   const [isTyping, setIsTyping] = useState(false);
   const [disabledOptions, setDisabledOptions] = useState<string[]>([]);
-
+  const initialized = useRef(false);
   const chatRef = useRef<HTMLDivElement>(null);
   /* ============================
      SMOOTH SCROLL
@@ -122,6 +122,10 @@ export default function Page() {
   ============================ */
 
   useEffect(() => {
+    if (initialized.current) return;
+
+    initialized.current = true;
+
     addOptionMessage("नमस्ते 🙏 कृपया चुनें:", [
       {
         id: "boy",
@@ -159,17 +163,28 @@ export default function Page() {
       (item) => item.babyG === selectedGender
     );
 
-    if (filtered.length === 0) {
-      addAIMessage("इस अक्षर से कोई नाम उपलब्ध नहीं है।");
+    const validNames = filtered.filter(
+  (item) => item.babyName !== "There are no names available."
+);
+
+    if (validNames.length === 0) {
+      addAIMessage(
+        <div className="bg-yellow-50 border border-yellow-200 rounded-2xl p-5 max-w-md">
+          <p className="text-lg font-semibold text-yellow-800 mb-2">
+            इस अक्षर से अभी कोई नाम उपलब्ध नहीं है।
+          </p>
+          <p className="text-sm text-gray-500 mt-3">
+            कृपया कोई दूसरा अक्षर चुनें।
+          </p>
+        </div>
+      );
     } else {
       addAIMessage(
-
-
-        <div className="space-y-4 grid grid-cols-1 lg:grid-cols-3 gap-2 items-start">
-          {filtered.map((item) => (
-            <div className="relative" key={item.id}>
-              <div className="card-circle !bg-orange-100">{item.id}</div>
-              <div className="group !bg-orange-100 rounded-2xl !p-4 !px-6 transition-all duration-300 hover:-translate-y-1 cursor-pointer cardCustome">
+        <div className="grid grid-cols-1 lg:grid-cols-[repeat(3,minmax(270px,1fr))] gap-2 items-stretch">
+          {filtered.map((item, index) => (
+            <div className="relative h-full  bg-orange-100 rounded-3xl!" key={item.id}>
+              <div className="card-circle bg-orange-100!">{index + 1}</div>
+              <div className="bg-orange-100 rounded-3xl! !p-4 !px-6 transition-all duration-300  cursor-pointer ">
 
                 <div className="flex items-start justify-start gap-2">
                   <Image alt={item.babyG} src={item.babyG === "b" ? "/babyboy.png" : "/babygirl.png"} width={60} height={60} className="scale-x-[-1]" />
@@ -652,9 +667,9 @@ export default function Page() {
               <TextAnimate animation="blurInUp" startOnView delay={0.3}>
                 शिशु नाम&nbsp;
               </TextAnimate>{"  "}
-                <TextAnimate animation="blurInUp" startOnView delay={0.5} className="text-orange-500">
-                  और उनके अर्थ सूची
-                </TextAnimate>
+              <TextAnimate animation="blurInUp" startOnView delay={0.5} className="text-orange-500">
+                और उनके अर्थ सूची
+              </TextAnimate>
             </h2>
             <TextAnimate by="line"
               delay={0.3}
@@ -670,7 +685,7 @@ export default function Page() {
 
             <div
               ref={chatRef}
-              className="flex-1 overflow-y-auto px-6 py-6 space-y-6 bg-[#fcf3fc]"
+              className="flex-1 overflow-y-auto sm:px-6 sm:py-6 p-2 space-y-6 bg-[#fcf3fc]"
             >
               {messages.map((msg) => (
                 <div
@@ -679,7 +694,7 @@ export default function Page() {
                     }`}
                 >
                   {msg.role === "ai" && (
-                    <div className="w-20 h-20 overflow-hidden ">
+                    <div className="sm:w-20 sm:h-20 w-12 h-12 rounded-full bg-white overflow-hidden sm:bg-[#fcf3fc]">
                       <Image src="/Cute Tiger.gif"
                         height={80}
                         width={80}
@@ -689,9 +704,9 @@ export default function Page() {
                   )}
 
                   <div
-                    className={`max-w-[75%] px-5 py-3 text-xl   ${msg.role === "ai"
-                      ? "bg-white text-gray-800 rounded-e-2xl rounded-tl-2xl"
-                      : "bg-orange-200 text-gray-800 rounded-s-2xl rounded-tr-2xl"
+                    className={` px-5 py-3 text-xl   ${msg.role === "ai"
+                      ? "bg-white text-gray-800 rounded-e-2xl rounded-tl-2xl max-w-[85%] sm:max-w-[75%]"
+                      : "bg-orange-200 text-gray-800 rounded-s-2xl rounded-tr-2xl max-w-[75%]"
                       }`}
                   >
                     {msg.content}
