@@ -76,7 +76,7 @@ export const bitakSahebList = [
         time: "6:00-7:30 am",
         description: "🌹 Day 2 || सोनिया जी (ऑस्ट्रेलिया) द्वारा श्री बीतक चर्चा 2025 || Live Streaming- 16 July 🌹",
         image: "/bitaksaheb/bitaksaheb_day2.png",
-        link: "https://www.youtube.com/live/8RYneqG7DzU?si=rmCbftf0svEZTvfP",
+        link: "https://youtu.be/J6_c2Eukc2k?si=SvYFrVFNyY4qlD9q",
         bitakSandesh: {
             text: "️💎 श्री बीतक संदेश - 2, सुनो नहीं, जी लो — बीतक साहेब का हर पल 💎",
             image: "/bitaksaheb/quotes/quote_message_day2.jpeg",

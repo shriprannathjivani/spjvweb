@@ -56,12 +56,39 @@ export const sahiyogitaList = [
   },
   {
     id: 7,
-    tag: "श्री बीतक साहिब",
+    tag: "श्री रामरतन दास जी",
     duration: "15 min",
     questions: 12,
     level: "मध्यम",
-    name: 'जल्द ही जोड़ा जाएगा',
-    link: "https://docs.google.com/forms/d/e/1FAIpQLSe8rzh-PPBLrk8562oBAt0R0cWR-Yu_GKhF5HFBj4S99l_AUw/viewform?pli=1"
+    name: " क्विज़ - 1",
+    link: "https://forms.gle/BggF3pUf9esEovVR9"
+  },
+  {
+    id: 8,
+    tag: "श्री रामरतन दास जी",
+    duration: "15 min",
+    questions: 12,
+    level: "मध्यम",
+    name: " क्विज़ - 2",
+    link: "https://forms.gle/CamdNfXaJabELh5x8"
+  },
+  {
+    id: 9,
+    tag: "श्री रामरतन दास जी",
+    duration: "15 min",
+    questions: 12,
+    level: "मध्यम",
+    name: " क्विज़ - 3",
+    link: "https://forms.gle/ubEnQa3Yxg5Uzccm8"
+  },
+  {
+    id: 10,
+    tag: "श्री रामरतन दास जी",
+    duration: "15 min",
+    questions: 12,
+    level: "मध्यम",
+    name: " क्विज़ - 4",
+    link: "https://forms.gle/z21qvptN8Kon4ihT8"
   }
 ]
 
@@ -120,6 +147,50 @@ export const gamesList = [
     level: "मध्यम",
     "link": "https://wordwall.net/play/88264/722/183",
     "gameName": "🎮 QUIZ #5 - बाल आत्मदर्शनम्: खेलों से ज्ञान की ओर\" 🏆📚",
+    "linkname": "फुलस्क्रीन में खेलने के लिए यहाँ क्लिक करें"
+  },
+  {
+    id: 6,
+    img: "/game1.png",
+    tag: "परमहंस महाराज श्री रामरतन दास जी",
+    duration: "15 min",
+    questions: 12,
+    level: "मध्यम",
+    "link": "https://wordwall.net/play/97389/567/206",
+    "gameName": "परमहंस महाराज श्री रामरतन दास जी की गेम्स - 1",
+    "linkname": "फुलस्क्रीन में खेलने के लिए यहाँ क्लिक करें"
+  },
+  {
+    id: 7,
+    img: "/game1.png",
+    tag: "परमहंस महाराज श्री रामरतन दास जी",
+    duration: "15 min",
+    questions: 12,
+    level: "मध्यम",
+    "link": "https://wordwall.net/play/98759/976/454",
+    "gameName": "परमहंस महाराज श्री रामरतन दास जी की गेम्स - 2",
+    "linkname": "फुलस्क्रीन में खेलने के लिए यहाँ क्लिक करें"
+  },
+  {
+    id: 8,
+    img: "/game1.png",
+    tag: "परमहंस महाराज श्री रामरतन दास जी",
+    duration: "15 min",
+    questions: 12,
+    level: "मध्यम",
+    "link": "https://wordwall.net/play/98950/161/565",
+    "gameName": "परमहंस महाराज श्री रामरतन दास जी की गेम्स - 3",
+    "linkname": "फुलस्क्रीन में खेलने के लिए यहाँ क्लिक करें"
+  },
+  {
+    id: 9,
+    img: "/game1.png",
+    tag: "परमहंस महाराज श्री रामरतन दास जी",
+    duration: "15 min",
+    questions: 12,
+    level: "मध्यम",
+    "link": "https://wordwall.net/play/99867/033/876",
+    "gameName": "परमहंस महाराज श्री रामरतन दास जी की गेम्स - 4",
     "linkname": "फुलस्क्रीन में खेलने के लिए यहाँ क्लिक करें"
   }
 ]

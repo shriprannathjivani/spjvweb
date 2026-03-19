@@ -1,27 +1,28 @@
 export const quickLinks = [
-    {
-        "id": 1,
-        "link": "/balkendra",
-        "name": "आत्मदर्शनम्",
-        "subtitle": "वाणी साहित्य",
-        "icon": "eye",
-        "image": "/ic_aatmadarsan.png"
-    },
-    {
-        "id": 2,
-        "link": "/gamesnquiz",
-        "name": "खेल-खेल में ज्ञान",
-        "subtitle": "वाणी साहित्य",
-        "icon": "dribbble",
-        "image": "/ic_kehlkhelme.png"
-    },
+    
     {
         "id": 3,
         "link": "https://drive.google.com/drive/folders/1gLm214M5g71RT397XsWfCxHbCyoNxqKv",
-        "name": "ज्ञानपीठ वाणी साहित्य",
+        "name": "ज्ञानपीठ साहित्य",
         "subtitle": "वाणी साहित्य",
         "icon": "music",
         "image": "/spjin_logo.jpg"
+    },
+    {
+        "id": 11,
+        "link": "/bitakSahebRrdji",
+        "name": "परमहंस <br>श्री रामरतन दास जी बीतक",
+        "subtitle": "श्री बीतक साहेब",
+        "icon": "book",
+        "image": "/ic_shrirrdji2.png"
+    },
+    {
+        "id": 12,
+        "link": "/bitakSaheb",
+        "name": "श्री बीतक साहेब <br>अद्भुत सिलसिला",
+        "subtitle": "30 सकारात्मक बदलावों के लिए",
+        "icon": "book-open",
+        "image": "/ic_bitaksaheb.png"
     },
     {
         "id": 4,
@@ -80,19 +81,19 @@ export const quickLinks = [
         "image": "/ic_quizzes.png"
     },
     {
-        "id": 11,
-        "link": "/satguru",
-        "name": "परमहंस \nश्री रामरतन दास जी",
-        "subtitle": "श्री बीतक साहेब",
-        "icon": "book",
-        "image": "/ic_bitak_rrdji.png"
+        "id": 1,
+        "link": "/balkendra",
+        "name": "आत्मदर्शनम्",
+        "subtitle": "वाणी साहित्य",
+        "icon": "eye",
+        "image": "/ic_aatmadarsan.png"
     },
     {
-        "id": 12,
-        "link": "/bitakSaheb",
-        "name": "श्री बीतक साहेब का अद्भुत सिलसिला",
-        "subtitle": "30 सकारात्मक बदलावों के लिए",
-        "icon": "book-open",
-        "image": "/ic_bitaksaheb.png"
-    }
+        "id": 2,
+        "link": "/gamesnquiz",
+        "name": "खेल-खेल में ज्ञान",
+        "subtitle": "वाणी साहित्य",
+        "icon": "dribbble",
+        "image": "/ic_kehlkhelme.png"
+    },
 ]

@@ -14,19 +14,17 @@ import { BookOpenCheck, CircleQuestionMark, CircleUserRound, Clock, Eye, Gamepad
 import DynamicBreadcrumb from "@/components/dynamic-breadcrumb"
 import { TextAnimate } from "@/components/ui/text-animate";
 import { Ripple } from "@/components/ui/ripple";
-import { bitakSahebList } from "@/lib/bitaksaheb"
+import { biakRRDJIList } from "@/lib/bitakrrdji"
 import { motion, AnimatePresence } from "framer-motion";
 export function getYouTubeId(url: string) {
   if (!url) return "";
-
   const regExp =
     /(?:youtube\.com\/(?:.*v=|embed\/)|youtu\.be\/)([^?&]+)/;
-
   const match = url.match(regExp);
   return match ? match[1] : "";
 }
 export default function Faq() {
-  const [active, setActive] = useState(bitakSahebList[0]);
+  const [active, setActive] = useState(biakRRDJIList[0]);
   const videoId = getYouTubeId(active.link);
   return (
     <section className="container relative  mx-auto px-6 py-10 pt-0  font-arya ">
@@ -41,17 +39,18 @@ export default function Faq() {
             श्री बीतक साहेब  &nbsp;
           </TextAnimate>{"  "}
           <TextAnimate animation="blurInUp" startOnView delay={0.5} className="text-orange-500">
-            का अद्भुत सिलसिला
+            श्री राम रतन दास जी
           </TextAnimate>
         </h2>
         <TextAnimate animation="blurInUp" by="line"
           delay={0.3}
           segmentClassName="block" startOnView className="text-muted-foreground text-xl  mb-24">
-          {`क्या हम तैयार हैं अपनी रहनी (आचरण) में 30 सकारात्मक बदलावों के लिए?`}
+          {`शास्त्र पुराण भेषपंथ खोजो, इन पैड़ों में पाइए नाहीं। \n
+          सतगुरु न्यारा रहत सकल थें, कोई एक कुली में क्याहें ।।`}
         </TextAnimate>
         <Ripple />
       </div>
-      <div className="mx-auto mt-[-140]">
+      <div className="mx-auto mt-[-110]">
 
         <div className="mx-auto grid lg:grid-cols-3 gap-6">
 
@@ -75,7 +74,7 @@ export default function Faq() {
                   {active.title}
                 </h1>
                 <span className="mb-4 inline-flex text-xs text-gray-500">
-                  <CircleUserRound size={16} className="text-xs text-orange-500 me-2" />{active.speaker} <Sun size={16} className="text-xs text-orange-500 ms-2 me-2" />{active.date.day} {active.date.month} {active.date.year}</span>
+                  <CircleUserRound size={16} className="text-xs text-orange-500 me-2" />{active.speaker} <Sun size={16} className="text-xs text-orange-500 ms-2 me-2" />{active.date.month} {active.date.year}</span>
               </div>
               {/* CHANNEL + META */}
               <div className="flex items-center justify-between flex-wrap gap-4 mt-2">
@@ -105,27 +104,7 @@ export default function Faq() {
                 {/* RIGHT ACTIONS */}
                 <div className="flex items-center gap-2 flex-wrap">
 
-                  {/* Quiz */}
-                  {active.qa?.link && (
-                    <a
-                      href={active.qa.link}
-                      target="_blank"
-                      className="px-3 py-1.5 text-sm inline-flex items-center rounded-full bg-white border-2 cursor-pointer border-black hover:scale-105 transition"
-                    >
-                      <BookOpenCheck size={16} className="text-xs text-orange-500 me-2" /> क्विज़
-                    </a>
-                  )}
 
-                  {/* Game */}
-                  {active.game?.link && (
-                    <a
-                      href={active.game.link}
-                      target="_blank"
-                      className="px-3 py-1.5 text-sm inline-flex items-center rounded-full bg-white cursor-pointer border-2 border-black hover:scale-105 transition"
-                    >
-                      <Gamepad2 size={16} className="text-xs text-orange-500 me-2" />  गेम
-                    </a>
-                  )}
 
                   {/* Subscribe */}
                   <a href={active.link}
@@ -135,27 +114,13 @@ export default function Faq() {
                 </div>
               </div>
 
-              {/* QUOTE + SANDESH */}
-              <div className="grid  gap-4 mt-4">
-
-                {/* Quote */}
-                {active.quote?.text && (
-                  <div className="border-t-1  p-4 text-sm ">
-                    “{active.quote.text}”
-                    <p className="text-xs text-gray-500 mt-2 text-left">
-                      – {active.quote.author}
-                    </p>
-                  </div>
-                )}
-                
-              </div>
             </div>
           </div>
 
           {/* 🎬 RIGHT: PLAYLIST (STICKY) */}
           <div className="pr-1 space-y-3 z-10">
 
-            {bitakSahebList.map((item: any, index: number) => {
+            {biakRRDJIList.map((item: any, index: number) => {
               const isActive = active === item;
               const videoId = getYouTubeId(item.link);
               const thumbnail = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
@@ -199,7 +164,7 @@ export default function Faq() {
 
                   {/* Content */}
                   <div className="flex-1">
-                    <span className="inline-block text-xs font-medium px-3 py-1 rounded-full mb-2 inset-ring  text-rose-600 bg-rose-50   inset-ring-rose-500/10">Day: {index}</span>
+                    <span className="inline-block text-xs font-medium px-3 py-1 rounded-full mb-2 inset-ring  text-rose-600 bg-rose-50   inset-ring-rose-500/10">Day: {index + 1}</span>
                     <h3 className="text-base font-medium line-clamp-3">
                       {item.title}
                     </h3>

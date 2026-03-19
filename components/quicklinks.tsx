@@ -52,9 +52,11 @@ export default function QuickLinksCarousel() {
                                             </div>
 
                                             {/* Name */}
-                                            <p className="text-[11px] sm:text-sm text-center font-medium text-gray-700 leading-tight line-clamp-2">
-                                                {item.name}
-                                            </p>
+                                            <p className="text-[11px] sm:text-sm text-center font-medium text-gray-700 leading-tight line-clamp-2"
+                                                dangerouslySetInnerHTML={{
+                                                    __html: item.name ?? ""
+                                                }}
+                                            />
                                         </Link>
                                     </motion.div>
                                 </CarouselItem>
