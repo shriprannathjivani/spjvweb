@@ -27,7 +27,7 @@ export default function Faq() {
   const [active, setActive] = useState(biakRRDJIList[0]);
   const videoId = getYouTubeId(active.link);
   return (
-    <section className="container relative  mx-auto px-6 py-10 pt-0  font-arya ">
+    <section className="max-w-7xl relative  mx-auto px-6 py-10 pt-0  font-arya ">
       <div className=" relative flex h-125 w-full overflow-hidden flex-col items-center justify-center text-center">
         <TextAnimate animation="blurInUp" by="line"
           delay={0.1}
@@ -63,7 +63,7 @@ export default function Faq() {
               <div className="relative rounded-3xl overflow-hidden bg-black shadow">
                 <iframe
                   src={`https://www.youtube.com/embed/${videoId}`}
-                  className="w-full h-[220px] sm:h-[350px] lg:h-[540px]"
+                  className="w-full h-[220px] sm:h-[350px] lg:h-[460px]"
                   allowFullScreen
                 />
               </div>
