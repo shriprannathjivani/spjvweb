@@ -23,6 +23,7 @@ export default function QuickLinksCarousel() {
                     <Carousel
                         opts={{
                             align: "start",
+                            slidesToScroll: 'auto' 
                         }}
                     >
                         <CarouselContent>

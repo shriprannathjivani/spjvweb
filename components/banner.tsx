@@ -6,10 +6,22 @@ import { X } from "lucide-react"
 export default function BottomBanner() {
   const [open, setOpen] = useState(false)
 
-  useEffect(() => {
-    const t = setTimeout(() => setOpen(true), 700)
-    return () => clearTimeout(t)
-  }, [])
+ useEffect(() => {
+  // open after 700ms
+  const openTimer = setTimeout(() => {
+    setOpen(true);
+  }, 700);
+
+  // close after 5 seconds
+  const closeTimer = setTimeout(() => {
+    setOpen(false);
+  }, 5700); // 700 + 5000
+
+  return () => {
+    clearTimeout(openTimer);
+    clearTimeout(closeTimer);
+  };
+}, []);
 
 
   return (

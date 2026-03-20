@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/accordion"
 import { CarouselDots } from "@/components/carousel-dots"
 import React, { useEffect, useRef, useState } from "react";
-import { BookOpenCheck, CircleQuestionMark, CircleUserRound, Clock, Eye, Gamepad2, Info, Mail, Sun, User, UsersRound } from "lucide-react";
+import { BookOpenCheck, CirclePlay, CircleQuestionMark, CircleUserRound, Clock, Eye, Gamepad2, Info, Mail, Play, Sun, User, UsersRound } from "lucide-react";
 import DynamicBreadcrumb from "@/components/dynamic-breadcrumb"
 import { TextAnimate } from "@/components/ui/text-animate";
 import { Ripple } from "@/components/ui/ripple";
@@ -50,7 +50,7 @@ export default function Faq() {
         </TextAnimate>
         <Ripple />
       </div>
-      <div className="mx-auto mt-[-110]">
+      <div className="mx-auto mt-[-110]  hidden lg:block">
 
         <div className="mx-auto grid lg:grid-cols-3 gap-6">
 
@@ -180,6 +180,94 @@ export default function Faq() {
         </div>
 
       </div>
+
+      {/* MOBILE VIEW */}
+      <div className="lg:hidden space-y-4  mt-[-160px]">
+        {/* CHANNEL + META */}
+        <div className="flex items-center justify-between w-full flex-wrap gap-4 mt-2">
+
+          {/* LEFT */}
+          <div className="flex items-center justify-between w-full gap-3">
+
+            {/* Avatar */}
+            <div className="flex  items-center">
+              <Image src="/channelsspjv.jpg" width={50} height={50} alt="chennal name" className="w-12 h-12 rounded-full object-cover border-2 border-orange-600 me-2" />
+            
+            <div>
+              <p className="text-sm font-medium">श्री प्राणनाथ जी की वाणी</p>
+              <p className="text-xs text-gray-500">
+                👁 28.8K + सब्सक्राइबर्स
+              </p>
+            </div>
+            </div>
+
+
+            {/* Subscribe */}
+            <a href={`https://www.youtube.com/@ShriPrannathJiVani`}
+              target="_blank" className="ml-3 px-4 py-1.5  text-sm bg-orange-900 text-white rounded-full hover:scale-105 transition border-2 border-orange-400 cursor-pointer">
+              सब्सक्राइबर्स
+            </a>
+          </div>
+        </div>
+        {biakRRDJIList.map((item, index) => {
+          const videoId = getYouTubeId(item.link);
+          const thumbnail = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+          const [playVideo, setPlayVideo] = useState(false);
+          return (
+            <div
+              key={index}
+              className="overflow-hidden cursor-pointer "
+            >
+              <div className="lg:col-span-2">
+                <div className="lg:sticky lg:top-24 space-y-4">
+
+                  {/* Video */}
+                  <div
+                    className="relative w-full aspect-video bg-black rounded-2xl overflow-hidden cursor-pointer"
+                    onClick={() => setPlayVideo(true)}
+                  >
+                    {!playVideo ? (
+                      <>
+                        {/* Thumbnail */}
+                        <img
+                          src={thumbnail}
+                          className="w-full h-full object-cover"
+                        />
+
+                        {/* Play Button */}
+                        <div className="absolute bottom-5 right-5 ">
+                          <div className="bg-red-700 backdrop-blur rounded-full p-1 text-xl">
+                            <CirclePlay size={40} className="text-white" />
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <iframe
+                        src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+                        className="w-full h-full"
+                        allow="autoplay; encrypted-media"
+                        allowFullScreen
+                      />
+                    )}
+                  </div>
+
+                  <div className="flex items-center justify-between flex-wrap gap-1 mt-2">
+                    {/* TITLE */}
+                    <h1 className="text-lg md:text-xl font-semibold mb-0">
+                      {item.title}
+                    </h1>
+                    <span className="mb-0 inline-flex text-xs text-gray-500">
+                      <CircleUserRound size={16} className="text-xs text-orange-500 me-2" />{item.speaker} <Sun size={16} className="text-xs text-orange-500 ms-2 me-2" />{item.date.day} {item.date.month} {item.date.year}</span>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
     </section>
   );
 }
