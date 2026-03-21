@@ -15,6 +15,11 @@ import {
   Baby,
   PhoneCall,
   University,
+  FolderSymlink,
+  BookUser,
+  BookOpenCheck,
+  UserRound,
+  MoonStar,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -325,6 +330,26 @@ export default function Navbar() {
                   </Link>
 
                   <Link
+                    href="/bitakSahebRrdji"
+                    className={menuClass("/bitakSahebRrdji")}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <MoonStar size={24} />
+                    {/* <Image src="/ic_shrirrdji2.png" alt="ic_shrirrdji2" height={34} width={34} /> */}
+                    <span className="text-base mt-2 line-clamp-1 text-center">प्रेम का चाँद</span>
+                  </Link>
+
+                  <Link
+                    href="/bitakSaheb"
+                    className={menuClass("/bitakSaheb")}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <BookOpenCheck size={24}/>
+                    {/* <Image src="/ic_bitaksaheb.png" alt="ic_bitaksaheb" height={34} width={34} /> */}
+                    <span className="text-base mt-2 line-clamp-2 text-center">बीतक साहेब</span>
+                  </Link>
+
+                  <Link
                     href="/gamesnquiz"
                     className={menuClass("/gamesnquiz")}
                     onClick={() => setIsMenuOpen(false)}
@@ -358,6 +383,16 @@ export default function Navbar() {
                   >
                     <BookOpen size={24} />
                     <span className="text-base mt-2">ज्ञान भंडार</span>
+                  </Link>
+
+                  <Link
+                    href="https://drive.google.com/drive/folders/1gLm214M5g71RT397XsWfCxHbCyoNxqKv"
+                    className={menuClass("/other")}
+                    onClick={() => setIsMenuOpen(false)}
+                    target="_blank"
+                  >
+                    <FolderSymlink size={24}/>
+                    <span className="text-base mt-2">साहित्य लिंक</span>
                   </Link>
 
                   <Link

@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/accordion"
 import { CarouselDots } from "@/components/carousel-dots"
 import React, { useEffect, useRef, useState } from "react";
-import { BookOpenCheck, CircleQuestionMark, CircleUserRound, Clock, Eye, Gamepad2, Info, Mail, Sun, User, UsersRound } from "lucide-react";
+import { BookOpenCheck, CirclePlay, CircleQuestionMark, CircleUserRound, Clock, Eye, Gamepad2, Info, Mail, Sun, User, UsersRound } from "lucide-react";
 import DynamicBreadcrumb from "@/components/dynamic-breadcrumb"
 import { TextAnimate } from "@/components/ui/text-animate";
 import { Ripple } from "@/components/ui/ripple";
@@ -222,7 +222,7 @@ export default function Faq() {
         {bitakSahebList.map((item, index) => {
           const videoId = getYouTubeId(item.link);
           const thumbnail = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
-
+          const [playVideo, setPlayVideo] = useState(false);
           return (
             <div
               key={index}
@@ -233,12 +233,33 @@ export default function Faq() {
                 <div className="lg:sticky lg:top-24  space-y-4">
 
                   {/* Video */}
-                  <div className="relative rounded-3xl overflow-hidden bg-black shadow">
-                    <iframe
-                      src={`https://www.youtube.com/embed/${videoId}`}
-                      className="w-full h-[220px] sm:h-[350px] lg:h-[460px]"
-                      allowFullScreen
-                    />
+                  <div
+                    className="relative w-full aspect-video bg-black rounded-2xl overflow-hidden cursor-pointer"
+                    onClick={() => setPlayVideo(true)}
+                  >
+                    {!playVideo ? (
+                      <>
+                        {/* Thumbnail */}
+                        <img
+                          src={thumbnail}
+                          className="w-full h-full object-cover"
+                        />
+
+                        {/* Play Button */}
+                        <div className="absolute bottom-5 right-5 ">
+                          <div className="bg-red-700 backdrop-blur rounded-full p-1 text-xl">
+                            <CirclePlay size={40} className="text-white" />
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <iframe
+                        src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+                        className="w-full h-full"
+                        allow="autoplay; encrypted-media"
+                        allowFullScreen
+                      />
+                    )}
                   </div>
 
                   <div className="flex items-center justify-between flex-wrap gap-1 mt-2">

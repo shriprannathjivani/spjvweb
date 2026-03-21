@@ -11,7 +11,7 @@ export const quickLinks = [
     {
         "id": 11,
         "link": "/bitakSahebRrdji",
-        "name": "परमहंस <br>श्री रामरतन दास जी बीतक",
+        "name": "श्री रामरतन दास जी बीतक",
         "subtitle": "श्री बीतक साहेब",
         "icon": "book",
         "image": "/ic_shrirrdji2.png"

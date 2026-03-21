@@ -22,7 +22,7 @@ export default function QuickLinksCarousel() {
                 <div className="relative px-0 pb-8 sm:px-10 sm:py-8">
                     <Carousel
                         opts={{
-                            align: "start",
+                            align: "center",
                             slidesToScroll: 'auto' 
                         }}
                     >
@@ -30,7 +30,7 @@ export default function QuickLinksCarousel() {
                             {quickLinks.map((item, index) => (
                                 <CarouselItem
                                     key={index}
-                                    className="basis-1/5 sm:basis-1/4 md:basis-1/8 pl-2"
+                                    className="basis-1/5 sm:basis-1/4 md:basis-1/8 pl-4"
                                 >
                                     <motion.div
                                         initial={{ y: 30, opacity: 0 }}
