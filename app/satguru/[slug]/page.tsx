@@ -14,6 +14,8 @@ export async function generateStaticParams() {
   }));
 }
 
+
+
 export default async function SatguruDetails({
   params,
 }: {
@@ -24,6 +26,18 @@ export default async function SatguruDetails({
   const guru = satgurus.find(
     (g) => g.id === Number(slug)
   )
+
+  const addPrefixToImages = (html: string) => {
+    if (!html) return "";
+
+    const basePath =
+      process.env.NODE_ENV === "production" ? "/spjvweb" : "";
+
+    return html
+      .replace(/<Image/g, "<img")
+      .replace(/\/>/g, ">")
+      .replace(/src="\/([^"]+)"/g, `src="${basePath}/$1"`);
+  };
 
   if (!guru) return notFound()
   return (
@@ -131,7 +145,7 @@ export default async function SatguruDetails({
             <div className="leading-8 text-base text-gray-500 whitespace-pre-line font-poppins">
               <div
                 dangerouslySetInnerHTML={{
-                  __html: guru.biography ?? ""
+                  __html: addPrefixToImages(guru.biography ?? "")
                 }}
               />
             </div>
@@ -139,35 +153,35 @@ export default async function SatguruDetails({
 
           {/* timeline Section */}
           {guru.timeline && (
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">
-              आध्यात्मिक यात्रा
-            </h2>
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">
+                आध्यात्मिक यात्रा
+              </h2>
 
-            <div className="relative flex flex-col items-center md:mt-6">
-              <div className="grid gap-6 md:grid-cols-3">
-                {guru.timeline?.map((timeline, i) => (
-                  <div key={i} className="relative rounded-3xl bg-white p-8 ">
-                    <ClockFading  size={32} className="rounded-full bg-orange-200 text-orange-900 p-1 mb-2 border border-orange-600"/>
-                    <div className="pl-7 md:pl-0">
-                      <p className="text-sm text-muted-foreground text-muted-foreground">{timeline.year}</p>
-                      <h2 className="text-xl font-bold tracking-tighter text-orange-600 text-foreground">{timeline.title}</h2>
-                      <p className="text-muted-foreground mt-4">{timeline.content}</p>
+              <div className="relative flex flex-col items-center md:mt-6">
+                <div className="grid gap-6 md:grid-cols-3">
+                  {guru.timeline?.map((timeline, i) => (
+                    <div key={i} className="relative rounded-3xl bg-white p-8 ">
+                      <ClockFading size={32} className="rounded-full bg-orange-200 text-orange-900 p-1 mb-2 border border-orange-600" />
+                      <div className="md:pl-0">
+                        <p className="text-sm text-muted-foreground text-muted-foreground">{timeline.year}</p>
+                        <h2 className="text-xl font-bold tracking-tighter text-orange-600 text-foreground">{timeline.title}</h2>
+                        <p className="text-muted-foreground mt-4">{timeline.content}</p>
+                      </div>
                     </div>
-                  </div>
 
-                ))}
+                  ))}
+                </div>
+
               </div>
-
-            </div>
-          </section>
+            </section>
           )}
 
           {/* achievments  */}
           {guru.achievement && (
             <section>
               <h2 className="text-2xl font-semibold mb-6">
-              सेवा ही साधना
+                सेवा ही साधना
               </h2>
 
               <div className="grid md:grid-cols-2 gap-6">
@@ -180,7 +194,7 @@ export default async function SatguruDetails({
                       href={achiev.link} target="_blank"
                       className="rounded-full mt-5 inline-flex border-2 border-black px-5 py-2 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
                     >
-                       अधिक जानिए 
+                      अधिक जानिए
                     </a>
                   </div>
                 ))}
@@ -190,21 +204,21 @@ export default async function SatguruDetails({
 
           {/* Temples */}
           {guru.temple && (
-          <section>
-            <h2 className="text-2xl font-semibold mb-6">
-              स्थापित पीठ एवं मंदिर
-            </h2>
+            <section>
+              <h2 className="text-2xl font-semibold mb-6">
+                स्थापित पीठ एवं मंदिर
+              </h2>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              {guru.temple?.map((temp, i) => (
-                <div key={i}>
-                  <Image height={221} width={383} src={temp.image} alt="" className="object-cover mb-8  border-4 border-white rounded-[38px] h-60" />
-                  <h3 className="text-xl flex gap-4 items-center mb-2"><School size={16} className="text-red-600" />{temp.name}</h3>
-                  <p className="text-base flex gap-4 items-start text-gray-500 whitespace-pre-line"><MapPinHouse size={16} className="text-gray-600" />{temp.location}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+              <div className="grid md:grid-cols-2 gap-6">
+                {guru.temple?.map((temp, i) => (
+                  <div key={i}>
+                    <Image height={221} width={383} src={temp.image} alt="" className="object-cover mb-8  border-4 border-white rounded-[38px] h-60" />
+                    <h3 className="text-xl flex gap-4 items-center mb-2"><School size={16} className="text-red-600" />{temp.name}</h3>
+                    <p className="text-base flex gap-4 items-start text-gray-500 whitespace-pre-line"><MapPinHouse size={16} className="text-gray-600" />{temp.location}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
           )}
 
           {/* Quotes */}
