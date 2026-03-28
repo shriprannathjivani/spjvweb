@@ -27,6 +27,7 @@ const labelMap: Record<string, string> = {
   privacypolicy: "नियम व शर्तें",
   satguru: "सतगुरु व परमहंस",
   gamesnquiz: "गेम्स & क्विज़",
+  dashboard: "डैशबोर्ड",
 }
 
 export default function DynamicBreadcrumb({

@@ -37,7 +37,7 @@
     "**/*.mts",
     "disk/types/**/*.ts",
     "disk/dev/types/**/*.ts"
-  ],
+, "app/login/login"  ],
   "exclude": [
     "node_modules"
   ]

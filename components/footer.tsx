@@ -97,6 +97,7 @@ export default function Footer() {
               <li><Link href="/privacypolicy" className="hover:text-orange-500">प्राइवेसी पॉलिसी</Link></li>
               <li><Link href="/faq" className="hover:text-orange-500">अक्सर पूछे जाने वाले सवाल</Link></li>
               <li><Link href="/contact" className="hover:text-orange-500">संपर्क करें</Link></li>
+              <li><Link href="/login" className="hover:text-orange-500">लॉगिन</Link></li>
               <li><Link target="_blank" href="https://drive.google.com/drive/folders/1gLm214M5g71RT397XsWfCxHbCyoNxqKv" className="hover:text-orange-500 flex flex-row sm:flex-col gap-2 items-center sm:items-start">ज्ञानपीठ वाणी साहित्य <Image src="/spjin_logo.jpg" width={24} height={24}  className="sm:h-16 sm:w-16 w-14 h-14 rounded-full" alt="spjv logo" /> </Link></li>
             </ul>
           </motion.div>
