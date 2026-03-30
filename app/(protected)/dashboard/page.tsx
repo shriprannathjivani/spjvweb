@@ -79,6 +79,15 @@ export default function Dashboard() {
     }
   }, []);
 
+  function getGreeting() {
+  const hour = new Date().getHours();
+
+  if (hour < 12) return "गुड मॉर्निंग";
+  if (hour < 17) return "गुड आफ्टरनून";
+  if (hour < 21) return "गुड ईवनिंग";
+  return "गुड नाइट";
+}
+
   const handleLogout = () => {
     sessionStorage.clear();
     window.location.href = "/login";
@@ -100,7 +109,7 @@ export default function Dashboard() {
           {/* LEFT */}
           <div>
             <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4">
-              सुप्रभात, सुंदरसाथ
+              {getGreeting()}, सुंदरसाथ
             </h2>
             <p className="text-gray-500 text-sm md:text-base">
               आज का दिन आध्यात्मिक उन्नति के लिए एक नया अवसर है
