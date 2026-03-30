@@ -9,6 +9,8 @@ import { usePathname } from 'next/navigation'
 import { Button } from "@/components/ui/button";
 import { LogOut, SearchAlertIcon } from "lucide-react";
 import HeaderDashboard from "../header";
+const basePath =
+  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
 export default function Dashboard() {
   const pathname = usePathname()
   const router = useRouter();
@@ -126,7 +128,7 @@ export default function Dashboard() {
               whileTap={{ scale: 0.98 }}
             >
               <Link
-                href={card.link}
+                href={`${basePath}${card.link}`}
                 className="relative group block rounded-2xl overflow-hidden border bg-linear-to-br from-gray-50 to-white p-5 transition"
               >
 

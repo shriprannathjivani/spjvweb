@@ -38,6 +38,9 @@ type Chapter = {
   intro: string; // ✅ NEW
 };
 
+const basePath =
+  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
+
 /* ---------------- DIGIT HELPERS ---------------- */
 const DEVANAGARI = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
 const ARABIC = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -358,7 +361,7 @@ export default function Page() {
   };
   /* LOAD DATA */
   useEffect(() => {
-    fetch("/allvani/sagar.txt")
+    fetch(`${basePath}/allvani/sagar.txt`)
       .then((r) => r.text())
       .then((t) => {
         const clean = t.replace(/\\n/g, "\n");

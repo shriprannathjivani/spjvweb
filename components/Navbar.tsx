@@ -20,6 +20,10 @@ import {
   BookOpenCheck,
   UserRound,
   MoonStar,
+  LogIn,
+  ShieldUser,
+  CircleUserRound,
+  Key,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -402,6 +406,14 @@ export default function Navbar() {
                   >
                     <PhoneCall size={24} />
                     <span className="text-base mt-2">संपर्क करें</span>
+                  </Link>
+                  <Link
+                    href="/login"
+                    className={menuClass("/login")}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <Key  size={24} />
+                    <span className="text-base mt-2">लॉगिन</span>
                   </Link>
                 </nav>
               </SheetContent>
