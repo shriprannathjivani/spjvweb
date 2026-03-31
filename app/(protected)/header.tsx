@@ -8,7 +8,8 @@ import Link from "next/link";
 import { usePathname } from 'next/navigation'
 import { Button } from "@/components/ui/button";
 import { LogOut, SearchAlertIcon } from "lucide-react";
-
+const basePath =
+  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
 export default function HeaderDashboard() {
  const pathname = usePathname()
   const router = useRouter();
@@ -19,7 +20,7 @@ useEffect(() => {
 
     if (!auth || !expiry || Date.now() > Number(expiry)) {
       sessionStorage.clear();
-      router.replace("/login");
+      router.replace(`${basePath}/login`);
     } else {
       setLoading(false);
     }
@@ -27,8 +28,8 @@ useEffect(() => {
 
   const handleLogout = () => {
     sessionStorage.clear();
-    window.location.href = "/login";
-    window.location.replace("/login");
+    window.location.href = `${basePath}/login`;
+    window.location.replace(`${basePath}/login`);
   };
 
   if (loading) return null;
