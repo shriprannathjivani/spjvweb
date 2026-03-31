@@ -44,6 +44,8 @@ const Quotes = [
         tag: "श्री कुलजम स्वरूप"
     }
 ]
+const basePath =
+  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
 export default function LoginPage() {
     const [api, setApi] = React.useState<CarouselApi>()
     const [password, setPassword] = useState("");
@@ -65,7 +67,7 @@ export default function LoginPage() {
         const expiry = sessionStorage.getItem("expiry");
 
         if (auth && expiry && Date.now() < Number(expiry)) {
-            window.location.href = "/dashboard";
+            window.location.href = `${basePath}/dashboard`;
         }
     }, []);
 
@@ -87,7 +89,7 @@ export default function LoginPage() {
                 (Date.now() + 24 * 60 * 60 * 1000).toString()
             );
 
-            window.location.href = "/dashboard";
+            window.location.href = `${basePath}/dashboard`;
         } else {
             setError("गलत आई डी");
         }

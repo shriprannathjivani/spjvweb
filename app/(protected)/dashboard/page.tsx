@@ -137,7 +137,7 @@ export default function Dashboard() {
               whileTap={{ scale: 0.98 }}
             >
               <Link
-                href={`${basePath}${card.link}`}
+                href={card.link}
                 className="relative group block rounded-2xl overflow-hidden border bg-linear-to-br from-gray-50 to-white p-5 transition"
               >
 
