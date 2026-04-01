@@ -76,7 +76,7 @@ export default function Navbar() {
 
     if (!auth || !expiry || Date.now() > Number(expiry)) {
       sessionStorage.clear();
-      router.replace(`/login`);
+      router.replace(`${basePath}/login`);
     } else {
       setLoading(false);
     }
@@ -111,8 +111,8 @@ export default function Navbar() {
 
   const logout = () => {
     sessionStorage.clear();
-    window.location.href = `/login`;
-    window.location.replace(`/login`);
+    window.location.href = `${basePath}/login`;
+    window.location.replace(`${basePath}/login`);
   };
   const navigationMenucustom = cva(
     `text-lg bg-transparent

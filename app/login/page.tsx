@@ -103,7 +103,7 @@ export default function LoginPage() {
 
     return (
         <>
-        <div className="hidden lg:flex bg-white p-8"></div>
+        
         <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2 ">
             
             {/* 🔐 LEFT: LOGIN */}
@@ -175,7 +175,7 @@ export default function LoginPage() {
             </div>
 
             {/* 🌿 RIGHT: IMAGE + QUOTE */}
-            <div className="hidden lg:flex items-center justify-center  bg-white  p-10">
+            <div className="hidden lg:flex items-center justify-center p-10">
                 <div className="max-w-lg text-center space-y-6">
 
                     <Carousel
