@@ -194,11 +194,10 @@ function fallbackParse(htmlText: string): Block[] {
 }
 
 function formatChopai(text: string) {
-  // break after first danda
   const parts = text.split("।");
 
   if (parts.length >= 2) {
-    return parts[0] + "।\n" + parts.slice(1).join("।");
+    return parts[0] + "।<br/>" + parts.slice(1).join("।");
   }
 
   return text;
@@ -632,7 +631,8 @@ export default function Page() {
                         }`}
                     >
                       <h3 className="font-bold text-orange-600 mb-2">चोपाई:</h3>
-                      <p className="text-xl border-b pb-3 whitespace-pre-line leading-relaxed"
+                      <p
+                        className="text-xl border-b pb-3 leading-loose "
                         dangerouslySetInnerHTML={{
                           __html: highlight(formatChopai(r.chopai), query),
                         }}

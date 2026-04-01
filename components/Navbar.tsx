@@ -306,7 +306,10 @@ export default function Navbar() {
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTitle />
               <div className="flex items-center gap-3">
-                <Button className="rounded-full border-2 border-black text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer">संपर्क करें</Button>
+                <Link
+                    href="/contact"
+                  ><Button className="rounded-full border-2 border-black text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer">संपर्क करें</Button>
+                  </Link>
                 <SheetTrigger asChild>
                   <Menu size={30} />
                 </SheetTrigger>

@@ -11,9 +11,10 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 import { Info, Link, MessageSquareQuote } from "lucide-react";
 import { CarouselDots } from "@/components/carousel-dots"
-import React from "react";
+import React, { useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { PASSWORD_HASH } from "@/lib/auth";
@@ -50,7 +51,12 @@ export default function LoginPage() {
     const [api, setApi] = React.useState<CarouselApi>()
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-
+    const autoplay = useRef(
+        Autoplay({
+        delay: 6000,
+        stopOnInteraction: false,
+        })
+    );
     // 🔐 hash function
     async function hash(text: string) {
         const encoder = new TextEncoder();
@@ -96,11 +102,12 @@ export default function LoginPage() {
     };
 
     return (
-
-        <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2 sticky bg-white z-40">
-
+        <>
+        <div className="hidden lg:flex bg-white p-8"></div>
+        <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2 ">
+            
             {/* 🔐 LEFT: LOGIN */}
-            <div className="flex items-center justify-center px-6 py-10 bg-white text-center">
+            <div className="flex items-center justify-center px-6 py-10 text-center">
                 <div className="w-full max-w-md space-y-6">
                     <motion.div
                         initial={{ y: 20, opacity: 0 }}
@@ -168,15 +175,16 @@ export default function LoginPage() {
             </div>
 
             {/* 🌿 RIGHT: IMAGE + QUOTE */}
-            <div className="hidden lg:flex items-center justify-center bg-[#f6ebe7] p-10">
+            <div className="hidden lg:flex items-center justify-center  bg-white  p-10">
                 <div className="max-w-lg text-center space-y-6">
 
                     <Carousel
                         setApi={setApi}
                         opts={{
                             align: "start",
-                            loop: true,
+                            loop: false,
                         }}
+                        plugins={[autoplay.current]}
                     >
                         <CarouselContent>
                             {Quotes.map((Quote, index) => (
@@ -197,7 +205,7 @@ export default function LoginPage() {
                                         <div className="mt-10 max-w-4xl mx-auto text-center relative px-6">
 
 
-                                            <div className="text-orange-500 text-[76px] mb-1 leading-6">❝</div>
+                                            <div className="text-orange-500 text-[106px] mb-3 leading-6">❝</div>
 
 
                                             <AnimatePresence mode="wait">
@@ -213,7 +221,7 @@ export default function LoginPage() {
                                                     {/* Quote */}
                                                     <TextAnimate animation="blurInUp" by="line"
                                                         delay={0.6}
-                                                        segmentClassName="block" startOnView className="text-3xl leading-8 md:text-2xl text-[#7a2f18] font-medium">
+                                                        segmentClassName="block" startOnView className="text-3xl leading-12 md:text-3xl text-[#7a2f18] font-medium">
                                                         {Quote.text}
                                                     </TextAnimate>
                                                     {/* Author */}
@@ -245,5 +253,6 @@ export default function LoginPage() {
                 </div>
             </div>
         </div>
+        </>
     );
 }
