@@ -428,9 +428,8 @@ export default function Page() {
 
   return (
     <>
-      <section className="min-h-screen bg-gray-50 ">
+      <section className="min-h-screen bg-gray-50  pt-20">
         {/* 🔥 DASHBOARD NAV */}
-        <HeaderDashboard />
         <div className="max-w-7xl  mx-auto  px-6 py-6 pb-0">
           <Breadcrumb className="mb-4">
             <BreadcrumbList>
@@ -454,7 +453,7 @@ export default function Page() {
         <div className={clsx(
           "container mx-auto  sm:px-6 sm:py-6 pt-0 sticky z-20 transition-all duration-300 ease-in-out",
           scrolled
-            ? "sticky top-16 sm:top-10"
+            ? "sticky top-0 z-60 sm:top-10"
             : "px-0 py-0"
         )}
         >
@@ -462,7 +461,7 @@ export default function Page() {
           <div className={clsx(
             "flex flex-col-reverse  md:flex-row md:items-center gap-1 sm:gap-8 p-4 py-2 sm:py-4 transition-all duration-300 ease-in-out",
             scrolled
-              ? "rounded-0 bg-white border border-gray-200 shadow-[5px_1px_20px_1px_rgba(0,0,0,0.10)] p-6"
+              ? "rounded-0 bg-white border border-gray-200 sm:shadow-[0px_0px_0px_0px_rgba(0,0,0,0.10)] shadow-[5px_1px_20px_1px_rgba(0,0,0,0.10)] p-6"
               : "sm:rounded-3xl "
           )}
           >

@@ -57,14 +57,14 @@ useEffect(() => {
           </motion.div>
 
           {/* Right */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
 
             {/* User */}
             <div className="flex items-center gap-2">
               <div className="w-9 h-9  rounded-full border-2 border-black bg-orange-100 flex items-center justify-center text-base font-bold text-orange-600">
                 S
               </div>
-              <div className="flex flex-col justify-start items-center">
+              <div className=" hidden md:flex flex-col justify-start items-center">
                 <span className="text-sm">सुंदरसाथ</span>
                 <span className="relative rounded-full inline-flex items-center bg-white px-2 py-0 text-[10px] font-xl inset-ring text-violet-600 inset-ring-violet-500/10">एडमिन</span>
               </div>
@@ -75,7 +75,7 @@ useEffect(() => {
               variant="outline"
               className="rounded-full border-2 border-black px-4 py-4 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
             >
-              लॉगआउट <LogOut size={20} />
+              लॉगआउट <LogOut size={24} />
             </Button>
 
           </div>

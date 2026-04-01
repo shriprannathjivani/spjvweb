@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "@/components/BaseImage";
 import { Button } from "@/components/ui/button";
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import {
   ChevronDown,
   BookOpen,
@@ -24,6 +24,11 @@ import {
   ShieldUser,
   CircleUserRound,
   Key,
+  LogOut,
+  CirclePower,
+  SearchAlertIcon,
+  BookSearch,
+  Search,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -51,7 +56,8 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cva } from "class-variance-authority";
 import { motion } from "framer-motion";
-
+const basePath =
+  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
 
 
 export default function Navbar() {
@@ -60,7 +66,21 @@ export default function Navbar() {
   const [visible, setVisible] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [open, setOpen] = React.useState(false);
+  const router = useRouter();
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const auth = sessionStorage.getItem("auth");
+    const expiry = sessionStorage.getItem("expiry");
+
+    if (!auth || !expiry || Date.now() > Number(expiry)) {
+      sessionStorage.clear();
+      router.replace(`${basePath}/login`);
+    } else {
+      setLoading(false);
+    }
+  }, []);
   function ListItem({
     title,
     children,
@@ -76,6 +96,24 @@ export default function Navbar() {
       </li>
     )
   }
+
+  function isUserLoggedIn() {
+    const auth = sessionStorage.getItem("auth");
+    const expiry = sessionStorage.getItem("expiry");
+
+    if (!auth || !expiry) return false;
+
+    return Date.now() <= Number(expiry);
+  }
+  useEffect(() => {
+    setLoggedIn(isUserLoggedIn());
+  }, []);
+
+  const logout = () => {
+    sessionStorage.clear();
+    window.location.href = `${basePath}/login`;
+    window.location.replace(`${basePath}/login`);
+  };
   const navigationMenucustom = cva(
     `text-lg bg-transparent
                   hover:bg-transparent
@@ -281,23 +319,82 @@ export default function Navbar() {
                 </NavigationMenuItem> */}
               </NavigationMenuList>
             </NavigationMenu>
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 0.6,
-                delay: 0.6
-              }}
-            >
-              <Link href="/contact">
-                <Button
-                  variant="outline"
-                  className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
+
+
+            {loggedIn ? (
+              <>
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.6
+                  }}
                 >
-                  संपर्क करें
-                </Button>
-              </Link>
-            </motion.div>
+                  <Link href="/dashboard" className={`link ${pathname?.includes("/dashboard") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}
+                  >चौपाइ खोजें
+                  </Link>
+                </motion.div>
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.6
+                  }}
+                >
+                  <div className="flex items-center gap-2">
+                    <div className="w-9 h-9  rounded-full border-2 border-black bg-orange-100 flex items-center justify-center text-base font-bold text-orange-600">
+                      S
+                    </div>
+                    <div className=" hidden md:flex flex-col justify-start items-center">
+                      <span className="text-sm">सुंदरसाथ</span>
+                      <span className="relative rounded-full inline-flex items-center bg-white px-2 py-0 text-[10px] font-xl inset-ring text-violet-600 inset-ring-violet-500/10">एडमिन</span>
+                    </div>
+                  </div>
+                </motion.div>
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.6
+                  }}
+                >
+                  <Link href=""
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      logout();
+                    }}>
+                    <Button
+                      variant="outline"
+                      className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
+                    >
+                      लॉगआउट 
+                    </Button>
+                  </Link>
+                </motion.div>
+
+              </>
+            ) : (
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.6
+                }}
+              >
+                <Link href="/contact">
+                  <Button
+                    variant="outline"
+                    className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
+                  >
+                    संपर्क करें
+                  </Button>
+                </Link>
+              </motion.div>
+            )}
 
           </nav>
 
@@ -307,9 +404,9 @@ export default function Navbar() {
               <SheetTitle />
               <div className="flex items-center gap-3">
                 <Link
-                    href="/contact"
-                  ><Button className="rounded-full border-2 border-black text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer">संपर्क करें</Button>
-                  </Link>
+                  href="/contact"
+                ><Button className="rounded-full border-2 border-black text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer">संपर्क करें</Button>
+                </Link>
                 <SheetTrigger asChild>
                   <Menu size={30} />
                 </SheetTrigger>
@@ -351,7 +448,7 @@ export default function Navbar() {
                     className={menuClass("/bitakSaheb")}
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    <BookOpenCheck size={24}/>
+                    <BookOpenCheck size={24} />
                     {/* <Image src="/ic_bitaksaheb.png" alt="ic_bitaksaheb" height={34} width={34} /> */}
                     <span className="text-base mt-2 line-clamp-2 text-center">बीतक साहेब</span>
                   </Link>
@@ -398,7 +495,7 @@ export default function Navbar() {
                     onClick={() => setIsMenuOpen(false)}
                     target="_blank"
                   >
-                    <FolderSymlink size={24}/>
+                    <FolderSymlink size={24} />
                     <span className="text-base mt-2">साहित्य लिंक</span>
                   </Link>
 
@@ -410,14 +507,39 @@ export default function Navbar() {
                     <PhoneCall size={24} />
                     <span className="text-base mt-2">संपर्क करें</span>
                   </Link>
-                  <Link
-                    href="/login"
-                    className={menuClass("/login")}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <Key  size={24} />
-                    <span className="text-base mt-2">लॉगिन</span>
-                  </Link>
+
+                  {loggedIn ? (
+                    <>
+                      <Link
+                        href="/contact"
+                        className={menuClass("/contact")}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <Search  size={24} />
+                        <span className="text-base mt-2">चौपाइ खोजें</span>
+                      </Link>
+                      <Link
+                        href=""
+                        className={menuClass("/login")}
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          logout();
+                        }}
+                      >
+                        <CirclePower size={24} />
+                        <span className="text-base mt-2">लॉगआउट</span>
+                      </Link>
+                    </>
+                  ) : (
+                    <Link
+                      href="/login"
+                      className={menuClass("/login")}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <Key size={24} />
+                      <span className="text-base mt-2"> लॉगिन </span>
+                    </Link>
+                  )}
                 </nav>
               </SheetContent>
             </Sheet>

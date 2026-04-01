@@ -88,17 +88,11 @@ export default function Dashboard() {
   return "गुड नाइट";
 }
 
-  const handleLogout = () => {
-    sessionStorage.clear();
-    window.location.href = "/login";
-    window.location.replace("/login");
-  };
 
   if (loading) return null;
   return (
-    <section className="min-h-screen bg-gray-50 ">
+    <section className="min-h-screen bg-gray-50 pt-20">
       {/* 🔥 DASHBOARD NAV */}
-      <HeaderDashboard />
 
       {/* CONTENT */}
       <div className="max-w-7xl mx-auto px-6 py-6">
