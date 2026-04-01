@@ -69,17 +69,22 @@ export default function Navbar() {
   const [open, setOpen] = React.useState(false);
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const auth = sessionStorage.getItem("auth");
-    const expiry = sessionStorage.getItem("expiry");
+useEffect(() => {
+  if (pathname === "/login") {
+    setLoading(false);
+    return;
+  }
 
-    if (!auth || !expiry || Date.now() > Number(expiry)) {
-      sessionStorage.clear();
-      router.replace(`/login`);
-    } else {
-      setLoading(false);
-    }
-  }, []);
+  const auth = sessionStorage.getItem("auth");
+  const expiry = sessionStorage.getItem("expiry");
+
+  if (!auth || !expiry || Date.now() > Number(expiry)) {
+    sessionStorage.clear();
+    router.replace("/login");
+  } else {
+    setLoading(false);
+  }
+}, [pathname]);
   function ListItem({
     title,
     children,
@@ -108,10 +113,10 @@ export default function Navbar() {
     setLoggedIn(isUserLoggedIn());
   }, []);
 
-  const logout = () => {
-    sessionStorage.clear();
-    router.replace("/login");
-  };
+ const logout = () => {
+  sessionStorage.clear();
+  router.replace("/login");
+};
   const navigationMenucustom = cva(
     `text-lg bg-transparent
                   hover:bg-transparent
