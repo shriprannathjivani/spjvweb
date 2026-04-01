@@ -110,7 +110,8 @@ export default function Navbar() {
 
   const logout = () => {
     sessionStorage.clear();
-    router.replace("/login");
+     window.location.href = `login`;
+    window.location.replace(`/login`);
   };
   const navigationMenucustom = cva(
     `text-lg bg-transparent
@@ -359,20 +360,16 @@ export default function Navbar() {
                     delay: 0.6
                   }}
                 >
-                  <Link href=""
+                  <Button
                     onClick={() => {
                       setIsMenuOpen(false);
                       logout();
-                    }}>
-                    <Button
-                      variant="outline"
-                      className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
-                    >
-                      लॉगआउट 
-                    </Button>
-                  </Link>
+                    }}
+                    className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
+                  >
+                    लॉगआउट
+                  </Button>
                 </motion.div>
-
               </>
             ) : (
               <motion.div
@@ -509,16 +506,15 @@ export default function Navbar() {
                   {loggedIn ? (
                     <>
                       <Link
-                        href="/contact"
-                        className={menuClass("/contact")}
+                        href="/dashboard"
+                        className={menuClass("/dashboard")}
                         onClick={() => setIsMenuOpen(false)}
                       >
                         <Search  size={24} />
                         <span className="text-base mt-2">चौपाइ खोजें</span>
                       </Link>
-                      <Link
-                        href=""
-                        className={menuClass("/login")}
+                      <button
+                        className={menuClass("/logout")}
                         onClick={() => {
                           setIsMenuOpen(false);
                           logout();
@@ -526,7 +522,7 @@ export default function Navbar() {
                       >
                         <CirclePower size={24} />
                         <span className="text-base mt-2">लॉगआउट</span>
-                      </Link>
+                      </button>
                     </>
                   ) : (
                     <Link
