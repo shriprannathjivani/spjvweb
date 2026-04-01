@@ -57,7 +57,7 @@ import {
 import { cva } from "class-variance-authority";
 import { motion } from "framer-motion";
 const basePath =
-  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
+  process.env.NODE_ENV === "production" ? "/spjvweb" : "/spjvweb";
 
 
 export default function Navbar() {
@@ -76,7 +76,7 @@ export default function Navbar() {
 
     if (!auth || !expiry || Date.now() > Number(expiry)) {
       sessionStorage.clear();
-      router.replace(`${basePath}/login`);
+      router.replace(`/login`);
     } else {
       setLoading(false);
     }
