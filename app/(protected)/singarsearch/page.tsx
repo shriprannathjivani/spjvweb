@@ -632,7 +632,7 @@ export default function Page() {
                     >
                       <h3 className="font-bold text-orange-600 mb-2">चोपाई:</h3>
                       <p
-                        className="text-xl border-b pb-3 leading-loose "
+                        className="text-xl border-b pb-3 leading-normal "
                         dangerouslySetInnerHTML={{
                           __html: highlight(formatChopai(r.chopai), query),
                         }}
