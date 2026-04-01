@@ -56,8 +56,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cva } from "class-variance-authority";
 import { motion } from "framer-motion";
-const basePath =
-  process.env.NODE_ENV === "production" ? "/spjvweb" : "/spjvweb";
+
 
 
 export default function Navbar() {
@@ -111,8 +110,7 @@ export default function Navbar() {
 
   const logout = () => {
     sessionStorage.clear();
-    window.location.href = `${basePath}/login`;
-    window.location.replace(`${basePath}/login`);
+    router.replace("/login");
   };
   const navigationMenucustom = cva(
     `text-lg bg-transparent
