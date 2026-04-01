@@ -103,7 +103,7 @@ export default function Navbar() {
   // ✅ FIXED: logout
   const logout = () => {
     sessionStorage.clear();
-    router.replace(`${basePath}/`);
+    router.replace(`/`);
   };
   const navigationMenucustom = cva(
     `text-lg bg-transparent
@@ -190,7 +190,7 @@ export default function Navbar() {
               delay: 0.1
             }}
           >
-            <Link href="/" className="flex items-center">
+            <Link href={`${basePath}/`} className="flex items-center">
               <Image
                 src="/spjv-logo.svg"
                 alt="spjv logo"
