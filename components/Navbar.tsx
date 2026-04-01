@@ -70,6 +70,7 @@ export default function Navbar() {
   const [open, setOpen] = React.useState(false);
   const router = useRouter();
   const [loading, setLoading] = useState(true);
+  const protectedRoutes = ["/dashboard"];
   function ListItem({
     title,
     children,
@@ -102,7 +103,7 @@ export default function Navbar() {
   // ✅ FIXED: logout
   const logout = () => {
     sessionStorage.clear();
-   router.replace(`${basePath}/`);
+    router.replace(`${basePath}/`);
   };
   const navigationMenucustom = cva(
     `text-lg bg-transparent
@@ -132,27 +133,26 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   // ✅ FIXED: prevent redirect loop
-// ✅ FIXED: prevent redirect loop
   useEffect(() => {
-    const auth = sessionStorage.getItem("auth");
-    const expiry = sessionStorage.getItem("expiry");
+  const auth = sessionStorage.getItem("auth");
+  const expiry = sessionStorage.getItem("expiry");
 
-    const isLoginPage = pathname === "/login";
+  const isProtected = protectedRoutes.some((route) =>
+    pathname.startsWith(route)
+  );
 
-    if (!auth || !expiry || Date.now() > Number(expiry)) {
-      sessionStorage.clear();
+  const isLoginPage = pathname === "/login";
 
-      if (!isLoginPage) {
-        router.replace("/login");
-      }
+  if ((!auth || !expiry || Date.now() > Number(expiry)) && isProtected) {
+    sessionStorage.clear();
+    router.replace(`${basePath}/login`);
+    setLoggedIn(false);
+  } else {
+    setLoggedIn(!!auth && Date.now() <= Number(expiry));
+  }
 
-      setLoggedIn(false);
-    } else {
-      setLoggedIn(true);
-    }
-
-    setLoading(false);
-  }, [pathname]);
+  setLoading(false);
+}, [pathname, router]);
   //console.log(pathname)
 
   const isActive = (path: string) =>
