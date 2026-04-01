@@ -132,13 +132,13 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   // ✅ FIXED: prevent redirect loop
-useEffect(() => {
+  useEffect(() => {
     const auth = sessionStorage.getItem("auth");
     const expiry = sessionStorage.getItem("expiry");
 
     if (!auth || !expiry || Date.now() > Number(expiry)) {
       sessionStorage.clear();
-      router.replace(`${basePath}/login`);
+      router.replace(`/login`);
     } else {
       setLoading(false);
     }
