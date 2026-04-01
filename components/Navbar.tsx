@@ -132,17 +132,27 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   // ✅ FIXED: prevent redirect loop
+// ✅ FIXED: prevent redirect loop
   useEffect(() => {
     const auth = sessionStorage.getItem("auth");
     const expiry = sessionStorage.getItem("expiry");
 
+    const isLoginPage = pathname === "/login";
+
     if (!auth || !expiry || Date.now() > Number(expiry)) {
       sessionStorage.clear();
-      router.replace(`/login`);
+
+      if (!isLoginPage) {
+        router.replace("/login");
+      }
+
+      setLoggedIn(false);
     } else {
-      setLoading(false);
+      setLoggedIn(true);
     }
-  }, []);
+
+    setLoading(false);
+  }, [pathname]);
   //console.log(pathname)
 
   const isActive = (path: string) =>
