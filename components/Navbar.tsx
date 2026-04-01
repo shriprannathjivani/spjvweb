@@ -102,7 +102,7 @@ export default function Navbar() {
   // ✅ FIXED: logout
   const logout = () => {
     sessionStorage.clear();
-    router.replace(`${basePath}/login`);
+   router.replace(`${basePath}/`);
   };
   const navigationMenucustom = cva(
     `text-lg bg-transparent
