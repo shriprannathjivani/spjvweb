@@ -57,7 +57,8 @@ import {
 import { cva } from "class-variance-authority";
 import { motion } from "framer-motion";
 
-
+const basePath =
+  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
 
 export default function Navbar() {
   const pathname = usePathname()
@@ -69,17 +70,6 @@ export default function Navbar() {
   const [open, setOpen] = React.useState(false);
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const auth = sessionStorage.getItem("auth");
-    const expiry = sessionStorage.getItem("expiry");
-
-    if (!auth || !expiry || Date.now() > Number(expiry)) {
-      sessionStorage.clear();
-      router.replace(`/login`);
-    } else {
-      setLoading(false);
-    }
-  }, []);
   function ListItem({
     title,
     children,
@@ -104,14 +94,15 @@ export default function Navbar() {
 
     return Date.now() <= Number(expiry);
   }
+  // ✅ FIXED: proper sync
   useEffect(() => {
     setLoggedIn(isUserLoggedIn());
-  }, []);
+  }, [pathname]);
 
+  // ✅ FIXED: logout
   const logout = () => {
     sessionStorage.clear();
-     window.location.href = `login`;
-    window.location.replace(`/login`);
+    router.replace(`${basePath}/login`);
   };
   const navigationMenucustom = cva(
     `text-lg bg-transparent
@@ -140,7 +131,18 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+  // ✅ FIXED: prevent redirect loop
+useEffect(() => {
+    const auth = sessionStorage.getItem("auth");
+    const expiry = sessionStorage.getItem("expiry");
 
+    if (!auth || !expiry || Date.now() > Number(expiry)) {
+      sessionStorage.clear();
+      router.replace(`${basePath}/login`);
+    } else {
+      setLoading(false);
+    }
+  }, []);
   //console.log(pathname)
 
   const isActive = (path: string) =>
@@ -510,7 +512,7 @@ export default function Navbar() {
                         className={menuClass("/dashboard")}
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <Search  size={24} />
+                        <Search size={24} />
                         <span className="text-base mt-2">चौपाइ खोजें</span>
                       </Link>
                       <button
