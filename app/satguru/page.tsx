@@ -482,11 +482,6 @@ z-index: 4;
                 </Carousel>
 
             </div>
-
-
-
-
-
         </>
     );
 }
