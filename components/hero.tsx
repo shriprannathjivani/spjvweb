@@ -199,7 +199,7 @@ export default function Hero() {
                         by="line"
                         startOnView
                         delay={0.3}
-                        className="mt-2 text-xs text-gray-600 line-clamp-3"
+                        className="mt-2 text-xs text-gray-600 line-clamp-4"
                       >
                         {slide.description}
                       </TextAnimate>
