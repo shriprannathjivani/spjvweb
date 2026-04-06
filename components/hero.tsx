@@ -168,7 +168,7 @@ export default function Hero() {
 
                 {/* MOBILE OVERLAY VERSION */}
                 <div className="lg:hidden">
-                  <div className="flex items-center gap-4 bg-[#f7f7f7] border border-orange-300 rounded-3xl p-4 h-45 mb-4 overflow-hidden">
+                  <div className="flex items-center gap-4 bg-[#f7f7f7] border border-orange-300 rounded-3xl p-4 h-49 mb-4 overflow-hidden">
 
                     {/* LEFT IMAGE */}
                     <div className="w-35 h-full flex items-center justify-center shrink-0 relative">
