@@ -25,19 +25,16 @@ export default function PrannathCTA() {
                       sm:w-[11vw] sm:h-auto" />
             <Image src="/halfflower.png" height={40} width={40} alt="halfflower" className="absolute w-100 h-100  bottom-0 right-0 z-10 motion-safe:animate-wiggle w-[70px] h-auto
                       sm:w-[11vw] sm:h-auto rotate-[3.142rad]" />
-            {/* <div className="absolute bottom-0 top-0 left-0 z-10 w-100 h-100 bg-[url('/halfflower.png')] bg-no-repeat " />
-            <div className="absolute bottom-0 right-0 z-10 w-100 h-100 bg-[url('/halfflower.png')] bg-no-repeat rotate-[3.142rad]" /> */}
-            {/* Background Video */}
-            <video
+            {/* <video
                 autoPlay
                 muted
                 loop
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover z-1"
             >
-                <source src={`${basePath}/satgurubg.mp4`} type="video/webm" />
-
-            </video>
+                <source src={`${basePath}/satgurubg.mp4`} type="video/mp4" />
+            </video> */}
+            <div className="absolute inset-0 w-full h-full object-cover z-1 bg-[#4b2440]"></div>
             {/* Overlay (important for readability) */}
             <div className="absolute inset-0 bg-[#fde9dc]/80 backdrop-blur-sm"></div>
 

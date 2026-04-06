@@ -103,31 +103,15 @@ export default function LoginPage() {
 
     return (
         <>
-        
-        <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2 ">
+        <section className="max-w-7xl mx-auto px-6">
+        <div className="min-h-screen grid grid-cols-1 gap-12 lg:grid-cols-2">
             
             {/* 🔐 LEFT: LOGIN */}
-            <div className="flex items-center justify-center px-6 py-10 text-center">
-                <div className="w-full max-w-md space-y-6">
-                    <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        transition={{
-                            duration: 0.6,
-                            delay: 0.1
-                        }}
-                        className="flex justify-center"
-                    >
-                        <Image
-                            src="/spjv-logo.svg"
-                            alt="spjv logo"
-                            width={230}
-                            height={500}
-                        />
-                    </motion.div>
+            <div className="flex items-center justify-center text-center">
+                <div className="w-full rounded-3xl bg-white p-8 py-16">
                     {/* Title */}
-                    <div className="flex flex-col gap-0 text-center text-neut-darkest">
-                        <h1 className="text-xl font-bold mb-2">लॉगिन विथ स.स.ओ</h1>
+                    <div className="flex flex-col gap-0 text-center text-neut-darkest mb-8">
+                        <h1 className="text-3xl font-bold mb-2">लॉगिन विथ स.स.ओ</h1>
                         <p className="text-gray-500 text-lg ">
                             इस सेवा तक पहुँचने के लिए आई डी दर्ज करें
                         </p>
@@ -166,16 +150,16 @@ export default function LoginPage() {
                         <Button
                             type="submit"
                             disabled={!password.trim()}
-                            className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
+                            className="rounded-full  border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
                         >
-                            लॉगिन विथ स.स.ओ
+                            लॉगिन करें
                         </Button>
                     </form>
                 </div>
             </div>
 
             {/* 🌿 RIGHT: IMAGE + QUOTE */}
-            <div className="hidden lg:flex items-center justify-center p-10">
+            <div className="hidden lg:flex items-center justify-center p-10 ">
                 <div className="max-w-lg text-center space-y-6">
 
                     <Carousel
@@ -253,6 +237,7 @@ export default function LoginPage() {
                 </div>
             </div>
         </div>
+        </section>
         </>
     );
 }

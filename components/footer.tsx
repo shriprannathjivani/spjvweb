@@ -42,7 +42,7 @@ export default function Footer() {
             {/* LEFT: LOGO + TEXT */}
             <div className="flex items-center gap-4 sm:gap-16">
               <Image
-                src="/logo-footer.png"
+                src="/footer_logo.svg"
                 alt="Shri Prannath Ji Vani"
                 width={125}
                 height={156}
