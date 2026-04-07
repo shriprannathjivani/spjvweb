@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import DynamicBreadcrumb from "@/components/dynamic-breadcrumb"
 import { satgurus } from "@/lib/satguru-data"
 import { notFound } from "next/navigation"
-import { Award, Cake, Church, Clock1, ClockFading, Hourglass, Landmark, Link, MapPinHouse, Play, Rainbow, School, Youtube } from "lucide-react"
+import { Award, Cake, Church, CircleArrowLeft, CircleArrowLeftIcon, CircleArrowRightIcon, Clock1, ClockFading, Hourglass, Landmark, Link, MapPinHouse, Play, Rainbow, School, Youtube } from "lucide-react"
 import Image from "@/components/BaseImage";
 export const dynamicParams = false;
 
@@ -13,8 +13,6 @@ export async function generateStaticParams() {
     slug: guru.id.toString(), // because you're matching Number(slug)
   }));
 }
-
-
 
 export default async function SatguruDetails({
   params,
@@ -26,6 +24,16 @@ export default async function SatguruDetails({
   const guru = satgurus.find(
     (g) => g.id === Number(slug)
   )
+  const currentIndex = satgurus.findIndex(
+    (g) => g.id === Number(slug)
+  );
+  const prevGuru =
+    currentIndex > 0 ? satgurus[currentIndex - 1] : null;
+
+  const nextGuru =
+    currentIndex < satgurus.length - 1
+      ? satgurus[currentIndex + 1]
+      : null;
 
   const addPrefixToImages = (html: string) => {
     if (!html) return "";
@@ -164,8 +172,8 @@ export default async function SatguruDetails({
                     <div key={i} className="relative rounded-3xl bg-white p-8 ">
                       <ClockFading size={32} className="rounded-full bg-orange-200 text-orange-900 p-1 mb-2 border border-orange-600" />
                       <div className="md:pl-0">
-                        <p className="text-sm text-muted-foreground text-muted-foreground">{timeline.year}</p>
-                        <h2 className="text-xl font-bold tracking-tighter text-orange-600 text-foreground">{timeline.title}</h2>
+                        <p className="text-sm text-muted-foreground ">{timeline.year}</p>
+                        <h2 className="text-xl font-bold tracking-tighter text-orange-600 ">{timeline.title}</h2>
                         <p className="text-muted-foreground mt-4">{timeline.content}</p>
                       </div>
                     </div>
@@ -246,19 +254,77 @@ export default async function SatguruDetails({
 
               <iframe
                 src={guru.mapEmbed}
-                className="w-full h-[400px] rounded-3xl border-4 border-white "
+                className="w-full h-100 rounded-3xl border-4 border-white "
                 loading="lazy"
               />
             </section>
           )}
 
+          <section>
+            <h2 className="text-2xl font-semibold mb-6">
+              अन्य सतगुरु
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-6">
+
+              {/* PREVIOUS */}
+              {prevGuru && (
+                <a
+                  href={`/satguru/${prevGuru.id}`}
+                  className="group flex items-center gap-4 rounded-3xl p-4 border-2 border-transparent hover:border-orange-600 transition justify-between  bg-white"
+                >
+                  <div>
+                     <p className="text-sm text-muted-foreground flex flex-col gap-2 items-center justify-center"><CircleArrowLeftIcon size={24} className="text-orange-600" /> पिछले सतगुरु </p>
+                  </div>
+                  <div className="w-24 h-24 relative shrink-0">
+                    <Image
+                      src={prevGuru.image}
+                      alt={prevGuru.name}
+                      fill
+                      className="object-contain rounded-xl"
+                    />
+                  </div>
+                  <div>
+                    <div className="md:pl-0">
+                      <h2 className="text-xl font-bold tracking-tighter text-orange-600 ">{prevGuru.name}</h2>
+                      <p className="text-muted-foreground text-sm mt-2 line-clamp-3">{prevGuru.quote}</p>
+                    </div>
+                  </div>
+                </a>
+              )}
+
+              {/* NEXT */}
+              {nextGuru && (
+                <a
+                  href={`/satguru/${nextGuru.id}`}
+                  className="group flex items-center gap-4 rounded-3xl p-4 border-2 border-transparent hover:border-orange-600 transition justify-between  bg-white"
+                >
+
+                  <div className="w-24 h-24 relative shrink-0">
+                    <Image
+                      src={nextGuru.image}
+                      alt={nextGuru.name}
+                      fill
+                      className="object-contain rounded-xl"
+                    />
+                  </div>
+                  <div>
+                    <div className="md:pl-0">
+                      <h2 className="text-xl font-bold tracking-tighter text-orange-600 ">{nextGuru.name}</h2>
+                      <p className="text-muted-foreground text-sm mt-2  line-clamp-3">{nextGuru.quote}</p>
+                    </div>
+                  </div>
+                  <div>
+                     <p className="text-sm text-muted-foreground flex flex-col gap-2 items-center justify-center"><CircleArrowRightIcon size={24} className="text-orange-600" /> अगले सतगुरु </p>
+                  </div>
+                </a>
+              )}
+
+            </div>
+          </section>
+
         </div>
       </div>
     </div>
-
-
-
-
-
   )
 }

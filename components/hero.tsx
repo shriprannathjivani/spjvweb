@@ -20,8 +20,8 @@ import AutoHeight from "embla-carousel-auto-height";
 
 const slides = [
   {
-    title: "श्री प्राणनाथ जी' का ",
-    highlight: "स्वरूप",
+    title: "श्री प्राणनाथ जी' का स्वरूप",
+    highlight: "ज्ञान की दोपहरी का वह सूरज है",
     link: "",
     scale:"scale-175",
     description:
@@ -112,7 +112,7 @@ export default function Hero() {
                         {slide.title}
                       </TextAnimate>
                       <span className="text-orange-500">
-                        <TextAnimate animation="blurInUp" startOnView delay={0.3} className="text-5xl font-bold leading-tight text-orange-500">
+                        <TextAnimate animation="blurInUp" startOnView delay={0.3} className="text-4xl font-bold leading-tight text-orange-500">
                           {slide.highlight}
                         </TextAnimate>
                       </span>

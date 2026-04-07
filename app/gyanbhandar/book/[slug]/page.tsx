@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import DynamicBreadcrumb from "@/components/dynamic-breadcrumb"
 import { BOOKS, quotes } from "@/lib/gyankendra"
 import { notFound } from "next/navigation"
-import { BookA, BookOpenCheck, Cake, Church, CircleUserRound, Landmark, Link, MapPinHouse, Play, Rainbow, School, UserPen, Youtube } from "lucide-react"
+import { BookA, BookOpenCheck, Cake, Church, CircleArrowLeftIcon, CircleArrowRightIcon, CircleUserRound, Landmark, Link, MapPinHouse, Play, Rainbow, School, UserPen, Youtube } from "lucide-react"
 import PdfSection from "@/components/PdfReaderSection";
 import Image from "@/components/BaseImage";
 export const dynamicParams = false;
@@ -28,6 +28,17 @@ export default async function SatguruDetails({
   const book = BOOKS.find(
     (g) => g.id === Number(slug)
   )
+
+  const currentIndex = BOOKS.findIndex(
+    (g) => g.id === Number(slug)
+  );
+  const prevGuru =
+    currentIndex > 0 ? BOOKS[currentIndex - 1] : null;
+
+  const nextGuru =
+    currentIndex < BOOKS.length - 1
+      ? BOOKS[currentIndex + 1]
+      : null;
 
   if (!book) return notFound()
   return (
@@ -69,7 +80,7 @@ export default async function SatguruDetails({
               <p className="text-muted-foreground">{book.publisher}</p>
             </div>
             {/* Action Buttons */}
-            <div className="space-y-3 pt-4 flex items-center gap-4">
+            <div className="space-y-3 pt-4 flex items-center justify-center gap-4">
 
               {book.link && (
                 <a
@@ -100,8 +111,72 @@ export default async function SatguruDetails({
             />
           </div>
 
+          <section>
+            <h2 className="text-2xl font-semibold mb-6">
+              अन्य पुस्तके
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-6">
+
+              {/* PREVIOUS */}
+              {prevGuru && (
+                <a
+                  href={`/gyanbhandar/book/${prevGuru.id}`}
+                  className="group flex items-center gap-4 rounded-3xl p-4 border-2 border-transparent hover:border-orange-600 transition justify-between  bg-white"
+                >
+                  <div>
+                    <p className="text-sm text-muted-foreground flex flex-col gap-2 items-center justify-center"><CircleArrowLeftIcon size={24} className="text-orange-600" /> पिछली पुस्तक </p>
+                  </div>
+                  <div className="w-25 h-35 relative shrink-0">
+                    <Image
+                      src={prevGuru.image}
+                      alt={prevGuru.title}
+                      fill
+                      className="object-container"
+                    />
+                  </div>
+                  <div>
+                    <div className="md:pl-0">
+                      <h2 className="text-base font-bold tracking-tighter text-orange-600 line-clamp-3">{prevGuru.title}</h2>
+                      <p className="text-muted-foreground text-sm mt-2 line-clamp-3">{prevGuru.desc}</p>
+                    </div>
+                  </div>
+                </a>
+              )}
+
+              {/* NEXT */}
+              {nextGuru && (
+                <a
+                  href={`/gyanbhandar/book/${nextGuru.id}`}
+                  className="group flex items-center gap-4 rounded-3xl p-4 border-2 border-transparent hover:border-orange-600 transition justify-between  bg-white"
+                >
+
+                  <div className="w-25 h-35 relative shrink-0">
+                    <Image
+                      src={nextGuru.image}
+                      alt={nextGuru.title}
+                      fill
+                      className="object-container"
+                    />
+                  </div>
+                  <div>
+                    <div className="md:pl-0">
+                      <h2 className="text-base font-bold tracking-tighter text-orange-600 line-clamp-3">{nextGuru.title}</h2>
+                      <p className="text-muted-foreground text-sm mt-2 line-clamp-3">{nextGuru.desc}</p>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground flex flex-col gap-2 items-center justify-center"><CircleArrowRightIcon size={24} className="text-orange-600" /> अगली पुस्तक </p>
+                  </div>
+                </a>
+              )}
+
+            </div>
+          </section>
+
         </div>
       </div>
+
     </div>
   )
 }

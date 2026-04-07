@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import DynamicBreadcrumb from "@/components/dynamic-breadcrumb"
 import { articles } from "@/lib/articles";
 import { notFound } from "next/navigation"
-import { Cake, Calendar, Church, CircleUserRound, Landmark, Link, MapPinHouse, Play, Rainbow, School, UserPen, Youtube } from "lucide-react"
+import { Cake, Calendar, Church, CircleArrowLeftIcon, CircleArrowRightIcon, CircleUserRound, Landmark, Link, MapPinHouse, Play, Rainbow, School, UserPen, Youtube } from "lucide-react"
 import Image from "@/components/BaseImage";
 
 export const dynamicParams = false;
@@ -25,15 +25,27 @@ export default async function SatguruDetails({
   const article = articles.find(
     (g) => g.id === Number(slug)
   )
+
+   const currentIndex = articles.findIndex(
+      (g) => g.id === Number(slug)
+    );
+    const prevGuru =
+      currentIndex > 0 ? articles[currentIndex - 1] : null;
+  
+    const nextGuru =
+      currentIndex < articles.length - 1
+        ? articles[currentIndex + 1]
+        : null;
+
   if (!article) return notFound()
   return (
     <div className="max-w-7xl mx-auto px-6 py-24 pt-25">
       <DynamicBreadcrumb currentTitle={article.title} />
       {/* GRID LAYOUT */}
-      <div className="grid lg:grid-cols-4 gap-12 mt-8">
+      <div className="grid lg:grid-cols-3 gap-12 mt-8">
 
         {/* ================= LEFT PANEL (STICKY) ================= */}
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-1">
           <div className="lg:sticky lg:top-24 rounded-3xl p-6 space-y-6 text-center">
             <div className="absolute z-[-1] h-52 w-52 rotate-65 rounded-[100%] bg-pink-500 blur-2xl" style={{ opacity: 0.5 }}></div>
             <div className="relative ">
@@ -103,6 +115,67 @@ export default async function SatguruDetails({
               >
                 {article.summary}
               </blockquote>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold mb-6">
+              अन्य लेखन
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-6">
+
+              {/* PREVIOUS */}
+              {prevGuru && (
+                <a
+                  href={`/gyanbhandar/article/${prevGuru.id}`}
+                  className="group flex items-center gap-4 rounded-3xl p-4 border-2 border-transparent hover:border-orange-600 transition justify-between  bg-white"
+                >
+                  <div>
+                     <p className="text-sm text-muted-foreground flex flex-col gap-2 items-center justify-center"><CircleArrowLeftIcon size={24} className="text-orange-600" /> पिछला लेखन </p>
+                  </div>
+                  <div className="w-40 h-24 relative shrink-0">
+                    <Image
+                      src={prevGuru.image}
+                      alt={prevGuru.title}
+                      fill
+                      className="object-cover rounded-xl"
+                    />
+                  </div>
+                  <div>
+                    <div className="md:pl-0">
+                      <h2 className="text-xl font-bold tracking-tighter text-orange-600 line-clamp-3">{prevGuru.title}</h2>
+                    </div>
+                  </div>
+                </a>
+              )}
+
+              {/* NEXT */}
+              {nextGuru && (
+                <a
+                  href={`/gyanbhandar/article/${nextGuru.id}`}
+                  className="group flex items-center gap-4 rounded-3xl p-4 border-2 border-transparent hover:border-orange-600 transition justify-between  bg-white"
+                >
+
+                  <div className="w-40 h-24 relative shrink-0">
+                    <Image
+                      src={nextGuru.image}
+                      alt={nextGuru.title}
+                      fill
+                      className="object-cover rounded-xl"
+                    />
+                  </div>
+                  <div>
+                    <div className="md:pl-0">
+                      <h2 className="text-xl font-bold tracking-tighter text-orange-600 line-clamp-3">{nextGuru.title}</h2>
+                    </div>
+                  </div>
+                  <div>
+                     <p className="text-sm text-muted-foreground flex flex-col gap-2 items-center justify-center"><CircleArrowRightIcon size={24} className="text-orange-600" /> अगला लेखन </p>
+                  </div>
+                </a>
+              )}
+
             </div>
           </section>
 
