@@ -25,7 +25,8 @@ export default async function SatguruDetails({
   const article = articles.find(
     (g) => g.id === Number(slug)
   )
-
+const basePath =
+  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
    const currentIndex = articles.findIndex(
       (g) => g.id === Number(slug)
     );
@@ -128,7 +129,7 @@ export default async function SatguruDetails({
               {/* PREVIOUS */}
               {prevGuru && (
                 <a
-                  href={`/gyanbhandar/article/${prevGuru.id}`}
+                  href={`${basePath}/gyanbhandar/article/${prevGuru.id}`}
                   className="group flex items-center gap-4 rounded-3xl p-4 border-2 border-transparent hover:border-orange-600 transition justify-between  bg-white"
                 >
                   <div>
@@ -153,7 +154,7 @@ export default async function SatguruDetails({
               {/* NEXT */}
               {nextGuru && (
                 <a
-                  href={`/gyanbhandar/article/${nextGuru.id}`}
+                  href={`${basePath}/gyanbhandar/article/${nextGuru.id}`}
                   className="group flex items-center gap-4 rounded-3xl p-4 border-2 border-transparent hover:border-orange-600 transition justify-between  bg-white"
                 >
 

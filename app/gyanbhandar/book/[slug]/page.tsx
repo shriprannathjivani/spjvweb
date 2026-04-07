@@ -121,7 +121,7 @@ export default async function SatguruDetails({
               {/* PREVIOUS */}
               {prevGuru && (
                 <a
-                  href={`/gyanbhandar/book/${prevGuru.id}`}
+                  href={`${basePath}/gyanbhandar/book/${prevGuru.id}`}
                   className="group flex items-center gap-4 rounded-3xl p-4 border-2 border-transparent hover:border-orange-600 transition justify-between  bg-white"
                 >
                   <div>
@@ -147,7 +147,7 @@ export default async function SatguruDetails({
               {/* NEXT */}
               {nextGuru && (
                 <a
-                  href={`/gyanbhandar/book/${nextGuru.id}`}
+                  href={`${basePath}/gyanbhandar/book/${nextGuru.id}`}
                   className="group flex items-center gap-4 rounded-3xl p-4 border-2 border-transparent hover:border-orange-600 transition justify-between  bg-white"
                 >
 

@@ -34,7 +34,8 @@ export default async function SatguruDetails({
     currentIndex < satgurus.length - 1
       ? satgurus[currentIndex + 1]
       : null;
-
+    const basePath =
+      process.env.NODE_ENV === "production" ? "/spjvweb" : "";
   const addPrefixToImages = (html: string) => {
     if (!html) return "";
 
@@ -270,7 +271,7 @@ export default async function SatguruDetails({
               {/* PREVIOUS */}
               {prevGuru && (
                 <a
-                  href={`/satguru/${prevGuru.id}`}
+                  href={`${basePath}/satguru/${prevGuru.id}`}
                   className="group flex items-center gap-4 rounded-3xl p-4 border-2 border-transparent hover:border-orange-600 transition justify-between  bg-white"
                 >
                   <div>
@@ -296,7 +297,7 @@ export default async function SatguruDetails({
               {/* NEXT */}
               {nextGuru && (
                 <a
-                  href={`/satguru/${nextGuru.id}`}
+                  href={`${basePath}/satguru/${nextGuru.id}`}
                   className="group flex items-center gap-4 rounded-3xl p-4 border-2 border-transparent hover:border-orange-600 transition justify-between  bg-white"
                 >
 
