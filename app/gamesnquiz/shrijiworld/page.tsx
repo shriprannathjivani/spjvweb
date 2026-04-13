@@ -417,7 +417,7 @@ const UI = () => {
       {activeTemple && (
         <div className="absolute inset-0 flex items-center justify-center bg-black/40 px-4 z-50">
           <div className="relative w-full max-w-3xl h-120 rounded-[24px] overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-300">
-            <img src={activeTemple.locImage} className="absolute inset-0 w-full h-full object-cover" />
+            <img src={`${basePath}/activeTemple.locImage`} className="absolute inset-0 w-full h-full object-cover" />
             <div
               className="absolute bottom-6 left-6 right-6 backdrop-blur-md border border-white/10 rounded-4xl p-8 text-center"
               style={{ background: 'linear-gradient(180deg, rgba(30, 16, 12, 0.7) 0%, rgba(54, 34, 26, 0.8) 100%)' }}
