@@ -103,7 +103,7 @@ export default function Page() {
               </div>
               {/* IMAGE */}
               <Image
-                src={`${basePath}/shrijigame/bitaksearch_avtar.png`}
+                src={`/shrijigame/bitaksearch_avtar.png`}
                 alt=""
                 width={320}
                 height={320}
