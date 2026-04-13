@@ -11,6 +11,9 @@ import React, { useEffect, useState } from "react";
 import { TextAnimate } from "@/components/ui/text-animate";
 import { gamesList, sahiyogitaList } from "@/lib/gamesnquiz"
 
+const basePath =
+  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
+
 export default function Page() {
   const [api, setApi] = React.useState<CarouselApi>();
   const [offsetY, setOffsetY] = useState(0);
@@ -45,7 +48,7 @@ export default function Page() {
                 playsInline
                 className="object-cover"
             >
-                <source src={`/shrijigame/343929_large.mp4`} type="video/mp4" />
+                <source src={`${basePath}/shrijigame/343929_large.mp4`} type="video/mp4" />
             </video>
           </div>
 
@@ -100,7 +103,7 @@ export default function Page() {
               </div>
               {/* IMAGE */}
               <Image
-                src="/shrijigame/bitaksearch_avtar.png"
+                src={`${basePath}/shrijigame/bitaksearch_avtar.png`}
                 alt=""
                 width={320}
                 height={320}
@@ -129,7 +132,7 @@ export default function Page() {
 
               </div>
               {/* ================= BUTTON ================= */}
-              <a href="/gamesnquiz/shrijiworld" className="group group-hover:scale-110 inline-flex relative px-14 text-2xl 2xl overflow-hidden mb-12 cursor-pointer bg-linear-to-b from-[#ffd166] to-[#f7a400] text-[#422006] font-black py-4 rounded-2xl shadow-[0_4px_0_#b37700] active:translate-y-1 active:shadow-none transition-all  uppercase tracking-wider ">
+              <a href={`${basePath}/gamesnquiz/shrijiworld`} className="group group-hover:scale-110 inline-flex relative px-14 text-2xl 2xl overflow-hidden mb-12 cursor-pointer bg-linear-to-b from-[#ffd166] to-[#f7a400] text-[#422006] font-black py-4 rounded-2xl shadow-[0_4px_0_#b37700] active:translate-y-1 active:shadow-none transition-all  uppercase tracking-wider ">
                 {/* ⚡ SHINE SWEEP */}
                 <span className="absolute inset-0 
                 bg-linear-to-r from-transparent via-white/50 to-transparent 
