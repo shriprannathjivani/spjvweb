@@ -456,10 +456,12 @@ const UI = () => {
 
               {/* 2. Floating Header (The Green Ribbon/Banner) */}
               <div className="w-[80%] drop-shadow-lg relative">
-                <img
+                <Image
                   src="/shrijigame/ui_gold_banner.png"
                   alt="Banner"
                   className="w-full h-auto"
+                  height={104}
+                  width={283}
                 />
                 <h2 className="absolute -top-11 font-bold inset-0 flex items-center justify-center text-2xl text-amber-700 ">
                   QUIT GAME
@@ -545,10 +547,12 @@ const UI = () => {
 
             {/* 2. Floating Header (The Green Ribbon/Banner) */}
             <div className="w-[80%] drop-shadow-lg relative">
-              <img
+              <Image
                 src="/shrijigame/ui_gold_banner.png"
                 alt="Banner"
                 className="w-full h-auto"
+                height={148}
+                width={403}
               />
               <h2 className="absolute -top-17 font-bold inset-0 flex items-center justify-center text-3xl text-amber-700">
                 How To Play
