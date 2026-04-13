@@ -437,7 +437,7 @@ const UI = () => {
           >
             <div className="absolute inset-0 animate-spin [animation-duration:80s]"
               style={{
-                backgroundImage: `url('/shrijigame/glow_bg.png')`,
+                backgroundImage: `url(${basePath}/shrijigame/glow_bg.png)`,
                 backgroundSize: '30%',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center'
@@ -447,7 +447,7 @@ const UI = () => {
             <div
               className="relative w-[95%] max-w-[450px] h-[400px] flex flex-col items-center justify-center p-12 overflow-visible"
               style={{
-                backgroundImage: `url('/shrijigame/ui_wood_grass_bg.png')`, // Your wooden board asset
+                backgroundImage: `url(${basePath}/shrijigame/ui_wood_grass_bg.png)`,
                 backgroundSize: 'contain',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center'
@@ -481,7 +481,7 @@ const UI = () => {
               <div className="relative z-10 px-10 mt-0 flex gap-4">
                 <button
                   onClick={() => {
-                    window.location.href = "/gamesnquiz";
+                    window.location.href = `${basePath}/gamesnquiz`;
                   }}
                   className="cursor-pointer 
                   bg-gradient-to-b from-[#ff6b6b] to-[#c1121f] 
@@ -526,7 +526,7 @@ const UI = () => {
         >
           <div className="absolute inset-0 animate-spin [animation-duration:80s]"
             style={{
-              backgroundImage: `url('/shrijigame/glow_bg.png')`,
+              backgroundImage: `url(${basePath}/shrijigame/glow_bg.png)`,
               backgroundSize: 'contain',
               backgroundRepeat: 'no-repeat',
               backgroundPosition: 'center'
@@ -536,7 +536,7 @@ const UI = () => {
           <div
             className="relative w-[95%] max-w-[600px] h-[650px] flex flex-col items-center justify-center p-12 overflow-visible"
             style={{
-              backgroundImage: `url('/shrijigame/ui_wood_grass_bg.png')`, // Your wooden board asset
+              backgroundImage: `url(${basePath}/shrijigame/ui_wood_grass_bg.png)`,
               backgroundSize: 'contain',
               backgroundRepeat: 'no-repeat',
               backgroundPosition: 'center'
