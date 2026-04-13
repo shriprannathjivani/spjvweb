@@ -12,6 +12,9 @@ import {
 import { create } from "zustand";
 import * as THREE from "three";
 
+const basePath =
+  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
+
 // --- 1. DATA & STATE ---
 const CHUNK_SIZE = 120;
 const BUTTERFLY_OFFSET = 35;
@@ -97,7 +100,7 @@ const useGameStore = create<GameState>((set) => ({
 
 // --- 2. PLAYER COMPONENT ---
 const Player = ({ playerRef }: { playerRef: React.RefObject<THREE.Group | null> }) => {
-  const { scene, animations } = useGLTF("/models/shriji_Walking.glb");
+  const { scene, animations } = useGLTF(`${basePath}/models/shriji_Walking.glb`);
   const { actions } = useAnimations(animations, scene);
   const [, getKeys] = useKeyboardControls();
   const { camera, controls } = useThree();
@@ -165,7 +168,7 @@ const Player = ({ playerRef }: { playerRef: React.RefObject<THREE.Group | null> 
 
 // --- 3. BUTTERFLY COMPONENT ---
 const Butterfly = ({ playerRef }: { playerRef: React.RefObject<THREE.Group | null> }) => {
-  const { scene, animations } = useGLTF("/models/animated_butterfly.glb");
+  const { scene, animations } = useGLTF(`${basePath}/models/animated_butterfly.glb`);
   const { actions } = useAnimations(animations, scene);
   const bRef = useRef<THREE.Group>(null);
   const locations = useGameStore(s => s.locations);
@@ -223,15 +226,15 @@ const Butterfly = ({ playerRef }: { playerRef: React.RefObject<THREE.Group | nul
 
 // --- 4. SCENE & CHUNK LOGIC (GROUNDED TREES) ---
 const SceneManager = ({ playerRef }: { playerRef: React.RefObject<THREE.Group | null> }) => {
-  const { scene: treeModel } = useGLTF("/models/single_tree.glb");
-  const { scene: templeModel } = useGLTF("/models/templeindian.glb");
+  const { scene: treeModel } = useGLTF(`${basePath}/models/single_tree.glb`);
+  const { scene: templeModel } = useGLTF(`${basePath}/models/templeindian.glb`);
 
   // Destructure the necessary state and actions
   const { locations, markVisited, setActiveTemple, activeTemple } = useGameStore();
   const [chunks, setChunks] = useState<string[]>([]);
 
   const gt = useMemo(() => {
-    const tex = new THREE.TextureLoader().load('/shrijigame/grasslight-big.jpg');
+    const tex = new THREE.TextureLoader().load(`${basePath}/shrijigame/grasslight-big.jpg`);
     tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
     tex.repeat.set(4, 4);
     return tex;
@@ -597,7 +600,7 @@ const GoldenPath = ({ playerRef }: { playerRef: React.RefObject<THREE.Group | nu
 
   // Load the "Air/Wind" model (e.g., a leaf or a small wind streak)
   // Use a simple model like a leaf to keep performance high
-  const { nodes } = useGLTF("/models/Plant.glb") as any;
+  const { nodes } = useGLTF(`${basePath}/models/Plant.glb`) as any;
 
   // Get the geometry from the loaded model
   const windGeometry = useMemo(() => {
@@ -667,7 +670,7 @@ const GoldenPath = ({ playerRef }: { playerRef: React.RefObject<THREE.Group | nu
 };
 
 // Pre-load the model just like the butterfly
-useGLTF.preload("/models/Plant.glb");
+useGLTF.preload(`${basePath}/models/Plant.glb`);
 
 const ToastNotification = () => {
   const toastMessage = useGameStore((s) => s.toastMessage);
