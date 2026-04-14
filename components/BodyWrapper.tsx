@@ -28,7 +28,7 @@ export default function BodyWrapper({
     "karyakram-bg": pathname.startsWith("/karyakram"),
     "balkendra-bg": pathname.startsWith("/balkendra"),
     "temples-bg": pathname.startsWith("/temples"),
-    "no-HF": pathname.startsWith("/shrijiworld"),
+    "no-HF": pathname.startsWith("/gamesnquiz"),
     "inner-bg":
       pathname !== "/" &&
       !pathname.startsWith("/satguru") &&
