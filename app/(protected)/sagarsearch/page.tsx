@@ -629,7 +629,7 @@ export default function Page() {
                       className={`p-4 border rounded-3xl bg-white ${i === index ? "border-2 border-orange-600" : ""
                         }`}
                     >
-                      <h3 className="font-bold text-orange-600 mb-2">चोपाई:</h3>
+                      <h3 className="font-bold text-orange-600 mb-2">चौपाई:</h3>
                       <p
                         className="text-xl border-b pb-3  leading-normal"
                         dangerouslySetInnerHTML={{

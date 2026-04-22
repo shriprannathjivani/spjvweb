@@ -7,9 +7,31 @@ import { ArrowUpRight, Binoculars, BookOpenText, Calendar, Clock, Gauge, Globe, 
 import { AnimatePresence, motion } from "framer-motion";
 import { Carousel, CarouselApi, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { CarouselDots } from "@/components/carousel-dots";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { TextAnimate } from "@/components/ui/text-animate";
 import { gamesList, sahiyogitaList } from "@/lib/gamesnquiz"
+import data from '@/public/allvani/chopai.json';
+
+
+export type ChopaiItem = {
+  text: string;
+  chapter: string;
+};
+
+export type LetterGroup = {
+  letter: string;
+  chopai: ChopaiItem[];
+};
+
+// 🎨 Pastel colors
+const colors = [
+  'from-pink-200 via-rose-100 to-yellow-100',
+  'from-green-200 via-lime-100 to-emerald-100',
+  'from-blue-200 via-indigo-100 to-purple-100',
+  'from-yellow-200 via-orange-100 to-pink-100',
+];
+
+const chopaiData = data as LetterGroup[];
 
 const basePath =
   process.env.NODE_ENV === "production" ? "/spjvweb" : "";
@@ -17,6 +39,101 @@ const basePath =
 export default function Page() {
   const [api, setApi] = React.useState<CarouselApi>();
   const [offsetY, setOffsetY] = useState(0);
+  const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
+  const [randomChopai, setRandomChopai] = useState<ChopaiItem | null>(null);
+
+  function formatChopai(text: string) {
+    const parts = text.split("।");
+
+    if (parts.length >= 2) {
+      return parts[0] + "।\n" + parts.slice(1).join("।");
+    }
+
+    return text;
+  }
+  function formatChapter(input: string) {
+    if (!input) return "";
+
+     // 🔹 Language mapping (English → Hindi)
+  const langMap: Record<string, string> = {
+    Raas: "रास",
+    Sindhi: "सिन्धी",
+    Gujarati: "गुजराती",
+    Prakash: "प्रकाश",
+    Kalash: "कलश",
+    Khilvat:"खिलवत",
+    Kirantan:"किरन्तन",
+    Parikrama: "परिकरमा",
+    Singaar: "सिनगार",
+    Hindustani: "हिन्दुस्तानी",
+    Sagar:"सागर",
+    Sanandh:"सनन्ध",
+    Khataruti:"खटरुती",
+    Kayamatnama:"कयामतनामा",
+    Khulasa:"खुलासा",
+  };
+
+//   1. रास
+// 2. प्रकास (गुजराती व हिन्दुस्तानी)
+// 3. खटरुती
+// 4. कलस (गुजराती व हिन्दुस्तानी)
+// 5. सनन्ध
+// 6. किरन्तन
+// 7. खुलासा
+// 8. खिलवत
+// 9. परिकरमा
+// 10. सागर
+// 11. सिनगार
+// 12. सिन्धी
+// 13. मारफत सागर
+// 14. कयामतनामा (छोटा व बड़ा)
+
+    // 🔹 1. Extract chapter info from END (Raas_8_22)
+    const match = input.match(/([A-Za-z]+)_(\d+)_(\d+)$/);
+
+    let lang = "";
+    let chapter = "";
+    let chopai = "";
+
+    if (match) {
+      lang = match[1];
+      chapter = match[2];
+      chopai = match[3];
+    }
+    const langHindi = langMap[lang] || lang;
+    // 🔹 2. Remove chapter part from string
+    let textPart = input.replace(/([A-Za-z]+)_(\d+)_(\d+)$/, "");
+
+    // 🔹 3. Remove Hindi numbering like ।।२२।।
+    textPart = textPart
+      .replace(/।।\s*[०-९]+\s*।।/g, "")
+      .replace(/।\s*[०-९]+\s*।/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    // 🔹 4. Remove leftover underscores
+    textPart = textPart.replace(/_/g, " ").trim();
+
+    // ✅ Final output
+    return (
+    <div className="flex items-center gap-2 flex-wrap">
+      <span className="text-sm text-gray-600">
+        {langHindi} • प्र: {chapter} • चौपाई: {chopai}
+      </span>
+    </div>
+  );
+  }
+
+  // 🎲 Random chopai for idle state
+  useEffect(() => {
+    const all = chopaiData.flatMap(l => l.chopai);
+    const random = all[Math.floor(Math.random() * all.length)];
+    setRandomChopai(random);
+  }, []);
+
+  const currentChopai: ChopaiItem[] = selectedLetter
+    ? chopaiData.find(l => l.letter === selectedLetter)?.chopai || []
+    : [];
 
   // 🌌 Parallax Effect
   useEffect(() => {
@@ -42,13 +159,13 @@ export default function Page() {
             /> */}
 
             <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="object-cover"
             >
-                <source src={`${basePath}/shrijigame/343929_large.mp4`} type="video/mp4" />
+              <source src={`${basePath}/shrijigame/343929_large.mp4`} type="video/mp4" />
             </video>
           </div>
 
@@ -149,7 +266,7 @@ export default function Page() {
           </div>
         </div>
       </section>
-      <section className="relative max-w-7xl mx-auto px-6 py-10 overflow-hidden pt-0 text-center font-arya ">
+      <section className="relative max-w-7xl mx-auto px-6 py-10 pt-0 text-center font-arya ">
         <div className=" relative flex h-125 w-full flex-col items-center justify-center ">
           <h2 className="text-4xl flex flex-row font-semibold tracking-tight text-balance text-gray-900 sm:mt-0 mt-25 sm:text-5xl">
             <TextAnimate animation="blurInUp" startOnView delay={0.3}>
@@ -461,6 +578,115 @@ export default function Page() {
           </Carousel>
         </div>
 
+
+        <div className="max-w-7xl mx-auto py-12 pt-8 text-start">
+          {/* Heading */}
+          <h2 className="text-3xl font-bold text-black mb-8">
+            ब्रह्मवाणी अंताक्षरी
+            <p className="mt-2 text-xl text-gray-500">वर्णानुसार श्री तारतम वाणी चौपाइयाँ</p>
+          </h2>
+          {/* Responsive Grid */}
+
+
+          <div className="w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+              {/* 🌍 LEFT - STICKY */}
+              <div className="lg:col-span-1">
+
+                {/* ✅ Sticky only on desktop */}
+                <div className="sticky top-24">
+
+                  <div className="bg-white rounded-3xl p-6">
+
+                    <h2 className="text-xl font-bold mb-4 text-gray-700 text-center">
+                      अक्षर
+                    </h2>
+
+                    {/* ✅ FIXED MOBILE SCROLL */}
+                    <div className="
+                        flex 
+                        flex-nowrap flex-wrap   /* 🔥 key fix */
+                        gap-2 
+                       
+                      ">
+
+                      {chopaiData.map((item) => (
+                        <button
+                          key={item.letter}
+                          onClick={() => setSelectedLetter(item.letter)}
+                          className={`px-4 py-2 rounded-xl font-semibold whitespace-nowrap shrink-0 transition cursor-pointer ${selectedLetter === item.letter
+                            ? 'bg-orange-500 border-2 border-black text-white shadow-md'
+                            : 'bg-white hover:bg-orange-100 border-2 border-transparent'
+                            }`}
+                        >
+                          {item.letter}
+                        </button>
+                      ))}
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              {/* 📜 RIGHT CONTENT */}
+              <div className="lg:col-span-2">
+                <div className="bg-white rounded-3xl p-6 w-full max-w-full overflow-hidden">
+
+                  {/* 🧘 Idle State */}
+                  {!selectedLetter && randomChopai && (
+                    <div className="blockquote-wrapper bg-transparant rounded-3xl">
+                      <div className="blockquote w-full max-w-full overflow-hidden">
+                        <h1 className="wrap-break-word whitespace-pre-line leading-normal font-poppins">
+                          {formatChopai(randomChopai.text)}
+                        </h1>
+                        <h4 className="wrap-break-word">
+                          &mdash; श्री तारतम वाणी <br />
+                          <em>{formatChapter(randomChopai.chapter)}</em>
+                        </h4>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* 📖 Selected Letter */}
+                  {selectedLetter && (
+                    <>
+                      <h2 className="text-2xl font-bold mb-6 text-gray-700 pb-2 border-b border-gray-100">
+                        अक्षर: {selectedLetter}
+                      </h2>
+
+                      {/* ✅ FIX GRID FOR MOBILE */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+
+                        {currentChopai.map((item, i) => (
+                          <div key={i} className="blockquote-wrapper bg-transparant rounded-3xl">
+                            <div className="blockquote blockquote2 w-full max-w-full overflow-hidden wrap-break-word">
+
+                              <h1 className="wrap-break-word whitespace-pre-line leading-normal text-base! font-poppins">
+                                {formatChopai(item.text)}
+                              </h1>
+
+                              {/* ❌ removed ms-22! (was causing overflow) */}
+                              <h4 className="wrap-break-word whitespace-pre-line text-sm!">
+                                &mdash; श्री तारतम वाणी <br />
+                                <em>{formatChapter(item.chapter)}</em>
+                              </h4>
+
+                            </div>
+                          </div>
+                        ))}
+
+                      </div>
+                    </>
+                  )}
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
 
       </section>
     </>
