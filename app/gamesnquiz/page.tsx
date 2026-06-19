@@ -13,6 +13,19 @@ import { gamesList, sahiyogitaList } from "@/lib/gamesnquiz"
 import data from '@/public/allvani/chopai.json';
 
 
+
+export interface Question {
+  id: number;
+  question: string;
+  options: string[];
+  correctAnswer: string;
+}
+
+export interface Chapter {
+  id: number;
+  questions: Question[];
+}
+
 export type ChopaiItem = {
   text: string;
   chapter: string;
@@ -41,6 +54,73 @@ export default function Page() {
   const [offsetY, setOffsetY] = useState(0);
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
   const [randomChopai, setRandomChopai] = useState<ChopaiItem | null>(null);
+  const [chapters, setChapters] = useState<Chapter[]>([]);
+  const [activeChapterId, setActiveChapterId] = useState<number>(1);
+  const [userAnswers, setUserAnswers] = useState<Record<string, string>>({});
+  const [loading, setLoading] = useState(true);
+
+
+const parseQuizText = (text: string): Chapter[] => {
+  const chapterBlocks = text.split(/——————————————/);
+
+  return chapterBlocks
+    .map((block, index) => {
+      // Split by Q followed by a number
+      const questionBlocks = block.split(/Q\d+\./).filter(q => q.trim().length > 5);
+
+      const questions: Question[] = questionBlocks.map((qBlock, qIdx) => {
+        const lines = qBlock.trim().split("\n");
+        const questionText = lines[0].trim();
+        
+        let detectedCorrectAnswer = "";
+
+        const options = lines
+          .filter(line => /^[A-D]\./.test(line.trim()) || line.trim().includes("✔️"))
+          .map(line => {
+            let cleanLine = line.trim();
+            
+            // 1. Check if this specific line is marked as correct
+            if (cleanLine.includes("✔️")) {
+              // 2. Extract the actual text value before we clean it
+              // We remove the emoji, the stars, and the "A. " prefix
+              const value = cleanLine
+                .replace("✔️", "")
+                .replace(/\*\*/g, "")
+                .replace(/^[A-D]\.\s*/, "")
+                .trim();
+              
+              detectedCorrectAnswer = value;
+              cleanLine = cleanLine.replace("✔️", "").replace(/\*\*/g, "");
+            }
+
+            // 3. Clean all options of A. B. C. D. prefixes for the button labels
+            return cleanLine.replace(/^[A-D]\.\s*/, "").trim();
+          });
+
+        // 4. Fallback: If no ✔️ was found, look for the "Correct Answer:" line
+        if (!detectedCorrectAnswer) {
+          const answerMatch = qBlock.match(/Correct Answer:\s*(.*)/);
+          detectedCorrectAnswer = answerMatch ? answerMatch[1].trim() : "";
+        }
+
+        return {
+          id: qIdx + 1,
+          question: questionText,
+          options,
+          correctAnswer: detectedCorrectAnswer,
+        };
+      });
+
+      return { id: index + 1, questions };
+    })
+    .filter(chapter => chapter.questions.length > 0);
+};
+
+  const currentChapter = chapters.find(c => c.id === activeChapterId);
+
+  const handleSelect = (chapterId: number, questionId: number, option: string) => {
+    setUserAnswers(prev => ({ ...prev, [`${chapterId}-${questionId}`]: option }));
+  };
 
   function formatChopai(text: string) {
     const parts = text.split("।");
@@ -54,39 +134,39 @@ export default function Page() {
   function formatChapter(input: string) {
     if (!input) return "";
 
-     // 🔹 Language mapping (English → Hindi)
-  const langMap: Record<string, string> = {
-    Raas: "रास",
-    Sindhi: "सिन्धी",
-    Gujarati: "गुजराती",
-    Prakash: "प्रकाश",
-    Kalash: "कलश",
-    Khilvat:"खिलवत",
-    Kirantan:"किरन्तन",
-    Parikrama: "परिकरमा",
-    Singaar: "सिनगार",
-    Hindustani: "हिन्दुस्तानी",
-    Sagar:"सागर",
-    Sanandh:"सनन्ध",
-    Khataruti:"खटरुती",
-    Kayamatnama:"कयामतनामा",
-    Khulasa:"खुलासा",
-  };
+    // 🔹 Language mapping (English → Hindi)
+    const langMap: Record<string, string> = {
+      Raas: "रास",
+      Sindhi: "सिन्धी",
+      Gujarati: "गुजराती",
+      Prakash: "प्रकाश",
+      Kalash: "कलश",
+      Khilvat: "खिलवत",
+      Kirantan: "किरन्तन",
+      Parikrama: "परिकरमा",
+      Singaar: "सिनगार",
+      Hindustani: "हिन्दुस्तानी",
+      Sagar: "सागर",
+      Sanandh: "सनन्ध",
+      Khataruti: "खटरुती",
+      Kayamatnama: "कयामतनामा",
+      Khulasa: "खुलासा",
+    };
 
-//   1. रास
-// 2. प्रकास (गुजराती व हिन्दुस्तानी)
-// 3. खटरुती
-// 4. कलस (गुजराती व हिन्दुस्तानी)
-// 5. सनन्ध
-// 6. किरन्तन
-// 7. खुलासा
-// 8. खिलवत
-// 9. परिकरमा
-// 10. सागर
-// 11. सिनगार
-// 12. सिन्धी
-// 13. मारफत सागर
-// 14. कयामतनामा (छोटा व बड़ा)
+    //   1. रास
+    // 2. प्रकास (गुजराती व हिन्दुस्तानी)
+    // 3. खटरुती
+    // 4. कलस (गुजराती व हिन्दुस्तानी)
+    // 5. सनन्ध
+    // 6. किरन्तन
+    // 7. खुलासा
+    // 8. खिलवत
+    // 9. परिकरमा
+    // 10. सागर
+    // 11. सिनगार
+    // 12. सिन्धी
+    // 13. मारफत सागर
+    // 14. कयामतनामा (छोटा व बड़ा)
 
     // 🔹 1. Extract chapter info from END (Raas_8_22)
     const match = input.match(/([A-Za-z]+)_(\d+)_(\d+)$/);
@@ -116,19 +196,35 @@ export default function Page() {
 
     // ✅ Final output
     return (
-    <div className="flex items-center gap-2 flex-wrap">
-      <span className="text-sm text-gray-600">
-        {langHindi} • प्र: {chapter} • चौपाई: {chopai}
-      </span>
-    </div>
-  );
+      <div className="flex items-center gap-2 flex-wrap">
+        <span className="text-sm text-gray-600">
+          {langHindi} • प्र: {chapter} • चौपाई: {chopai}
+        </span>
+      </div>
+    );
   }
+
 
   // 🎲 Random chopai for idle state
   useEffect(() => {
     const all = chopaiData.flatMap(l => l.chopai);
     const random = all[Math.floor(Math.random() * all.length)];
     setRandomChopai(random);
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/allvani/quiz-data.txt'); // Ensure this matches your filename
+        const text = await response.text();
+        const parsed = parseQuizText(text);
+        setChapters(parsed);
+        if (parsed.length > 0) setActiveChapterId(parsed[0].id);
+      } catch (error) {
+        console.error("Error loading quiz data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
   }, []);
 
   const currentChopai: ChopaiItem[] = selectedLetter
@@ -141,6 +237,9 @@ export default function Page() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+
+
   return (
     <>
       <div className="p-8 bg-white"></div>
@@ -249,7 +348,7 @@ export default function Page() {
 
               </div>
               {/* ================= BUTTON ================= */}
-              <a href={`${basePath}/gamesnquiz/shrijiworld`} className="group group-hover:scale-110 inline-flex relative px-14 text-2xl 2xl overflow-hidden mb-12 cursor-pointer bg-linear-to-b from-[#ffd166] to-[#f7a400] text-[#422006] font-black py-4 rounded-2xl shadow-[0_4px_0_#b37700] active:translate-y-1 active:shadow-none transition-all  uppercase tracking-wider ">
+              <a href={`${basePath}/gamesnquiz/shrijiworld`} className="group group-hover:scale-110 inline-flex relative px-14 text-2xl 2xl overflow-hidden mb-12 cursor-pointer bg-linear-to-b from-[#ffd166] to-[#f7a400] text-[#422006] font-black py-4 rounded-3xl shadow-[0_4px_0_#b37700] active:translate-y-1 active:shadow-none transition-all  uppercase tracking-wider ">
                 {/* ⚡ SHINE SWEEP */}
                 <span className="absolute inset-0 
                 bg-linear-to-r from-transparent via-white/50 to-transparent 
@@ -262,6 +361,18 @@ export default function Page() {
                   3D गेम शुरू करें
                 </span>
               </a>
+              {/* <a href={`${basePath}/gamesnquiz/Khadokali`} className="ms-4 group group-hover:scale-110 inline-flex relative px-14 text-2xl 2xl overflow-hidden mb-12 cursor-pointer bg-linear-to-b from-[#ffd166] to-[#f7a400] text-[#422006] font-black py-4 rounded-3xl shadow-[0_4px_0_#b37700] active:translate-y-1 active:shadow-none transition-all  uppercase tracking-wider ">
+                
+                <span className="absolute inset-0 
+                bg-linear-to-r from-transparent via-white/50 to-transparent 
+                translate-x-[-120%] group-hover:translate-x-[120%] 
+                transition-transform duration-1000">
+                </span>
+
+                <span className="relative z-10 text-[#422006] ">
+                  खडोकली
+                </span>
+              </a> */}
             </div>
           </div>
         </div>
@@ -406,7 +517,7 @@ export default function Page() {
                         <div className="card-circle">{index + 1}</div>
                         <div
                           key={index}
-                          className="group  h-full bg-white rounded-2xl transition-all duration-300  cursor-pointer cardCustome !p-0"
+                          className="group  h-full bg-white rounded-3xl transition-all duration-300  cursor-pointer cardCustome !p-0"
                         >
 
                           <Image height={342} width={608}
@@ -512,7 +623,7 @@ export default function Page() {
                       <div className="card-circle">{index + 1}</div>
                       <div
                         key={index}
-                        className="group bg-white rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 cursor-pointer cardCustome"
+                        className="group bg-white rounded-3xl p-6 transition-all duration-300 hover:-translate-y-1 cursor-pointer cardCustome"
                       >
                         <div className="flex items-start justify-start gap-2">
                           <Image height={60} width={60} alt="question icon" src="/question.gif" />
@@ -688,6 +799,114 @@ export default function Page() {
           </div>
         </div>
 
+        <div className="max-w-7xl mx-auto py-12 pt-8 text-start">
+          <div className="min-h-screen">
+            {/* Container with requested Grid layout */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+
+              {/* --- Sidebar (Left: 1 Column on Desktop) --- */}
+              <div className="sticky top-24 h-fit">
+                <aside className="lg:col-span-1 space-y-4 ">
+                  <div className="bg-white p-6 rounded-3xl  ">
+                    <h2 className="text-xl text-center font-bold text-black mb-4 border-b border-orange-50 pb-2">
+                      श्री बीतक साहेब क्विज़
+                    </h2>
+                    <nav className="grid grid-cols-4 lg:grid-cols-3 gap-2">
+                      {chapters.map((chapter) => (
+                        <button
+                          key={chapter.id}
+                          onClick={() => setActiveChapterId(chapter.id)}
+                          className={`flex items-center gap-3 px-4 py-3 rounded-xl  cursor-pointer transition-all duration-200 border-2 ${activeChapterId === chapter.id
+                            ? 'bg-orange-500 border-2 border-black text-white shadow-md'
+                            : 'bg-white hover:bg-orange-100 border-2 border-transparent'
+                            }`}
+                        >
+                          <span className={`w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold ${activeChapterId === chapter.id ? "bg-white/20" : "bg-orange-100 text-orange-600"
+                            }`}>
+                            {chapter.id}
+                          </span>
+                          <span className="hidden lg:inline font-medium">क्विज़</span>
+                        </button>
+                      ))}
+                    </nav>
+                  </div>
+
+
+                </aside>
+              </div>
+
+              {/* --- Main Section (Right: 2 Columns on Desktop) --- */}
+              <main className="lg:col-span-2 bg-white rounded-3xl p-6 w-full max-w-full overflow-hidden">
+                {currentChapter ? (
+                  <>
+                    <h1 className="text-2xl font-bold mb-6 text-gray-700 pb-2 border-b border-gray-100">
+                      क्विज़: {currentChapter.id}
+                    </h1>
+
+
+                    <div className="space-y-8">
+                      {currentChapter.questions.map((q) => {
+                        const selection = userAnswers[`${currentChapter.id}-${q.id}`];
+                        const isCorrect = selection === q.correctAnswer;
+
+                        return (
+                          <div key={q.id} className="border-b border-slate-100">
+                            <h3 className="text-xl font-bold text-slate-800 mb-8 leading-relaxed flex gap-4">
+                              <span className="text-orange-600">Q{q.id}.</span>
+                              {q.question}
+                            </h3>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              {q.options.map((option, idx) => (
+                                <button
+                                  key={idx}
+                                  onClick={() => handleSelect(currentChapter.id, q.id, option)}
+                                  className={`p-4 rounded-xl text-left border-2 transition-all duration-200 group ${selection === option
+                                    ? isCorrect
+                                      ? "bg-emerald-50 border-emerald-500 text-emerald-700"
+                                      : "bg-orange-50 border-orange-600 text-orange-700"
+                                    : "bg-slate-50 border-transparent hover:border-orange-200 hover:bg-orange-50/50"
+                                    }`}
+                                >
+                                  <span className="font-bold text-orange-600 mr-3 group-hover:scale-110 transition-transform inline-block">
+                                    {String.fromCharCode(65 + idx)}.
+                                  </span>
+                                  {option}
+                                </button>
+                              ))}
+                            </div>
+
+                            {selection && (
+                              <div className={`mt-6 p-4 rounded-xl border-l-4 font-medium animate-in fade-in slide-in-from-top-2 ${isCorrect
+                                ? "bg-emerald-50 border-emerald-500 text-emerald-700"
+                                : "bg-orange-50 border-orange-600 text-orange-800"
+                                }`}>
+                                {isCorrect ? (
+                                  <div className="flex items-center gap-2">
+                                    <span>✨</span> सही उत्तर! बहुत बढ़िया।
+                                  </div>
+                                ) : (
+                                  <div className="flex flex-col">
+                                    <span className="text-xs uppercase tracking-tighter opacity-70">सही उत्तर</span>
+                                    <span className="text-lg font-bold">{q.correctAnswer}</span>
+                                  </div>
+                                )}
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </>
+                ) : (
+                  <div className="h-64 flex items-center justify-center bg-white rounded-3xl border-2 border-dashed border-orange-100 text-orange-300 italic">
+                    अध्याय का चयन करें
+                  </div>
+                )}
+              </main>
+            </div>
+          </div>
+        </div>
       </section>
     </>
   )

@@ -30,7 +30,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "SPJV App",
+  title: "श्री प्राणनाथ जी वाणी",
   description: "SPJV APP made by love for all.",
 };
 const basePath =
