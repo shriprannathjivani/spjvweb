@@ -213,7 +213,7 @@ const parseQuizText = (text: string): Chapter[] => {
 
     const fetchData = async () => {
       try {
-        const response = await fetch('/allvani/quiz-data.txt'); // Ensure this matches your filename
+        const response = await fetch(`${basePath}/allvani/quiz-data.txt`); // Ensure this matches your filename
         const text = await response.text();
         const parsed = parseQuizText(text);
         setChapters(parsed);
