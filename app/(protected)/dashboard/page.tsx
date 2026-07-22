@@ -18,6 +18,12 @@ export default function Dashboard() {
 
   const cards = [
     {
+      title: "संपूर्ण श्री तारतम वाणी — खोज",
+      desc: `अब आप "श्री तारतम वाणी & श्री बीतक साहेब" चौपाई को खोज सकते हैं या सभी अध्याय पढ़ सकते हैं।`,
+      image: "/icall_book_open.png",
+      link: "/allchaupais",
+    },
+    {
       title: "श्री बीतक साहेब खोज",
       desc: `अब आप "श्री बीतक साहेब" चौपाई को खोज सकते हैं या सभी अध्याय पढ़ सकते हैं।`,
       image: "/ic_bitaksaheb.png",
