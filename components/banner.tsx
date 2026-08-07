@@ -15,7 +15,7 @@ export default function BottomBanner() {
     // close after 5 seconds
     const closeTimer = setTimeout(() => {
       setOpen(false);
-    }, 111115700); // 700 + 5000
+    }, 5700); // 700 + 5000
 
     return () => {
       clearTimeout(openTimer);
