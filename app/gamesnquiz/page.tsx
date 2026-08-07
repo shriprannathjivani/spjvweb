@@ -11,6 +11,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { TextAnimate } from "@/components/ui/text-animate";
 import { gamesList, sahiyogitaList } from "@/lib/gamesnquiz"
 import data from '@/public/allvani/chopai.json';
+import { Ripple } from "@/components/ui/ripple";
 
 
 
@@ -60,61 +61,61 @@ export default function Page() {
   const [loading, setLoading] = useState(true);
 
 
-const parseQuizText = (text: string): Chapter[] => {
-  const chapterBlocks = text.split(/——————————————/);
+  const parseQuizText = (text: string): Chapter[] => {
+    const chapterBlocks = text.split(/——————————————/);
 
-  return chapterBlocks
-    .map((block, index) => {
-      // Split by Q followed by a number
-      const questionBlocks = block.split(/Q\d+\./).filter(q => q.trim().length > 5);
+    return chapterBlocks
+      .map((block, index) => {
+        // Split by Q followed by a number
+        const questionBlocks = block.split(/Q\d+\./).filter(q => q.trim().length > 5);
 
-      const questions: Question[] = questionBlocks.map((qBlock, qIdx) => {
-        const lines = qBlock.trim().split("\n");
-        const questionText = lines[0].trim();
-        
-        let detectedCorrectAnswer = "";
+        const questions: Question[] = questionBlocks.map((qBlock, qIdx) => {
+          const lines = qBlock.trim().split("\n");
+          const questionText = lines[0].trim();
 
-        const options = lines
-          .filter(line => /^[A-D]\./.test(line.trim()) || line.trim().includes("✔️"))
-          .map(line => {
-            let cleanLine = line.trim();
-            
-            // 1. Check if this specific line is marked as correct
-            if (cleanLine.includes("✔️")) {
-              // 2. Extract the actual text value before we clean it
-              // We remove the emoji, the stars, and the "A. " prefix
-              const value = cleanLine
-                .replace("✔️", "")
-                .replace(/\*\*/g, "")
-                .replace(/^[A-D]\.\s*/, "")
-                .trim();
-              
-              detectedCorrectAnswer = value;
-              cleanLine = cleanLine.replace("✔️", "").replace(/\*\*/g, "");
-            }
+          let detectedCorrectAnswer = "";
 
-            // 3. Clean all options of A. B. C. D. prefixes for the button labels
-            return cleanLine.replace(/^[A-D]\.\s*/, "").trim();
-          });
+          const options = lines
+            .filter(line => /^[A-D]\./.test(line.trim()) || line.trim().includes("✔️"))
+            .map(line => {
+              let cleanLine = line.trim();
 
-        // 4. Fallback: If no ✔️ was found, look for the "Correct Answer:" line
-        if (!detectedCorrectAnswer) {
-          const answerMatch = qBlock.match(/Correct Answer:\s*(.*)/);
-          detectedCorrectAnswer = answerMatch ? answerMatch[1].trim() : "";
-        }
+              // 1. Check if this specific line is marked as correct
+              if (cleanLine.includes("✔️")) {
+                // 2. Extract the actual text value before we clean it
+                // We remove the emoji, the stars, and the "A. " prefix
+                const value = cleanLine
+                  .replace("✔️", "")
+                  .replace(/\*\*/g, "")
+                  .replace(/^[A-D]\.\s*/, "")
+                  .trim();
 
-        return {
-          id: qIdx + 1,
-          question: questionText,
-          options,
-          correctAnswer: detectedCorrectAnswer,
-        };
-      });
+                detectedCorrectAnswer = value;
+                cleanLine = cleanLine.replace("✔️", "").replace(/\*\*/g, "");
+              }
 
-      return { id: index + 1, questions };
-    })
-    .filter(chapter => chapter.questions.length > 0);
-};
+              // 3. Clean all options of A. B. C. D. prefixes for the button labels
+              return cleanLine.replace(/^[A-D]\.\s*/, "").trim();
+            });
+
+          // 4. Fallback: If no ✔️ was found, look for the "Correct Answer:" line
+          if (!detectedCorrectAnswer) {
+            const answerMatch = qBlock.match(/Correct Answer:\s*(.*)/);
+            detectedCorrectAnswer = answerMatch ? answerMatch[1].trim() : "";
+          }
+
+          return {
+            id: qIdx + 1,
+            question: questionText,
+            options,
+            correctAnswer: detectedCorrectAnswer,
+          };
+        });
+
+        return { id: index + 1, questions };
+      })
+      .filter(chapter => chapter.questions.length > 0);
+  };
 
   const currentChapter = chapters.find(c => c.id === activeChapterId);
 
@@ -242,236 +243,35 @@ const parseQuizText = (text: string): Chapter[] => {
 
   return (
     <>
-      <div className="p-8 bg-white"></div>
-      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden text-white">
+      <section className="relative max-w-7xl mx-auto px-6 py-10 overflow-hidden pt-0 font-arya ">
 
-        {/* ================= BACKGROUND LAYERS ================= */}
-        <div className="absolute inset-0 -z-10">
+        {/* 🔶 कार्यक्रम */}
+        <div className=" relative flex h-[500px] w-full flex-col items-center justify-center text-center " id="game">
 
-          {/* PARALLAX BG */}
-          <div className="absolute inset-0 scale-110 animate-[slowZoom_20s_linear_infinite]">
-            {/* <Image
-              src="/shrijigame/unnamed.png"
-              fill
-              alt=""
-              className="object-cover"
-            /> */}
-
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="object-cover"
-            >
-              <source src={`${basePath}/shrijigame/343929_large.mp4`} type="video/mp4" />
-            </video>
-          </div>
-
-          {/* DARK OVERLAY */}
-          <div className="absolute inset-0 bg-black/50" />
-
-          {/* GRADIENT LIGHT */}
-          <div className="absolute inset-0 bg-linear-to-b from-primary/30 via-transparent to-[#fcf0ea]" />
-        </div>
-
-        {/* ================= BADGES ================= */}
-        <div className="relative z-20 flex flex-wrap justify-center gap-4 mb-0 mt-8">
-          {[
-            { icon: <Globe size={20} />, text: "3D World", rotate: "-rotate-3" },
-            { icon: <Binoculars size={20} />, text: "Epic Quests", rotate: "rotate-2" },
-            { icon: <BookOpenText size={20} />, text: "Ancient Lore", rotate: "-rotate-1" }
-          ].map((item, i) => (
-            <div
-              key={i}
-              className={`bg-white/10 backdrop-blur-xl border border-white/20 px-6 py-3 rounded-full shadow-2xl flex items-center gap-2 ${item.rotate} hover:rotate-0 hover:scale-110 transition-all duration-300`}
-            >
-              {item.icon}
-              <span className="font-bold">{item.text}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* ================= CONTENT ================= */}
-        <div className="relative z-20 text-center max-w-5xl px-6 py-8">
-
-          {/* TITLE */}
-          <h1 className="text-5xl md:text-6xl font-black  mb-6 
-              [text-shadow:0_4px_20px_rgba(0,0,0,0.8),0_0px_40px_rgba(255,200,0,0.3)]">
-            श्री जी <br />
-            <span className="text-yellow-400 drop-shadow-[0_0_25px_rgba(255,200,0,0.8)]">
-              3D वर्ल्ड गेम
-            </span>
-          </h1>
-
-          {/* SUBTEXT */}
-          <TextAnimate animation="blurInUp" by="line"
-            delay={0.5}
-            segmentClassName="p" startOnView className="text-xl md:text-2xl text-white/80 mb-12 max-w-2xl mx-auto">
-            एक दिव्य 3D अनुभव, जहाँ खेल-खेल में खोजें मंदिर और जानें श्री जी की अद्भुत लीलाओं का इतिहास। ✨
-          </TextAnimate>
-
-          <div className="flex gap-4 items-start justify-center">
-            {/* ================= AVATAR ================= */}
-            <div className="relative mb-8 group flex justify-center sm:shrink-0">
-
-              <div className="absolute -inset-4 bg-amber-400/20 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-              </div>
-              {/* IMAGE */}
-              <Image
-                src={`/shrijigame/bitaksearch_avtar.png`}
-                alt=""
-                width={320}
-                height={320}
-                className="relative z-10 drop-shadow-[0_50px_60px_rgba(0,0,0,0.9)] group-hover:scale-110 transition-transform duration-500"
-              />
-            </div>
-            <div>
-              <div className="space-y-6 text-center lg:text-left mb-16">
-                <div>
-                  <TextAnimate animation="blurInUp" startOnView delay={0.3} className="mt-3 text-xl md:text-2xl text-white/80">
-                    आइए खेलें एक दिव्य खेल और पाएं श्री जी का ज्ञान!
-
-                    अब तक हमने श्री जी की लीलाओं को सुना, समझा और विश्वास किया…
-                    लेकिन अब समय है उसे महसूस करने का
-                  </TextAnimate>
-                </div>
-
-                <TextAnimate animation="blurInUp" by="line"
-                  delay={0.5}
-                  segmentClassName="p" startOnView className=" text-xl md:text-2xl text-white/80 mb-4">
-                  इस 3D दुनिया में बच्चे:
-                  ✨ मंदिर खोजेंगे
-                  ✨ श्री जी की लीलाओं को जानेंगे
-                  ✨ खेल-खेल में दिव्य ज्ञान प्राप्त करेंगे
-                </TextAnimate>
-
-              </div>
-              {/* ================= BUTTON ================= */}
-              <a href={`${basePath}/gamesnquiz/shrijiworld`} className="group group-hover:scale-110 inline-flex relative px-14 text-2xl 2xl overflow-hidden mb-12 cursor-pointer bg-linear-to-b from-[#ffd166] to-[#f7a400] text-[#422006] font-black py-4 rounded-3xl shadow-[0_4px_0_#b37700] active:translate-y-1 active:shadow-none transition-all  uppercase tracking-wider ">
-                {/* ⚡ SHINE SWEEP */}
-                <span className="absolute inset-0 
-                bg-linear-to-r from-transparent via-white/50 to-transparent 
-                translate-x-[-120%] group-hover:translate-x-[120%] 
-                transition-transform duration-1000">
-                </span>
-
-                {/* 📝 TEXT */}
-                <span className="relative z-10 text-[#422006] ">
-                  3D गेम शुरू करें
-                </span>
-              </a>
-              {/* <a href={`${basePath}/gamesnquiz/Khadokali`} className="ms-4 group group-hover:scale-110 inline-flex relative px-14 text-2xl 2xl overflow-hidden mb-12 cursor-pointer bg-linear-to-b from-[#ffd166] to-[#f7a400] text-[#422006] font-black py-4 rounded-3xl shadow-[0_4px_0_#b37700] active:translate-y-1 active:shadow-none transition-all  uppercase tracking-wider ">
-                
-                <span className="absolute inset-0 
-                bg-linear-to-r from-transparent via-white/50 to-transparent 
-                translate-x-[-120%] group-hover:translate-x-[120%] 
-                transition-transform duration-1000">
-                </span>
-
-                <span className="relative z-10 text-[#422006] ">
-                  खडोकली
-                </span>
-              </a> */}
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="relative max-w-7xl mx-auto px-6 py-10 pt-0 text-center font-arya ">
-        <div className=" relative flex h-125 w-full flex-col items-center justify-center ">
-          <h2 className="text-4xl flex flex-row font-semibold tracking-tight text-balance text-gray-900 sm:mt-0 mt-25 sm:text-5xl">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
             <TextAnimate animation="blurInUp" startOnView delay={0.3}>
-              गेम्स&nbsp;
+              लाइव क्विज़, गूगल क्विज़, गेम क्विज़  &nbsp;
             </TextAnimate>{"  "}
             <span className="text-orange-500">
               <TextAnimate animation="blurInUp" startOnView delay={0.5}>
-                व क्विज़
+                व ब्रह्मवाणी अंताक्षरी
               </TextAnimate>
             </span>
           </h2>
           <TextAnimate animation="blurInUp" by="line"
             delay={0.3}
-            segmentClassName="block" startOnView className="mt-4 text-muted-foreground text-xl  mb-4">
-            {`हम 'बाल आत्मदर्शनम्' कार्यक्रम में नए और मजेदार गेम लेकर आए हैं, जहां खेलते-खेलते मिलेगा ज्ञान! \n🕹️ खेल के माध्यम से बच्चे धर्म को रोचक तरीके से जानेंगे और समझेंगे।\n✔️ धर्म और जीवन में इसके अनमोल महत्व को जानें और आत्मा की गहराई में खो जाने का अनुभव करें।`}
+            segmentClassName="block" startOnView className="mt-4 text-muted-foreground text-xl  mb-12">
+            {`ज्ञान, मनोरंजन और आध्यात्मिक सीख से भरपूर खेल एवं गतिविधियाँ`}
           </TextAnimate>
-          <TextAnimate animation="blurInUp" by="line"
-            delay={0.5}
-            segmentClassName="p" startOnView className="text-xl text-orange-900 mb-4">
-            इस साल 12000+ से ज्यादा बाल/सुंदरसाथ इसमें हिस्सा ले चुके हैं।
-          </TextAnimate>
-          <div className="flex -space-x-2">
-            <motion.div
-              initial={{ y: 60, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 0.6,
-                delay: 0.1
-              }}
-            >
-              <Image height={40} width={40} src="/psbimg1.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-            </motion.div>
-            <motion.div
-              initial={{ y: 60, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 0.6,
-                delay: 0.2
-              }}
-            >
-              <Image height={40} width={40} src="/psbimg2.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-            </motion.div>
-            <motion.div
-              initial={{ y: 60, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 0.6,
-                delay: 0.3
-              }}
-            >
-              <Image height={40} width={40} src="/psbimg3.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-            </motion.div>
-            <motion.div
-              initial={{ y: 60, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 0.6,
-                delay: 0.4
-              }}
-            >
-              <Image height={40} width={40} src="/psbimg4.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-            </motion.div>
-            <motion.div
-              initial={{ y: 60, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 0.6,
-                delay: 0.5
-              }}
-            >
-              <Image height={40} width={40} src="/psbimg5.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-            </motion.div>
-            <motion.div
-              initial={{ y: 60, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 0.6,
-                delay: 0.6
-              }}
-            >
-              <Image height={40} width={40} src="/psbimg6.png" alt="" className="inline-block size-10 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
-            </motion.div>
-          </div>
+          <Ripple />
         </div>
-
         {/* 🔶 गेम्स & क्विज़  */}
-        <div className="">
-          <div className="max-w-7xl mx-auto py-12 pt-8 text-start">
-
-
+        <div className="mt-[-100px]" >
+          <div className="max-w-7xl mx-auto py-12 pt-0 text-start">
 
             <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-16">
               {/* Heading */}
-              <h2 className="text-3xl font-bold text-black mb-8">
+              <h2 className="text-3xl font-bold text-black mb-8" >
                 गेम्स
                 <p className="mt-2 text-xl text-gray-500">बच्चों के लिए रचनात्मक खेल</p>
 
@@ -588,7 +388,7 @@ const parseQuizText = (text: string): Chapter[] => {
 
         </div>
 
-        <div className="max-w-7xl mx-auto py-12 pt-8 text-start">
+        <div className="max-w-7xl mx-auto py-12 pt-32 text-start" id="google">
           {/* Heading */}
           <h2 className="text-3xl font-bold text-black mb-8">
             गूगल क्विज़
@@ -688,118 +488,7 @@ const parseQuizText = (text: string): Chapter[] => {
             </div>
           </Carousel>
         </div>
-
-
-        <div className="max-w-7xl mx-auto py-12 pt-8 text-start">
-          {/* Heading */}
-          <h2 className="text-3xl font-bold text-black mb-8">
-            ब्रह्मवाणी अंताक्षरी
-            <p className="mt-2 text-xl text-gray-500">वर्णानुसार श्री तारतम वाणी चौपाइयाँ</p>
-          </h2>
-          {/* Responsive Grid */}
-
-
-          <div className="w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-
-              {/* 🌍 LEFT - STICKY */}
-              <div className="lg:col-span-1">
-
-                {/* ✅ Sticky only on desktop */}
-                <div className="sticky top-24">
-
-                  <div className="bg-white rounded-3xl p-6">
-
-                    <h2 className="text-xl font-bold mb-4 text-gray-700 text-center">
-                      अक्षर
-                    </h2>
-
-                    {/* ✅ FIXED MOBILE SCROLL */}
-                    <div className="
-                        flex 
-                        flex-nowrap flex-wrap   /* 🔥 key fix */
-                        gap-2 
-                       
-                      ">
-
-                      {chopaiData.map((item) => (
-                        <button
-                          key={item.letter}
-                          onClick={() => setSelectedLetter(item.letter)}
-                          className={`px-4 py-2 rounded-xl font-semibold whitespace-nowrap shrink-0 transition cursor-pointer ${selectedLetter === item.letter
-                            ? 'bg-orange-500 border-2 border-black text-white shadow-md'
-                            : 'bg-white hover:bg-orange-100 border-2 border-transparent'
-                            }`}
-                        >
-                          {item.letter}
-                        </button>
-                      ))}
-
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-              {/* 📜 RIGHT CONTENT */}
-              <div className="lg:col-span-2">
-                <div className="bg-white rounded-3xl p-6 w-full max-w-full overflow-hidden">
-
-                  {/* 🧘 Idle State */}
-                  {!selectedLetter && randomChopai && (
-                    <div className="blockquote-wrapper bg-transparant rounded-3xl">
-                      <div className="blockquote w-full max-w-full overflow-hidden">
-                        <h1 className="wrap-break-word whitespace-pre-line leading-normal font-poppins">
-                          {formatChopai(randomChopai.text)}
-                        </h1>
-                        <h4 className="wrap-break-word">
-                          &mdash; श्री तारतम वाणी <br />
-                          <em>{formatChapter(randomChopai.chapter)}</em>
-                        </h4>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* 📖 Selected Letter */}
-                  {selectedLetter && (
-                    <>
-                      <h2 className="text-2xl font-bold mb-6 text-gray-700 pb-2 border-b border-gray-100">
-                        अक्षर: {selectedLetter}
-                      </h2>
-
-                      {/* ✅ FIX GRID FOR MOBILE */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-
-                        {currentChopai.map((item, i) => (
-                          <div key={i} className="blockquote-wrapper bg-transparant rounded-3xl">
-                            <div className="blockquote blockquote2 w-full max-w-full overflow-hidden wrap-break-word">
-
-                              <h1 className="wrap-break-word whitespace-pre-line leading-normal text-base! font-poppins">
-                                {formatChopai(item.text)}
-                              </h1>
-
-                              {/* ❌ removed ms-22! (was causing overflow) */}
-                              <h4 className="wrap-break-word whitespace-pre-line text-sm!">
-                                &mdash; श्री तारतम वाणी <br />
-                                <em>{formatChapter(item.chapter)}</em>
-                              </h4>
-
-                            </div>
-                          </div>
-                        ))}
-
-                      </div>
-                    </>
-                  )}
-
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto py-12 pt-8 text-start">
+        <div className="max-w-7xl mx-auto py-12 pt-32 text-start" id="live">
           <div className="min-h-screen">
             {/* Container with requested Grid layout */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -904,6 +593,115 @@ const parseQuizText = (text: string): Chapter[] => {
                   </div>
                 )}
               </main>
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto py-12 pt-32 text-start" id="antakshari">
+          {/* Heading */}
+          <h2 className="text-3xl font-bold text-black mb-8">
+            ब्रह्मवाणी अंताक्षरी
+            <p className="mt-2 text-xl text-gray-500">वर्णानुसार श्री तारतम वाणी चौपाइयाँ</p>
+          </h2>
+          {/* Responsive Grid */}
+
+
+          <div className="w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+              {/* 🌍 LEFT - STICKY */}
+              <div className="lg:col-span-1">
+
+                {/* ✅ Sticky only on desktop */}
+                <div className="sticky top-24">
+
+                  <div className="bg-white rounded-3xl p-6">
+
+                    <h2 className="text-xl font-bold mb-4 text-gray-700 text-center">
+                      अक्षर
+                    </h2>
+
+                    {/* ✅ FIXED MOBILE SCROLL */}
+                    <div className="
+                        flex 
+                        flex-nowrap flex-wrap   /* 🔥 key fix */
+                        gap-2 
+                       
+                      ">
+
+                      {chopaiData.map((item) => (
+                        <button
+                          key={item.letter}
+                          onClick={() => setSelectedLetter(item.letter)}
+                          className={`px-4 py-2 rounded-xl font-semibold whitespace-nowrap shrink-0 transition cursor-pointer ${selectedLetter === item.letter
+                            ? 'bg-orange-500 border-2 border-black text-white shadow-md'
+                            : 'bg-white hover:bg-orange-100 border-2 border-transparent'
+                            }`}
+                        >
+                          {item.letter}
+                        </button>
+                      ))}
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              {/* 📜 RIGHT CONTENT */}
+              <div className="lg:col-span-2">
+                <div className="bg-white rounded-3xl p-6 w-full max-w-full overflow-hidden">
+
+                  {/* 🧘 Idle State */}
+                  {!selectedLetter && randomChopai && (
+                    <div className="blockquote-wrapper bg-transparant rounded-3xl">
+                      <div className="blockquote w-full max-w-full overflow-hidden">
+                        <h1 className="wrap-break-word whitespace-pre-line leading-normal font-poppins">
+                          {formatChopai(randomChopai.text)}
+                        </h1>
+                        <h4 className="wrap-break-word">
+                          &mdash; श्री तारतम वाणी <br />
+                          <em>{formatChapter(randomChopai.chapter)}</em>
+                        </h4>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* 📖 Selected Letter */}
+                  {selectedLetter && (
+                    <>
+                      <h2 className="text-2xl font-bold mb-6 text-gray-700 pb-2 border-b border-gray-100">
+                        अक्षर: {selectedLetter}
+                      </h2>
+
+                      {/* ✅ FIX GRID FOR MOBILE */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+
+                        {currentChopai.map((item, i) => (
+                          <div key={i} className="blockquote-wrapper bg-transparant rounded-3xl">
+                            <div className="blockquote blockquote2 w-full max-w-full overflow-hidden wrap-break-word">
+
+                              <h1 className="wrap-break-word whitespace-pre-line leading-normal text-base! font-poppins">
+                                {formatChopai(item.text)}
+                              </h1>
+
+                              {/* ❌ removed ms-22! (was causing overflow) */}
+                              <h4 className="wrap-break-word whitespace-pre-line text-sm!">
+                                &mdash; श्री तारतम वाणी <br />
+                                <em>{formatChapter(item.chapter)}</em>
+                              </h4>
+
+                            </div>
+                          </div>
+                        ))}
+
+                      </div>
+                    </>
+                  )}
+
+                </div>
+              </div>
+
             </div>
           </div>
         </div>

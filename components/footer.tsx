@@ -74,9 +74,10 @@ export default function Footer() {
             <h4 className="text-2xl mb-4">क्विक लिंकस</h4>
             <ul className="space-y-2 text-lg text-white/80">
               <li><Link href="/satguru" className="hover:text-orange-500">सतगुरु व परमहंस</Link></li>
-              <li><Link href="/gamesnquiz" className="hover:text-orange-500">गेम्स & क्विज़</Link></li>
+              <li><Link href="/gamesnquiz" className="hover:text-orange-500">क्विज़</Link></li>
+              <li><Link href="/shrijigame" className="hover:text-orange-500">श्री जी गेम</Link></li>
               <li><Link href="/balkendra" className="hover:text-orange-500">आत्मदर्शनम्</Link></li>
-              <li><Link href="/mandirseva" className="hover:text-orange-500">मंदिर व सेवा</Link></li>
+              <li><Link href="/mandirseva" className="hover:text-orange-500">मंदिर</Link></li>
               <li><Link href="/gyanbhandar" className="hover:text-orange-500">ज्ञान भंडार</Link></li>
               {/* <li><Link href="/karyakram" className="hover:text-orange-500">कार्यक्रम</Link></li> */}
             </ul>
@@ -98,7 +99,6 @@ export default function Footer() {
               <li><Link href="/faq" className="hover:text-orange-500">अक्सर पूछे जाने वाले सवाल</Link></li>
               <li><Link href="/contact" className="hover:text-orange-500">संपर्क करें</Link></li>
               <li><Link href="/login" className="hover:text-orange-500">लॉगिन</Link></li>
-              <li><Link target="_blank" href="https://drive.google.com/drive/folders/1gLm214M5g71RT397XsWfCxHbCyoNxqKv" className="hover:text-orange-500 flex flex-row sm:flex-col gap-2 items-center sm:items-start">ज्ञानपीठ वाणी साहित्य <Image src="/spjin_logo.jpg" width={24} height={24}  className="sm:h-16 sm:w-16 w-14 h-14 rounded-full" alt="spjv logo" /> </Link></li>
             </ul>
           </motion.div>
 
@@ -126,7 +126,7 @@ export default function Footer() {
                 <Facebook size={16} />
               </div>
               <span className="text-base leading-snug text-white/80 group-hover:text-orange-400">
-                फेसबुक<p className="text-xs flex mt-1 text-white/60">7.2K + सब्सक्राइबर्स</p>
+                फेसबुक<p className="text-xs flex mt-1 text-white/60">7700K + सब्सक्राइबर्स</p>
               </span>
             </Link>
 
@@ -137,7 +137,7 @@ export default function Footer() {
                 <Youtube size={16} />
               </div>
               <span className="text-base text-white/80 group-hover:text-orange-400">
-                यूट्यूब<p className="text-xs flex mt-1 text-white/60">27k+ फॉलोअर्स</p>
+                यूट्यूब<p className="text-xs flex mt-1 text-white/60">45000k+ फॉलोअर्स</p>
               </span>
             </Link>
 
@@ -148,7 +148,7 @@ export default function Footer() {
                 <Instagram size={16} />
               </div>
               <span className="text-base text-white/90 group-hover:text-orange-400">
-                इंस्टाग्राम<p className="text-xs flex mt-1 text-white/60">1300+ फॉलोअर्स</p>
+                इंस्टाग्राम<p className="text-xs flex mt-1 text-white/60">1500+ फॉलोअर्स</p>
               </span>
             </Link>
 

@@ -2,26 +2,26 @@
 
 import { useEffect, useState } from "react"
 import { X } from "lucide-react"
-
+import Image from "@/components/BaseImage";
 export default function BottomBanner() {
   const [open, setOpen] = useState(false)
 
- useEffect(() => {
-  // open after 700ms
-  const openTimer = setTimeout(() => {
-    setOpen(true);
-  }, 700);
+  useEffect(() => {
+    // open after 700ms
+    const openTimer = setTimeout(() => {
+      setOpen(true);
+    }, 700);
 
-  // close after 5 seconds
-  const closeTimer = setTimeout(() => {
-    setOpen(false);
-  }, 5700); // 700 + 5000
+    // close after 5 seconds
+    const closeTimer = setTimeout(() => {
+      setOpen(false);
+    }, 111115700); // 700 + 5000
 
-  return () => {
-    clearTimeout(openTimer);
-    clearTimeout(closeTimer);
-  };
-}, []);
+    return () => {
+      clearTimeout(openTimer);
+      clearTimeout(closeTimer);
+    };
+  }, []);
 
 
   return (
@@ -34,11 +34,17 @@ export default function BottomBanner() {
           <div className="pointer-events-none absolute -top-10 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full bg-orange-400/50 blur-3xl" />
 
           <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between gap-4 px-6 py-2 text-black">
-
-
-
             {/* Text */}
             <div className="flex flex-row w-full justify-between relative items-center">
+              {/* <div className="absolute top-0 left-0">
+                <Image
+                  src="livespjv.gif"
+                  alt="livespjv"
+                  width={100}
+                  height={100}
+                  className=""
+                />
+              </div> */}
               <div className="content sm:w-auto w-40 ">
                 <h3 className="text-lg md:text-xl font-semibold">
                   आज का लाइव सत्संग

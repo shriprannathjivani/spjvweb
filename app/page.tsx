@@ -19,7 +19,6 @@ export default function HomePage() {
       <LiveSessions/>
       <BooksCarousel/>
       <PrannathCTA/>
-      <Earticle/>
       <ReviewsCarousel/>
     </>
   );

@@ -1,63 +1,134 @@
 "use client";
 
-import Image from "@/components/BaseImage";
-import { Button } from "@/components/ui/button";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselApi,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { CarouselDots } from "@/components/carousel-dots"
 import React from "react";
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { TextAnimate } from "./ui/text-animate";
 import { motion } from "framer-motion";
+import Image from "@/components/BaseImage";
+import { Plus, ArrowUpRight, Calendar, Calendars, CalendarPlus } from "lucide-react";
+import { Button } from "./ui/button";
+import { TextAnimate } from "./ui/text-animate";
 
-const liveSession = [
+const events = [
   {
+    id: 1,
+    dateLabel: "सोमवार – शुक्रवार",
+    date: "2026-07-30",
+    time: "04:30 AM",
+    endTime: "06:00",
     title: "चितवन",
-    img: "/livesession1.png",
-    day: "सोमवार – शुक्रवार",
-    time: "04:45 AM से 05:45 AM",
-    link: "https://www.youtube.com/@ShriPrannathJiVani/streams"
+    description:
+      "श्री प्राणनाथ जी वाणी के साथ दिव्य चितवन और आत्मचिंतन से जुड़ें।",
+    image: "/livesession1.png",
+    color: "bg-pink-50",
+    featured: true,
   },
   {
-    title: "श्री बीतक साहेब यात्रा",
-    img: "/livesession2.png",
-    day: "सोमवार – शुक्रवार",
-    time: "06:00 AM से 07:00 AM",
-    link: "https://www.youtube.com/@ShriPrannathJiVani/streams"
+    id: 2,
+    dateLabel: "सोमवार – शुक्रवार",
+    date: "2026-08-03",
+    time: "06:00 AM",
+    endTime: "07:00",
+    title: "श्री बीतक मंथन",
+    description:
+      "ब्रह्मज्ञान की अमूल्य धारा से जुड़ें।",
+    image: "/livesession2.png",
+    color: "bg-blue-50",
   },
   {
-    title: "श्री सिद्ध मंथन",
-    img: "/livesession3.png",
-    day: "सोमवार – शुक्रवार",
-    time: "07:00 AM से 07:30 AM",
-    link: "https://www.youtube.com/@ShriPrannathJiVani/streams"
+    id: 3,
+    dateLabel: "सोमवार – शुक्रवार",
+    date: "2026-08-03",
+    time: "07:00 AM",
+    endTime: "07:30",
+    title: "श्री तारतम वाणी चर्चा",
+    description:
+      "आत्मचिंतन और आध्यात्मिक ज्ञान के साथ जुड़ें।",
+    image: "/livesession3.png",
+    color: "bg-green-50",
   },
   {
+    id: 4,
+    dateLabel: "रविवार",
+    date: "2026-08-02",
+    time: "03:00 PM",
+    endTime: "04:00",
     title: "बाल आत्मदर्शनम्",
-    img: "/balad.png",
-    day: "रविवार",
-    time: "03:00 PM से 04:00 PM",
-    link: "https://www.youtube.com/@ShriPrannathJiVani/streams"
-  }
-]
+    description:
+      "बच्चों के लिए ज्ञान और संस्कार से जुड़ा विशेष कार्यक्रम।",
+    image: "/balad.png",
+    color: "bg-red-50",
+  },
+];
 
-export default function LiveSessions() {
-  const [api, setApi] = React.useState<CarouselApi>()
+function formatICSDate(date: string, time: string) {
+  const [year, month, day] = date.split("-");
+  const [hours, minutes] = time.split(":");
+
+  return `${year}${month}${day}T${hours}${minutes}00`;
+}
+
+function downloadICS(event: any) {
+  const start = formatICSDate(
+    event.date,
+    event.time
+      .replace(" AM", "")
+      .replace(" PM", "")
+  );
+
+  const end = formatICSDate(
+    event.date,
+    event.endTime
+  );
+
+  const uid = `${event.id}-${Date.now()}@shriprannathjivani.com`;
+
+  const icsContent = `BEGIN:VCALENDAR
+        VERSION:2.0
+        PRODID:-//Shri Prannath Ji Vani//Events//EN
+        CALSCALE:GREGORIAN
+        METHOD:PUBLISH
+        BEGIN:VEVENT
+        UID:${uid}
+        DTSTAMP:${formatICSDate(
+    new Date().toISOString().split("T")[0],
+    new Date().toTimeString().slice(0, 5)
+  )}
+        DTSTART:${start}
+        DTEND:${end}
+        SUMMARY:${event.title}
+        DESCRIPTION:${event.description}
+        LOCATION:Online
+        STATUS:CONFIRMED
+        END:VEVENT
+        END:VCALENDAR`;
+
+  const blob = new Blob([icsContent], {
+    type: "text/calendar;charset=utf-8",
+  });
+
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = `${event.title.replace(/\s+/g, "-")}.ics`;
+
+  document.body.appendChild(link);
+  link.click();
+
+  document.body.removeChild(link);
+
+  URL.revokeObjectURL(url);
+}
+
+export default function Events() {
   return (
-    <section className="relative  py-10 ">
+    <section className="relative overflow-hidden py-10 ">
       {/* Decorative gradient bg-[radial-gradient(circle_at_top_left,rgba(255,128,0,0.35),transparent_70%)] */}
       <div className="absolute left-0 top-0 h-48 w-48 " />
       <Image src="/halfflower.png" height={40} width={40} alt="halfflower" className="absolute top-1 left-0 z-0 motion-safe:animate-wiggle w-17.5 h-auto sm:w-37.5 sm:h-auto" />
       <div className="relative max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-16">
+
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-8">
           <div className="max-w-7xl">
             <TextAnimate
               animation="blurInUp"
@@ -77,90 +148,133 @@ export default function LiveSessions() {
               duration: 0.6,
               delay: 0.3
             }}>
-            <Button
-              variant="outline"
-              className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium hover:bg-black hover:text-white cursor-pointer"
-            >
-              सभी लाइव सेशन देखें
-            </Button>
+            <a target="_blank" href="https://www.youtube.com/@ShriPrannathJiVani/streams">
+              <Button
+                variant="outline"
+                className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium hover:bg-black hover:text-white cursor-pointer"
+              >
+                सभी लाइव सेशन देखें
+              </Button>
+            </a>
           </motion.div>
         </div>
 
-        {/* Cards */}
-        {/* Carousel */}
-        <Carousel
-          setApi={setApi}
-          opts={{
-            align: "start",
-          }}
-          className=""
-        >
-          <CarouselContent>
-            {liveSession.map((item, index) => (
-              <CarouselItem
-                key={index}
-                className="pl-4 md:basis-1/4 basis-[85%] relative"
+        {/* Bento Grid */}
+        <div className="grid auto-rows-[220px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+
+          {events.map((event, index) => (
+
+            <motion.div
+              key={event.id}
+              initial={{
+                opacity: 0,
+                y: 30,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+              }}
+              className={`
+                group
+                relative
+                overflow-hidden
+                rounded-[28px]
+                bg-white
+                shadow-[0_10px_35px_rgba(0,0,0,0.06)]
+                transition-all
+                duration-500
+                hover:-translate-y-1
+                hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]
+
+                ${event.featured
+                  ? "sm:col-span-2 sm:row-span-2"
+                  : ""
+                }
+              `}
+            >
+
+
+              {/* Background Image */}
+              <Image
+                src={event.image}
+                alt={event.title}
+                fill
+                className="
+                  object-cover
+                  transition-transform
+                  duration-700
+                  group-hover:scale-105
+                "
+              />
+
+
+
+              {/* Gradient */}
+              <div
+                className="
+                 absolute inset-0 bg-linear-to-t from-[#4b2440]/90 via-[#4b2440]/30 to-transparent
+                "
+              />
+
+              {/* Calendar */}
+              <Button
+                onClick={() => downloadICS(event)}
+                variant="outline"
+                className=" absolute top-2 right-2 rounded-full border-2 border-black px-6 py-5 text-sm font-medium hover:bg-black hover:text-white cursor-pointer"
               >
-                <motion.div
-                  key={index}
-                  initial={{ y: 60, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: index * 0.2
-                  }}
+                <CalendarPlus size={17} />
+                {/* 
+                  <span>
+                    कैलेंडर में जोड़ें
+                  </span> */}
+              </Button>
 
+
+
+              {/* Content */}
+              <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+
+                <div className="mb-2 flex items-center gap-2">
+
+
+                  <span className="text-sm font-medium text-white/80 ">
+                    {event.dateLabel} - {event.time}
+                  </span>
+
+                </div>
+
+                <h3
+                  className={`
+                    font-bold
+                    leading-tight
+                    text-white
+                    ${event.featured
+                      ? "text-2xl sm:text-3xl"
+                      : "text-lg"
+                    }
+                  `}
                 >
-                  <div
-                    key={index}
-                    className="group relative overflow-hidden rounded-4xl bg-white shadow-md"
-                  >
-                    <Image
-                      src={item.img}
-                      alt={item.title}
-                      width={500}
-                      height={500}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
+                  {event.title}
+                </h3>
 
-                    {/* Title overlay */}
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                      <p className="text-white text-lg font-semibold whitespace-pre-line">
-                        {item.title}
-                      </p>
-                      <p className="text-sm text-white">{item.day}</p>
-                      <p className="text-sm text-white" >{item.time}</p>
-                      {/* Button */}
-                      <Link target="_blank" className="text-white flex items-center justify-end gap-4 mt-4 w-full" href={item.link}>
-                        लाइव सेशन देखें <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white-500 text-white-500 cursor-pointer hover:bg-orange-600 hover:text-white">
-                          <ArrowUpRight size={20} />
-                        </span>
-                      </Link>
-                    </div>
-                  </div>
-                </motion.div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
 
-          {/* Custom Controls */}
-          <div className="mt-6 flex items-center justify-between">
-            <CarouselDots api={api} />
 
-            {/* Arrows */}
-            <div className="flex gap-3">
-              <CarouselPrevious
-                className="static h-10 w-10 mt-5 rounded-full border border-gray-300
-                                   text-gray-500 hover:bg-orange-50 hover:text-orange-500 cursor-pointer"
-              />
-              <CarouselNext
-                className="static h-10 w-10 mt-5 rounded-full border border-orange-500
-                                   text-orange-500 hover:bg-orange-50 cursor-pointer"
-              />
-            </div>
-          </div>
-        </Carousel>
+
+
+              </div>
+            </motion.div>
+          ))}
+
+        </div>
       </div>
+
     </section>
   );
 }

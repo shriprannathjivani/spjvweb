@@ -29,6 +29,10 @@ import {
   SearchAlertIcon,
   BookSearch,
   Search,
+  Gamepad2,
+  MessageCircleQuestionMark,
+  Scroll,
+  BookA,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -134,25 +138,25 @@ export default function Navbar() {
   }, []);
   // ✅ FIXED: prevent redirect loop
   useEffect(() => {
-  const auth = sessionStorage.getItem("auth");
-  const expiry = sessionStorage.getItem("expiry");
+    const auth = sessionStorage.getItem("auth");
+    const expiry = sessionStorage.getItem("expiry");
 
-  const isProtected = protectedRoutes.some((route) =>
-    pathname.startsWith(route)
-  );
+    const isProtected = protectedRoutes.some((route) =>
+      pathname.startsWith(route)
+    );
 
-  const isLoginPage = pathname === "/login";
+    const isLoginPage = pathname === "/login";
 
-  if ((!auth || !expiry || Date.now() > Number(expiry)) && isProtected) {
-    sessionStorage.clear();
-    router.replace(`${basePath}/login`);
-    setLoggedIn(false);
-  } else {
-    setLoggedIn(!!auth && Date.now() <= Number(expiry));
-  }
+    if ((!auth || !expiry || Date.now() > Number(expiry)) && isProtected) {
+      sessionStorage.clear();
+      router.replace(`${basePath}/login`);
+      setLoggedIn(false);
+    } else {
+      setLoggedIn(!!auth && Date.now() <= Number(expiry));
+    }
 
-  setLoading(false);
-}, [pathname, router]);
+    setLoading(false);
+  }, [pathname, router]);
   //console.log(pathname)
 
   const isActive = (path: string) =>
@@ -231,41 +235,27 @@ export default function Navbar() {
                   whileInView={{ y: 0, opacity: 1 }}
                   transition={{
                     duration: 0.6,
-                    delay: 0.2
-                  }}
-                >
-                  <NavigationMenuItem>
-                    <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
-                  text-lg
-                  px-4
-                  bg-transparent
-                  hover:bg-transparent
-                  focus:bg-transparent
-                  data-[state=open]:bg-transparent
-                  data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/gamesnquiz" className={`link ${pathname?.includes("/gamesnquiz") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>गेम्स व क्विज़</Link>} />
-                  </NavigationMenuItem>
-                </motion.div>
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{
-                    duration: 0.6,
                     delay: 0.3
                   }}
                 >
                   <NavigationMenuItem>
-                    <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
-                  text-lg
-                  px-4
-                  bg-transparent
-                  hover:bg-transparent
-                  focus:bg-transparent
-                  data-[state=open]:bg-transparent
-                  data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/balkendra" className={`link ${pathname?.includes("/balkendra") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}> आत्मदर्शनम्</Link>} />
+                    <NavigationMenuTrigger
+                      className={`link ${pathname?.includes("/gamesnquiz") ? 'text-orange-600  hover:text-orange-600  text-lg px-4 cursor-pointer hover:bg-transparent focus:bg-transparent data-open:hover:bg-transparent data-open:focus:bg-transparent data-open:bg-transparent focus-visible:ring-ring/50 data-popup-open:bg-transparent data-popup-open:hover:bg-transparent bg-transparent  data-[state=open]:bg-transparent data-[state=open]:hover:bg-transparent' : 'hover:text-orange-600 text-lg px-4 cursor-pointer hover:bg-transparent focus:bg-transparent data-open:hover:bg-transparent data-open:focus:bg-transparent data-open:bg-transparent focus-visible:ring-ring/50 data-popup-open:bg-transparent data-popup-open:hover:bg-transparent bg-transparent  data-[state=open]:bg-transparent data-[state=open]:hover:bg-transparent'}` + "hover:text-orange-600"}
+                    >क्विज़</NavigationMenuTrigger>
+                    <NavigationMenuContent className="shadow-[0_25px_80px_rgba(0,0,0,.12)] ">
+                      <ul className="grid w-auto px-6">
+                        <li>
+                          <NavigationMenuLink render={<Link href="/gamesnquiz#game" className="text-lg! px-0 py-2 hover:text-orange-500 bg-transparent hover:bg-transparent focus:bg-transparent"><Gamepad2 size={24} />गेम क्विज़</Link>} />
+                          <NavigationMenuLink render={<Link href="/gamesnquiz#google" className="text-lg! px-0 py-2 hover:text-orange-500 bg-transparent hover:bg-transparent focus:bg-transparent"><MessageCircleQuestionMark size={24} />गूगल क्विज़ </Link>} />
+                          <NavigationMenuLink render={<Link href="/gamesnquiz#live" className="text-lg! px-0 py-2 hover:text-orange-500 bg-transparent hover:bg-transparent focus:bg-transparent"><Scroll size={24} />लाइव क्विज़</Link>} />
+                          <NavigationMenuLink render={<Link href="/gamesnquiz#antakshari" className="text-lg! px-0 py-2 hover:text-orange-500 bg-transparent hover:bg-transparent focus:bg-transparent"><BookOpenCheck size={24} />ब्रह्मवाणी अंताक्षरी</Link>} />
+                        </li>
+                      </ul>
+                    </NavigationMenuContent>
                   </NavigationMenuItem>
+
                 </motion.div>
+
                 <motion.div
                   initial={{ y: 20, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
@@ -283,7 +273,7 @@ export default function Navbar() {
                   focus:bg-transparent
                   data-[state=open]:bg-transparent
                   data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/mandirseva" className={`link ${pathname?.includes("/mandirseva") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>मंदिर व सेवा</Link>} />
+                  hover:text-orange-500`} render={<Link href="/shrijigame" className={`link ${pathname?.includes("/shrijigame") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}> श्री जी गेम</Link>} />
                   </NavigationMenuItem>
                 </motion.div>
                 <motion.div
@@ -303,9 +293,74 @@ export default function Navbar() {
                   focus:bg-transparent
                   data-[state=open]:bg-transparent
                   data-[state=open]:hover:bg-transparent
+                  hover:text-orange-500`} render={<Link href="/balkendra" className={`link ${pathname?.includes("/balkendra") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}> आत्मदर्शनम्</Link>} />
+                  </NavigationMenuItem>
+                </motion.div>
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.6
+                  }}
+                >
+                  <NavigationMenuItem>
+                    <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
+                  text-lg
+                  px-4
+                  bg-transparent
+                  hover:bg-transparent
+                  focus:bg-transparent
+                  data-[state=open]:bg-transparent
+                  data-[state=open]:hover:bg-transparent
+                  hover:text-orange-500`} render={<Link href="/mandirseva" className={`link ${pathname?.includes("/mandirseva") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>मंदिर</Link>} />
+                  </NavigationMenuItem>
+                </motion.div>
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.7
+                  }}
+                >
+                  <NavigationMenuItem>
+                    <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
+                  text-lg
+                  px-4
+                  bg-transparent
+                  hover:bg-transparent
+                  focus:bg-transparent
+                  data-[state=open]:bg-transparent
+                  data-[state=open]:hover:bg-transparent
                   hover:text-orange-500`} render={<Link href="/gyanbhandar" className={`link ${pathname?.includes("/gyanbhandar") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>ज्ञान भंडार </Link>} />
                   </NavigationMenuItem>
                 </motion.div>
+
+                {loggedIn ? (
+                  <>
+                    <motion.div
+                      initial={{ y: 20, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      transition={{
+                        duration: 0.6,
+                        delay: 0.5
+                      }}
+                    >
+                      <NavigationMenuItem>
+                        <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
+                  text-lg
+                  px-4
+                  bg-transparent
+                  hover:bg-transparent
+                  focus:bg-transparent
+                  data-[state=open]:bg-transparent
+                  data-[state=open]:hover:bg-transparent
+                  hover:text-orange-500`} render={<Link href="/dashboard" className={`link ${pathname?.includes("/dashboard") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>चौपाइ खोजें</Link>} />
+                      </NavigationMenuItem>
+                    </motion.div>
+                  </>) : (<>
+                  </>)}
 
                 {/* <NavigationMenuItem>
                   <NavigationMenuTrigger className="
@@ -342,44 +397,14 @@ export default function Navbar() {
                     delay: 0.6
                   }}
                 >
-                  <Link href="/dashboard" className={`link ${pathname?.includes("/dashboard") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}
-                  >चौपाइ खोजें
-                  </Link>
-                </motion.div>
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.6
-                  }}
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-9 h-9  rounded-full border-2 border-black bg-orange-100 flex items-center justify-center text-base font-bold text-orange-600">
-                      S
-                    </div>
-                    <div className=" hidden md:flex flex-col justify-start items-center">
-                      <span className="text-sm">सुंदरसाथ</span>
-                      <span className="relative rounded-full inline-flex items-center bg-white px-2 py-0 text-[10px] font-xl inset-ring text-violet-600 inset-ring-violet-500/10">एडमिन</span>
-                    </div>
-                  </div>
-                </motion.div>
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.6
-                  }}
-                >
                   <Button
                     onClick={() => {
                       setIsMenuOpen(false);
                       logout();
                     }}
-                    className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
+                    className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-red-500 hover:bg-red-600 hover:text-white cursor-pointer"
                   >
-                    लॉगआउट
+                    लॉगआउट <LogOut size={24} />
                   </Button>
                 </motion.div>
               </>
@@ -466,7 +491,7 @@ export default function Navbar() {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <Calendar size={24} />
-                    <span className="text-base mt-2">गेम्स व क्विज़</span>
+                    <span className="text-base mt-2">क्विज़</span>
                   </Link>
 
                   <Link
@@ -484,7 +509,7 @@ export default function Navbar() {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <University size={24} />
-                    <span className="text-base mt-2">मंदिर व सेवा</span>
+                    <span className="text-base mt-2">मंदिर</span>
                   </Link>
 
                   <Link
@@ -494,16 +519,6 @@ export default function Navbar() {
                   >
                     <BookOpen size={24} />
                     <span className="text-base mt-2">ज्ञान भंडार</span>
-                  </Link>
-
-                  <Link
-                    href="https://drive.google.com/drive/folders/1gLm214M5g71RT397XsWfCxHbCyoNxqKv"
-                    className={menuClass("/other")}
-                    onClick={() => setIsMenuOpen(false)}
-                    target="_blank"
-                  >
-                    <FolderSymlink size={24} />
-                    <span className="text-base mt-2">साहित्य लिंक</span>
                   </Link>
 
                   <Link
@@ -574,7 +589,7 @@ export default function Navbar() {
           </Link>
           <Link href="/gamesnquiz" className={tabmenuClass("/gamesnquiz")}>
             <Calendar size={20} />
-            <span className="text-sm mt-1">गेम्स व क्विज़</span>
+            <span className="text-sm mt-1">क्विज़</span>
           </Link>
           <Link href="/balkendra" className={tabmenuClass("/balkendra")}>
             <Baby size={20} />

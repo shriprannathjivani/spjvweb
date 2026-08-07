@@ -210,32 +210,17 @@ export default function Page() {
                   <li className="flex justify-between">
                     <span className="text-orange-900 w-1/3">चितवन </span>
                     <span className="w-1/4">सोमवार – शुक्रवार</span>
-                    <span className="w-1/3">04:45 AM से 05:45 AM</span>
+                    <span className="w-1/3">04:30 AM से 06:00 AM</span>
                   </li>
                   <li className="flex justify-between">
-                    <span className="text-orange-900 w-1/3">श्री बीतक साहेब चर्चा</span>
+                    <span className="text-orange-900 w-1/3">श्री बीतक मंथन</span>
                     <span className="w-1/4">सोमवार – शुक्रवार</span>
                     <span className="w-1/3">06:00 AM से 07:00 AM</span>
                   </li>
                   <li className="flex justify-between">
-                    <span className="text-orange-900 w-1/3">श्री सिंधी मंथन</span>
+                    <span className="text-orange-900 w-1/3">श्री तारतम वाणी चर्चा</span>
                     <span className="w-1/4">सोमवार – शुक्रवार</span>
                     <span className="w-1/3">07:00 AM से 07:30 AM</span>
-                  </li>
-                  <li className="flex justify-between">
-                    <span className="text-orange-900 w-1/3">मीठी बतियाँ </span>
-                    <span className="w-1/4">सोमवार – शुक्रवार</span>
-                    <span className="w-1/3">07:30 AM से 08:00 AM</span>
-                  </li>
-                  <li className="flex justify-between">
-                    <span className="text-orange-900 w-1/3">चितवन </span>
-                    <span className="w-1/4">शनिवार </span>
-                    <span className="w-1/3">06:00 AM से 07:00 AM</span>
-                  </li>
-                  <li className="flex justify-between">
-                    <span className="text-orange-900 w-1/3">श्री प्राणनाथ ज्ञानपीठ ई-गोष्ठी</span>
-                    <span className="w-1/4">रविवार</span>
-                    <span className="w-1/3">09:45 AM से 11:00 AM</span>
                   </li>
                 </ul>
               </div>

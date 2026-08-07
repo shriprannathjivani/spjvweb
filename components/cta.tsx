@@ -14,6 +14,7 @@ import Autoplay from "embla-carousel-autoplay"
 import React from "react";
 import { CarouselDots } from "./carousel-dots";
 import { motion } from "framer-motion";
+import { Link } from "lucide-react";
 const basePath =
     process.env.NODE_ENV === "production" ? "/spjvweb" : "";
 export default function PrannathCTA() {
@@ -38,7 +39,7 @@ export default function PrannathCTA() {
             {/* Overlay (important for readability) */}
             <div className="absolute inset-0 bg-[#fde9dc]/80 backdrop-blur-sm"></div>
 
-            <div className="relative max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10 items-center z-10">
+            <div className="relative max-w-7xl mx-auto px-6 py-10 md:py-0 grid md:grid-cols-2 gap-10 items-center z-10">
                 <motion.div
                     initial={{ y: 60, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
@@ -61,65 +62,27 @@ export default function PrannathCTA() {
 
                         {/* Buttons */}
                         <div className="mt-8 flex gap-4">
+                            <a href="/satguru">
                             <Button
                                 variant="outline"
                                 className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
                             >
-                                प्रवचन देखें
-                            </Button>
-                            <Button
-                                variant="outline"
-                                className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium hover:border-white hover:bg-black hover:text-white cursor-pointer"
-                            >
                                 जीवनी पढ़ें
                             </Button>
+                            </a>
                         </div>
                     </div>
                 </motion.div>
-
-
                 {/* RIGHT IMAGE */}
                 <div className="flex justify-center md:flex hidden">
-                    <Carousel
-                        setApi={setApi}
-                        opts={{
-                            align: "start",
-                            loop: true,
-                        }}
-                        plugins={[
-                            Autoplay({
-                                delay: 9000,
-                            }),
-                        ]}
-                        orientation="vertical"
-                        className="w-full "
-                    >
-                        <CarouselContent className="mt-1 h-[300px]">
-                            {[
-                                { title: "बाल आत्मदर्शनम्", img: "/satgurs.png" },
-                                { title: "बीतक कॉमिक्स", img: "/satgurs.png" },
-                                { title: "बीतक पात्र वेश", img: "/satgurs.png" },
-                                { title: "बाल आत्मदर्शनम्", img: "/satgurs.png" },
-                            ].map((card, i) => (
-                                <CarouselItem
-                                    key={i}
-                                    className="pl-4 md:basis-1/3 "
-                                >
-                                    <div className="relative rounded-3xl overflow-hidden">
-                                        <Image
-                                            src={card.img}
-                                            alt={card.title}
-                                            width={500}
-                                            height={300}
-                                            className=" w-full "
-                                        />
-
-                                    </div>
-                                </CarouselItem>
-                            ))}
-                        </CarouselContent>
-
-                    </Carousel>
+                    <div className="relative rounded-3xl overflow-hidden">
+                        <Image
+                            src="/cta_img.png"
+                            alt="ramratandasji"
+                            width={500}
+                            height={500}
+                        />
+                    </div>
 
                 </div>
             </div>

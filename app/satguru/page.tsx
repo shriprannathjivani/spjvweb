@@ -27,12 +27,12 @@ const images = [
     { src: "/satgurutwo.jpg", topClass: "image image-middle-right border-4 border-white rounded-[38px]", subClass: "image-container transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5 image-2" },
     { src: "/satguruthree.jpg", topClass: "image middle-right border-4 border-white rounded-[38px]", subClass: "image-container image-3 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
     { src: "/satguru2.png", topClass: "image image-right border-4 border-white rounded-[38px]", subClass: "image-container image-4 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
-    { src: "/satguru3.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-5 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
+    { src: "/satguru8.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-5 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
     { src: "/satguru11.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-6 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
     { src: "/satguru5.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-7 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
-    { src: "/satguru6.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-8 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
+    { src: "/satguru3.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-8 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
     { src: "/satguru7.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-9 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
-    { src: "/satguru8.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-10 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
+    { src: "/satguru6.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-10 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
     { src: "/satguru9.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-11 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
     { src: "/satguru10.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-12 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
 ]
@@ -280,10 +280,10 @@ z-index: 4;
 }
     .image-container.image-10 {
      z-index: 4;
-    width: 247px;
-    height: 309px;
-    top: calc(50% - 116px);
-    right: calc(50% - 590px);
+     width: 187px;
+    height: 239px;
+    top: calc(50% - 36px);
+    right: calc(50% - 610px);
     transform: rotate(358deg);
 }
         .image-container.image-11 {
@@ -393,74 +393,76 @@ z-index: 4;
                     className=""
                 >
                     <CarouselContent>
-                        {satgurus.map((satguru, index) => (
-                            <CarouselItem
-                                key={index}
-                                className="pl-4 md:basis-1/4 basis-[85%]"
-                            >
-                                <motion.div
+                        {[...satgurus]
+                            .sort((a, b) => Number(a.birth) - Number(b.birth))
+                            .map((satguru, index) => (
+                                <CarouselItem
                                     key={index}
-                                    initial={{ y: 60, opacity: 0 }}
-                                    whileInView={{ y: 0, opacity: 1 }}
-                                    transition={{
-                                        duration: 0.6,
-                                        delay: index * 0.2
-                                    }}
-                                    className="h-full"
+                                    className="pl-4 md:basis-1/4 basis-[85%]"
                                 >
-                                    <div className="max-w-md mx-auto">
-                                        <div className="group relative rounded-3xl  transition-all duration-500  hover:-translate-y-2">
+                                    <motion.div
+                                        key={index}
+                                        initial={{ y: 60, opacity: 0 }}
+                                        whileInView={{ y: 0, opacity: 1 }}
+                                        transition={{
+                                            duration: 0.6,
+                                            delay: index * 0.2
+                                        }}
+                                        className="h-full"
+                                    >
+                                        <div className="max-w-md mx-auto">
+                                            <div className="group relative rounded-3xl  transition-all duration-500  hover:-translate-y-2">
 
-                                            {/* Image */}
-                                            <div className="relative flex justify-center h-70  z-1 mb-[-50px]">
-                                                <Image
-                                                    src={satguru.image}
-                                                    alt={satguru.name}
-                                                    height={272}
-                                                    width={204}
-                                                    className="object-container  border-4 border-white rounded-[38px]"
-                                                />
-                                            </div>
-                                            <div className="p-6 pt-16 bg-white rounded-3xl border border-gray-100 ">
-                                                {/* Content */}
-                                                <h3 className="text-2xl font-semibold tracking-tight text-gray-900">
-                                                    {satguru.name}
-                                                </h3>
-
-                                                <p className="text-orange-600 mt-2 text-base">
-                                                    {satguru.role}
-                                                </p>
-
-                                                <p className="mt-4 text-center text-gray-600 leading-relaxed text-sm font-poppins line-clamp-2 whitespace-pre-line">
-                                                    <QuoteIcon className="text-orange-600" />
-                                                    {satguru.quote}
-                                                </p>
-
-                                                {/* Divider */}
-                                                <div className="mt-6 h-px w-full bg-gray-100"></div>
-
-                                                {/* Footer  Place: {satguru.timeline[0].year}*/}
-                                                <div className="mt-6 flex items-center justify-between">
-                                                    <span className="text-sm text-gray-500">
-                                                     स्थान: <b>{satguru.place}</b> 
-                                                    </span>
-                                                    <Link href={`/satguru/${satguru.id}`}>
-                                                        <Button
-                                                            variant="outline"
-                                                            className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium hover:bg-black hover:text-white cursor-pointer"
-                                                        >
-                                                            जीवनी पढ़ें
-                                                        </Button>
-                                                    </Link>
+                                                {/* Image */}
+                                                <div className="relative flex justify-center h-70  z-1 mb-[-50px]">
+                                                    <Image
+                                                        src={satguru.image}
+                                                        alt={satguru.name}
+                                                        height={272}
+                                                        width={204}
+                                                        className="object-container  border-4 border-white rounded-[38px]"
+                                                    />
                                                 </div>
+                                                <div className="p-6 pt-16 bg-white rounded-3xl border border-gray-100 ">
+                                                    {/* Content */}
+                                                    <h3 className="text-2xl font-semibold tracking-tight text-gray-900">
+                                                        {satguru.name}
+                                                    </h3>
+
+                                                    <p className="text-orange-600 mt-2 text-base">
+                                                        {satguru.role}
+                                                    </p>
+
+                                                    <p className="mt-4 text-center text-gray-600 leading-relaxed text-sm font-poppins line-clamp-4 whitespace-pre-line">
+                                                        <QuoteIcon className="text-orange-600" />
+                                                        {satguru.quote}
+                                                    </p>
+
+                                                    {/* Divider */}
+                                                    <div className="mt-6 h-px w-full bg-gray-100"></div>
+
+                                                    {/* Footer  Place: {satguru.timeline[0].year}*/}
+                                                    <div className="mt-6 flex items-center justify-between">
+                                                        <span className="text-sm text-gray-500">
+                                                            स्थान: <b>{satguru.place}</b>
+                                                        </span>
+                                                        <Link href={`/satguru/${satguru.id}`}>
+                                                            <Button
+                                                                variant="outline"
+                                                                className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium hover:bg-black hover:text-white cursor-pointer"
+                                                            >
+                                                                जीवनी पढ़ें
+                                                            </Button>
+                                                        </Link>
+                                                    </div>
+                                                </div>
+
+
                                             </div>
-
-
                                         </div>
-                                    </div>
-                                </motion.div>
-                            </CarouselItem>
-                        ))}
+                                    </motion.div>
+                                </CarouselItem>
+                            ))}
                     </CarouselContent>
 
                     {/* Custom Controls */}

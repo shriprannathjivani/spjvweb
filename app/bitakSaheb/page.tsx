@@ -199,7 +199,7 @@ export default function Faq() {
 
                   {/* Content */}
                   <div className="flex-1">
-                    <span className="inline-block text-xs font-medium px-3 py-1 rounded-full mb-2 inset-ring  text-rose-600 bg-rose-50   inset-ring-rose-500/10">Day: {index}</span>
+                    <span className="inline-block text-xs font-medium px-3 py-1 rounded-full mb-2 inset-ring  text-rose-600 bg-rose-50   inset-ring-rose-500/10">Day: {index + 1}</span>
                     <h3 className="text-base font-medium line-clamp-3">
                       {item.title}
                     </h3>

@@ -10,25 +10,25 @@ import { motion } from "framer-motion";
 const STATS = [
   {
     title: "यूट्यूब ",
-    value: 25000,
+    value: 45000,
     suffix: "+",
     subtitle: "सब्स्क्राइबर्स",
   },
   {
     title: "फेसबुक ",
-    value: 7300,
+    value: 7700,
     suffix: "+",
     subtitle: "फॉलोवर्स",
   },
   {
     title: "इंस्टाग्राम ",
-    value: 1300,
+    value: 1500,
     suffix: "+",
     subtitle: "फॉलोवर्स",
   },
   {
     title: "पुस्तकें",
-    value: 4,
+    value: 8,
     suffix: "+",
     subtitle: "लाखों के जीवन को छुआ",
   },
@@ -50,18 +50,25 @@ const STATS = [
   },
   {
     title: "हमारे अन्य यूट्यूब चैनल्स",
-    value: 3,
+    value: 4,
     suffix: "+",
     subtitle: `1. श्री प्राणनाथ जी वाणी <br />
-              2. श्री प्राणनाथ जी वाणी गायन <br />
-              3. SPJV–आत्मदर्शनम् <br />`,
+              2. SPJV Gayan <br />
+              3. SPJV–आत्मदर्शनम् <br />
+              4. SPJV Charchani <br />`,
     large: true,
   },
   {
     title: "24/7 ज़ूम मीटिंग्स घंटे",
     value: 6048,
     suffix: "+",
-    subtitle: "1. वाणी मंथन <br /> 2. चर्चनी <br /> 3. चितवनि",
+    subtitle: `
+    1. श्री तारतम वाणी मंथन<br />
+    2. चर्चनी<br />
+    3. चितवनि<br />
+    4. श्री कृष्ण त्रिधा लीला<br />
+    5. परमहंसों की बीतक<br />
+    `,
   }
 ];
 

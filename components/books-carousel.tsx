@@ -72,17 +72,17 @@ export default function BooksCarousel() {
                       {book.languages}
                     </span>
                     {/* Text */}
-                    <h3 className="font-semibold text-lg text-black mb-2">
+                    <h3 className="font-semibold text-base text-center text-black mb-2">
                       {book.title}
                     </h3>
 
-                    <p className="text-sm text-gray-800 mb-2 line-clamp-2">
+                    {/* <p className="text-sm text-gray-800 mb-2 line-clamp-2">
                       {book.desc}
-                    </p>
+                    </p> */}
 
-                    <p className="text-sm text-orange-900 font-medium mb-1">
+                    {/* <p className="text-sm text-orange-900 font-medium mb-1">
                       {book.author}
-                    </p>
+                    </p> */}
 
                     {book.publisher && (
                       <p className="text-xs text-muted-foreground mb-6">
