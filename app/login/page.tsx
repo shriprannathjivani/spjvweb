@@ -46,7 +46,7 @@ const Quotes = [
     }
 ]
 const basePath =
-  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
+  process.env.NODE_ENV === "production" ? "" : "";
 export default function LoginPage() {
     const [api, setApi] = React.useState<CarouselApi>()
     const [password, setPassword] = useState("");

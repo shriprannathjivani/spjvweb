@@ -15,7 +15,7 @@ import data from '@/public/allvani/chopai.json';
 
 
 const basePath =
-  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
+  process.env.NODE_ENV === "production" ? "" : "";
 
 export default function Page() {
   const [api, setApi] = React.useState<CarouselApi>();

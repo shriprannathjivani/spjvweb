@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { LogOut, SearchAlertIcon } from "lucide-react";
 import HeaderDashboard from "../header";
 const basePath =
-  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
+  process.env.NODE_ENV === "production" ? "" : "";
 export default function Dashboard() {
   const pathname = usePathname()
   const router = useRouter();

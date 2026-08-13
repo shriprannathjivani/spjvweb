@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation'
 import { Button } from "@/components/ui/button";
 import { LogOut, SearchAlertIcon } from "lucide-react";
 const basePath =
-  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
+  process.env.NODE_ENV === "production" ? "" : "";
 export default function HeaderDashboard() {
  const pathname = usePathname()
   const router = useRouter();
