@@ -187,7 +187,7 @@ export default async function SatguruDetails({
           )}
 
           {/* achievments  */}
-          {guru.achievement && (
+          {/* {guru.achievement && (
             <section>
               <h2 className="text-2xl font-semibold mb-6">
                 सेवा ही साधना
@@ -209,7 +209,7 @@ export default async function SatguruDetails({
                 ))}
               </div>
             </section>
-          )}
+          )} */}
 
           {/* Temples */}
           {guru.temple && (
