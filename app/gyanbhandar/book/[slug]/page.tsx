@@ -16,7 +16,7 @@ export async function generateStaticParams() {
 }
 
 const basePath =
-  process.env.NODE_ENV === "production" ? "" : "";
+  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
 
 export default async function SatguruDetails({
   params,

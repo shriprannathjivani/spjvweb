@@ -26,7 +26,7 @@ export default async function SatguruDetails({
     (g) => g.id === Number(slug)
   )
 const basePath =
-  process.env.NODE_ENV === "production" ? "" : "";
+  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
    const currentIndex = articles.findIndex(
       (g) => g.id === Number(slug)
     );

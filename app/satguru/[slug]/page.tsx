@@ -35,12 +35,12 @@ export default async function SatguruDetails({
       ? satgurus[currentIndex + 1]
       : null;
     const basePath =
-      process.env.NODE_ENV === "production" ? "" : "";
+      process.env.NODE_ENV === "production" ? "/spjvweb" : "";
   const addPrefixToImages = (html: string) => {
     if (!html) return "";
 
     const basePath =
-      process.env.NODE_ENV === "production" ? "" : "";
+      process.env.NODE_ENV === "production" ? "/spjvweb" : "";
 
     return html
       .replace(/<Image/g, "<img")

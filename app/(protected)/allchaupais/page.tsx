@@ -53,7 +53,7 @@ type PrakaranGroup = {
   items: ChaupaiItem[];
 };
 
-const basePath = process.env.NODE_ENV === "production" ? "" : "";
+const basePath = process.env.NODE_ENV === "production" ? "/spjvweb" : "";
 
 /* ---------------- DIGIT HELPERS ---------------- */
 const DEVANAGARI = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];

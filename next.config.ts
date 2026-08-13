@@ -7,8 +7,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: isProd ? "" : "",
-  assetPrefix: isProd ? "" : "",
+  basePath: isProd ? "/spjvweb" : "",
+  assetPrefix: isProd ? "/spjvweb/" : "",
   trailingSlash: true, // VERY IMPORTANT for static hosting
 };
 

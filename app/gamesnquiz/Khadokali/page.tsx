@@ -15,7 +15,7 @@ import * as THREE from "three";
 
 
 const basePath =
-  process.env.NODE_ENV === "production" ? "" : "";
+  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
 
 // --- 1. DATA & STATE ---
 const CHUNK_SIZE = 120;

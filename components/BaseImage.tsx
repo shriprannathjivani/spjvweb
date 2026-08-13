@@ -1,7 +1,7 @@
 import Image, { ImageProps } from "next/image";
 
 const basePath =
-  process.env.NODE_ENV === "production" ? "" : "";
+  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
 
 export default function BaseImage(props: ImageProps) {
   const src =
