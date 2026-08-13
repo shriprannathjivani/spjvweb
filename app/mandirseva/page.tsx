@@ -202,6 +202,8 @@ export default function Page() {
                                                     <Image
                                                         src={temple.image}
                                                         alt={temple.name}
+                                                        width={40}
+                                                        height={40}
                                                         className={`h-10 w-10 rounded-full object-cover border-2 shadow-lg ${isSelected ? "border-orange-500 ring-4 ring-orange-300" : "border-white"
                                                             }`}
                                                     />
