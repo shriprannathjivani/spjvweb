@@ -453,7 +453,7 @@ export default function Page() {
         <div className={clsx(
           "container mx-auto  sm:px-6 sm:py-6 pt-0 sticky z-20 transition-all duration-300 ease-in-out",
           scrolled
-            ? "sticky top-0 z-60 sm:top-10"
+            ? "sticky top-0 z-60 sm:top-14"
             : "px-0 py-0"
         )}
         >
@@ -461,7 +461,7 @@ export default function Page() {
           <div className={clsx(
             "flex flex-col-reverse  md:flex-row md:items-center gap-1 sm:gap-8 p-4 py-2 sm:py-4 transition-all duration-300 ease-in-out",
             scrolled
-              ? "rounded-0 bg-white border border-gray-200 sm:shadow-[0px_0px_0px_0px_rgba(0,0,0,0.10)] shadow-[5px_1px_20px_1px_rgba(0,0,0,0.10)] p-6"
+              ? "rounded-0 bg-white-200/25 text-black backdrop-blur-xl rounded-b-2xl shadow-4xl border border-white/70 p-6"
               : "sm:rounded-3xl "
           )}
           >

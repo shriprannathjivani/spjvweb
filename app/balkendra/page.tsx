@@ -288,18 +288,18 @@ export default function Page() {
         <div className=" relative flex h-[500px] w-full flex-col items-center justify-center text-center ">
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
             <TextAnimate animation="blurInUp" startOnView delay={0.3}>
-              खेलें, सीखें, बढ़ें:&nbsp;
+             आत्मदर्शनम्:&nbsp;
             </TextAnimate>{"  "}
             <span className="text-orange-500">
               <TextAnimate animation="blurInUp" startOnView delay={0.5}>
-                उज्ज्वल भविष्य यहीं से शुरू होता है।
+                वाणी, संस्कार और प्रेम का प्रकाश
               </TextAnimate>
             </span>
           </h2>
           <TextAnimate animation="blurInUp" by="line"
             delay={0.3}
             segmentClassName="block" startOnView className="mt-4 text-muted-foreground text-xl  mb-12">
-            {`इंटरएक्टिव पाठ, रोचक खेल और व्यक्तिगत शिक्षण मार्ग।`}
+            {`जहाँ ज्ञान रोचक बनता है, संस्कार सहज बनते हैं और वाणी हृदय में उतरती है।`}
           </TextAnimate>
           <Ripple />
         </div>
@@ -316,7 +316,7 @@ export default function Page() {
                   {`'बाल आत्मदर्शनम्'\nहर रविवार की दिव्य दोपहर:`}
                 </TextAnimate>
                 <TextAnimate animation="blurInUp" startOnView delay={0.3} className="mt-3 text-gray-600 text-sm md:text-base">
-                  हर रविवार हमारी कक्षा में एक नई यात्रा है। हम रोमांचक बीतक कॉमिक्स की खोज करेंगे।
+                 श्री प्राणनाथ जी वाणी द्वारा बाल एवं युवा आत्मदर्शनम् एक ऐसी सुंदर पहल है, जिसका उद्देश्य बच्चों और युवा सुंदरसाथ जी को धनी की वाणी तथा निजानंद के संस्कारों से सहज, सरल और आनंदमय रूप में जोड़ना है।
                 </TextAnimate>
               </div>
 
@@ -415,16 +415,16 @@ export default function Page() {
             </div>
 
             {/* Right Content */}
-            <div className="space-y-6 text-center lg:text-left">
-              <TextAnimate animation="blurInUp" startOnView delay={0.3} className="text-gray-600 text-sm md:text-base">
-                ‘आत्मदर्शनम्’ एक ऐसा अनोखा मंच है, जो आपको आत्मा की गहराई तक ले जाकर इन सवालों के उत्तर खोजने में मदद करता है।
-              </TextAnimate>
-              <Button
-                variant="outline"
-                className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
-              >
-                शुरुआत करें
-              </Button>
+            <div className="space-y-5 text-center lg:text-left">
+              <div  className="text-gray-600 text-sm md:text-base">
+                हम निरंतर ऐसे नए और <br />रचनात्मक प्रयासों के माध्यम से अधिक से अधिक बच्चों एवं युवाओं को<br /> इस सुंदर संगति से जोड़ने और <br />भावी पीढ़ी के हृदय में <br />निजानंद के संस्कारों को पुष्पित करने के लिए प्रयासरत हैं।
+              </div>
+              <a
+                 target="_blank"  href="https://www.youtube.com/@SPJVAatmaDarshanam/featured" 
+                  className="rounded-full  border-2 border-black px-5 py-2  text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
+                >
+                  लाइव सेशन
+                </a>
             </div>
           </div>
         </div>
@@ -435,12 +435,12 @@ export default function Page() {
             <TextAnimate animation="blurInUp" by="line"
               delay={0.3}
               segmentClassName="block" startOnView className="text-3xl font-bold text-black mb-1">
-              {`नित्य प्रार्थना संदेश`}
+              {`आत्मदर्शनम्`}
             </TextAnimate>
             <TextAnimate by="line"
               delay={0.3}
               segmentClassName="block" animation="blurInUp" startOnView className="text-xl text-gray-500">
-              {`‘आत्मदर्शनम्’ एक ऐसा अनोखा मंच है,\nजो आपको आत्मा की गहराई तक ले जाकर इन सवालों के उत्तर खोजने में मदद करता है।`}
+              {`जहाँ वाणी से ज्ञान, संस्कारों से जीवन और प्रेम से आत्मा का जागरण होता है। \n ‘आत्मदर्शनम्’ केवल आध्यात्मिक ज्ञान की यात्रा नहीं, बल्कि बच्चों और युवाओं को वाणी, \nसंस्कार, प्रेम और सेवा से जोड़कर एक सुंदर, सदाचारी और आनंदमय जीवन की नींव रखने का प्रयास है। 💖`}
             </TextAnimate>
           </div>
 
@@ -456,7 +456,7 @@ export default function Page() {
 
               <TextAnimate by="line" as="p" delay={0.6}
                 animation="fadeIn" startOnView className="text-gray-700 text-base mb-6 text-start">
-                {`✔️ मैं वास्तव में कौन हूँ? \n✔️ जीवन का सच्चा उद्देश्य क्या है? \n✔️ स्थायी शांति और आनंद कहाँ मिलते हैं? \n✔️ क्योंकि सच्चा सुख और शांति बाहरी दुनिया में नहीं, बल्कि आपके भीतर है। \n✔️ आत्मदर्शनम् आपको इस अनमोल सच्चाई का अनुभव कराता है।`}
+                {`✔️ मैं वास्तव में कौन हूँ? \n✔️ श्री प्राणनाथ जी की वाणी मेरे जीवन को क्या सिखाती है? \n✔️ प्रेम, सेवा, सदाचार और संस्कारों को जीवन में कैसे उतारें? \n✔️ आत्मदर्शनम् आपको अपनी आत्मिक पहचान और निजानंद के संस्कारों से जुड़ने का अवसर देता है।`}
               </TextAnimate>
 
               <div className="relative">
@@ -470,15 +470,15 @@ export default function Page() {
 
                 {/* Tags */}
                 <span className="absolute top-4 left-32 bg-yellow-300 text-black text-xs px-3 py-1 rounded-full animate-bounce">
-                  आत्मदर्शनम्
+                  मैं कौन हूँ
                 </span>
 
                 <span className="absolute bottom-4 right-4 bg-purple-200 text-black text-xs px-3 py-1 rounded-full animate-bounce">
-                  ध्यान / चितवन
+                  जीवन का उद्देश्य
                 </span>
 
                 <span className="absolute bottom-4 left-4 bg-white text-black text-xs px-3 py-1 rounded-full animate-bounce">
-                  श्री बाल बीतक साहेब
+                  श्री प्राणनाथ जी
                 </span>
               </div>
             </div>
@@ -493,7 +493,7 @@ export default function Page() {
 
               <TextAnimate by="line" as="p" delay={0.6}
                 animation="fadeIn" startOnView className="text-gray-700 text-base mb-6 h-42 text-start whitespace-pre-line">
-                {`✔️ ध्यान और साधना के माध्यम से मन की शांति का अनुभव। \n✔️ भीतर छिपी अनंत शक्ति और दिव्यता को जागृत करना।\n✔️ जीवन को एक नई दृष्टि और स्पष्टता के साथ देखना। \n\n\n\n\n\n`}
+                {`✔️ श्री प्राणनाथ जी की वाणी और बीतक से सहज परिचय। \n✔️ रोचक कॉमिक्स, चित्रावली, खेल और प्रश्नोत्तरी के माध्यम से सीखने का आनंद। \n✔️ प्रेम, सेवा, सदाचार और अच्छे संस्कारों को जीवन में अपनाने की प्रेरणा। \n✔️ आत्मदर्शनम् — ज्ञान, संस्कार और आनंद से जुड़ने की एक सुंदर यात्रा।`}
               </TextAnimate>
 
               <div className="relative">
@@ -507,15 +507,15 @@ export default function Page() {
 
                 {/* Tags */}
                 <span className="absolute top-4 left-32 bg-yellow-300 text-black text-xs px-3 py-1 rounded-full animate-bounce">
-                  आत्मदर्शनम्
+                  श्री बीतक साहेब
                 </span>
 
                 <span className="absolute bottom-4 right-4 bg-purple-200 text-black text-xs px-3 py-1 rounded-full animate-bounce">
-                  ध्यान / चितवन
+                  बाल आत्मदर्शनम्
                 </span>
 
                 <span className="absolute bottom-4 left-4 bg-white text-black text-xs px-3 py-1 rounded-full animate-bounce">
-                  श्री बाल बीतक साहेब
+                  युवा आत्मदर्शनम्
                 </span>
               </div>
             </div>
@@ -545,15 +545,15 @@ export default function Page() {
 
                 {/* Tags */}
                 <span className="absolute top-4 left-32 bg-yellow-300 text-black text-xs px-3 py-1 rounded-full animate-bounce">
-                  आत्मदर्शनम्
+                  ज़ूम कार्यक्रम
                 </span>
 
                 <span className="absolute bottom-4 right-4 bg-purple-200 text-black text-xs px-3 py-1 rounded-full animate-bounce">
-                  ध्यान / चितवन
+                  निजानंद
                 </span>
 
                 <span className="absolute bottom-4 left-4 bg-white text-black text-xs px-3 py-1 rounded-full animate-bounce">
-                  श्री बाल बीतक साहेब
+                  हर रविवार
                 </span>
               </div>
             </div>
@@ -568,12 +568,12 @@ export default function Page() {
             <TextAnimate animation="blurInUp" by="line"
               delay={0.1}
               segmentClassName="block" startOnView className="text-3xl font-bold text-black mb-1">
-              {` सीखने, खेलने और विकास के पल`}
+              {`वाणी, संस्कार और प्रेम के पल`}
             </TextAnimate>
             <TextAnimate by="line"
               delay={0.3}
               segmentClassName="block" animation="blurInUp" startOnView className="text-xl text-gray-500">
-              {`हमारी आनंदमय कक्षाओं, रोचक गतिविधियों और पोषणपूर्ण आत्मदर्शनम् वातावरण की एक झलक।`}
+              {`जहाँ ज्ञान रोचक बनता है, संस्कार सहज बनते हैं और वाणी हृदय में उतरती है।`}
             </TextAnimate>
           </div>
           <Carousel
@@ -594,7 +594,7 @@ export default function Page() {
               ].map((card, i) => (
                 <CarouselItem
                   key={i}
-                  className="pl-4 md:basis-1/4 basis-[85%]"
+                  className="pl-4 md:basis-1/3 basis-[85%]"
                 >
                   <motion.div
                     key={i}
@@ -615,19 +615,15 @@ export default function Page() {
                         alt={card.title}
                         width={500}
                         height={500}
-                        className="h-[400px] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="h-62.5 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
 
                       {/* Title overlay */}
-                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                      <div className="absolute inset-x-0 bottom-0  bg-linear-to-t from-[#4b2440] via-[#4b2440]/60 to-transparent  p-6">
                         <p className="text-white text-lg font-semibold whitespace-pre-line">
                           {card.title}
                         </p>
-                        <Link className="text-white flex items-center justify-end gap-4 mt-4 w-full" href={card.link}>
-                          लाइव सेशन देखें <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white-500 text-white-500 cursor-pointer hover:bg-orange-600 hover:text-white">
-                            <ArrowUpRight size={20} />
-                          </span>
-                        </Link>
+                        
                       </div>
                     </div>
                   </motion.div>

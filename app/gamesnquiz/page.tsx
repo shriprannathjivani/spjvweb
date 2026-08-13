@@ -250,7 +250,7 @@ export default function Page() {
 
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
             <TextAnimate animation="blurInUp" startOnView delay={0.3}>
-              लाइव क्विज़, गूगल क्विज़, गेम क्विज़  &nbsp;
+              लाइव, गूगल, गेम क्विज़ेज़  &nbsp;
             </TextAnimate>{"  "}
             <span className="text-orange-500">
               <TextAnimate animation="blurInUp" startOnView delay={0.5}>

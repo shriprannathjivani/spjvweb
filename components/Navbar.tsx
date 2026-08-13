@@ -33,6 +33,8 @@ import {
   MessageCircleQuestionMark,
   Scroll,
   BookA,
+  UserCheck2,
+  UserRoundCog,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -60,6 +62,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cva } from "class-variance-authority";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 const basePath =
   process.env.NODE_ENV === "production" ? "/spjvweb" : "";
@@ -184,185 +187,135 @@ export default function Navbar() {
             : "bg-transparent"
         )}
       >
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-          {/* Logo */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{
-              duration: 0.6,
-              delay: 0.1
-            }}
-          >
-            <Link href={`/`} className="flex items-center">
-              <Image
-                src="/spjv-logo.svg"
-                alt="spjv logo"
-                width={230}
-                height={500}
-                style={{ marginTop: -9 }}
-              />
-            </Link>
-          </motion.div>
+        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
+          <div className="flex">
+            {/* Logo */}
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{
+                duration: 0.6,
+                delay: 0.1
+              }}
+            >
+              <Link href={`/`} className="flex items-center me-4">
+                <Image
+                  src="/spjv-logo.svg"
+                  alt="spjv logo"
+                  width={230}
+                  height={500}
+                  style={{ marginTop: -9 }}
+                />
+              </Link>
+            </motion.div>
+            {/* ================= DESKTOP NAV ================= */}
+            <nav className="hidden lg:flex items-center gap-6 text-lg">
+              <NavigationMenu>
+                <NavigationMenuList>
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: 0.1
+                    }}
+                  >
+                    <NavigationMenuItem >
+                      <NavigationMenuLink className={cn("text-lg px-4 py-2 me-1 rounded-full hover:bg-black/6 focus:bg-black/6 data-[state=open]:bg-black/5 transition-all duration-200 cursor-pointer text-black hover:text-orange-500", pathname?.includes("/satguru") ? "bg-black/6" : "bg-transparent")} render={<Link href="/satguru" className={cn("link flex items-center gap-2", pathname?.includes("/satguru") ? "text-orange-600" : "text-black hover:text-orange-600")} >परमहंस</Link>} />
+                    </NavigationMenuItem>
+                  </motion.div>
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: 0.3
+                    }}
+                  >
+                    <NavigationMenuItem  >
+                      <NavigationMenuTrigger className={cn("text-lg px-4 me-1 py-5.5 rounded-full hover:bg-black/6! focus:bg-black/6! data-[state=open]:bg-black/6! data-open:bg-black/6! data-open:hover:bg-black/6! data-popup-open:bg-black/6! data-popup-open:hover:bg-black/6!  transition-all duration-200 cursor-pointer", pathname?.includes("/gamesnquiz") ? "text-orange-600 bg-black/6" : "text-black hover:text-orange-600 bg-transparent")} >क्विज़</NavigationMenuTrigger>
 
+                      <NavigationMenuContent className="">
+                        <ul className="grid w-60 p-2">
+                          <li>
+                            <NavigationMenuLink className="inline-flex" render={<Link href="/gamesnquiz#game" className="text-lg! my-0.5 px-4 py-1 border border-transparent hover:text-orange-500 bg-transparent hover:bg-gray rounded-full! focus:bg-transparent"><Gamepad2 size={24} />गेम क्विज़</Link>} />
+                            <NavigationMenuLink className="inline-flex" render={<Link href="/gamesnquiz#google" className="text-lg! my-0.5 px-4 py-1 border border-transparent hover:text-orange-500 bg-transparent hover:bg-gray rounded-full! focus:bg-transparent"><MessageCircleQuestionMark size={24} />गूगल क्विज़ </Link>} />
+                            <NavigationMenuLink className="inline-flex" render={<Link href="/gamesnquiz#live" className="text-lg! my-0.5 px-4 py-1 border border-transparent hover:text-orange-500 bg-transparent hover:bg-gray rounded-full! focus:bg-transparent"><Scroll size={24} />लाइव क्विज़</Link>} />
+                            <NavigationMenuLink className="inline-flex" render={<Link href="/gamesnquiz#antakshari" className="text-lg! my-0.5 px-4 py-1 border border-transparent hover:text-orange-500 bg-transparent hover:bg-gray rounded-full! focus:bg-transparent"><BookOpenCheck size={24} />ब्रह्मवाणी अंताक्षरी</Link>} />
+                          </li>
+                        </ul>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
 
-          {/* ================= DESKTOP NAV ================= */}
-          <nav className="hidden lg:flex items-center gap-6 text-lg">
-            <NavigationMenu>
-              <NavigationMenuList>
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.1
-                  }}
-                >
-                  <NavigationMenuItem >
-                    <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
-                  text-lg
-                  px-4
-                  bg-transparent
-                  hover:bg-transparent
-                  focus:bg-transparent
-                  data-[state=open]:bg-transparent
-                  data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/satguru" className={`link ${pathname?.includes("/satguru") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"} >सतगुरु व परमहंस</Link>} />
-                  </NavigationMenuItem>
-                </motion.div>
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.3
-                  }}
-                >
-                  <NavigationMenuItem>
-                    <NavigationMenuTrigger
-                      className={`link ${pathname?.includes("/gamesnquiz") ? 'text-orange-600  hover:text-orange-600  text-lg px-4 cursor-pointer hover:bg-transparent focus:bg-transparent data-open:hover:bg-transparent data-open:focus:bg-transparent data-open:bg-transparent focus-visible:ring-ring/50 data-popup-open:bg-transparent data-popup-open:hover:bg-transparent bg-transparent  data-[state=open]:bg-transparent data-[state=open]:hover:bg-transparent' : 'hover:text-orange-600 text-lg px-4 cursor-pointer hover:bg-transparent focus:bg-transparent data-open:hover:bg-transparent data-open:focus:bg-transparent data-open:bg-transparent focus-visible:ring-ring/50 data-popup-open:bg-transparent data-popup-open:hover:bg-transparent bg-transparent  data-[state=open]:bg-transparent data-[state=open]:hover:bg-transparent'}` + "hover:text-orange-600"}
-                    >क्विज़</NavigationMenuTrigger>
-                    <NavigationMenuContent className="shadow-[0_25px_80px_rgba(0,0,0,.12)] ">
-                      <ul className="grid w-auto px-6">
-                        <li>
-                          <NavigationMenuLink render={<Link href="/gamesnquiz#game" className="text-lg! px-0 py-2 hover:text-orange-500 bg-transparent hover:bg-transparent focus:bg-transparent"><Gamepad2 size={24} />गेम क्विज़</Link>} />
-                          <NavigationMenuLink render={<Link href="/gamesnquiz#google" className="text-lg! px-0 py-2 hover:text-orange-500 bg-transparent hover:bg-transparent focus:bg-transparent"><MessageCircleQuestionMark size={24} />गूगल क्विज़ </Link>} />
-                          <NavigationMenuLink render={<Link href="/gamesnquiz#live" className="text-lg! px-0 py-2 hover:text-orange-500 bg-transparent hover:bg-transparent focus:bg-transparent"><Scroll size={24} />लाइव क्विज़</Link>} />
-                          <NavigationMenuLink render={<Link href="/gamesnquiz#antakshari" className="text-lg! px-0 py-2 hover:text-orange-500 bg-transparent hover:bg-transparent focus:bg-transparent"><BookOpenCheck size={24} />ब्रह्मवाणी अंताक्षरी</Link>} />
-                        </li>
-                      </ul>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
+                  </motion.div>
 
-                </motion.div>
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: 0.4
+                    }}
+                  >
+                    <NavigationMenuItem>
+                      <NavigationMenuLink className={cn("text-lg px-4 py-2 me-1 rounded-full hover:bg-black/6 focus:bg-black/6 data-[state=open]:bg-black/5 transition-all duration-200 cursor-pointer text-black hover:text-orange-500", pathname?.includes("/shrijigame") ? "bg-black/6" : "bg-transparent")} render={<Link href="/shrijigame" className={cn("link flex items-center gap-2", pathname?.includes("/shrijigame") ? "text-orange-600" : "text-black hover:text-orange-600")} >श्री जी गेम</Link>} />
+                    </NavigationMenuItem>
+                  </motion.div>
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: 0.5
+                    }}
+                  >
+                    <NavigationMenuItem>
+                      <NavigationMenuLink className={cn("text-lg px-4 py-2 me-1 rounded-full hover:bg-black/6 focus:bg-black/6 data-[state=open]:bg-black/5 transition-all duration-200 cursor-pointer text-black hover:text-orange-500", pathname?.includes("/balkendra") ? "bg-black/6" : "bg-transparent")} render={<Link href="/balkendra" className={cn("link flex items-center gap-2", pathname?.includes("/balkendra") ? "text-orange-600" : "text-black hover:text-orange-600")} >आत्मदर्शनम्</Link>} />
+                    </NavigationMenuItem>
+                  </motion.div>
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: 0.6
+                    }}
+                  >
+                    <NavigationMenuItem>
+                      <NavigationMenuLink className={cn("text-lg px-4 py-2 me-1 rounded-full hover:bg-black/6 focus:bg-black/6 data-[state=open]:bg-black/5 transition-all duration-200 cursor-pointer text-black hover:text-orange-500", pathname?.includes("/mandirseva") ? "bg-black/6" : "bg-transparent")} render={<Link href="/mandirseva" className={cn("link flex items-center gap-2", pathname?.includes("/mandirseva") ? "text-orange-600" : "text-black hover:text-orange-600")} >मंदिर</Link>} />
+                    </NavigationMenuItem>
+                  </motion.div>
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: 0.7
+                    }}
+                  >
+                    <NavigationMenuItem>
+                      <NavigationMenuLink className={cn("text-lg px-4 py-2 me-1 rounded-full hover:bg-black/6 focus:bg-black/6 data-[state=open]:bg-black/5 transition-all duration-200 cursor-pointer text-black hover:text-orange-500", pathname?.includes("/gyanbhandar") ? "bg-black/6" : "bg-transparent")} render={<Link href="/gyanbhandar" className={cn("link flex items-center gap-2", pathname?.includes("/gyanbhandar") ? "text-orange-600" : "text-black hover:text-orange-600")} >ज्ञान भंडार</Link>} />
+                    </NavigationMenuItem>
+                  </motion.div>
 
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.4
-                  }}
-                >
-                  <NavigationMenuItem>
-                    <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
-                  text-lg
-                  px-4
-                  bg-transparent
-                  hover:bg-transparent
-                  focus:bg-transparent
-                  data-[state=open]:bg-transparent
-                  data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/shrijigame" className={`link ${pathname?.includes("/shrijigame") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}> श्री जी गेम</Link>} />
-                  </NavigationMenuItem>
-                </motion.div>
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.5
-                  }}
-                >
-                  <NavigationMenuItem>
-                    <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
-                  text-lg
-                  px-4
-                  bg-transparent
-                  hover:bg-transparent
-                  focus:bg-transparent
-                  data-[state=open]:bg-transparent
-                  data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/balkendra" className={`link ${pathname?.includes("/balkendra") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}> आत्मदर्शनम्</Link>} />
-                  </NavigationMenuItem>
-                </motion.div>
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.6
-                  }}
-                >
-                  <NavigationMenuItem>
-                    <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
-                  text-lg
-                  px-4
-                  bg-transparent
-                  hover:bg-transparent
-                  focus:bg-transparent
-                  data-[state=open]:bg-transparent
-                  data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/mandirseva" className={`link ${pathname?.includes("/mandirseva") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>मंदिर</Link>} />
-                  </NavigationMenuItem>
-                </motion.div>
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.7
-                  }}
-                >
-                  <NavigationMenuItem>
-                    <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
-                  text-lg
-                  px-4
-                  bg-transparent
-                  hover:bg-transparent
-                  focus:bg-transparent
-                  data-[state=open]:bg-transparent
-                  data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/gyanbhandar" className={`link ${pathname?.includes("/gyanbhandar") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>ज्ञान भंडार </Link>} />
-                  </NavigationMenuItem>
-                </motion.div>
+                  {loggedIn ? (
+                    <>
+                      <motion.div
+                        initial={{ y: 20, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        transition={{
+                          duration: 0.6,
+                          delay: 0.5
+                        }}
+                      >
+                        <NavigationMenuItem>
+                          <NavigationMenuLink className={cn("text-lg px-4 me-1 py-2 rounded-full hover:bg-black/6 focus:bg-black/6 data-[state=open]:bg-black/5 transition-all duration-200 cursor-pointer text-black hover:text-orange-500", pathname?.includes("/dashboard") ? "bg-black/6" : "bg-transparent")} render={<Link href="/dashboard" className={cn("link flex items-center gap-2", pathname?.includes("/dashboard") ? "text-orange-600" : "text-black hover:text-orange-600")} >चौपाइ खोजें</Link>} />
+                        </NavigationMenuItem>
+                      </motion.div>
+                    </>) : (<>
+                    </>)}
 
-                {loggedIn ? (
-                  <>
-                    <motion.div
-                      initial={{ y: 20, opacity: 0 }}
-                      whileInView={{ y: 0, opacity: 1 }}
-                      transition={{
-                        duration: 0.6,
-                        delay: 0.5
-                      }}
-                    >
-                      <NavigationMenuItem>
-                        <NavigationMenuLink className={`${navigationMenuTriggerStyle()} 
-                  text-lg
-                  px-4
-                  bg-transparent
-                  hover:bg-transparent
-                  focus:bg-transparent
-                  data-[state=open]:bg-transparent
-                  data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/dashboard" className={`link ${pathname?.includes("/dashboard") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"}>चौपाइ खोजें</Link>} />
-                      </NavigationMenuItem>
-                    </motion.div>
-                  </>) : (<>
-                  </>)}
-
-                {/* <NavigationMenuItem>
+                  {/* <NavigationMenuItem>
                   <NavigationMenuTrigger className="
                     text-lg
                     px-4
@@ -383,52 +336,74 @@ export default function Navbar() {
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem> */}
-              </NavigationMenuList>
-            </NavigationMenu>
+                </NavigationMenuList>
+              </NavigationMenu>
+            </nav>
+          </div>
 
 
-            {loggedIn ? (
-              <>
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.6
-                  }}
-                >
-                  <Button
-                    onClick={() => {
-                      setIsMenuOpen(false);
-                      logout();
+          {loggedIn ? (
+            <>
+              <NavigationMenu>
+                <NavigationMenuList>
+                  <motion.div
+                    className="hidden lg:flex"
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: 0.6
                     }}
-                    className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-red-500 hover:bg-red-600 hover:text-white cursor-pointer"
                   >
-                    लॉगआउट <LogOut size={24} />
-                  </Button>
-                </motion.div>
-              </>
-            ) : (
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{
-                  duration: 0.6,
-                  delay: 0.6
-                }}
-              >
-                <Link href="/contact">
-                  <Button
-                    variant="outline"
-                    className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
-                  >
-                    संपर्क करें
-                  </Button>
-                </Link>
-              </motion.div>
-            )}
+                    <NavigationMenuItem data-align="end">
+                      <NavigationMenuTrigger className={cn("text-lg px-4 me-1 py-5.5 rounded-full hover:bg-black/6! focus:bg-black/6! data-[state=open]:bg-black/6! data-open:bg-black/6! data-open:hover:bg-black/6! data-popup-open:bg-black/6! data-popup-open:hover:bg-black/6!  transition-all duration-200 cursor-pointer", pathname?.includes("/logout") ? "text-orange-600 bg-black/6" : "text-black hover:text-orange-600 bg-transparent")} > <CircleUserRound className="pe-2" size={32} /> सुंदरसाथ</NavigationMenuTrigger>
 
-          </nav>
+                      <NavigationMenuContent className="inline-flex" data-align="end">
+                        <ul className="grid w-auto p-2">
+                          <li>
+                            <NavigationMenuLink
+                              className="inline-flex cursor-pointer"
+                              onClick={(e) => {
+                                e.preventDefault(); // Stop default navigation link behavior
+                                setIsMenuOpen(false);
+                                logout();
+                              }}
+                              render={
+                                <span className="text-lg! my-0.5 px-4 py-1 flex items-center gap-2 border border-transparent hover:text-orange-500 bg-transparent hover:bg-gray rounded-full! focus:bg-transparent text-orange-600">
+                                  <LogOut size={24} />  लॉगआउट
+                                </span>
+                              }
+                            />
+                          </li>
+                        </ul>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+
+                  </motion.div>
+                </NavigationMenuList>
+              </NavigationMenu>
+            </>
+          ) : (
+            <motion.div
+              className="hidden lg:flex"
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{
+                duration: 0.6,
+                delay: 0.6
+              }}
+            >
+              <Link href="/contact">
+                <Button
+                  variant="outline"
+                  className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
+                >
+                  संपर्क करें
+                </Button>
+              </Link>
+            </motion.div>
+          )}
+
 
           {/* ================= MOBILE MENU BUTTON ================= */}
           <div className="lg:hidden">
@@ -462,7 +437,7 @@ export default function Navbar() {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <Users size={24} />
-                    <span className="text-base mt-2">सतगुरु</span>
+                    <span className="text-base mt-2">परमहंस</span>
                   </Link>
 
                   <Link

@@ -3,6 +3,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  /* Register your custom shadow naming it 'red-glow' */
+  --shadow-red-glow: 2px 2px 15px 0 rgba(255, 0, 0, 0.70);
+}
+
 /* Default font */
 body {
   font-family: var(--font-poppins), sans-serif;

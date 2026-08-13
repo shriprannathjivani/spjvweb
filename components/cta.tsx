@@ -62,7 +62,7 @@ export default function PrannathCTA() {
 
                         {/* Buttons */}
                         <div className="mt-8 flex gap-4">
-                            <a href="/satguru">
+                            <a href="/bitakSahebRrdji">
                             <Button
                                 variant="outline"
                                 className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"

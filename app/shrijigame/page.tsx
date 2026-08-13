@@ -25,7 +25,7 @@ export default function Page() {
 
   return (
     <>
-      <div className="p-8 bg-white"></div>
+      <div className="p-10 bg-white/4"></div>
       <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden text-white">
 
         {/* ================= BACKGROUND LAYERS ================= */}

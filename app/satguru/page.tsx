@@ -27,12 +27,12 @@ const images = [
     { src: "/satgurutwo.jpg", topClass: "image image-middle-right border-4 border-white rounded-[38px]", subClass: "image-container transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5 image-2" },
     { src: "/satguruthree.jpg", topClass: "image middle-right border-4 border-white rounded-[38px]", subClass: "image-container image-3 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
     { src: "/satguru2.png", topClass: "image image-right border-4 border-white rounded-[38px]", subClass: "image-container image-4 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
-    { src: "/satguru8.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-5 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
+    { src: "/ShriRRdji.jpeg", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-5 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
     { src: "/satguru11.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-6 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
     { src: "/satguru5.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-7 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
-    { src: "/satguru3.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-8 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
+    { src: "/", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-8 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
     { src: "/satguru7.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-9 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
-    { src: "/satguru6.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-10 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
+    { src: "/satguru3.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-10 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
     { src: "/satguru9.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-11 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
     { src: "/satguru10.png", topClass: "image image-left border-4 border-white rounded-[38px]", subClass: "image-container image-12 transform transition-all duration-500 ease-out hover:!z-[20] hover:scale-125 hover:rotate-5" },
 ]
@@ -262,13 +262,13 @@ z-index: 2;
     left: calc(50% - 540px);
     transform: rotate(3.91deg)
 }
-    .image-container.image-8 {
-z-index: 4;
-   width: 177px;
-    height: 228px;
-    top: calc(50% - 24px);
-    left: calc(50% - 20px);
-    transform: rotate(359deg);
+//     .image-container.image-8 {
+// z-index: 4;
+//    width: 177px;
+//     height: 228px;
+//     top: calc(50% - 24px);
+//     left: calc(50% - 20px);
+//     transform: rotate(359deg);
 }
     .image-container.image-9 {
 z-index: 4;
@@ -341,15 +341,10 @@ z-index: 4;
 
             <div className="relative max-w-7xl mx-auto px-6 py-10 overflow-hidden pt-0 text-center font-arya ">
                 <div className=" relative flex h-125 w-full flex-col items-center justify-center ">
-                    <h2 className="text-4xl flex flex-row font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">
+                    <h2 className="text-4xl flex flex-row font-semibold tracking-tight text-balance text-orange-500 sm:text-5xl">
                         <TextAnimate animation="blurInUp" startOnView delay={0.3}>
-                            सतगुरु&nbsp;
+                            परमहंस
                         </TextAnimate>{"  "}
-                        <span className="text-orange-500">
-                            <TextAnimate animation="blurInUp" startOnView delay={0.5}>
-                                व परमहंस
-                            </TextAnimate>
-                        </span>
                     </h2>
                     <TextAnimate animation="blurInUp" by="line"
                         delay={0.3}

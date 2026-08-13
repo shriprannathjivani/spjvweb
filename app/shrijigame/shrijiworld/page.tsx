@@ -483,7 +483,7 @@ const UI = () => {
               <div className="relative z-10 px-10 mt-0 flex gap-4">
                 <button
                   onClick={() => {
-                    window.location.href = `${basePath}/gamesnquiz`;
+                    window.location.href = `${basePath}/shrijigame`;
                   }}
                   className="cursor-pointer 
                   bg-gradient-to-b from-[#ff6b6b] to-[#c1121f] 
