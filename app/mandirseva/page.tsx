@@ -199,7 +199,7 @@ export default function Page() {
                                                     className={`flex items-center justify-center transition-all duration-300 ${isSelected ? "scale-125 z-50" : "scale-100"
                                                         }`}
                                                 >
-                                                    <img
+                                                    <Image
                                                         src={temple.image}
                                                         alt={temple.name}
                                                         className={`h-10 w-10 rounded-full object-cover border-2 shadow-lg ${isSelected ? "border-orange-500 ring-4 ring-orange-300" : "border-white"
