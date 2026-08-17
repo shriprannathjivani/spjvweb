@@ -2,6 +2,7 @@
 
 import Image from "@/components/BaseImage";
 import Link from "next/link"
+import Testimonials from "@/public/Testimonials.json"
 import {
   Facebook,
   Youtube,
@@ -13,6 +14,7 @@ import {
   AtSign,
   Copyright,
 } from "lucide-react"
+import Lottie from "lottie-react";
 import { motion } from "framer-motion";
 
 export default function Footer() {
@@ -48,7 +50,12 @@ export default function Footer() {
                 height={156}
               />
               <div className="mt-6 text-orange-300 text-sm">
-                <MessageSquareQuote size={32} className="text-orange-500 mb-4" />
+                {/* ICON */}
+                  <Lottie
+                    animationData={Testimonials}
+                    loop={true}
+                    className="w-full sm:w-10 h-10 mb-2"
+                  />
                 <p className="sm:text-3xl text-xl leading-relaxed text-orange-300 font-medium opacity-70 ">
                   सुंदरसाथ द्वारा, <br />
                   सुंदरसाथ के लिए, सुंदरसाथ को समर्पित

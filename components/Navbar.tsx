@@ -369,7 +369,7 @@ export default function Navbar() {
                                 logout();
                               }}
                               render={
-                                <span className="text-lg! my-0.5 px-4 py-1 flex items-center gap-2 border border-transparent hover:text-orange-500 bg-transparent hover:bg-gray rounded-full! focus:bg-transparent text-orange-600">
+                                <span className="text-lg! my-0.5 px-4 py-1 flex items-center gap-2 border border-transparent hover:text-orange-500 bg-transparent hover:bg-gray rounded-full! focus:bg-transparent ">
                                   <LogOut size={24} />  लॉगआउट
                                 </span>
                               }

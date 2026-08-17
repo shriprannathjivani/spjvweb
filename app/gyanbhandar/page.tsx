@@ -1,5 +1,7 @@
 "use client";
-import Link from "next/link"
+import Link from "next/link";
+import Testimonials from "@/public/Testimonials.json";
+import Lottie from "lottie-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Briefcase, Calendar, CircleUserRound, Gauge, Globe, Hourglass, MapPin, MapPinHouse, MessageCircleQuestionMark, Phone, PhoneCall, PlayCircleIcon, School, Speech, Timer, UsersRound } from "lucide-react";
@@ -360,7 +362,12 @@ export default function Gyanbhandar() {
                 transition={{ duration: 0.6 }}
                 className="flex justify-center"
               >
-                <MessageSquareQuote size={76} className="text-orange-500 mb-6" />
+                {/* ICON */}
+                <Lottie
+                  animationData={Testimonials}
+                  loop={true}
+                  className="w-full sm:w-16 h-16 mb-2"
+                />
               </motion.div>
 
               <AnimatePresence mode="wait">
@@ -733,7 +740,7 @@ export default function Gyanbhandar() {
           </div>
         </section>
 
-      
+
 
 
       </div>
@@ -742,111 +749,111 @@ export default function Gyanbhandar() {
 }
 
 
-  // <section className="max-w-7xl mx-auto py-12 mt-16 text-start">
-  //         <div className="max-w-7xl mx-auto">
-  //           {/* Header */}
-  //           <div className=" gap-10 items-start">
-  //             {/* Left */}
-  //             <TextAnimate animation="blurInUp" startOnView delay={0.1} className="text-3xl font-bold text-black mb-2">
-  //               ई-मंथन लेखन &nbsp;
-  //             </TextAnimate>
-  //             <TextAnimate animation="blurInUp" by="line"
-  //               delay={0.3}
-  //               segmentClassName="block" startOnView className="text-xl text-gray-500 mb-8">
-  //               {`जिनके शब्द, विचार और दृष्टिकोण, इस दुनिया को निरंतर पहले से बेहतर बना रहे हैं।\nवे जिनकी लेखनी, वाणी और सोच इस संसार को और सुख-शीतल बना रही है।`}
-  //             </TextAnimate>
-  //           </div>
+// <section className="max-w-7xl mx-auto py-12 mt-16 text-start">
+//         <div className="max-w-7xl mx-auto">
+//           {/* Header */}
+//           <div className=" gap-10 items-start">
+//             {/* Left */}
+//             <TextAnimate animation="blurInUp" startOnView delay={0.1} className="text-3xl font-bold text-black mb-2">
+//               ई-मंथन लेखन &nbsp;
+//             </TextAnimate>
+//             <TextAnimate animation="blurInUp" by="line"
+//               delay={0.3}
+//               segmentClassName="block" startOnView className="text-xl text-gray-500 mb-8">
+//               {`जिनके शब्द, विचार और दृष्टिकोण, इस दुनिया को निरंतर पहले से बेहतर बना रहे हैं।\nवे जिनकी लेखनी, वाणी और सोच इस संसार को और सुख-शीतल बना रही है।`}
+//             </TextAnimate>
+//           </div>
 
-  //           {/* Articles Grid */}
-  //           <div className="mt-12  gap-6">
-  //             <Carousel
-  //               setApi={setApi}
-  //               opts={{
-  //                 align: "start",
-  //               }}
-  //               className=""
-  //             >
-  //               <CarouselContent>
-  //                 {articles.map((article, index) => (
-  //                   <CarouselItem
-  //                     key={index}
-  //                     className="md:basis-1/3 basis-[85%] relative"
-  //                   >
-  //                     <motion.div
-  //                       key={index}
-  //                       initial={{ y: 60, opacity: 0 }}
-  //                       whileInView={{ y: 0, opacity: 1 }}
-  //                       transition={{
-  //                         duration: 0.6,
-  //                         delay: index * 0.2
-  //                       }}
-  //                       className="h-full"
-  //                     >
-  //                       <div className="card-circle">{index + 1}</div>
-  //                       <div
-  //                         key={index}
-  //                         className="flex gap-4 bg-white/60 rounded-3xl items-center cardCustome !p-0"
-  //                       >
+//           {/* Articles Grid */}
+//           <div className="mt-12  gap-6">
+//             <Carousel
+//               setApi={setApi}
+//               opts={{
+//                 align: "start",
+//               }}
+//               className=""
+//             >
+//               <CarouselContent>
+//                 {articles.map((article, index) => (
+//                   <CarouselItem
+//                     key={index}
+//                     className="md:basis-1/3 basis-[85%] relative"
+//                   >
+//                     <motion.div
+//                       key={index}
+//                       initial={{ y: 60, opacity: 0 }}
+//                       whileInView={{ y: 0, opacity: 1 }}
+//                       transition={{
+//                         duration: 0.6,
+//                         delay: index * 0.2
+//                       }}
+//                       className="h-full"
+//                     >
+//                       <div className="card-circle">{index + 1}</div>
+//                       <div
+//                         key={index}
+//                         className="flex gap-4 bg-white/60 rounded-3xl items-center cardCustome !p-0"
+//                       >
 
-  //                         <div className="flex-1 ">
-  //                           <Image height={342} width={608}
-  //                             src={article.image}
-  //                             alt={article.title}
-  //                             className="rounded-l-2xl rounded-b-0 object-cover"
-  //                           />
+//                         <div className="flex-1 ">
+//                           <Image height={342} width={608}
+//                             src={article.image}
+//                             alt={article.title}
+//                             className="rounded-l-2xl rounded-b-0 object-cover"
+//                           />
 
-  //                           <div className="p-8">
-  //                             <span className="animate-bounce mb-4 inline-block bg-lime-300 text-black text-xs md:text-sm px-4 py-2 rounded-full font-medium">
-  //                               {article.tag}
-  //                             </span>
-  //                             <h3 className="text-2xl leading-snug line-clamp-1 ">
-  //                               {article.title}
-  //                             </h3>
+//                           <div className="p-8">
+//                             <span className="animate-bounce mb-4 inline-block bg-lime-300 text-black text-xs md:text-sm px-4 py-2 rounded-full font-medium">
+//                               {article.tag}
+//                             </span>
+//                             <h3 className="text-2xl leading-snug line-clamp-1 ">
+//                               {article.title}
+//                             </h3>
 
-  //                             <p className="mt-2 text-base text-muted-foreground">
-  //                               टीका – {article.tikaName}
-  //                               <br />
-  //                               लेखक – {article.writer}
-  //                             </p>
+//                             <p className="mt-2 text-base text-muted-foreground">
+//                               टीका – {article.tikaName}
+//                               <br />
+//                               लेखक – {article.writer}
+//                             </p>
 
-  //                             <div className="mt-4 flex items-center justify-between text-base text-muted-foreground">
-  //                               <span>{article.date}</span>
+//                             <div className="mt-4 flex items-center justify-between text-base text-muted-foreground">
+//                               <span>{article.date}</span>
 
-  //                               <Link href={`/gyanbhandar/article/${article.id}`}>
-  //                                 <Button
-  //                                   variant="outline"
-  //                                   className="rounded-full  border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
-  //                                 >
-  //                                   लेख पढ़ें
-  //                                 </Button>
-  //                               </Link>
-  //                             </div>
-  //                           </div>
+//                               <Link href={`/gyanbhandar/article/${article.id}`}>
+//                                 <Button
+//                                   variant="outline"
+//                                   className="rounded-full  border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
+//                                 >
+//                                   लेख पढ़ें
+//                                 </Button>
+//                               </Link>
+//                             </div>
+//                           </div>
 
-  //                         </div>
-  //                       </div>
-  //                     </motion.div>
-  //                   </CarouselItem>
-  //                 ))}
-  //               </CarouselContent>
+//                         </div>
+//                       </div>
+//                     </motion.div>
+//                   </CarouselItem>
+//                 ))}
+//               </CarouselContent>
 
-  //               {/* Custom Controls */}
-  //               <div className="mt-4 flex items-center justify-between">
-  //                 <CarouselDots api={api} />
+//               {/* Custom Controls */}
+//               <div className="mt-4 flex items-center justify-between">
+//                 <CarouselDots api={api} />
 
-  //                 {/* Arrows */}
-  //                 <div className="flex gap-3">
-  //                   <CarouselPrevious
-  //                     className="static h-10 w-10 mt-5 rounded-full border border-gray-300
-  //                          text-gray-500 hover:bg-orange-50 hover:text-orange-500 cursor-pointer"
-  //                   />
-  //                   <CarouselNext
-  //                     className="static h-10 w-10 mt-5 rounded-full border border-orange-500
-  //                          text-orange-500 hover:bg-orange-50 cursor-pointer"
-  //                   />
-  //                 </div>
-  //               </div>
-  //             </Carousel>
-  //           </div>
-  //         </div>
-  // </section>
+//                 {/* Arrows */}
+//                 <div className="flex gap-3">
+//                   <CarouselPrevious
+//                     className="static h-10 w-10 mt-5 rounded-full border border-gray-300
+//                          text-gray-500 hover:bg-orange-50 hover:text-orange-500 cursor-pointer"
+//                   />
+//                   <CarouselNext
+//                     className="static h-10 w-10 mt-5 rounded-full border border-orange-500
+//                          text-orange-500 hover:bg-orange-50 cursor-pointer"
+//                   />
+//                 </div>
+//               </div>
+//             </Carousel>
+//           </div>
+//         </div>
+// </section>

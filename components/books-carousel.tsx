@@ -2,6 +2,8 @@
 
 import Image from "@/components/BaseImage";
 import { Button } from "@/components/ui/button";
+import Testimonials from "@/public/Testimonials.json";
+import Lottie from "lottie-react";
 import {
   Carousel,
   CarouselContent,
@@ -141,7 +143,12 @@ export default function BooksCarousel() {
           }}
         >
           <div className="mt-10 sm:mt-20 max-w-4xl">
-            <MessageSquareQuote className="text-orange-500 mb-4 w-10 h-10 sm:w-14 sm:h-14 lg:w-[76px] lg:h-[76px]" />
+            {/* ICON */}
+            <Lottie
+              animationData={Testimonials}
+              loop={true}
+              className="w-full sm:w-16 h-16 mb-2"
+            />
             <p className="text-base sm:text-4xl  leading-relaxed text-[#7a2f18] font-medium">
               यामें अपनी बीतक सब है, श्री देवचन्द्र को मेरो तेरो नाम। <br /> जा दिन जो बीती हम तीनों में, सो सब लिखी तमाम।।
             </p>

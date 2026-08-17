@@ -91,7 +91,7 @@ export default function Page() {
           <TextAnimate animation="blurInUp" by="line"
             delay={0.5}
             segmentClassName="p" startOnView className="text-xl md:text-2xl text-white/80 mb-12 max-w-2xl mx-auto">
-            एक दिव्य 3D अनुभव, जहाँ खेल-खेल में खोजें मंदिर और जानें श्री जी की अद्भुत लीलाओं का इतिहास। ✨
+            एक दिव्य 3D अनुभव, जहाँ खेल-खेल में खोजें ज्ञानकेन्द्र और जानें श्री जी की अद्भुत लीलाओं का इतिहास। ✨
           </TextAnimate>
 
           <div className="flex gap-4 items-start justify-center">
@@ -124,7 +124,7 @@ export default function Page() {
                   delay={0.5}
                   segmentClassName="p" startOnView className=" text-xl md:text-2xl text-white/80 mb-4">
                   इस 3D दुनिया में बच्चे:
-                  ✨ मंदिर खोजेंगे
+                  ✨ ज्ञानकेन्द्र खोजेंगे
                   ✨ श्री जी की लीलाओं को जानेंगे
                   ✨ खेल-खेल में दिव्य ज्ञान प्राप्त करेंगे
                 </TextAnimate>

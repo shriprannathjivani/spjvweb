@@ -2,6 +2,8 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button";
+import Testimonials from "@/public/Testimonials.json";
+import Lottie from "lottie-react";
 import React from "react";
 import { useState } from "react"
 import { satgurus } from "@/lib/satguru-data"
@@ -418,26 +420,31 @@ z-index: 4;
                                                         className="object-container  border-4 border-white rounded-[38px]"
                                                     />
                                                 </div>
-                                                <div className="p-6 pt-16 bg-white rounded-3xl border border-gray-100 ">
+                                                <div className="p-6 pt-16 pb-4 bg-white rounded-3xl border border-gray-100 ">
+                                                    <p className="text-orange-600 text-base">
+                                                        {satguru.role}
+                                                    </p>
                                                     {/* Content */}
                                                     <h3 className="text-2xl font-semibold tracking-tight text-gray-900">
                                                         {satguru.name}
                                                     </h3>
-
-                                                    <p className="text-orange-600 mt-2 text-base">
-                                                        {satguru.role}
-                                                    </p>
-
-                                                    <p className="mt-4 text-center text-gray-600 leading-relaxed text-sm font-poppins line-clamp-4 whitespace-pre-line">
-                                                        <QuoteIcon className="text-orange-600" />
-                                                        {satguru.quote}
-                                                    </p>
+                                                    <div className="mt-4 flex flex-col items-center justify-center text-center">
+                                                        {/* ICON */}
+                                                        <Lottie
+                                                            animationData={Testimonials}
+                                                            loop={true}
+                                                            className="sm:w-8 h-8"
+                                                        />
+                                                        <p className="mt-2 text-center text-gray-600 leading-relaxed text-sm font-poppins line-clamp-3 whitespace-pre-line">
+                                                            {satguru.quote}
+                                                        </p>
+                                                    </div>
 
                                                     {/* Divider */}
-                                                    <div className="mt-6 h-px w-full bg-gray-100"></div>
+                                                    <div className="mt-2 h-px w-full bg-gray-100"></div>
 
                                                     {/* Footer  Place: {satguru.timeline[0].year}*/}
-                                                    <div className="mt-6 flex items-center justify-between">
+                                                    <div className="mt-4 flex items-center justify-between">
                                                         <span className="text-sm text-gray-500">
                                                             स्थान: <b>{satguru.place}</b>
                                                         </span>

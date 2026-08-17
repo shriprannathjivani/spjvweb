@@ -227,7 +227,7 @@ const Butterfly = ({ playerRef }: { playerRef: React.RefObject<THREE.Group | nul
 // --- 4. SCENE & CHUNK LOGIC (GROUNDED TREES) ---
 const SceneManager = ({ playerRef }: { playerRef: React.RefObject<THREE.Group | null> }) => {
   const { scene: treeModel } = useGLTF(`${basePath}/models/single_tree.glb`);
-  const { scene: templeModel } = useGLTF(`${basePath}/models/templeindian.glb`);
+  const { scene: templeModel } = useGLTF(`${basePath}/models/ancient_greek_book_shop.glb`);
 
   // Destructure the necessary state and actions
   const { locations, markVisited, setActiveTemple, activeTemple } = useGameStore();
@@ -330,7 +330,7 @@ const SceneManager = ({ playerRef }: { playerRef: React.RefObject<THREE.Group | 
       })}
 
       {locations.map(loc => (
-        <primitive key={loc.id} object={templeModel.clone()} position={[loc.x, 0, loc.z]} scale={30} />
+        <primitive key={loc.id} object={templeModel.clone()} position={[loc.x, 0, loc.z]} scale={1.3} />
       ))}
     </>
   );

@@ -2,7 +2,9 @@
 
 import Image from "@/components/BaseImage";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation"
+import { useRouter } from "next/navigation";
+import Testimonials from "@/public/Testimonials.json";
+import Lottie from "lottie-react";
 import {
     Carousel,
     CarouselContent,
@@ -46,15 +48,15 @@ const Quotes = [
     }
 ]
 const basePath =
-  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
+    process.env.NODE_ENV === "production" ? "/spjvweb" : "";
 export default function LoginPage() {
     const [api, setApi] = React.useState<CarouselApi>()
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const autoplay = useRef(
         Autoplay({
-        delay: 6000,
-        stopOnInteraction: false,
+            delay: 6000,
+            stopOnInteraction: false,
         })
     );
     // 🔐 hash function
@@ -103,141 +105,142 @@ export default function LoginPage() {
 
     return (
         <>
-        <section className="max-w-7xl mx-auto px-6">
-        <div className="min-h-screen grid grid-cols-1 gap-12 lg:grid-cols-2">
-            
-            {/* 🔐 LEFT: LOGIN */}
-            <div className="flex items-center justify-center text-center">
-                <div className="w-full rounded-3xl bg-white p-8 py-16">
-                    {/* Title */}
-                    <div className="flex flex-col gap-0 text-center text-neut-darkest mb-8">
-                        <h1 className="text-3xl font-bold mb-2">लॉगिन विथ स.स.ओ</h1>
-                        <p className="text-gray-500 text-lg ">
-                            इस सेवा तक पहुँचने के लिए आई डी दर्ज करें
-                        </p>
+            <section className="max-w-7xl mx-auto px-6">
+                <div className="min-h-screen grid grid-cols-1 gap-12 lg:grid-cols-2">
+
+                    {/* 🔐 LEFT: LOGIN */}
+                    <div className="flex items-center justify-center text-center">
+                        <div className="w-full rounded-3xl bg-white p-8 py-16">
+                            {/* Title */}
+                            <div className="flex flex-col gap-0 text-center text-neut-darkest mb-8">
+                                <h1 className="text-3xl font-bold mb-2">लॉगिन विथ स.स.ओ</h1>
+                                <p className="text-gray-500 text-lg ">
+                                    इस सेवा तक पहुँचने के लिए आई डी दर्ज करें
+                                </p>
+                            </div>
+
+                            {/* Input */}
+                            <form
+                                onSubmit={handleSubmit}
+                                className="space-y-4"
+                            >
+                                {/* Input */}
+                                <div className="space-y-2">
+                                    <label className="text-left text-gray-600 text-lg flex">
+                                        स.स.ओ आई डी
+                                    </label>
+
+                                    <input
+                                        autoFocus
+                                        type="password"
+                                        placeholder="आई डी"
+                                        className={`w-full px-4 py-3 rounded-xl border-2 ${error ? "border-red-500" : "border-black"
+                                            }`}
+                                        value={password}
+                                        onChange={(e) => {
+                                            setPassword(e.target.value);
+                                            if (error) setError("");
+                                        }}
+                                    />
+
+                                    {error && (
+                                        <p className="text-red-800 text-sm text-left flex gap-2 items-center"><Info size={16} />{error}</p>
+                                    )}
+                                </div>
+
+                                {/* Button */}
+                                <Button
+                                    type="submit"
+                                    disabled={!password.trim()}
+                                    className="rounded-full  border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
+                                >
+                                    लॉगिन करें
+                                </Button>
+                            </form>
+                        </div>
                     </div>
 
-                    {/* Input */}
-                    <form
-                        onSubmit={handleSubmit}
-                        className="space-y-4"
-                    >
-                        {/* Input */}
-                        <div className="space-y-2">
-                            <label className="text-left text-gray-600 text-lg flex">
-                                स.स.ओ आई डी
-                            </label>
+                    {/* 🌿 RIGHT: IMAGE + QUOTE */}
+                    <div className="hidden lg:flex items-center justify-center p-10 ">
+                        <div className="max-w-lg text-center space-y-6">
 
-                            <input
-                                autoFocus
-                                type="password"
-                                placeholder="आई डी"
-                                className={`w-full px-4 py-3 rounded-xl border-2 ${error ? "border-red-500" : "border-black"
-                                    }`}
-                                value={password}
-                                onChange={(e) => {
-                                    setPassword(e.target.value);
-                                    if (error) setError("");
+                            <Carousel
+                                setApi={setApi}
+                                opts={{
+                                    align: "start",
+                                    loop: false,
                                 }}
-                            />
+                                plugins={[autoplay.current]}
+                            >
+                                <CarouselContent>
+                                    {Quotes.map((Quote, index) => (
+                                        <CarouselItem
+                                            key={index}
+                                            className="pl-4 md:basis-1/1 relative"
+                                        >
+                                            <motion.div
+                                                key={index}
+                                                initial={{ y: 60, opacity: 0 }}
+                                                whileInView={{ y: 0, opacity: 1 }}
+                                                transition={{
+                                                    duration: 0.6,
+                                                    delay: 0.2
+                                                }}
+                                                className="h-full"
+                                            >
+                                                <div className="mt-10 max-w-4xl flex flex-col items-center justify-center mx-auto text-center relative px-6">
+                                                    {/* ICON */}
+                                                    <Lottie
+                                                        animationData={Testimonials}
+                                                        loop={true}
+                                                        className="sm:w-16 h-16 mb-2 "
+                                                    />
+                                                    <AnimatePresence mode="wait">
+                                                        <motion.div
+                                                            key={index}
+                                                            initial={{ opacity: 0, y: 40 }}
+                                                            animate={{ opacity: 1, y: 0 }}
+                                                            exit={{ opacity: 0, y: -40 }}
+                                                            transition={{ duration: 0.6 }}
+                                                            className="flex flex-col items-center"
+                                                        >
 
-                            {error && (
-                                <p className="text-red-800 text-sm text-left flex gap-2 items-center"><Info size={16} />{error}</p>
-                            )}
+                                                            {/* Quote */}
+                                                            <TextAnimate animation="blurInUp" by="line"
+                                                                delay={0.6}
+                                                                segmentClassName="block" startOnView className="text-3xl leading-12 md:text-3xl text-[#7a2f18] font-medium">
+                                                                {Quote.text}
+                                                            </TextAnimate>
+                                                            {/* Author */}
+                                                            <div className="flex flex-col items-center gap-2 mt-8">
+                                                                <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-orange-400">
+                                                                    <Image
+                                                                        src={Quote.image}
+                                                                        alt={Quote.name}
+                                                                        fill
+                                                                        className="object-cover"
+                                                                    />
+                                                                </div>
+                                                                <div className="text-left">
+                                                                    <p className="text-base font-semibold text-gray-600">
+                                                                        {Quote.name}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </motion.div>
+                                                    </AnimatePresence>
+                                                </div>
+                                            </motion.div>
+
+                                        </CarouselItem>
+                                    ))}
+                                </CarouselContent>
+
+                            </Carousel>
                         </div>
-
-                        {/* Button */}
-                        <Button
-                            type="submit"
-                            disabled={!password.trim()}
-                            className="rounded-full  border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
-                        >
-                            लॉगिन करें
-                        </Button>
-                    </form>
+                    </div>
                 </div>
-            </div>
-
-            {/* 🌿 RIGHT: IMAGE + QUOTE */}
-            <div className="hidden lg:flex items-center justify-center p-10 ">
-                <div className="max-w-lg text-center space-y-6">
-
-                    <Carousel
-                        setApi={setApi}
-                        opts={{
-                            align: "start",
-                            loop: false,
-                        }}
-                        plugins={[autoplay.current]}
-                    >
-                        <CarouselContent>
-                            {Quotes.map((Quote, index) => (
-                                <CarouselItem
-                                    key={index}
-                                    className="pl-4 md:basis-1/1 relative"
-                                >
-                                    <motion.div
-                                        key={index}
-                                        initial={{ y: 60, opacity: 0 }}
-                                        whileInView={{ y: 0, opacity: 1 }}
-                                        transition={{
-                                            duration: 0.6,
-                                            delay: 0.2
-                                        }}
-                                        className="h-full"
-                                    >
-                                        <div className="mt-10 max-w-4xl mx-auto text-center relative px-6">
-
-
-                                            <div className="text-orange-500 text-[106px] mb-3 leading-6">❝</div>
-
-
-                                            <AnimatePresence mode="wait">
-                                                <motion.div
-                                                    key={index}
-                                                    initial={{ opacity: 0, y: 40 }}
-                                                    animate={{ opacity: 1, y: 0 }}
-                                                    exit={{ opacity: 0, y: -40 }}
-                                                    transition={{ duration: 0.6 }}
-                                                    className="flex flex-col items-center"
-                                                >
-
-                                                    {/* Quote */}
-                                                    <TextAnimate animation="blurInUp" by="line"
-                                                        delay={0.6}
-                                                        segmentClassName="block" startOnView className="text-3xl leading-12 md:text-3xl text-[#7a2f18] font-medium">
-                                                        {Quote.text}
-                                                    </TextAnimate>
-                                                    {/* Author */}
-                                                    <div className="flex flex-col items-center gap-2 mt-8">
-                                                        <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-orange-400">
-                                                            <Image
-                                                                src={Quote.image}
-                                                                alt={Quote.name}
-                                                                fill
-                                                                className="object-cover"
-                                                            />
-                                                        </div>
-                                                        <div className="text-left">
-                                                            <p className="text-base font-semibold text-gray-600">
-                                                                {Quote.name}
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </motion.div>
-                                            </AnimatePresence>
-                                        </div>
-                                    </motion.div>
-
-                                </CarouselItem>
-                            ))}
-                        </CarouselContent>
-
-                    </Carousel>
-                </div>
-            </div>
-        </div>
-        </section>
+            </section>
         </>
     );
 }
