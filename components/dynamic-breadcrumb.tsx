@@ -25,7 +25,7 @@ const labelMap: Record<string, string> = {
   game: "गेम्स",
   faq: "प्रश्नोत्तर",
   privacypolicy: "नियम व शर्तें",
-  satguru: "सतगुरु व परमहंस",
+  satguru: "परमहंस",
   gamesnquiz: "गेम्स & क्विज़",
   dashboard: "डैशबोर्ड",
 }

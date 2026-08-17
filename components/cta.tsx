@@ -53,7 +53,7 @@ export default function PrannathCTA() {
                         <h2 className="text-3xl md:text-4xl font-semibold leading-snug text-white">
                             हमारे प्रेरणास्रोत
                             <br />
-                            <span className="font-normal">श्री सतगुरु व परमहंस</span>
+                            <span className="font-normal">परमहंस</span>
                         </h2>
 
                         <p className="mt-4 text-xl text-gray-500  max-w-lg text-white">

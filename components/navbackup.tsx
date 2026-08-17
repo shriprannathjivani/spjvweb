@@ -210,7 +210,7 @@ export default function Navbar() {
                   focus:bg-transparent
                   data-[state=open]:bg-transparent
                   data-[state=open]:hover:bg-transparent
-                  hover:text-orange-500`} render={<Link href="/satguru" className={`link ${pathname?.includes("/satguru") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"} >सतगुरु व परमहंस</Link>} />
+                  hover:text-orange-500`} render={<Link href="/satguru" className={`link ${pathname?.includes("/satguru") ? 'text-orange-600 font-semibold' : ''}` + "hover:text-orange-600"} >परमहंस</Link>} />
                   </NavigationMenuItem>
                 </motion.div>
                 <motion.div

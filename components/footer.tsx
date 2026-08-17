@@ -73,7 +73,7 @@ export default function Footer() {
           >
             <h4 className="text-2xl mb-4">क्विक लिंकस</h4>
             <ul className="space-y-2 text-lg text-white/80">
-              <li><Link href="/satguru" className="hover:text-orange-500">सतगुरु व परमहंस</Link></li>
+              <li><Link href="/satguru" className="hover:text-orange-500">परमहंस</Link></li>
               <li><Link href="/gamesnquiz" className="hover:text-orange-500">क्विज़</Link></li>
               <li><Link href="/shrijigame" className="hover:text-orange-500">श्री जी गेम</Link></li>
               <li><Link href="/balkendra" className="hover:text-orange-500">आत्मदर्शनम्</Link></li>
