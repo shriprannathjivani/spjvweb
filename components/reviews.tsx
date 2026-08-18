@@ -13,7 +13,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import React, { useState } from "react";
-import { reviews } from "@/lib/reviews";
+import { reviews } from "@/lib/reviewnew";
 import Link from "next/link";
 import {
   HoverCard,
@@ -84,7 +84,7 @@ export default function ReviewsCarousel() {
                         </span> */}
 
                         <p
-                          className={`text-gray-700 mb-4  transition-all duration-300 ${isExpanded ? "" : "line-clamp-4"
+                          className={`text-gray-700 mb-4 wrap-break-word transition-all duration-300 ${isExpanded ? "" : "line-clamp-6"
                             }`}
                         >
                           {review.review}

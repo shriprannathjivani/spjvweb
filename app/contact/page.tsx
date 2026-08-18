@@ -299,7 +299,7 @@ export default function Page() {
         </div>
 
       </div>
-      <div className="max-w-7xl mx-auto px-8 pt-0 py-24 ">
+      <div className="max-w-370 mx-auto px-8 pt-0 py-24 ">
         {/* Heading */}
         <TextAnimate animation="blurInUp" by="line"
           delay={0.3}

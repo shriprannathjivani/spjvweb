@@ -160,7 +160,7 @@ export default function Events() {
         </div>
 
         {/* Bento Grid */}
-        <div className="grid auto-rows-[220px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid auto-rows-[250px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
           {events.map((event, index) => (
 
