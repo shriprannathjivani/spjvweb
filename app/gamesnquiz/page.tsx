@@ -243,10 +243,10 @@ export default function Page() {
 
   return (
     <>
-      <section className="relative max-w-7xl mx-auto px-6 py-10 overflow-hidden pt-0 font-arya ">
+      <section className="relative max-w-370 mx-auto px-8 py-10 overflow-hidden pt-0 font-arya ">
 
         {/* 🔶 कार्यक्रम */}
-        <div className=" relative flex h-[500px] w-full flex-col items-center justify-center text-center " id="game">
+        <div className=" relative flex h-125 w-full flex-col items-center justify-center text-center " id="game">
 
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
             <TextAnimate animation="blurInUp" startOnView delay={0.3}>
@@ -267,7 +267,7 @@ export default function Page() {
         </div>
         {/* 🔶 गेम्स & क्विज़  */}
         <div className="mt-[-100px]" >
-          <div className="max-w-7xl mx-auto py-12 pt-0 text-start">
+          <div className="max-w-370 mx-auto py-12 pt-0 text-start">
 
             <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-16">
               {/* Heading */}
@@ -388,7 +388,7 @@ export default function Page() {
 
         </div>
 
-        <div className="max-w-7xl mx-auto py-12 pt-32 text-start" id="google">
+        <div className="max-w-370 mx-auto py-12 pt-32 text-start" id="google">
           {/* Heading */}
           <h2 className="text-3xl font-bold text-black mb-8">
             गूगल क्विज़
@@ -488,10 +488,10 @@ export default function Page() {
             </div>
           </Carousel>
         </div>
-        <div className="max-w-7xl mx-auto py-12 pt-32 text-start" id="live">
+        <div className="max-w-370 mx-auto py-12 pt-32 text-start" id="live">
           <div className="min-h-screen">
             {/* Container with requested Grid layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-370 mx-auto">
 
               {/* --- Sidebar (Left: 1 Column on Desktop) --- */}
               <div className="sticky top-24 h-fit">
@@ -597,7 +597,7 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto py-12 pt-32 text-start" id="antakshari">
+        <div className="max-w-370 mx-auto py-12 pt-32 text-start" id="antakshari">
           {/* Heading */}
           <h2 className="text-3xl font-bold text-black mb-8">
             ब्रह्मवाणी अंताक्षरी

@@ -280,7 +280,7 @@ export default function Page() {
           }
         }
       `}</style>
-      <section className="relative max-w-7xl mx-auto px-6 py-10 overflow-hidden pt-0 font-arya ">
+      <section className="relative max-w-370 mx-auto px-8 py-10 overflow-hidden pt-0 font-arya ">
 
 
 
@@ -305,7 +305,7 @@ export default function Page() {
         </div>
         <div className="mt-[-100px]">
           {/* Content Grid */}
-          <div className="grid lg:grid-cols-[20%_60%_20%] gap-10 items-center">
+          <div className="grid lg:grid-cols-[auto_60%_auto] gap-10 items-center">
 
             {/* Left Content */}
             <div className="space-y-6 text-center lg:text-left">

@@ -280,17 +280,48 @@ html {
 
 
 .balkendra-bg {
-  --ellipse-radius: 1318px;
-  --ellipse-color: #f1d5f3;
+   --ellipse-color: #b9cbff;
+    --complementary-ellipse-color: #dde6ff;
+  background: radial-gradient(19.04% 16.5% at 68.22% 2.48%,var(--complementary-ellipse-color) 0%,rgba(225,218,252,0) 100%),
+  radial-gradient(16.78% 22.83% at 93.19% 11.66%,var(--complementary-ellipse-color) 0%,rgba(225,218,252,0) 100%),
+  radial-gradient(34.49% 8.41% at 105.56% 4.75%,var(--ellipse-color) 0%,rgba(225,218,252,0) 100%),
+   #fbf9f9
+}
 
-  background:
-    radial-gradient(circle var(--ellipse-radius) at 30% 0, var(--ellipse-color) 0, transparent 50%),
-    radial-gradient(ellipse var(--ellipse-radius) var(--ellipse-radius) at 90% 0, var(--ellipse-color) 0, transparent 30%),
-    radial-gradient(ellipse var(--ellipse-radius) var(--ellipse-radius) at 95% 30%, var(--ellipse-color) 0, transparent 80%),
-    radial-gradient(ellipse var(--ellipse-radius) var(--ellipse-radius) at 5% 45%, var(--ellipse-color) 0, transparent 80%),
-    #ffffff;
+.contact-bg{
+   --ellipse-color: #ffd167;
+    --complementary-ellipse-color: #fcefd3;
+  background: radial-gradient(19.04% 16.5% at 68.22% 2.48%,var(--complementary-ellipse-color) 0%,rgba(225,218,252,0) 100%),
+  radial-gradient(16.78% 22.83% at 93.19% 11.66%,var(--complementary-ellipse-color) 0%,rgba(225,218,252,0) 100%),
+  radial-gradient(34.49% 8.41% at 105.56% 4.75%,var(--ellipse-color) 0%,rgba(225,218,252,0) 100%),
+   #fcf6f6
+}
 
-  min-height: 100vh;
+.game-bg{
+   --ellipse-color: #beacf9;
+    --complementary-ellipse-color: #e1dafc;
+  background: radial-gradient(19.04% 16.5% at 68.22% 2.48%,var(--complementary-ellipse-color) 0%,rgba(225,218,252,0) 100%),
+  radial-gradient(16.78% 22.83% at 93.19% 11.66%,var(--complementary-ellipse-color) 0%,rgba(225,218,252,0) 100%),
+  radial-gradient(34.49% 8.41% at 105.56% 4.75%,var(--ellipse-color) 0%,rgba(225,218,252,0) 100%),
+   #fbf9f9
+}
+
+.temple-bg{
+   --ellipse-color: #f9acba;
+    --complementary-ellipse-color: #feeef1;
+  background: radial-gradient(19.04% 16.5% at 68.22% 2.48%,var(--complementary-ellipse-color) 0%,rgba(225,218,252,0) 100%),
+  radial-gradient(16.78% 22.83% at 93.19% 11.66%,var(--complementary-ellipse-color) 0%,rgba(225,218,252,0) 100%),
+  radial-gradient(34.49% 8.41% at 105.56% 4.75%,var(--ellipse-color) 0%,rgba(225,218,252,0) 100%),
+   #fbf9f9
+}
+
+.login-bg{
+   --ellipse-color: #c9fff3;
+    --complementary-ellipse-color: #ebfcf8;
+  background: radial-gradient(19.04% 16.5% at 68.22% 2.48%,var(--complementary-ellipse-color) 0%,rgba(225,218,252,0) 100%),
+  radial-gradient(16.78% 22.83% at 93.19% 11.66%,var(--complementary-ellipse-color) 0%,rgba(225,218,252,0) 100%),
+  radial-gradient(34.49% 8.41% at 105.56% 4.75%,var(--ellipse-color) 0%,rgba(225,218,252,0) 100%),
+   #fef5f4
 }
 
 .falling-leaves {

@@ -16,10 +16,10 @@ import { quickLinks } from "@/lib/quicklinks";
 export default function QuickLinksCarousel() {
     return (
         <section className="relative py-0">
-            <div className="max-w-7xl mx-auto px-4">
+            <div className="max-w-370 mx-auto px-8 sm:px-4">
 
                 {/* Wrapper with side spacing */}
-                <div className="relative px-0 pb-8 sm:px-10 sm:py-8">
+                <div className="relative px-0 pb-8 sm:px-14 sm:py-8">
                     <Carousel
                         opts={{
                             align: "center",
@@ -30,7 +30,7 @@ export default function QuickLinksCarousel() {
                             {quickLinks.map((item, index) => (
                                 <CarouselItem
                                     key={index}
-                                    className="basis-1/5 sm:basis-1/4 md:basis-1/8 pl-4"
+                                    className="basis-1/4 sm:basis-1/4 md:basis-1/8 pl-4"
                                 >
                                     <motion.div
                                         initial={{ y: 30, opacity: 0 }}
@@ -53,7 +53,7 @@ export default function QuickLinksCarousel() {
                                             </div>
 
                                             {/* Name */}
-                                            <p className="text-[11px] sm:text-sm text-center font-medium text-gray-700 leading-tight line-clamp-2"
+                                            <p className="text-[13px] sm:text-sm text-center  text-gray-700 leading-tight line-clamp-2"
                                                 dangerouslySetInnerHTML={{
                                                     __html: item.name ?? ""
                                                 }}

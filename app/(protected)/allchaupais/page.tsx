@@ -358,8 +358,8 @@ export default function Page() {
         {/* STICKY SEARCH HEADER */}
         <div
           className={clsx(
-            "container mx-auto sm:px-6 sm:py-6 pt-0 sticky z-20 transition-all duration-300 ease-in-out",
-            scrolled ? "sticky top-0 z-60 sm:top-14" : "px-0 py-0"
+            "max-w-7xl mx-auto sm:px-6 sm:py-6 pt-0 sticky z-20 transition-all duration-300 ease-in-out",
+            scrolled ? "sticky top-0 z-60 sm:top-12" : "px-0 py-0"
           )}
         >
           <div
@@ -497,11 +497,11 @@ export default function Page() {
         </div>
 
         {/* CONTENT AREA */}
-        <div className="container mx-auto pb-16 px-2 sm:px-6">
+        <div className="max-w-7xl mx-auto pb-16 px-2 sm:px-6">
           <div className="flex sm:flex-row flex-col py-2 sm:py-4 gap-4">
             
             {/* DESKTOP SIDEBAR - DIRECT BOOKS LISTING ONLY */}
-            <div className="w-80 hidden lg:block shrink-0">
+            <div className="w-70 hidden lg:block shrink-0">
               <div className="bg-white rounded-3xl border border-gray-100 overflow-hidden flex flex-col p-3.5">
                 <h2 className="font-bold text-gray-800 flex items-center gap-2 text-sm pb-3 border-b mb-3">
                   <Book size={16} className="text-orange-600" />
@@ -511,7 +511,7 @@ export default function Page() {
                 <div className="flex flex-col gap-1.5">
                   <div
                     onClick={() => handleSelectBook("ALL")}
-                    className={`text-xs p-2.5 rounded-xl border cursor-pointer font-medium transition-all flex justify-between items-center ${
+                    className={`text-base p-2.5 rounded-xl border cursor-pointer font-medium transition-all flex justify-between items-center ${
                       selectedBook === "ALL"
                         ? "bg-orange-600 text-white border-orange-600 shadow-sm"
                         : "bg-white text-gray-700 border-gray-200 hover:bg-orange-50 hover:text-orange-600"
@@ -527,7 +527,7 @@ export default function Page() {
                       <div
                         key={book}
                         onClick={() => handleSelectBook(book)}
-                        className={`text-xs p-2.5 rounded-xl border cursor-pointer font-medium transition-all flex items-center justify-between ${
+                        className={`text-base p-2.5 rounded-xl border cursor-pointer font-medium transition-all flex items-center justify-between ${
                           isBookActive
                             ? "bg-orange-600 text-white border-orange-600 shadow-sm"
                             : "bg-white text-gray-700 border-gray-200 hover:bg-orange-50 hover:text-orange-600"

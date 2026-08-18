@@ -126,10 +126,10 @@ export default function Events() {
       {/* Decorative gradient bg-[radial-gradient(circle_at_top_left,rgba(255,128,0,0.35),transparent_70%)] */}
       <div className="absolute left-0 top-0 h-48 w-48 " />
       <Image src="/halfflower.png" height={40} width={40} alt="halfflower" className="absolute top-1 left-0 z-0 motion-safe:animate-wiggle w-17.5 h-auto sm:w-37.5 sm:h-auto" />
-      <div className="relative max-w-7xl mx-auto px-6">
+      <div className="relative max-w-370 mx-auto px-8">
 
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-8">
-          <div className="max-w-7xl">
+          <div className="max-w-370">
             <TextAnimate
               animation="blurInUp"
               startOnView

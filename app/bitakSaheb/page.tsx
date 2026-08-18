@@ -29,7 +29,7 @@ export default function Faq() {
   const [active, setActive] = useState(bitakSahebList[0]);
   const videoId = getYouTubeId(active.link);
   return (
-    <section className="max-w-7xl relative  mx-auto px-6 py-10 pt-0  font-arya ">
+    <section className="max-w-370 relative  mx-auto px-8 py-10 pt-0  font-arya ">
       <div className=" relative flex h-125 w-full overflow-hidden flex-col items-center justify-center text-center">
         <TextAnimate animation="blurInUp" by="line"
           delay={0.1}

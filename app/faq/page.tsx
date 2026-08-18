@@ -113,7 +113,7 @@ const items = [
 export default function Faq() {
 
     return (
-        <section className="relative max-w-7xl mx-auto px-6 py-10 pt-25">
+        <section className="relative max-w-370 mx-auto px-8 py-10 pt-25">
             <div className="text-start">
             <DynamicBreadcrumb/>
                 <h2 className="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">सामान्य <span className="text-orange-500">प्रश्न</span></h2>
@@ -123,7 +123,7 @@ export default function Faq() {
                 type="single"
                 collapsible
                 defaultValue="item-1"
-                className="max-w-7xl bg-white px-5 rounded-lg"
+                className="max-w-370 bg-white px-5 rounded-lg"
             >
                 {items.map((item) => (
                     <AccordionItem key={item.value} value={item.value} >

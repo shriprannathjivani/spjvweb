@@ -451,9 +451,9 @@ export default function Page() {
         </div>
         {/* CONTENT */}
         <div className={clsx(
-          "container mx-auto  sm:px-6 sm:py-6 pt-0 sticky z-20 transition-all duration-300 ease-in-out",
+          "max-w-7xl mx-auto  sm:px-6 sm:py-6 pt-0 sticky z-20 transition-all duration-300 ease-in-out",
           scrolled
-            ? "sticky top-0 z-60 sm:top-14"
+            ? "sticky top-0 z-60 sm:top-12"
             : "px-0 py-0"
         )}
         >
@@ -550,7 +550,7 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="container mx-auto pb-16 px-2 sm:px-6">
+        <div className="max-w-7xl mx-auto pb-16 px-2 sm:px-6">
           <div className="flex sm:flex-row flex-col py-2 sm:py-4 gap-4">
             {/* LEFT SIDEBAR */}
             <div className="w-70 hidden lg:block">

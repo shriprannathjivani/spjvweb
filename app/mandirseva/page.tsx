@@ -64,7 +64,7 @@ export default function Page() {
     };
 
     return (
-        <section className="mx-auto max-w-7xl px-6 py-10 pt-32">
+        <section className="mx-auto max-w-370 px-8 py-10 pt-32">
             {/* Global Style Override to remove Google's default InfoWindow container styling and default close button */}
             <style jsx global>{`
         .gm-style-iw-c {
@@ -108,7 +108,7 @@ export default function Page() {
             </TextAnimate>
 
             {/* Main Layout */}
-            <div className="flex flex-col-reverse gap-8 lg:grid lg:grid-cols-[55%_45%]">
+            <div className="flex flex-col-reverse gap-8 lg:grid lg:grid-cols-[auto_50%]">
                 {/* LEFT : CARD GRID */}
                 <div className="grid gap-6 sm:grid-cols-2">
                     {temples.map((temple, index) => {

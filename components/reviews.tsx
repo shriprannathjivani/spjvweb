@@ -2,6 +2,8 @@
 
 import Image from "@/components/BaseImage";
 import { Button } from "@/components/ui/button";
+import Testimonials from "@/public/Testimonials.json";
+import Lottie from "lottie-react";
 import {
   Carousel,
   CarouselContent,
@@ -39,7 +41,7 @@ export default function ReviewsCarousel() {
          sm:h-auto "
       />
 
-      <div className="max-w-7xl mx-auto px-6 ">
+      <div className="max-w-370 mx-auto px-8 ">
         {/* Heading */}
         <h2 className="text-3xl font-bold text-black mb-14">
           परिवर्तन की प्रेरक कहानियाँ
@@ -73,7 +75,7 @@ export default function ReviewsCarousel() {
                   >
                     <div className="card-circle">{index + 1}</div>
 
-                    <div className="h-full rounded-3xl bg-white p-8 pb-4! sm:pb-0! pt-4! flex flex-col items-center text-center cardCustome">
+                    <div className="h-full rounded-3xl bg-white p-8 pb-4! sm:pb-6! pt-4! flex flex-col items-center text-center cardCustome">
                       <div className="bg-white rounded-3xl transition duration-300">
                         <div className="text-orange-500 text-3xl mb-4">❝</div>
 

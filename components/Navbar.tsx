@@ -187,7 +187,7 @@ export default function Navbar() {
             : "bg-transparent"
         )}
       >
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
+        <div className="mx-auto flex h-18 w-full max-w-370 items-center justify-between px-6 lg:px-8">
           <div className="flex">
             {/* Logo */}
             <motion.div
@@ -396,7 +396,7 @@ export default function Navbar() {
               <Link href="/contact">
                 <Button
                   variant="outline"
-                  className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
+                  className="rounded-full border-2 border-black px-6 py-5 text-base font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
                 >
                   संपर्क करें
                 </Button>

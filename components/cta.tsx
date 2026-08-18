@@ -39,7 +39,7 @@ export default function PrannathCTA() {
             {/* Overlay (important for readability) */}
             <div className="absolute inset-0 bg-[#fde9dc]/80 backdrop-blur-sm"></div>
 
-            <div className="relative max-w-7xl mx-auto px-6 py-10 md:py-0 grid md:grid-cols-2 gap-10 items-center z-10">
+            <div className="relative max-w-370 mx-auto px-8 py-10 md:py-0 grid md:grid-cols-2 gap-10 items-center z-10">
                 <motion.div
                     initial={{ y: 60, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
@@ -51,9 +51,8 @@ export default function PrannathCTA() {
                     {/* LEFT CONTENT */}
                     <div>
                         <h2 className="text-3xl md:text-4xl font-semibold leading-snug text-white">
-                            हमारे प्रेरणास्रोत
-                            <br />
-                            <span className="font-normal">परमहंस</span>
+                            हमारे प्रेरणास्रोत 
+                            <span className="font-normal inline-flex ms-2 text-orange-300 opacity-80 text-shadow-2xs ">परमहंस</span>
                         </h2>
 
                         <p className="mt-4 text-xl text-gray-500  max-w-lg text-white">

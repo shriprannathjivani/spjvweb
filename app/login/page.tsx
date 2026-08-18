@@ -105,12 +105,12 @@ export default function LoginPage() {
 
     return (
         <>
-            <section className="max-w-7xl mx-auto px-6">
-                <div className="min-h-screen grid grid-cols-1 gap-12 lg:grid-cols-2">
+            <section className="max-w-370 mx-auto px-8">
+                <div className="min-h-screen grid grid-cols-1 gap-12 lg:grid-cols-[4fr_6fr]">
 
                     {/* 🔐 LEFT: LOGIN */}
                     <div className="flex items-center justify-center text-center">
-                        <div className="w-full rounded-3xl bg-white p-8 py-16">
+                        <div className="w-full rounded-3xl bg-white p-8 py-16 border backdrop-blur-sm border-gray-200">
                             {/* Title */}
                             <div className="flex flex-col gap-0 text-center text-neut-darkest mb-8">
                                 <h1 className="text-3xl font-bold mb-2">लॉगिन विथ स.स.ओ</h1>
@@ -188,7 +188,7 @@ export default function LoginPage() {
                                                 }}
                                                 className="h-full"
                                             >
-                                                <div className="mt-10 max-w-4xl flex flex-col items-center justify-center mx-auto text-center relative px-6">
+                                                <div className="mt-10 max-w-7xl flex flex-col items-center justify-center mx-auto text-center relative px-6">
                                                     {/* ICON */}
                                                     <Lottie
                                                         animationData={Testimonials}

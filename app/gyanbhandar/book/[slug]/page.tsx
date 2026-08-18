@@ -42,7 +42,7 @@ export default async function SatguruDetails({
 
   if (!book) return notFound()
   return (
-    <div className="max-w-7xl mx-auto px-6 py-24 pt-25">
+    <div className="max-w-370 mx-auto px-8 py-24 pt-25">
       <DynamicBreadcrumb currentTitle={book.title} />
       {/* GRID LAYOUT */}
       <div className="grid lg:grid-cols-3 gap-12 mt-8">

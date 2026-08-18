@@ -19,10 +19,10 @@ export default function Aatmadarshan() {
     return (
         <section className="relative py-10 sm:py-24 overflow-hidden">
             {/* Decorative background */}
-          
-<Image src="/halfflower.png" height={40} width={40} alt="halfflower" className="absolute top-1 left-0 z-0 motion-safe:animate-wiggle w-[70px] h-auto
+
+            <Image src="/halfflower.png" height={40} width={40} alt="halfflower" className="absolute top-1 left-0 z-0 motion-safe:animate-wiggle w-[70px] h-auto
           sm:w-[150px] sm:h-auto" />
-            <div className="relative max-w-7xl mx-auto px-6">
+            <div className="relative max-w-370 mx-auto px-6">
                 {/* Top Content */}
                 <div className="grid md:grid-cols-2 gap-5 sm:gap-10 items-start">
                     {/* Left */}
@@ -30,7 +30,7 @@ export default function Aatmadarshan() {
                         'बाल आत्मदर्शनम्' ``
                         हर रविवार की दिव्य दोपहर:
                     </TextAnimate>
-                    
+
 
                     {/* Right */}
                     <div className="space-y-4">

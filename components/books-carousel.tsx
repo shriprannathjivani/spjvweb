@@ -28,7 +28,7 @@ export default function BooksCarousel() {
 
       <Image src="/halfflower.png" height={40} width={40} alt="halfflower" className="absolute top-1 right-0 z-0 motion-safe:animate-wiggle w-[70px] h-auto
           sm:w-[150px] sm:h-auto rotate-[3.142rad]" />
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-370 mx-auto px-8">
         {/* Heading */}
         <h2 className="text-3xl font-bold text-black mb-14">
           पुस्तकालय

@@ -51,7 +51,7 @@ export default function Page() {
   const [api, setApi] = React.useState<CarouselApi>();
   return (
     <>
-      <section className="mx-auto max-w-7xl px-6 py-20 pt-32">
+      <section className="mx-auto max-w-370 px-8 py-20 pt-32">
 
         {/* 🔶 कार्यक्रम */}
         <div className="">
@@ -508,7 +508,7 @@ export default function Page() {
         </div>
 
         <div className="relative  pt-0">
-          <div className="max-w-7xl mx-auto  text-start">
+          <div className="max-w-370 mx-auto  text-start">
             {/* Heading */}
             <h2 className="text-3xl font-bold text-black mb-8">
               मासिक कैलेंडर डाउनलोड

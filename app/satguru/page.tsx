@@ -341,7 +341,7 @@ z-index: 4;
     }
       `}</style>
 
-            <div className="relative max-w-7xl mx-auto px-6 py-10 overflow-hidden pt-0 text-center font-arya ">
+            <div className="relative max-w-370 mx-auto px-8 py-10 overflow-hidden pt-0 text-center font-arya ">
                 <div className=" relative flex h-125 w-full flex-col items-center justify-center ">
                     <h2 className="text-4xl flex flex-row font-semibold tracking-tight text-balance text-orange-500 sm:text-5xl">
                         <TextAnimate animation="blurInUp" startOnView delay={0.3}>

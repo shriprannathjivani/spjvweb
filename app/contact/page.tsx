@@ -81,7 +81,7 @@ export default function Page() {
   };
   return (
     <>
-      <div className="max-w-7xl mx-auto px-6 py-24 pt-32">
+      <div className="w-full max-w-370 mx-auto px-8 py-24 pt-32">
         <div className="text-start">
           <h2 className="text-4xl flex-row flex font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">
             <TextAnimate animation="blurInUp" startOnView delay={0.3}>
@@ -299,7 +299,7 @@ export default function Page() {
         </div>
 
       </div>
-      <div className="max-w-7xl mx-auto px-6 pt-0 py-24 ">
+      <div className="max-w-7xl mx-auto px-8 pt-0 py-24 ">
         {/* Heading */}
         <TextAnimate animation="blurInUp" by="line"
           delay={0.3}

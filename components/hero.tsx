@@ -84,7 +84,7 @@ export default function Hero() {
 
   return (
     <section className="relative">
-      <div className="max-w-7xl mx-auto px-6 sm:px-6 py-20 pb-10  lg:py-30 lg:pb-0">
+      <div className="max-w-370 mx-auto px-8 sm:px-8 py-20 pb-10  lg:py-10 lg:pb-0">
         <Carousel
           setApi={setApi}
           opts={{ loop: true }}

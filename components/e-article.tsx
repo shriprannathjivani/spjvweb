@@ -21,8 +21,8 @@ export default function Earticle() {
   const [api, setApi] = React.useState<CarouselApi>()
 
   return (
-    <section className="max-w-7xl mx-auto py-20 pb-0 px-6 text-start">
-      <div className="max-w-7xl mx-auto">
+    <section className="max-w-370 mx-auto py-20 pb-0 px-6 text-start">
+      <div className="max-w-370 mx-auto">
         {/* Header */}
         <div className="grid md:grid-cols-2 gap-10 items-start">
           {/* Left */}

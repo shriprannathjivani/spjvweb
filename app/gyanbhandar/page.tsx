@@ -231,10 +231,10 @@ export default function Gyanbhandar() {
         <></>
       )}
 
-      <div className="relative max-w-7xl mx-auto px-6 py-10 overflow-hidden pt-30 text-center font-arya ">
+      <div className="relative max-w-370 mx-auto px-8 py-10 overflow-hidden pt-30 text-center font-arya ">
 
         <section className="relative  pt-0">
-          <div className="max-w-7xl mx-auto  text-start">
+          <div className="max-w-370 mx-auto  text-start">
             {/* Heading */}
             <TextAnimate animation="blurInUp" startOnView delay={0.1} className="text-3xl font-bold text-black mb-2">
               पुस्तकालय &nbsp;
@@ -411,7 +411,7 @@ export default function Gyanbhandar() {
           </div>
         </section>
 
-        <section className="max-w-7xl mx-auto py-12 mt-16">
+        <section className="max-w-370 mx-auto py-12 mt-16">
           {/* Heading */}
           <TextAnimate animation="blurInUp" startOnView delay={0.1} className="text-3xl font-bold text-black mb-2 text-start">
             ब्रह्मवाणी ऑडियो &nbsp;
@@ -595,7 +595,7 @@ export default function Gyanbhandar() {
           </div>
         </section>
 
-        <section className="max-w-7xl mx-auto py-12 mt-16">
+        <section className="max-w-370 mx-auto py-12 mt-16">
           <div className="mb-12 text-center">
             <TextAnimate animation="blurInUp" by="line"
               delay={0.1}
@@ -749,8 +749,8 @@ export default function Gyanbhandar() {
 }
 
 
-// <section className="max-w-7xl mx-auto py-12 mt-16 text-start">
-//         <div className="max-w-7xl mx-auto">
+// <section className="max-w-370 mx-auto py-12 mt-16 text-start">
+//         <div className="max-w-370 mx-auto">
 //           {/* Header */}
 //           <div className=" gap-10 items-start">
 //             {/* Left */}
