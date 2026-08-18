@@ -39,7 +39,7 @@ export default function BottomBanner() {
       `}</style>
       <div className={`fixed inset-x-0 bottom-16 sm:bottom-0 z-50 transition-all duration-700 ${open ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"}`}>
         {/* Increased top padding (pt-32) to comfortably fit a 240px image poking out on top */}
-        <div className="mx-auto max-w-6xl px-4 pb-3 pt-32 sm:pt-28">
+        <div className="mx-auto max-w-370 px-8 pb-3 pt-32 sm:pt-28">
           <div className="relative  border  bg-white/65 backdrop-blur-xl text-white p-3 rounded-2xl shadow-4xl  shadow-2xl px-4 py-2.5">
 
             {/* Large GIF image (240px width/height) popping way out on top */}
