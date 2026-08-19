@@ -4,7 +4,7 @@ import Testimonials from "@/public/Testimonials.json";
 import Lottie from "lottie-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Briefcase, Calendar, CircleUserRound, Gauge, Globe, Hourglass, MapPin, MapPinHouse, MessageCircleQuestionMark, Phone, PhoneCall, PlayCircleIcon, School, Speech, Timer, UsersRound } from "lucide-react";
+import { ArrowUpRight, BookOpenCheck, Briefcase, Calendar, CircleUserRound, Eye, Gamepad2, Gauge, Globe, Hourglass, MapPin, MapPinHouse, MessageCircleQuestionMark, Phone, PhoneCall, PlayCircleIcon, School, Speech, Sun, Timer, UsersRound } from "lucide-react";
 import React, { useRef } from "react";
 import { useEffect, useState } from "react";
 import { BOOKS, quotes, songs, VIDEO_CATEGORIES, sahiyogitaList } from "@/lib/gyankendra"
@@ -65,8 +65,20 @@ export default function Gyanbhandar() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [likedSongs, setLikedSongs] = useState<number[]>([]);
 
+
   const [displayJobs, setDisplayJobs] = useState(VIDEO_CATEGORIES);
   const CENTER_INDEX = Math.floor(displayJobs.length / 2);
+
+  // State for video category dropdown filtering
+  const [selectedTag, setSelectedTag] = useState("All");
+
+  // Generate unique tags dynamically from your video data
+  const videoTags = ["All", ...new Set(VIDEO_CATEGORIES.map((job) => job.title || job.by))];
+
+  // Filtered videos based on dropdown selection
+  const filteredVideos = selectedTag === "All"
+    ? VIDEO_CATEGORIES
+    : VIDEO_CATEGORIES.filter((job) => (job.title || job.by) === selectedTag);
 
 
   // Always keep center index fixed
@@ -214,6 +226,9 @@ export default function Gyanbhandar() {
       console.log("Share failed:", err);
     }
   };
+
+
+
 
   return (
     <>
@@ -595,154 +610,121 @@ export default function Gyanbhandar() {
           </div>
         </section>
 
+        {/* ================= VIDEOS SECTION WITH TAG FILTER & 4-COLUMN GRID ================= */}
         <section className="max-w-370 mx-auto py-12 mt-16">
-          <div className="mb-12 text-center">
-            <TextAnimate animation="blurInUp" by="line"
-              delay={0.1}
-              segmentClassName="block" startOnView className="text-red-600 text-xl block mb-4">
-              {`|| श्री जी वचन कहे बेसुमार ||`}
-            </TextAnimate>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 mb-3">
-              <TextAnimate animation="blurInUp" startOnView delay={0.3}>
-                ब्रह्मवाणी
-              </TextAnimate>{"  "}
-              <TextAnimate animation="blurInUp" startOnView delay={0.5} className="text-orange-500">
-                वीडियो
+          {/* Tag Filter Row */}
+          <div className="flex flex-col sm:flex-row justify-between mb-8">
+            <div className="">
+              {/* Heading */}
+              <TextAnimate animation="blurInUp" startOnView delay={0.1} className="text-3xl font-bold text-black mb-2 text-start">
+                ब्रह्मवाणी वीडियो &nbsp;
               </TextAnimate>
-            </h2>
-            <TextAnimate animation="blurInUp" by="line"
-              delay={0.3}
-              segmentClassName="block" startOnView className="text-muted-foreground text-xl  mb-24">
-              {` ब्रह्मवाणी वीडियो की अखण्ड धारा और\nजिनके शब्द, विचार और दृष्टिकोण, इस दुनिया को निरंतर पहले से बेहतर बना रहे हैं।`}
-            </TextAnimate>
+              <TextAnimate animation="blurInUp" by="line"
+                delay={0.3}
+                segmentClassName="block" startOnView className="text-xl text-gray-500 mb-8 text-start">
+                {`ब्रह्मवाणी वीडियो की अखण्ड धारा और\nजिनके शब्द, विचार और दृष्टिकोण, इस दुनिया को निरंतर पहले से बेहतर बना रहे हैं।`}
+              </TextAnimate>
+            </div>
+            <div className="relative flex flex-col sm:h-12 h-auto sm:w-72 w-auto">
+              <span className="flex mb-2">वीडियो श्रेणियां</span>
+              <div className="relative">
+                <select
+                  value={selectedTag}
+                  onChange={(e) => setSelectedTag(e.target.value)}
+                  className="w-full px-6 py-3 rounded-xl bg-white border border-gray-300 text-gray-700 font-medium shadow-sm focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 cursor-pointer appearance-none transition-all"
+                >
+                  {videoTags.map((tag) => (
+                    <option key={tag} value={tag}>
+                      {tag === "All" ? "सभी श्रेणियां (All Categories)" : tag}
+                    </option>
+                  ))}
+                </select>
+                {/* Dropdown Arrow Icon Indicator */}
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-6 text-gray-500">
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="w-full grid lg:grid-cols-2 gap-12">
-            {/* ================= LEFT ROTATING LIST ================= */}
-            <div className="relative h-[420px] overflow-hidden flex items-start">
-              <motion.ul
-                key={displayJobs.map((j) => j?.id).join("-")}
-                initial={{ y: 60 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.35, ease: "easeInOut" }}
-                className="space-y-4 w-full"
-              >
-                {displayJobs.map((job, index) => {
-                  const CENTER_INDEX = Math.floor(displayJobs.length / 2);
-                  const isActive = index === CENTER_INDEX;
 
-                  return (
-                    <motion.li
-                      key={`${job?.id}-${index}`}
-                      layout
-                      onClick={() => handleItemClick(index)}
-                      className={`list-none rounded-xl p-2 px-5 border transition-all duration-300 cursor-pointer
-                        ${isActive
-                          ? "border-orange-500 border-4"
-                          : "bg-white border-gray-200  opacity-60 hover:opacity-100  scale-[0.9] opacity-25"
-                        }`}
-                    >
-                      <div className="py-2 sm:py-2">
-                        <div className="flex items-center gap-2">
-                          <div className="shrink-0">
-                            <Image height={64} width={64} className="w-16 h-16 rounded-full bg-orange-200" src="/channel_spjv.jpg" alt="" />
-                          </div>
-                          <div className="flex-1 min-w-0 ms-0 ">
-                            <h3 className="text-xl flex gap-4 items-start mb-2">
-                              {job?.title}
-                            </h3>
-                            <p className="text-base flex items-start text-gray-500 flex gap-2  whitespace-pre-line">
-                              <Speech size={14} className="mr-1 text-orange-600" />{job?.by}
-                            </p>
-                          </div>
-                          <div className="inline-flex items-start  text-gray-500 font-medium text-heading">
-                            <UsersRound size={14} className="mr-1 text-orange-600" /> {job?.authore}
-                          </div>
+          {/* 4-Column Grid View */}
+          <motion.div
+            layout
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-370 mx-auto"
+          >
+            <AnimatePresence mode="popLayout">
+              {filteredVideos.map((job) => (
+                <motion.div
+                  key={job.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  className="bg-white rounded-3xl border border-gray-100 transition-all duration-300 overflow-hidden flex flex-col text-start"
+                >
+                  {/* Video Player */}
+                  <div className="relative aspect-video w-full bg-gray-900">
+                    <iframe
+                      className="w-full h-full"
+                      src={`https://www.youtube.com/embed/videoseries?list=${job?.vid}`}
+                      allowFullScreen
+                      title={job?.title}
+                    />
+                  </div>
+                  {/* CHANNEL + META */}
+                  <div className="flex flex-col justify-between h-full gap-4 p-4">
+                    {/* Top Row: Title & Watch Live Button */}
+                    <div className="flex items-center justify-between w-full  gap-4">
+                      <a
+                        href={`https://www.youtube.com/playlist?list=${job?.vid}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="w-full "
+                      >
+                        <h2 className="text-lg md:text-xl font-semibold hover:underline ">{job?.title}</h2>
+                      </a>
+                    </div>
+                    <hr className="border-gray-200" />
+                    {/* Bottom Row: Channel Info & Subscribe Button */}
+                    <div className="flex items-center justify-between flex-wrap gap-4">
+                      {/* Left: Avatar & Details */}
+                      <div className="flex items-center gap-3">
+                        <div>
+                          <Image
+                            src="/channelsspjv.jpg"
+                            width={40}
+                            height={40}
+                            alt="channel name"
+                            className="w-10 h-10 rounded-full object-cover border-2 border-orange-600"
+                          />
+                        </div>
+
+                        <div>
+                          <p className="text-sm font-medium">श्री प्राणनाथ जी वाणी</p>
+                          <p className="text-xs text-gray-500">
+                            👁 47.2K + सब्सक्राइबर्स
+                          </p>
                         </div>
                       </div>
-                    </motion.li>
-                  );
-                })}
-              </motion.ul>
-
-              {/* Fade Top */}
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#fdf2ed] to-transparent" />
-
-              {/* Fade Bottom */}
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#fdf8f9] to-transparent" />
-            </div>
-
-            {/* ================= RIGHT DETAIL CARD ================= */}
-            <div className="relative min-h-[420px]">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={displayJobs[Math.floor(displayJobs.length / 2)]?.id}
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.99 }}
-                  transition={{ duration: 0.25, ease: "easeOut" }}
-                  className="rounded-3xl"
-                >
-                  {(() => {
-                    const activeJob =
-                      displayJobs[Math.floor(displayJobs.length / 2)];
-
-                    return (
-                      <>
-                        <div className="bg-[#ffffff] p-6 rounded-3xl">
-                          <div className="max-w-4xl mx-auto">
-                            {/* VIDEO MAX-W-7XL */}
-                            <div className="relative rounded-3xl overflow-hidden bg-white shadow-xl">
-                              <iframe
-                                className="w-full h-[320px]"
-                                src={`https://www.youtube.com/embed/videoseries?list=${activeJob?.vid}`}
-                                allowFullScreen
-                              />
-                              <span className="absolute bottom-2 animate-bounce flex left-4 bg-lime-300 text-black text-xs md:text-sm px-4 py-2 rounded-full font-medium">
-                                <Speech size={14} className="mr-1 " />{activeJob?.by}
-                              </span>
-
-                            </div>
-
-                            {/* BOTTOM INFO SECTION */}
-                            <div className="flex justify-between items-start mt-6 px-2">
-                              <div className="text-start">
-
-                                <h2 className="text-xl font-semibold text-gray-900 mb-2">
-                                  <span className="text-sm text-gray-500">प्लेलिस्ट नाम : </span><br /> {activeJob?.title}
-                                </h2>
-                                <div className="flex items-center text-gray-500 mb-4 space-x-4 text-sm">
-                                  <div className="flex items-center text-base text-gray-500">
-                                    <UsersRound size={14} className="mr-1 text-orange-600" />
-                                    यूट्यूब चैनल : <span className="text-base text-red-500 ms-2"> {activeJob?.authore}</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <span className="text-gray-600 text-sm">
-                                <a className="text-orange-600 flex items-center justify-end gap-4 w-full" target="_blank" href={`https://www.youtube.com/embed/videoseries?list=${activeJob?.vid}`}>
-                                  <Button
-                                    variant="outline"
-                                    className="rounded-full border-2 border-black px-6 py-5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"
-                                  >
-                                    लाइव प्लेलिस्ट देखें
-                                  </Button>
-                                </a>
-
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </>
-                    );
-                  })()}
+                      {/* Right: Subscribe Button */}
+                      <a
+                        href="https://www.youtube.com/@ShriPrannathJiVani"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="px-4 py-1.5 text-sm whitespace-nowrap bg-orange-900 text-white rounded-full hover:scale-105 transition border-2 border-orange-600 cursor-pointer"
+                      >
+                        सब्सक्राइबर्स
+                      </a>
+                    </div>
+                  </div>
                 </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         </section>
-
-
-
-
       </div>
     </>
   );

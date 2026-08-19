@@ -4,7 +4,75 @@ export const reviews = [
         name: "शीतल भंडेरी",
         group: "ज़ूम मीटिंग परिवार",
         image: "/review_user.svg",
-        review: "🙏🏻 प्रेम प्रणाम जी 🙏🏻 श्री प्राणनाथ जी वाणी चैनल से जुड़कर एक अनोखा ही आनंद प्राप्त हुआ। वैसे तो मैं बचपन से ही प्रणामी हूं लेकिन मेरी आध्यात्मिक ज्ञान प्राप्ति की जो शुरुआत है वह श्री प्राणनाथ जी वाणी झूम से जुड़ने के बाद हुई। श्री कृष्ण त्रिद्धा लीला का नाम ही मैंने सुना था लेकिन किसके अंदर कौन सी शक्ति विराजमान है? कौन से जीव कहां अखंड हुए? इसका ज्ञान मुझे नहीं था जो इस चैनल से जुड़ने के बाद प्राप्त हुआ। महेर सागर की चर्चा का भी हमने बहुत गहनता से आनंद लिया। सहयोगिता का भी अवसर प्राप्त हुआ। जिसमें हमने नए-नए सुंदर साथ जी से मिलकर उसे जुड़ने का मौका मिला। श्री प्राणनाथ जी वाणी जुम में हमने बीतक चर्चा, सिंधी चर्चा का भी बहुत गहराईयों से आनंद लिया। हमारे परमहंसो के जीवन के एक-एक प्रसंग को सुनकर हमें भी हमारे जीवन में कैसे मुश्किल परिस्थितियों में भी राज जी पर पूर्ण ईमान रखकर उन परिस्थितियों में हमें क्या करना चाहिए यह प्रेरणा मिली। इस जूम की शुरुआत चितवनी से होती है उसके बाद वाणी गायन और उसके बाद वाणी चर्चा का हम भरपूर आनंद लेते हैं और इसके बाद सुंदर साथ अपने दिल के भाव व्यक्त करते हैं उसमें भी बड़ा आनंद आता है। मैं अपने आप को बड़ी सौभाग्यशाली मानती हूं कि राज जी की मेहर से मैं इस चैनल से जुड़ी। श्री प्राणनाथजी वाणी जुम मे सिर्फ प्रेम की ही बातें होती है इसीलिए तो इसका नाम प्रेम मंदिर पड़ा। इसके अलावा भी पूरे दिन में जूम मीटिंग  होती रहती है जिसमें सुंदर साथ जी वाणी चर्चा करते हैं इसका भी लाभ हमें मिलता है। इस चैनल को चलाने के लिए कई सुंदर साथ की सेवाएं भी रहती है जिसके चरणों में कोटि-कोटि प्रेम प्रणाम जी। इसके अलावा भी यहां प्रोग्राम होते रहते हैं। जैसे कि अखंड पारायण, गोटा पारायण का भी आनंद हमने लिया। सुबह में इस जूम से जुड़कर आध्यात्मिक ज्ञान की प्राप्ति होती हैं तो पूरा दिन बहुत अच्छे से निकलता है। राज जी का बहुत-बहुत शुक्रिया। 🙏🏻प्रेम प्रणाम जी 🙏🏻",
+        review: `🙏🏻 प्रेम प्रणाम जी 🙏🏻 
+        श्री प्राणनाथ जी वाणी चैनल से जुड़कर एक अनोखा ही आनंद प्राप्त हुआ। वैसे तो मैं बचपन से ही प्रणामी हूं लेकिन मेरी आध्यात्मिक ज्ञान प्राप्ति की जो शुरुआत है वह श्री प्राणनाथ जी वाणी झूम से जुड़ने के बाद हुई। 
+        श्री कृष्ण त्रिद्धा लीला का नाम ही मैंने सुना था लेकिन किसके अंदर कौन सी शक्ति विराजमान है? कौन से जीव कहां अखंड हुए? इसका ज्ञान मुझे नहीं था जो इस चैनल से जुड़ने के बाद प्राप्त हुआ। महेर सागर की चर्चा का भी हमने बहुत गहनता से आनंद लिया। सहयोगिता का भी अवसर प्राप्त हुआ। 
+        जिसमें हमने नए-नए सुंदर साथ जी से मिलकर उसे जुड़ने का मौका मिला। श्री प्राणनाथ जी वाणी जुम में हमने बीतक चर्चा, सिंधी चर्चा का भी बहुत गहराईयों से आनंद लिया। हमारे परमहंसो के जीवन के एक-एक प्रसंग को सुनकर हमें भी हमारे जीवन में कैसे मुश्किल परिस्थितियों में भी राज जी पर पूर्ण ईमान रखकर उन परिस्थितियों में हमें क्या करना चाहिए यह प्रेरणा मिली। इस जूम की शुरुआत चितवनी से होती है उसके बाद वाणी गायन और उसके बाद वाणी चर्चा का हम भरपूर आनंद लेते हैं और इसके बाद सुंदर साथ अपने दिल के भाव व्यक्त करते हैं उसमें भी बड़ा आनंद आता है। मैं अपने आप को बड़ी सौभाग्यशाली मानती हूं कि राज जी की मेहर से मैं इस चैनल से जुड़ी। श्री प्राणनाथजी वाणी जुम मे सिर्फ प्रेम की ही बातें होती है इसीलिए तो इसका नाम प्रेम मंदिर पड़ा। इसके अलावा भी पूरे दिन में जूम मीटिंग  होती रहती है जिसमें सुंदर साथ जी वाणी चर्चा करते हैं इसका भी लाभ हमें मिलता है। इस चैनल को चलाने के लिए कई सुंदर साथ की सेवाएं भी रहती है जिसके चरणों में कोटि-कोटि प्रेम प्रणाम जी। इसके अलावा भी यहां प्रोग्राम होते रहते हैं। जैसे कि अखंड पारायण, गोटा पारायण का भी आनंद हमने लिया। सुबह में इस जूम से जुड़कर आध्यात्मिक ज्ञान की प्राप्ति होती हैं तो पूरा दिन बहुत अच्छे से निकलता है। राज जी का बहुत-बहुत शुक्रिया। 
+        🙏🏻प्रेम प्रणाम जी 🙏🏻`,
+        tag: "NA",
+    }, {
+        id: 2,
+        name: "नीतू सिंह",
+        group: "ज़ूम मीटिंग परिवार",
+        image: "/review_user.svg",
+        review: `हमारे जीवन में बहुत बार ऐसी परिस्थितियां आती हैं जिसमें हम घबरा जाते हैं, और हम सही गलत की पहचान नहीं कर पाते,ऐसे में हम कई गलतियाँ कर बैठते हैं। इस मायावी संसार में हम इतने मगन हो गए हैं कि अपने आत्मिक सुख को भूल ही गए हैं। 
+        ऐसे में मुझे श्री प्राणनाथ जी वाणी चैनल का ज़ूम परिवार परिवार मिला जिसे प्रेम मंदिर भी कहा जाता है और इससे मुझे अपने आत्मिक सुख का अनुभव हुआ। इस ज़ूम मीटिंग में मुझे श्री बीतक साहेब, श्री सिंधी, सरलतम कृष्ण त्रिधा लीला, परमहंस की जीवनी  आदी सुनने का अवसर मिला जिससे माया के दुखों मॆं भी बल, धैर्य एवं विवेक से धनी की वाणी का अनुसरण करके अपनी रहनी में सबके प्रति प्रेम और सम्मान की भावना रखना सिखाया है। आत्मदर्शन कार्यक्रम के माध्यम से बच्चों को अच्छे संस्कार, बड़ो का सम्मान करना सिखाए जाते हैं, और सबके प्रति ईमानदारी और प्रेम रखना सिखाया जाता है। सिर्फ़ शब्दिक चर्चा से ही नहीं चित्रों के माध्यम से भी जीवन को सरल बनाने वाले नैतिक संदेश प्रतिदिन नई ऊर्जा प्रदान करते हैं। यहाँ देश विदेश से हर उम्र के सुंदरसाथ जुड़ते हैं। मेरा तो सबसे यही कहना हैं अगर आप सब भी आत्मिक सुख लेना चाहते हैं तो आप भी श्री प्राणनाथ जी वाणी चैनल से जरुर जुड़िए, वरना इस मायाजाल रूपी संसार में ये नश्वर जीवन ऐसे ही व्यर्थ हो जाएगा, और हम इस माया के दुखों में ही फंसे रह जाएंगे। 
+        प्रेम प्रणाम जी।`,
+        tag: "NA",
+    }, {
+        id: 3,
+        name: "शांता जैन",
+        group: "ज़ूम मीटिंग परिवार",
+        image: "/review_user.svg",
+        review: `धामधनी अक्षरातीत श्री राज जी की असीम मेहर से मुझे 'श्री प्राणनाथ जी वाणी जूम परिवार' का हिस्सा बनने का सौभाग्य प्राप्त हुआ, जहां प्रेम सूत्र में एकरस हो कर सुंदरसाथ जी श्रीमुखवाणी चर्चा का श्रवण एवं सहूर करते हैं। बिना दीवारों के इस मंदिर का एक मात्र प्रयास धनी की वाणी को हर ब्रह्मंगना के हृदय तक पहुंचाना और उसके अनुसार अपनी रहनी में प्रेम, सत्य, मधुरता लाना है। 
+        बाल एवं युवा पीढ़ी के लिए भी 'आत्मदर्शनम' कार्यक्रम आयोजित किया गया है जिसमें सरल एवं रोमांचक कहानियाँ और खेलों के माध्यम से बच्चों के कोमल हृदय में धनी का प्रेम, धार्मिक संस्कार एवं सच की राह पर चलने की प्रेरणा दी गई है। यहां श्री तारतम वाणी ऑनलाइन अखंड पारायण, गोटा पारायण, श्री बीतक साहेब पारायण पाठ आदि का भी आयोजन किया जा चुका है जिसमें सुंदरसाथ जी ने अवर्णीय आत्मिक सुख का अनुभव किया। ज़ूम पर हुई सभी गतिविधी श्री प्राणनाथ जी वाणी के यूट्यूब, फेसबुक और इंस्टाग्राम प्लेटफॉर्म पर उपलब्ध हैं। इस मंदिर में ना धन की मांग की जाती है ना प्रतिष्ठा की, मांग की जाती है तो केवल प्रेम, एकत्व और केवल ब्रह्मवाणी से जुड़ने की।`,
+        tag: "NA",
+    }, {
+        id: 4,
+        name: "प्रवीण भाई पटेल",
+        group: "ज़ूम मीटिंग परिवार",
+        image: "/review_user.svg",
+        review: `श्री प्राणनाथजी वाणी ज़ूम चैनल के माध्यम से ब्रह्मवाणी का रसास्वादन, बीतक, परमहंसों जी की जीवनी, श्री कृष्ण त्रिधा लीला की सुंदर चर्चा निरंतर सोमवार से शुक्रवार हररोज सुबह सुनने को मिलती है। रविवार के दिन बाल आत्मदर्शम का प्रोग्राम भी सुंदर आध्यात्मिक ज्ञान के साथ छोटे बच्चों को समझाते है जो आज के समय में बच्चों के लिए बहुत जरूरी है। साल में अखंड पारायण, साप्ताहिक पारायण, गोटा पारायण का पठन ऑनलाइन कर सभी सुन्दरसाथ को घर बैठे लाभान्वित करते हैं। ऑस्ट्रेलिया (विदेश की धरती) से अमूल्य समय निकालकर निस्वार्थ सेवा करने के लिए राजजी ने खूब बल दिया है, जिसके कारण आज सुन्दरसाथ ब्रह्मवाणी को जीवन में उतारकर रहनी में बदलाव ला रहे हैं। उनका एक ही लक्ष्य है कि सभी प्रेम से सभी गुरुजन, परमहंसजी और सुन्दरसाथ जी का आदर कर चलें और मूल वाणी का मंथन कर श्री राजश्यामा जी के चरणों की ओर बढ़ें, जो आज के समय की सबसे बड़ी जरूरत है। मैं श्री प्राणनाथ जी वाणी से तीन साल से ब्रह्मज्ञान को लगातार सुन रहा हूँ। जीवन का उद्देश क्या है यह अच्छी तरह से समझ में आया है। जीवन में ये तारतम ज्ञान की समझ नहीं होती तो ये अमूल्य मनुष्य जीवन व्यर्थ में गवा देते। मैं दिल से श्री प्राणनाथ जी वाणी प्लेटफॉर्म का आभार व्यक्त करता हूँ और चरणों में कोटि कोटि प्रणामजी। राजजी इस सेवा के लिए ख़ूब बल प्रदान करे ताकि हम सब फेरा सफल कर सकें। प्रेम प्रणामजी 🙏🌷🙏🌷🙏`,
+        tag: "NA",
+    }, {
+        id: 5,
+        name: "उर्मिला शर्मा",
+        group: "ज़ूम मीटिंग परिवार",
+        image: "/review_user.svg",
+        review: `I began following Shri Prannath Ji Vani Prem Mandir (zoom) in 2024, when I came to Melbourne, and my life has been transformed ever since. Before becoming part of this spiritual community, I went through many challenges and periods of sadness. Although I found temporary solutions, nothing brought lasting peace. Since joining this group, my life has become more disciplined, balanced and aligned. I have completely stopped eating onion and garlic, and I no longer depend on tea or coffee. Whenever I attend the sessions and listen to the Sundar Saath, I experience immense happiness, peace and bliss. My confidence has grown, and I feel that my inner space has become more positive and powerful. I experience Rajji’s presence everywhere, and this divine connection continually guides me and keeps me aligned with Him.`,
+        tag: "NA",
+    }, {
+        id: 6,
+        name: "लवी",
+        group: "ज़ूम मीटिंग परिवार",
+        image: "/review_user.svg",
+        review: `Sabhi sundersath ji ke dhaam hriday mein viraajmaan mere dhani ke komal noori charno mein koti koti prem pranam jii. ❤️🙏👣👣🙇‍♀️👣👣🙏❤️
+
+First of all, I want to convey my heartfelt gratitude to Shri Prannathji vani channel for continuously helping us uplift our aatam and encouraging us to take our consciousness towards mool-Milawa, day in and day out. It feels like a daily dose that we truly need in this Kaliyuga/jaagni brahmand.
+
+I first became associated with this channel a few years ago, when COVID was at its peak and the charchani started. I had the opportunity to attend a few sessions of charchani, but later could not continue because of seva of maya. Then, after some time, when Krishan Tridha leela started, I once again got the opportunity to receive the bliss of those sessions and dhani ji's leela.🥰😍
+
+Although I was not always regular in attending these sessions, whenever I joined and interacted with sundersath ji, there was one thing that was always the same and never changed:
+
+*PREM, PREM, PREM, PREM and only PREM.*
+
+The vibrations of all the sundersath ji taking anand on live Zoom sessions are always so high, selfless, and beyond words.
+
+The sevadaar sundersath ji, including the host on this channel, have amazingly magical vibes that seem to travel from the heart of one sundersath to another, touching each and every sundersath present in the baithak — even those who listen to the sessions afterwards.
+
+I will not hesitate to say that, to the best of my knowledge, this is the one and only platform I know that welcomes literature from all the places of *"Nijanand Sampradaya"* and from all the Paramhamsas with equal respect and an open mindset.
+
+This is a platform that continuously gives the message of pure love and unity — *ekdili... vaahedat* — among all the sundersath ji. It encourages each one of us, every single day, to look within ourselves, work on our own innerself, and improve our rehni.
+
+It gives an open invitation to every sundersath ji who wants to step forward towards the one supreme Akshrateet Rajji Maharaj with complete love and an open heart, leaving behind any prior bondages.
+
+I especially enjoy listening to the biographies (beetak) of all our respected paramhamsas. They do not merely tell us about their lives; they actually show us the way to live and lead our own lives. I hope that by following the footprints of our paramhamsa maharaj ji's, we too will reach the lotus feet of our beloved rajji — who is not far away, but sitting within our heart.
+
+I offer my heartfelt obeisances to all the sundersath ji who are giving their selfless services on this channel and spreading love throughout. ❤️❤️
+
+As I feel that the main motto of this channel is to spread love everywhere along with the vani, I would like to end by saying that it has a perfect tagline — one that beautifully captures everything this platform stands for:
+
+                                      *!! PREM KHOL DEVE SAB DWAR !!*`,
         tag: "NA",
     }
 ]

@@ -265,7 +265,6 @@ button.bg-background.border-2.border-black:active {
   transform: translateY(0) translateX(0);
   box-shadow: 2px 3px 0 0 black;
   border: 2px solid #fff;
-  background-color: #f1eded;
   color: #000;
 }
 

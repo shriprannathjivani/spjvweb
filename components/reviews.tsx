@@ -21,6 +21,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card"
 import { motion } from "framer-motion";
+import { Star } from "lucide-react";
 
 export default function ReviewsCarousel() {
   const [api, setApi] = React.useState<CarouselApi>();
@@ -28,6 +29,12 @@ export default function ReviewsCarousel() {
 
   const toggleExpand = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
+  const isHindiText = (text: any) => {
+    // Unicode range for Devanagari script (Hindi characters)
+    const devanagariRegex = /[\u0900-\u097F]/;
+    return devanagariRegex.test(text);
   };
 
   return (
@@ -77,15 +84,36 @@ export default function ReviewsCarousel() {
 
                     <div className="h-full rounded-3xl bg-white p-8 pb-4! sm:pb-6! pt-4! flex flex-col items-center text-center cardCustome">
                       <div className="bg-white rounded-3xl transition duration-300">
-                        <div className="text-orange-500 text-3xl mb-4">❝</div>
+                        <Lottie
+                          animationData={Testimonials}
+                          loop={true}
+                          className="w-full sm:w-8 h-8 mb-4"
+                        />
 
                         {/* <span className="relative mb-3 rounded-full inline-flex items-center bg-white px-2 py-1 text-xs font-xl inset-ring text-violet-600 inset-ring-violet-500/10">
                           {review.tag}
                         </span> */}
 
+                        <div className="flex items-center space-x-1 mb-4">
+                          {[...Array(5)].map((_, index) => {
+                            const ratingValue = index + 1;
+                            const isFilled = ratingValue <= (review.id + 2 || 5);
+
+                            return (
+                              <Star
+                                key={index}
+                                className={`w-5 h-5 ${isFilled
+                                  ? "text-yellow-400 fill-yellow-400"
+                                  : "text-gray-300 fill-gray-300"
+                                  }`}
+                              />
+                            );
+                          })}
+                        </div>
+
                         <p
-                          className={`text-gray-700 mb-4 wrap-break-word transition-all duration-300 ${isExpanded ? "" : "line-clamp-6"
-                            }`}
+                          className={`text-gray-700 mb-4 wrap-break-word whitespace-pre-line transition-all duration-300 ${isHindiText(review.review) ? "" : "font-poppins"
+                            } ${isExpanded ? "" : "line-clamp-6"}`}
                         >
                           {review.review}
                         </p>
