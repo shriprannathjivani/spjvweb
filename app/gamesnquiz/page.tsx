@@ -243,8 +243,7 @@ export default function Page() {
 
   return (
     <>
-      <section className="relative max-w-370 mx-auto px-8 py-10 overflow-hidden pt-0 font-arya ">
-
+      <section className="relative max-w-370 mx-auto px-4 lg:px-8 py-10 overflow-hidden pt-0 font-arya ">
         {/* 🔶 कार्यक्रम */}
         <div className=" relative flex h-125 w-full flex-col items-center justify-center text-center " id="game">
 
@@ -266,10 +265,10 @@ export default function Page() {
           <Ripple />
         </div>
         {/* 🔶 गेम्स & क्विज़  */}
-        <div className="mt-[-100px]" >
+        <div className="sm:mt-[-100px] mt-[-136px]" >
           <div className="max-w-370 mx-auto py-12 pt-0 text-start">
 
-            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-16">
+            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between sm:gap-8 gap-2 mb-8 sm:mb-16">
               {/* Heading */}
               <h2 className="text-3xl font-bold text-black mb-8" >
                 गेम्स
@@ -388,7 +387,7 @@ export default function Page() {
 
         </div>
 
-        <div className="max-w-370 mx-auto py-12 pt-32 text-start" id="google">
+        <div className="max-w-370 mx-auto py-12 pt-0  text-start" id="google">
           {/* Heading */}
           <h2 className="text-3xl font-bold text-black mb-8">
             गूगल क्विज़
@@ -488,7 +487,7 @@ export default function Page() {
             </div>
           </Carousel>
         </div>
-        <div className="max-w-370 mx-auto py-12 pt-32 text-start" id="live">
+        <div className="max-w-370 mx-auto py-12 pt-0 text-start" id="live">
           <div className="min-h-screen">
             {/* Container with requested Grid layout */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-370 mx-auto">
@@ -500,24 +499,46 @@ export default function Page() {
                     <h2 className="text-xl text-center font-bold text-black mb-4 border-b border-orange-50 pb-2">
                       श्री बीतक साहेब क्विज़
                     </h2>
-                    <nav className="grid grid-cols-4 lg:grid-cols-3 gap-2">
-                      {chapters.map((chapter) => (
-                        <button
-                          key={chapter.id}
-                          onClick={() => setActiveChapterId(chapter.id)}
-                          className={`flex items-center gap-3 px-4 py-3 rounded-xl  cursor-pointer transition-all duration-200 border-2 ${activeChapterId === chapter.id
-                            ? 'bg-orange-500 border-2 border-black text-white shadow-md'
-                            : 'bg-white hover:bg-orange-100 border-2 border-transparent'
-                            }`}
+                    <div className="w-full">
+                      {/* Mobile Dropdown (Visible on small screens, hidden on lg and up) */}
+                      <div className="block lg:hidden mb-4">
+                        <select
+                          value={activeChapterId}
+                          onChange={(e) => setActiveChapterId(Number(e.target.value))}
+                          className="w-full px-4 py-3 rounded-xl bg-white border-2 border-gray-200 text-gray-800 font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 cursor-pointer"
                         >
-                          <span className={`w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold ${activeChapterId === chapter.id ? "bg-white/20" : "bg-orange-100 text-orange-600"
-                            }`}>
-                            {chapter.id}
-                          </span>
-                          <span className="hidden lg:inline font-medium">क्विज़</span>
-                        </button>
-                      ))}
-                    </nav>
+                          {chapters.map((chapter) => (
+                            <option key={chapter.id} value={chapter.id}>
+                              क्विज़ {chapter.id}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      {/* Desktop Grid (Hidden on mobile, visible on lg and up) */}
+                      <nav className="hidden lg:grid grid-cols-3 gap-2">
+                        {chapters.map((chapter) => (
+                          <button
+                            key={chapter.id}
+                            onClick={() => setActiveChapterId(chapter.id)}
+                            className={`flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer transition-all duration-200 border-2 ${activeChapterId === chapter.id
+                              ? 'bg-orange-500 border-2 border-black text-white shadow-md'
+                              : 'bg-white hover:bg-orange-100 border-2 border-transparent'
+                              }`}
+                          >
+                            <span
+                              className={`w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold ${activeChapterId === chapter.id
+                                ? 'bg-white/20'
+                                : 'bg-orange-100 text-orange-600'
+                                }`}
+                            >
+                              {chapter.id}
+                            </span>
+                            <span className="font-medium">क्विज़</span>
+                          </button>
+                        ))}
+                      </nav>
+                    </div>
                   </div>
 
 
@@ -597,7 +618,7 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="max-w-370 mx-auto py-12 pt-32 text-start" id="antakshari">
+        <div className="max-w-370 mx-auto py-12 pt-0 text-start" id="antakshari">
           {/* Heading */}
           <h2 className="text-3xl font-bold text-black mb-8">
             ब्रह्मवाणी अंताक्षरी
@@ -621,27 +642,37 @@ export default function Page() {
                       अक्षर
                     </h2>
 
-                    {/* ✅ FIXED MOBILE SCROLL */}
-                    <div className="
-                        flex 
-                        flex-nowrap flex-wrap   /* 🔥 key fix */
-                        gap-2 
-                       
-                      ">
-
-                      {chopaiData.map((item) => (
-                        <button
-                          key={item.letter}
-                          onClick={() => setSelectedLetter(item.letter)}
-                          className={`px-4 py-2 rounded-xl font-semibold whitespace-nowrap shrink-0 transition cursor-pointer ${selectedLetter === item.letter
-                            ? 'bg-orange-500 border-2 border-black text-white shadow-md'
-                            : 'bg-white hover:bg-orange-100 border-2 border-transparent'
-                            }`}
+                    <div className="w-full">
+                      {/* Mobile Dropdown (Visible on small screens, hidden on lg and up) */}
+                      <div className="block lg:hidden mb-4">
+                        <select
+                          value={selectedLetter ?? ""}
+                          onChange={(e) => setSelectedLetter(e.target.value)}
+                          className="w-full px-4 py-3 rounded-xl bg-white border-2 border-gray-200 text-gray-800 font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 cursor-pointer"
                         >
-                          {item.letter}
-                        </button>
-                      ))}
+                          {chopaiData.map((item) => (
+                            <option key={item.letter} value={item.letter}>
+                              {item.letter}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
 
+                      {/* Desktop Layout (Hidden on mobile, visible on lg and up) */}
+                      <div className="hidden lg:flex flex-wrap gap-2">
+                        {chopaiData.map((item) => (
+                          <button
+                            key={item.letter}
+                            onClick={() => setSelectedLetter(item.letter)}
+                            className={`px-4 py-2 rounded-xl font-semibold whitespace-nowrap shrink-0 transition cursor-pointer ${selectedLetter === item.letter
+                                ? 'bg-orange-500 border-2 border-black text-white shadow-md'
+                                : 'bg-white hover:bg-orange-100 border-2 border-transparent'
+                              }`}
+                          >
+                            {item.letter}
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   </div>
 

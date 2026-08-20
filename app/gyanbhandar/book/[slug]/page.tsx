@@ -42,14 +42,14 @@ export default async function SatguruDetails({
 
   if (!book) return notFound()
   return (
-    <div className="max-w-370 mx-auto px-8 py-24 pt-25">
+    <div className="max-w-370 mx-auto px-4 lg:px-8 py-24 pt-25">
       <DynamicBreadcrumb currentTitle={book.title} />
       {/* GRID LAYOUT */}
       <div className="grid lg:grid-cols-3 gap-12 mt-8">
 
         {/* ================= LEFT PANEL (STICKY) ================= */}
         <div className="lg:col-span-1">
-          <div className="lg:sticky lg:top-24 rounded-3xl p-6 space-y-6 text-center">
+          <div className="lg:sticky lg:top-24 rounded-3xl sm:p-6 p-0 space-y-6 text-center">
             <div className="absolute z-[-1] h-52 w-52 rotate-65 rounded-[100%] bg-pink-500 blur-2xl" style={{ opacity: 0.5 }}></div>
             <div className="relative flex items-center justify-center">
               <Image
@@ -80,7 +80,7 @@ export default async function SatguruDetails({
               <p className="text-muted-foreground">{book.publisher}</p>
             </div>
             {/* Action Buttons */}
-            <div className="space-y-3 pt-4 flex items-center justify-center gap-4">
+            <div className="space-y-3 pt-4 sm:mb-0 mb-8 flex items-center justify-center gap-4">
 
               {book.link && (
                 <a
@@ -103,7 +103,7 @@ export default async function SatguruDetails({
 
         {/* ================= RIGHT PANEL (SCROLLABLE CONTENT) ================= */}
         <div className="lg:col-span-2 ">
-          <div className="leading-8 text-base text-gray-500 whitespace-pre-line font-poppins">
+          <div className="leading-8 text-base text-gray-500 whitespace-pre-line font-poppins rounded-2xl sm:bg-transparent bg-white sm:mb-0 mb-6 sm:pt-0 pt-6">
             <PdfSection
               pdfUrl={`${basePath}${book.link}`}
               title="श्री प्राणनाथ वाणी"

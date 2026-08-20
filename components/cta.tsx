@@ -39,7 +39,7 @@ export default function PrannathCTA() {
             {/* Overlay (important for readability) */}
             <div className="absolute inset-0 bg-[#fde9dc]/80 backdrop-blur-sm"></div>
 
-            <div className="relative max-w-370 mx-auto px-8 py-10 md:py-0 grid md:grid-cols-2 gap-10 items-center z-10">
+            <div className="relative max-w-370 mx-auto px-4 py-10 md:py-0 grid md:grid-cols-2 gap-10 items-center z-10">
                 <motion.div
                     initial={{ y: 60, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}

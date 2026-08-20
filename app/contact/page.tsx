@@ -81,7 +81,7 @@ export default function Page() {
   };
   return (
     <>
-      <div className="w-full max-w-370 mx-auto px-8 py-24 pt-32">
+      <div className="w-full max-w-370 mx-auto px-4 lg:px-8 py-16 pt-32">
         <div className="text-start">
           <h2 className="text-4xl flex-row flex font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">
             <TextAnimate animation="blurInUp" startOnView delay={0.3}>
@@ -299,11 +299,11 @@ export default function Page() {
         </div>
 
       </div>
-      <div className="max-w-370 mx-auto px-8 pt-0 py-24 ">
+      <div className="max-w-370 mx-auto px-4 lg:px-8 pt-0 py-16 ">
         {/* Heading */}
         <TextAnimate animation="blurInUp" by="line"
           delay={0.3}
-          segmentClassName="block" startOnView className="text-3xl font-bold text-black mb-8 flex">
+          segmentClassName="block" startOnView className="text-3xl/12 font-bold text-black mb-8 flex">
           {`हमसे जुड़ने के अन्य संपर्क विकल्प`}
         </TextAnimate>
         {/* Cards */}

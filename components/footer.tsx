@@ -29,7 +29,7 @@ export default function Footer() {
       {/* <div className="absolute top-0 left-0 w-60 h-60 bg-[url('/halfflower.png')] bg-contain bg-no-repeat " />
       <div className="absolute bottom-0 right-0 z-0 w-100 h-100 bg-[url('/halfflower.png')] bg-no-repeat rotate-[3.142rad]" /> */}
 
-      <div className="relative w-full max-w-[1480px] mx-auto px-8 py-8 md:py-16">
+      <div className="relative w-full max-w-[1480px] mx-auto px-4 py-8 md:py-16">
         <div className="grid grid-cols-2 md:grid-cols-[60%_20%_20%] gap-8 md:gap-12">
 
           <motion.div

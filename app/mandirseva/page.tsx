@@ -64,7 +64,7 @@ export default function Page() {
     };
 
     return (
-        <section className="mx-auto max-w-370 px-8 py-10 pt-32">
+        <section className="mx-auto max-w-370 px-4 lg:px-8 py-10 pt-32">
             {/* Global Style Override to remove Google's default InfoWindow container styling and default close button */}
             <style jsx global>{`
         .gm-style-iw-c {
@@ -110,7 +110,7 @@ export default function Page() {
             {/* Main Layout */}
             <div className="flex flex-col-reverse gap-8 lg:grid lg:grid-cols-[auto_50%]">
                 {/* LEFT : CARD GRID */}
-                <div className="grid gap-6 sm:grid-cols-2">
+                <div className="grid sm:gap-6 gap-2 grid-cols-2 sm:grid-cols-2">
                     {temples.map((temple, index) => {
                         const isSelected = selectedTemple?.id === temple.id;
 
@@ -132,7 +132,7 @@ export default function Page() {
                                     </div>
 
                                     <div className="items-start gap-4 lg:block">
-                                        <div className="relative h-20 w-24 shrink-0 lg:h-56 lg:w-full">
+                                        <div className="relative h-30 w-full shrink-0 lg:h-56 lg:w-full">
                                             <Image
                                                 src={temple.image}
                                                 alt={temple.name}

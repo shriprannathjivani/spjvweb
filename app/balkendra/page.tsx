@@ -280,9 +280,7 @@ export default function Page() {
           }
         }
       `}</style>
-      <section className="relative max-w-370 mx-auto px-8 py-10 overflow-hidden pt-0 font-arya ">
-
-
+      <section className="relative max-w-370 mx-auto px-4 lg:px-8 py-10 overflow-hidden pt-0 font-arya ">
 
         {/* 🔶 कार्यक्रम */}
         <div className=" relative flex h-[500px] w-full flex-col items-center justify-center text-center ">
@@ -303,7 +301,7 @@ export default function Page() {
           </TextAnimate>
           <Ripple />
         </div>
-        <div className="mt-[-100px]">
+        <div className="sm:mt-[-100px] mt-[-160px]">
           {/* Content Grid */}
           <div className="grid lg:grid-cols-[auto_60%_auto] gap-10 items-center">
 
@@ -428,9 +426,9 @@ export default function Page() {
             </div>
           </div>
         </div>
-        <div className="py-8 my-16">
+        <div className="py-8 sm:my-16 my-8">
 
-          <div className="grid md:grid-cols-1 gap-2 items-start mb-16">
+          <div className="grid md:grid-cols-1 gap-2 items-start sm:mb-16 mb-8 ">
             {/* Left */}
             <TextAnimate animation="blurInUp" by="line"
               delay={0.3}
@@ -444,7 +442,7 @@ export default function Page() {
             </TextAnimate>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8  md:grid-cols-2 lg:grid-cols-3">
 
             {/* Card 1 */}
             <div className="bg-lime-200 rounded-3xl p-6 pb-0">
@@ -561,7 +559,7 @@ export default function Page() {
           </div>
         </div>
         {/* Cards Carousel */}
-        <div className="mt-20 relative">
+        <div className="sm:mt-20 mt-0 relative">
 
           <div className="grid md:grid-cols-1 gap-2 items-start mb-16">
             {/* Left */}
@@ -652,8 +650,8 @@ export default function Page() {
         </div>
 
 
-        <div className="relative mt-20 pt-0">
-          <div className="mb-12 text-center">
+        <div className="relative sm:mt-20 mt-8 pt-0">
+          <div className="mb-4 text-center">
             <TextAnimate animation="blurInUp" by="line"
               delay={0.1}
               segmentClassName="block" startOnView className="text-red-600 text-xl block mb-4">
@@ -669,9 +667,8 @@ export default function Page() {
             </h2>
             <TextAnimate by="line"
               delay={0.3}
-              segmentClassName="block" animation="blurInUp" startOnView className="text-muted-foreground text-xl mb-24">
-              {`बच्चे का नया नाम चुनना आसान और मज़ेदार लग सकता है, लेकिन ऐसा नाम ढूँढ़ना जो आपके दिल को छू जाए, इसके लिए समय चाहिए।\n
-              इसलिए, आपकी मदद करने के लिए, हमने लड़कियों और लड़कों के लिए कुछ अनोखे भारतीय बेबी नेम खोजे हैं। इन भारतीय बेबी नेम का उल्लेख उनके अर्थों के साथ किया गया है, जिससे आपके लिए सही नाम चुनना आसान हो जाएगा।
+              segmentClassName="block" animation="blurInUp" startOnView className="text-muted-foreground text-xl sm:mb-24 mb-0">
+              {`बच्चे का नया नाम चुनना आसान और मज़ेदार लग सकता है, लेकिन ऐसा नाम ढूँढ़ना जो आपके दिल को छू जाए, इसके लिए समय चाहिए।\n इसलिए, आपकी मदद करने के लिए, हमने लड़कियों और लड़कों के लिए कुछ अनोखे भारतीय बेबी नेम खोजे हैं। इन भारतीय बेबी नेम का उल्लेख उनके अर्थों के साथ किया गया है, जिससे आपके लिए सही नाम चुनना आसान हो जाएगा।
             `}
             </TextAnimate>
 
@@ -681,7 +678,7 @@ export default function Page() {
 
             <div
               ref={chatRef}
-              className="flex-1 overflow-y-auto sm:px-6 sm:py-6 p-2 space-y-6 bg-[#fcf3fc]"
+              className="flex-1 overflow-y-auto sm:px-6 sm:py-6 p-4 space-y-6 bg-[#fcf3fc]"
             >
               {messages.map((msg) => (
                 <div

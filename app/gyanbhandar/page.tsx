@@ -246,7 +246,7 @@ export default function Gyanbhandar() {
         <></>
       )}
 
-      <div className="relative max-w-370 mx-auto px-8 py-10 overflow-hidden pt-30 text-center font-arya ">
+      <div className="relative max-w-370 mx-auto px-4 lg:px-8 py-10 overflow-hidden pt-30 text-center font-arya ">
 
         <section className="relative  pt-0">
           <div className="max-w-370 mx-auto  text-start">
@@ -404,20 +404,13 @@ export default function Gyanbhandar() {
 
                   {/* Author */}
                   <div className="flex items-center gap-4">
-                    <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-orange-400">
-                      <Image
-                        src={quotes[index].image}
-                        alt={quotes[index].name}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+                    
 
                     <div className="text-left">
                       <p className="text-lg font-semibold text-[#7a2f18]">
                         {quotes[index].name}
                       </p>
-                      <p className="text-sm text-gray-500">आध्यात्मिक वाणी</p>
+                      <p className="text-sm text-gray-500">- किरन्तन</p>
                     </div>
                   </div>
                 </motion.div>
@@ -426,7 +419,7 @@ export default function Gyanbhandar() {
           </div>
         </section>
 
-        <section className="max-w-370 mx-auto py-12 mt-16">
+        <section className="max-w-370 mx-auto py-12 mt-0">
           {/* Heading */}
           <TextAnimate animation="blurInUp" startOnView delay={0.1} className="text-3xl font-bold text-black mb-2 text-start">
             ब्रह्मवाणी ऑडियो &nbsp;
@@ -611,7 +604,7 @@ export default function Gyanbhandar() {
         </section>
 
         {/* ================= VIDEOS SECTION WITH TAG FILTER & 4-COLUMN GRID ================= */}
-        <section className="max-w-370 mx-auto py-12 mt-16">
+        <section className="max-w-370 mx-auto py-12 mt-0">
           {/* Tag Filter Row */}
           <div className="flex flex-col sm:flex-row justify-between mb-8">
             <div className="">

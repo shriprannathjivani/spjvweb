@@ -28,7 +28,7 @@ export default function BooksCarousel() {
 
       <Image src="/halfflower.png" height={40} width={40} alt="halfflower" className="absolute top-1 right-0 z-0 motion-safe:animate-wiggle w-[70px] h-auto
           sm:w-[150px] sm:h-auto rotate-[3.142rad]" />
-      <div className="max-w-370 mx-auto px-8">
+      <div className="max-w-370 mx-auto px-4">
         {/* Heading */}
         <h2 className="text-3xl font-bold text-black mb-14">
           पुस्तकालय
@@ -149,8 +149,8 @@ export default function BooksCarousel() {
               loop={true}
               className="w-full sm:w-16 h-16 mb-2"
             />
-            <p className="text-base sm:text-4xl  leading-relaxed text-[#7a2f18] font-medium">
-              यामें अपनी बीतक सब है, श्री देवचन्द्र को मेरो तेरो नाम। <br /> जा दिन जो बीती हम तीनों में, सो सब लिखी तमाम।।
+            <p className="text-2xl sm:text-4xl text-center sm:text-left  leading-relaxed text-[#7a2f18] ">
+              तूं आपे न्यारी होत है, पिउ नहीं तुझ से दूर। <br />परदा तूं ही करत है, अंतर न आडे नूर।।
             </p>
           </div>
         </motion.div>

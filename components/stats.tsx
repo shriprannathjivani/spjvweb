@@ -74,8 +74,8 @@ const STATS = [
 
 export default function Stats() {
   return (
-    <section className="pt-0 py-10">
-      <div className="max-w-370 mx-auto px-8">
+    <section className="py-10 p-0">
+      <div className="max-w-370 mx-auto px-4">
         {/* Heading */}
 
         <TextAnimate
@@ -83,7 +83,7 @@ export default function Stats() {
           startOnView
           by="line"
           delay={0.3}
-          className="text-2xl sm:text-3xl font-bold text-black mb-3 sm:mb-4"
+          className="text-2xl sm:text-3xl font-bold text-black mb-3 sm:mb-2"
         >
           {`हमारी यात्रा`}
         </TextAnimate>
@@ -91,7 +91,7 @@ export default function Stats() {
           animation="blurInUp"
           startOnView
           by="line"
-          delay={0.3} className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mb-3 sm:mb-8 leading-relaxed">
+          delay={0.3} className="text-base sm:text-lg lg:text-xl text-black/60 max-w-3xl mb-3 sm:mb-8 leading-relaxed">
           आज, श्री प्राणनाथ जी के मिशन ने लाखों लोगों के जीवन को छुआ है।
           लोगों के साथ सीधे संपर्क और इंटरनेट पर अलग-अलग माध्यमों से,
           वह सभी को स्पष्टता देते रहते हैं।

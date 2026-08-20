@@ -29,7 +29,7 @@ export default async function SatguruDetails({
 
   if (!sahiyog) return notFound()
   return (
-    <div className="max-w-370 mx-auto px-8 py-24 pt-25">
+    <div className="max-w-370 mx-auto px-4 lg:px-8 py-24 pt-25">
       <DynamicBreadcrumb currentTitle={sahiyog.name} />
       {/* GRID LAYOUT */}
       <div className="grid lg:grid-cols-3 gap-12 mt-8">

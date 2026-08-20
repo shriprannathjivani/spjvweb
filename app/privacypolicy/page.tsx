@@ -100,7 +100,7 @@ const items = [
 export default function PrivacyPolicy() {
     const year = new Date().getFullYear();
     return (
-        <section className="relative max-w-370 mx-auto px-8 py-10 pt-25">
+        <section className="relative max-w-370 mx-auto px-4 lg:px-8 py-10 pt-25">
             <DynamicBreadcrumb />
             <div className="text-start">
                 <h2 className="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">नियम व  <span className="text-orange-500">शर्तें</span></h2>

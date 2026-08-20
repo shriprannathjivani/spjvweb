@@ -187,7 +187,7 @@ export default function Navbar() {
             : "bg-transparent"
         )}
       >
-        <div className="mx-auto flex h-18 w-full max-w-370 items-center justify-between px-6 lg:px-8">
+        <div className="mx-auto flex h-18 w-full max-w-370 items-center justify-between px-4 lg:px-8">
           <div className="flex">
             {/* Logo */}
             <motion.div
@@ -560,10 +560,10 @@ export default function Navbar() {
           </Link>
           <Link href="/satguru" className={tabmenuClass("/satguru")}>
             <Users size={20} />
-            <span className="text-sm mt-1">सतगुरु</span>
+            <span className="text-sm mt-1">परमहंस</span>
           </Link>
           <Link href="/gamesnquiz" className={tabmenuClass("/gamesnquiz")}>
-            <Calendar size={20} />
+            <BookOpenCheck size={20} />
             <span className="text-sm mt-1">क्विज़</span>
           </Link>
           <Link href="/balkendra" className={tabmenuClass("/balkendra")}>

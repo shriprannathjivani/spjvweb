@@ -23,7 +23,7 @@ const slides = [
     title: "हमारा उद्देश्य",
     highlight: "वाणी से जागरण, प्रेम से परिवर्तन",
     link: "",
-    scale:"scale-175",
+    scale:"scale-125",
     description:
       `तारतम वाणी केवल पढ़ने के लिए नहीं, समझने और जीवन में उतारने के लिए है। श्री प्राणनाथ जी ने ऐसी वाणी प्रकट की, जिसमें आत्मा, सृष्टि, परम सत्य, निजधाम और अपने परम प्रियतम तक पहुँचने की यात्रा के गहरे रहस्य सरलता से समझे जा सकते हैं। इसमें विभिन्न धर्मों और पवित्र ग्रंथों में बताए गए सत्य को एक-दूसरे से जोड़कर देखने की सुंदर दृष्टि मिलती है। हमारा प्रयास है कि वाणी का ज्ञान केवल पुस्तकों तक सीमित न रहे, बल्कि Zoom चर्चाओं, YouTube और अन्य माध्यमों से आज की पीढ़ी तक भी पहुँचे।`,
     image: "/shriprannathjinew.png",
@@ -84,7 +84,7 @@ export default function Hero() {
 
   return (
     <section className="relative">
-      <div className="max-w-370 mx-auto px-8 sm:px-8 py-20 pb-10  lg:py-10 lg:pb-0">
+      <div className="max-w-370 mx-auto px-4 sm:px-8 py-20 pb-10  lg:py-10 lg:pb-0">
         <Carousel
           setApi={setApi}
           opts={{ loop: true }}
@@ -97,7 +97,7 @@ export default function Hero() {
                 {/* DESKTOP VERSION */}
                 <div className="hidden lg:grid lg:grid-cols-2 gap-14 items-center">
                   {/* LEFT */}
-                  <div>
+                  <div className="mt-4">
                     <h1 className="text-5xl font-bold leading-tight">
                       <TextAnimate animation="blurInUp" startOnView delay={0.3} >
                         {slide.title}

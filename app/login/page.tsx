@@ -105,7 +105,7 @@ export default function LoginPage() {
 
     return (
         <>
-            <section className="max-w-370 mx-auto px-8">
+            <section className="max-w-370 mx-auto px-4 lg:px-8">
                 <div className="min-h-screen grid grid-cols-1 gap-12 lg:grid-cols-[4fr_6fr]">
 
                     {/* 🔐 LEFT: LOGIN */}

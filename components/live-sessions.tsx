@@ -126,9 +126,9 @@ export default function Events() {
       {/* Decorative gradient bg-[radial-gradient(circle_at_top_left,rgba(255,128,0,0.35),transparent_70%)] */}
       <div className="absolute left-0 top-0 h-48 w-48 " />
       <Image src="/halfflower.png" height={40} width={40} alt="halfflower" className="absolute top-1 left-0 z-0 motion-safe:animate-wiggle w-17.5 h-auto sm:w-37.5 sm:h-auto" />
-      <div className="relative max-w-370 mx-auto px-8">
+      <div className="relative max-w-370 mx-auto px-4">
 
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-8">
+        <div className="flex flex-row justify-between lg:flex-row lg:items-start lg:justify-between gap-8 mb-8">
           <div className="max-w-370">
             <TextAnimate
               animation="blurInUp"
@@ -136,9 +136,16 @@ export default function Events() {
               by="line"
               delay={0.3}
               segmentClassName="block"
-              className="text-2xl sm:text-3xl font-bold text-black mb-3 sm:mb-4"
+              className="text-2xl sm:text-3xl font-bold text-black mb-3 sm:mb-2"
             >
-              {`श्री प्राणनाथ जी वाणी \nके साथ लाइव सेशन`}
+              {`लाइव सेशन`}
+            </TextAnimate>
+            <TextAnimate
+              animation="blurInUp"
+              startOnView
+              by="line"
+              delay={0.3} className="text-base sm:text-lg lg:text-xl text-black/60 max-w-3xl mb-3 sm:mb-8 leading-relaxed">
+                श्री प्राणनाथ जी वाणी के साथ लाइव सेशन
             </TextAnimate>
           </div>
           <motion.div
@@ -160,7 +167,7 @@ export default function Events() {
         </div>
 
         {/* Bento Grid */}
-        <div className="grid auto-rows-[250px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid auto-rows-[170px]  sm:auto-rows-[250px] grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
           {events.map((event, index) => (
 

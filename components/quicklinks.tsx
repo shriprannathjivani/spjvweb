@@ -16,10 +16,10 @@ import { quickLinks } from "@/lib/quicklinks";
 export default function QuickLinksCarousel() {
     return (
         <section className="relative py-0">
-            <div className="max-w-370 mx-auto px-8 sm:px-4">
+            <div className="max-w-370 mx-auto px-4 sm:px-4">
 
                 {/* Wrapper with side spacing */}
-                <div className="relative px-0 pb-8 sm:px-14 sm:py-8">
+                <div className="relative px-0 pb-0 sm:px-14 sm:py-8">
                     <Carousel
                         opts={{
                             align: "center",

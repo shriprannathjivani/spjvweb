@@ -51,7 +51,7 @@ export default function Page() {
   const [api, setApi] = React.useState<CarouselApi>();
   return (
     <>
-      <section className="mx-auto max-w-370 px-8 py-20 pt-32">
+      <section className="mx-auto max-w-370 px-4 lg:px-8 py-20 pt-32">
 
         {/* 🔶 कार्यक्रम */}
         <div className="">
