@@ -48,7 +48,7 @@ export default function ReviewsCarousel() {
          sm:h-auto "
       />
 
-      <div className="max-w-370 mx-auto px-4 ">
+      <div className="max-w-370 mx-auto px-4 lg:px-8 ">
         {/* Heading */}
         <h2 className="text-3xl font-bold text-black mb-14">
           परिवर्तन की प्रेरक कहानियाँ

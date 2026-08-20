@@ -75,7 +75,7 @@ const STATS = [
 export default function Stats() {
   return (
     <section className="py-10 p-0">
-      <div className="max-w-370 mx-auto px-4">
+      <div className="max-w-370 mx-auto px-4 lg:px-8">
         {/* Heading */}
 
         <TextAnimate

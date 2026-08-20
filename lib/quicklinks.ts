@@ -10,7 +10,7 @@ export const quickLinks = [
     {
         "id": 12,
         "link": "/bitakSaheb",
-        "name": "श्री बीतक साहेब <br>अद्भुत सिलसिला",
+        "name": "श्री बीतक साहेब अद्भुत सिलसिला",
         "subtitle": "30 सकारात्मक बदलावों के लिए",
         "icon": "book-open",
         "image": "/ic_bitaksaheb.png"
