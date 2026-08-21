@@ -47,11 +47,28 @@ export default function Page() {
 
     // Default center view covering India/Temples area if none selected
     const defaultCenter = { lat: 24.7176, lng: 80.2034 };
-    const position = selectedTemple
-        ? { lat: selectedTemple.lat, lng: selectedTemple.lng }
-        : defaultCenter;
 
-    const zoomLevel = selectedTemple ? 15 : 5;
+    // Track the camera position and zoom state for the map
+    const [cameraState, setCameraState] = useState({
+        center: defaultCenter,
+        zoom: 5,
+    });
+
+    // Update camera state whenever selectedTemple changes or is cleared
+    useEffect(() => {
+        if (selectedTemple) {
+            setCameraState({
+                center: { lat: selectedTemple.lat, lng: selectedTemple.lng },
+                zoom: 15,
+            });
+        } else {
+            // This runs when "सभी मंदिर देखें" (Show all temples) is clicked
+            setCameraState({
+                center: defaultCenter,
+                zoom: 5,
+            });
+        }
+    }, [selectedTemple]);
 
     // Build directions URL dynamically using user's location if available
     const getDirectionsUrl = (temple: Temple) => {
@@ -66,23 +83,25 @@ export default function Page() {
     return (
         <section className="mx-auto max-w-370 px-4 lg:px-8 py-10 pt-32">
             {/* Global Style Override to remove Google's default InfoWindow container styling and default close button */}
+            {/* Global Style Override to remove Google's default InfoWindow container styling and default close button */}
             <style jsx global>{`
-        .gm-style-iw-c {
-          background: transparent !important;
-          box-shadow: none !important;
-          padding: 0 !important;
-        }
-        .gm-style-iw-d {
-          overflow: hidden !important;
-          max-height: none !important;
-        }
-        .gm-style-iw-tc::after {
-          background: #111827 !important;
-        }
-        .gm-ui-hover-effect {
-          display: none !important;
-        }
-      `}</style>
+                .gm-style-iw-c {
+                background: transparent !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                max-width: 90vw !important;
+                }
+                .gm-style-iw-d {
+                overflow: hidden !important;
+                max-height: none !important;
+                }
+                .gm-style-iw-tc::after {
+                background: #ffffff !important; /* Changed from #111827 to white */
+                }
+                .gm-ui-hover-effect {
+                display: none !important;
+                }
+            `}</style>
 
             {/* Heading */}
             <h2 className="flex flex-row text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
@@ -179,11 +198,15 @@ export default function Page() {
                     <div className="h-full w-full rounded-3xl border-4 border-white bg-white overflow-hidden">
                         <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}>
                             <Map
-                                center={position}
-                                zoom={zoomLevel}
+                                center={cameraState.center}
+                                zoom={cameraState.zoom}
+                                onCameraChanged={(ev) => {
+                                    // Keeps track of manual dragging/zooming so the map doesn't freeze
+                                    setCameraState(ev.detail);
+                                }}
                                 mapId="DEMO_MAP_ID"
                                 style={{ width: "100%", height: "100%" }}
-                                gestureHandling="auto"
+                                gestureHandling="greedy"
                             >
                                 {temples.map((temple) => {
                                     const isSelected = selectedTemple?.id === temple.id;
@@ -210,7 +233,7 @@ export default function Page() {
                                                 </div>
                                             </AdvancedMarker>
 
-                                            {/* Apple Maps Style Horizontal Pill InfoWindow Popup with custom white close button */}
+                                            {/* Responsive InfoWindow Popup */}
                                             {isSelected && (
                                                 <InfoWindow
                                                     position={{ lat: temple.lat, lng: temple.lng }}
@@ -218,14 +241,11 @@ export default function Page() {
                                                     pixelOffset={[0, -10]}
                                                 >
                                                     <div className="relative">
-                                                        {/* Custom White Background Close Button with X Icon */}
-
-
-                                                        {/* Main Pill Content */}
-                                                        <div className="font-arya flex items-center gap-2.5 bg-white-200/25 backdrop-blur-xl text-white p-3 rounded-2xl shadow-4xl border border-white/70 w-85">
+                                                        {/* Main Pill Content - Responsive Width */}
+                                                        <div className="font-arya flex items-center gap-2 bg-white backdrop-blur-xl text-white p-2.5 sm:p-3 rounded-2xl shadow-xl border border-white/70 w-[275px] sm:w-85">
 
                                                             {/* Left Thumbnail */}
-                                                            <div className="relative h-14 w-14 shrink-0 rounded-5xl overflow-hidden border border-white/10">
+                                                            <div className="relative h-12 w-12 sm:h-14 sm:w-14 shrink-0 rounded-xl overflow-hidden border border-white/10">
                                                                 <Image
                                                                     src={temple.image}
                                                                     alt={temple.name}
@@ -236,34 +256,34 @@ export default function Page() {
 
                                                             {/* Right Content */}
                                                             <div className="flex-1 min-w-0 pr-1">
-                                                                <h3 className="text-sm/4 font-semibold tracking-tight  text-black">
+                                                                <h3 className="text-xs sm:text-sm/4 font-semibold tracking-tight text-black truncate">
                                                                     {temple.name}
                                                                 </h3>
-                                                                <div className="text-[13px]/4 text-gray-600 mt-0.5">
+                                                                <div className="text-[11px] sm:text-[13px]/4 text-gray-600 mt-0.5 line-clamp-2">
                                                                     {temple.address}
                                                                 </div>
                                                             </div>
-                                                            <div className="flex flex-col gap-2">
+
+                                                            {/* Action Buttons */}
+                                                            <div className="flex flex-col gap-1.5 shrink-0">
                                                                 <button
                                                                     onClick={() => setSelectedTemple(null)}
-                                                                    className="z-30 flex h-9 w-9 items-center cursor-pointer cursor justify-center rounded-full bg-white text-gray-700 shadow-md border border-gray-200 hover:bg-gray-100 transition-all active:scale-95"
+                                                                    className="z-30 flex h-7 w-7 sm:h-9 sm:w-9 items-center cursor-pointer justify-center rounded-full bg-white text-gray-700 shadow-md border border-gray-200 hover:bg-gray-100 transition-all active:scale-95"
                                                                     title="Close"
                                                                 >
-                                                                    <X size={14} />
+                                                                    <X size={12} />
                                                                 </button>
-                                                                {/* Navigation button */}
                                                                 <a
                                                                     href={getDirectionsUrl(temple)}
                                                                     target="_blank"
                                                                     rel="noopener noreferrer"
-                                                                    className="bg-orange-500 hover:bg-orange-600 text-white p-2.5 rounded-full transition-all shrink-0 shadow-md active:scale-95 flex items-center justify-center"
+                                                                    className="bg-orange-500 hover:bg-orange-600 text-white p-2 sm:p-2.5 rounded-full transition-all shadow-md active:scale-95 flex items-center justify-center"
                                                                     title="दिशा निर्देश (Directions)"
                                                                 >
-                                                                    <Navigation size={14} />
+                                                                    <Navigation size={12} />
                                                                 </a>
-
-                                                                
                                                             </div>
+
                                                         </div>
                                                     </div>
                                                 </InfoWindow>
