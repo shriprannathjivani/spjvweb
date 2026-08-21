@@ -282,7 +282,7 @@ export default function Navbar() {
                     }}
                   >
                     <NavigationMenuItem>
-                      <NavigationMenuLink className={cn("text-lg px-4 py-2 me-1 rounded-full hover:bg-black/6 focus:bg-black/6 data-[state=open]:bg-black/5 transition-all duration-200 cursor-pointer text-black hover:text-orange-500", pathname?.includes("/mandirseva") ? "bg-black/6" : "bg-transparent")} render={<Link href="/mandirseva" className={cn("link flex items-center gap-2", pathname?.includes("/mandirseva") ? "text-orange-600" : "text-black hover:text-orange-600")} >मंदिर</Link>} />
+                      <NavigationMenuLink className={cn("text-lg px-4 py-2 me-1 rounded-full hover:bg-black/6 focus:bg-black/6 data-[state=open]:bg-black/5 transition-all duration-200 cursor-pointer text-black hover:text-orange-500", pathname?.includes("/gyanbhandar") ? "bg-black/6" : "bg-transparent")} render={<Link href="/gyanbhandar" className={cn("link flex items-center gap-2", pathname?.includes("/gyanbhandar") ? "text-orange-600" : "text-black hover:text-orange-600")} >ज्ञान भंडार</Link>} />
                     </NavigationMenuItem>
                   </motion.div>
                   <motion.div
@@ -294,7 +294,7 @@ export default function Navbar() {
                     }}
                   >
                     <NavigationMenuItem>
-                      <NavigationMenuLink className={cn("text-lg px-4 py-2 me-1 rounded-full hover:bg-black/6 focus:bg-black/6 data-[state=open]:bg-black/5 transition-all duration-200 cursor-pointer text-black hover:text-orange-500", pathname?.includes("/gyanbhandar") ? "bg-black/6" : "bg-transparent")} render={<Link href="/gyanbhandar" className={cn("link flex items-center gap-2", pathname?.includes("/gyanbhandar") ? "text-orange-600" : "text-black hover:text-orange-600")} >ज्ञान भंडार</Link>} />
+                      <NavigationMenuLink className={cn("text-lg px-4 py-2 me-1 rounded-full hover:bg-black/6 focus:bg-black/6 data-[state=open]:bg-black/5 transition-all duration-200 cursor-pointer text-black hover:text-orange-500", pathname?.includes("/mandirseva") ? "bg-black/6" : "bg-transparent")} render={<Link href="/mandirseva" className={cn("link flex items-center gap-2", pathname?.includes("/mandirseva") ? "text-orange-600" : "text-black hover:text-orange-600")} >मंदिर</Link>} />
                     </NavigationMenuItem>
                   </motion.div>
 
