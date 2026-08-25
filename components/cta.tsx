@@ -16,7 +16,7 @@ import { CarouselDots } from "./carousel-dots";
 import { motion } from "framer-motion";
 import { Link } from "lucide-react";
 const basePath =
-    process.env.NODE_ENV === "production" ? "/spjvweb" : "";
+    process.env.NODE_ENV === "production" ? "" : "";
 export default function PrannathCTA() {
     const [api, setApi] = React.useState<CarouselApi>()
 

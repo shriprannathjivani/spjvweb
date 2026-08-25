@@ -6,7 +6,7 @@ import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 import { ChevronLeft, ChevronRight, Download, Share2, ZoomIn, ZoomOut } from "lucide-react";
 const basePath =
-  process.env.NODE_ENV === "production" ? "/" : "";
+  process.env.NODE_ENV === "production" ? "" : "";
 // ✅ Dynamically import only components (SSR disabled)
 const Document = dynamic(
   () => import("react-pdf").then((mod) => mod.Document),

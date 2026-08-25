@@ -46,7 +46,7 @@ type Song = {
 };
 
 const basePath =
-  process.env.NODE_ENV === "production" ? "/" : "";
+  process.env.NODE_ENV === "production" ? "" : "";
 
 export default function Gyanbhandar() {
   const [api, setApi] = React.useState<CarouselApi>();
