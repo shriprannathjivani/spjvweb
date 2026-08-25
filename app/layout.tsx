@@ -76,12 +76,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="hi" className={`${arya.variable}  ${poppins.variable}`}>
-      <Script
-        id="schema-jsonld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <link rel="icon" href={`${basePath}/spjv logo favicon.png`} sizes="any" />
+      <head>
+        <Script
+          id="schema-jsonld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <link rel="icon" href={`${basePath}/spjv logo favicon.png`} sizes="any" />
+      </head>
       <body lang="en" className="hero-bg font-arya" >
         <Toaster />
         <BodyWrapper>
