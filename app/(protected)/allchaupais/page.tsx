@@ -53,7 +53,7 @@ type PrakaranGroup = {
   items: ChaupaiItem[];
 };
 
-const basePath = process.env.NODE_ENV === "production" ? "/spjvweb" : "";
+const basePath = process.env.NODE_ENV === "production" ? "" : "";
 
 /* ---------------- DIGIT HELPERS ---------------- */
 const DEVANAGARI = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
@@ -115,9 +115,8 @@ function ChaupaiCard({
   return (
     <div
       ref={refCallback}
-      className={`p-4 border rounded-3xl bg-white transition-all ${
-        index === selectedIndex ? "border-2 border-orange-600 shadow-md" : ""
-      }`}
+      className={`p-4 border rounded-3xl bg-white transition-all ${index === selectedIndex ? "border-2 border-orange-600 shadow-md" : ""
+        }`}
     >
       <div className="flex justify-between items-center mb-2">
         <h3 className="font-bold text-orange-600">चौपाई:</h3>
@@ -335,7 +334,7 @@ export default function Page() {
     <>
       <section className="min-h-screen bg-gray-50 pt-20">
         {/* DASHBOARD NAV */}
-        <div className="max-w-7xl mx-auto px-6 py-6 pb-0">
+        <div className="max-w-370 mx-auto px-4 lg:px-8 py-6 pb-0">
           <Breadcrumb className="mb-4">
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -356,19 +355,20 @@ export default function Page() {
         </div>
 
         {/* STICKY SEARCH HEADER */}
-        <div
-          className={clsx(
-            "max-w-7xl mx-auto sm:px-6 sm:py-6 pt-0 sticky z-20 transition-all duration-300 ease-in-out",
-            scrolled ? "sticky top-0 z-60 sm:top-12" : "px-0 py-0"
-          )}
+        <div className={clsx(
+          "max-w-370 mx-auto px-4 lg:px-8 sm:px-6 sm:py-6 pt-0 sticky z-20 transition-all duration-300 ease-in-out",
+          scrolled
+            ? "sticky top-0 z-60 sm:top-12 px-0! sm:px-8!"
+            : "px-0 py-0"
+        )}
         >
-          <div
-            className={clsx(
-              "flex flex-col-reverse md:flex-row md:items-center gap-1 sm:gap-8 p-4 py-2 sm:py-4 transition-all duration-300 ease-in-out",
-              scrolled
-                ? "rounded-0 bg-white-200/25 text-black backdrop-blur-xl rounded-b-2xl shadow-4xl border border-white/70 p-6"
-                : "sm:rounded-3xl"
-            )}
+          {/* Heading */}
+          <div className={clsx(
+            "flex flex-col-reverse  md:flex-row md:items-center gap-1 sm:gap-8 p-0 py-2 sm:py-4 transition-all duration-300 ease-in-out",
+            scrolled
+              ? "rounded-0 bg-white-200/25 text-black backdrop-blur-xl rounded-b-2xl shadow-4xl border border-white/70 p-4"
+              : "sm:rounded-3xl "
+          )}
           >
             {/* LEFT TITLE */}
             <div className="shrink-0">
@@ -391,11 +391,10 @@ export default function Page() {
                     <div className="flex flex-col gap-1.5 p-2 overflow-y-auto max-h-[70vh]">
                       <button
                         onClick={() => handleSelectBook("ALL")}
-                        className={`text-sm p-3 rounded-xl text-left transition-all ${
-                          selectedBook === "ALL"
+                        className={`text-sm p-3 rounded-xl text-left transition-all ${selectedBook === "ALL"
                             ? "bg-orange-600 text-white font-medium"
                             : "bg-gray-100 text-gray-700"
-                        }`}
+                          }`}
                       >
                         सभी पुस्तकें
                       </button>
@@ -403,11 +402,10 @@ export default function Page() {
                         <button
                           key={book}
                           onClick={() => handleSelectBook(book)}
-                          className={`text-sm p-3 rounded-xl text-left transition-all ${
-                            selectedBook === book
+                          className={`text-sm p-3 rounded-xl text-left transition-all ${selectedBook === book
                               ? "bg-orange-600 text-white font-medium"
                               : "bg-gray-100 text-gray-700"
-                          }`}
+                            }`}
                         >
                           {idx + 1}. {book}
                         </button>
@@ -497,9 +495,9 @@ export default function Page() {
         </div>
 
         {/* CONTENT AREA */}
-        <div className="max-w-7xl mx-auto pb-16 px-2 sm:px-6">
+        <div className="max-w-370 mx-auto px-4 lg:px-8 pb-16 sm:px-6">
           <div className="flex sm:flex-row flex-col py-2 sm:py-4 gap-4">
-            
+
             {/* DESKTOP SIDEBAR - DIRECT BOOKS LISTING ONLY */}
             <div className="w-70 hidden lg:block shrink-0">
               <div className="bg-white rounded-3xl border border-gray-100 overflow-hidden flex flex-col p-3.5">
@@ -511,11 +509,10 @@ export default function Page() {
                 <div className="flex flex-col gap-1.5">
                   <div
                     onClick={() => handleSelectBook("ALL")}
-                    className={`text-base p-2.5 rounded-xl border cursor-pointer font-medium transition-all flex justify-between items-center ${
-                      selectedBook === "ALL"
+                    className={`text-base p-2.5 rounded-xl border cursor-pointer font-medium transition-all flex justify-between items-center ${selectedBook === "ALL"
                         ? "bg-orange-600 text-white border-orange-600 shadow-sm"
                         : "bg-white text-gray-700 border-gray-200 hover:bg-orange-50 hover:text-orange-600"
-                    }`}
+                      }`}
                   >
                     <span>सभी पुस्तकें</span>
                     <span className="text-[10px] opacity-80">({allChaupais.length})</span>
@@ -527,11 +524,10 @@ export default function Page() {
                       <div
                         key={book}
                         onClick={() => handleSelectBook(book)}
-                        className={`text-base p-2.5 rounded-xl border cursor-pointer font-medium transition-all flex items-center justify-between ${
-                          isBookActive
+                        className={`text-base p-2.5 rounded-xl border cursor-pointer font-medium transition-all flex items-center justify-between ${isBookActive
                             ? "bg-orange-600 text-white border-orange-600 shadow-sm"
                             : "bg-white text-gray-700 border-gray-200 hover:bg-orange-50 hover:text-orange-600"
-                        }`}
+                          }`}
                       >
                         <span className="line-clamp-1">{idx + 1}. {book}</span>
                         <BookMarked

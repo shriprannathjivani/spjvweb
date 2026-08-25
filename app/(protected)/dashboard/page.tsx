@@ -101,7 +101,7 @@ export default function Dashboard() {
       {/* 🔥 DASHBOARD NAV */}
 
       {/* CONTENT */}
-      <div className="max-w-7xl mx-auto px-6 py-6">
+      <div className="max-w-370 mx-auto px-4 lg:px-8 py-6">
 
         {/* Heading */}
         <div className="flex flex-row md:flex-row md:items-center md:justify-between gap-4 mb-6">
@@ -128,7 +128,7 @@ export default function Dashboard() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
           {cards.map((card, index) => (
             <motion.div
@@ -138,7 +138,7 @@ export default function Dashboard() {
             >
               <Link
                 href={card.link}
-                className="relative group block rounded-2xl overflow-hidden border bg-linear-to-br from-gray-50 to-white p-5 transition"
+                className="relative h-full group block rounded-2xl overflow-hidden border bg-linear-to-br from-gray-50 to-white p-5 transition"
               >
 
                 {/* Content */}
