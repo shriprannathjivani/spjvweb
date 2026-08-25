@@ -21,7 +21,7 @@ export const metadata = {
     siteName: 'Shri Prannath Ji Vani',
     images: [
       {
-        url: 'https://shriprannathjivani.com/shriprannathjinew.png',
+        url: 'https://shriprannathjivani.com/whatshareimg.jpg',
         width: 800,
         height: 600,
       },
@@ -30,7 +30,7 @@ export const metadata = {
   },
   // Additional thumbnail links if needed
   other: {
-    'thumbnail': 'https://shriprannathjivani.com/shriprannathjinew.png',
+    'thumbnail': 'https://shriprannathjivani.com/whatshareimg.jpg',
   },
 }
 
@@ -41,7 +41,7 @@ const jsonLd = {
   '@type': 'MediaObject',
   'name': 'Shri Prannath Ji Vani',
   'description': 'श्री प्राणनाथ जी की वाणी आत्मा, सृष्टि, परम सत्य और हमारे परम प्रियतम से जुड़े गहरे सवालों के जवाब सरलता से समझाती है।',
-  'thumbnailUrl': 'https://shriprannathjivani.com/shriprannathjinew.png',
+  'thumbnailUrl': 'https://shriprannathjivani.com/whatshareimg.jpg',
   'contentUrl': 'https://shriprannathjivani.com/',
 }
 
