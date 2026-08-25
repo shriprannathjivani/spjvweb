@@ -65,7 +65,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const basePath =
-  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
+  process.env.NODE_ENV === "production" ? "/" : "";
 
 export default function Navbar() {
   const pathname = usePathname()

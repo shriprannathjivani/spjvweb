@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   description: "SPJV APP made by love for all.",
 };
 const basePath =
-  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
+  process.env.NODE_ENV === "production" ? "/" : "";
 
   
 export default function RootLayout({

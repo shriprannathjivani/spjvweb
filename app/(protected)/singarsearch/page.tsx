@@ -39,7 +39,7 @@ type Chapter = {
 };
 
 const basePath =
-  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
+  process.env.NODE_ENV === "production" ? "/" : "";
 
 /* ---------------- DIGIT HELPERS ---------------- */
 const DEVANAGARI = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];

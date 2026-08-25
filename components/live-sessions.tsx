@@ -145,7 +145,7 @@ export default function Events() {
               startOnView
               by="line"
               delay={0.3} className="text-base sm:text-lg lg:text-xl text-black/60 max-w-3xl mb-3 sm:mb-8 leading-relaxed">
-                श्री प्राणनाथ जी वाणी के साथ लाइव सेशन
+              श्री प्राणनाथ जी वाणी के साथ लाइव सेशन
             </TextAnimate>
           </div>
           <motion.div
@@ -170,111 +170,81 @@ export default function Events() {
         <div className="grid auto-rows-[170px]  sm:auto-rows-[250px] grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
           {events.map((event, index) => (
-
             <motion.div
-              key={event.id}
-              initial={{
-                opacity: 0,
-                y: 30,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
+              key={index}
+              initial={{ y: 60, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
               transition={{
-                duration: 0.5,
-                delay: index * 0.1,
+                duration: 0.6,
+                delay: index * 0.2
               }}
+              style={{ willChange: "transform, opacity" }} 
               className={`
-                group
-                relative
-                overflow-hidden
-                rounded-[28px]
-                bg-white
-                shadow-[0_10px_35px_rgba(0,0,0,0.06)]
-                transition-all
-                duration-500
-                hover:-translate-y-1
-                hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]
-
-                ${event.featured
+                  group
+                  relative
+                  overflow-hidden
+                  rounded-[28px]
+                  bg-white
+                  shadow-[0_10px_35px_rgba(0,0,0,0.06)]
+                  transition-shadow
+                  duration-500
+                  hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]
+                  ${event.featured
                   ? "sm:col-span-2 sm:row-span-2"
                   : ""
                 }
-              `}
+    `}
             >
-
-
               {/* Background Image */}
               <Image
                 src={event.image}
                 alt={event.title}
                 fill
                 className="
-                  object-cover
-                  transition-transform
-                  duration-700
-                  group-hover:scale-105
-                "
+        object-cover
+        transition-transform
+        duration-700
+        group-hover:scale-105
+      "
               />
-
-
 
               {/* Gradient */}
               <div
                 className="
-                 absolute inset-0 bg-linear-to-t from-[#4b2440]/90 via-[#4b2440]/30 to-transparent
-                "
+        absolute inset-0 bg-linear-to-t from-[#4b2440]/90 via-[#4b2440]/30 to-transparent
+      "
               />
 
               {/* Calendar */}
               <Button
                 onClick={() => downloadICS(event)}
                 variant="outline"
-                className=" absolute top-2 right-2 rounded-full border-2 border-black px-6 py-5 text-sm font-medium hover:bg-black hover:text-white cursor-pointer"
+                className="absolute top-2 right-2 rounded-full border-2 border-black px-6 py-5 text-sm font-medium hover:bg-black hover:text-white cursor-pointer"
               >
                 <CalendarPlus size={17} />
-                {/* 
-                  <span>
-                    कैलेंडर में जोड़ें
-                  </span> */}
               </Button>
-
-
 
               {/* Content */}
               <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-
                 <div className="mb-2 flex items-center gap-2">
-
-
-                  <span className="text-sm font-medium text-white/80 ">
+                  <span className="text-sm font-medium text-white/80">
                     {event.dateLabel} - {event.time}
                   </span>
-
                 </div>
 
                 <h3
                   className={`
-                    font-bold
-                    leading-tight
-                    text-white
-                    ${event.featured
+          font-bold
+          leading-tight
+          text-white
+          ${event.featured
                       ? "text-2xl sm:text-3xl"
                       : "text-lg"
                     }
-                  `}
+        `}
                 >
                   {event.title}
                 </h3>
-
-
-
-
-
               </div>
             </motion.div>
           ))}

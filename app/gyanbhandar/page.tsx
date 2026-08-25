@@ -46,7 +46,7 @@ type Song = {
 };
 
 const basePath =
-  process.env.NODE_ENV === "production" ? "/spjvweb" : "";
+  process.env.NODE_ENV === "production" ? "/" : "";
 
 export default function Gyanbhandar() {
   const [api, setApi] = React.useState<CarouselApi>();
@@ -282,7 +282,7 @@ export default function Gyanbhandar() {
                 {BOOKS.map((book, index) => (
                   <CarouselItem
                     key={index}
-                    className="pl-4 md:basis-1/5 basis-[85%] relative"
+                    className="pl-4 md:basis-1/4 basis-[85%] relative"
                   >
                     <motion.div
                       key={index}
