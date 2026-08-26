@@ -21,7 +21,9 @@ export default function notFound() {
                         {/* 🔐 LEFT: LOGIN */}
                         <div className="flex items-center justify-center text-center">
                             <div className="w-full ">
-                                <div className="flex flex-col items-center justify-center text-center sm:py-20 py-6 sm:px-0 px-4 min-h-[70vh]">
+                                <div className="flex flex-col items-center justify-center text-center sm:py-20 py-6 sm:px-0 px-4 min-h-[70vh] relative">
+
+                                    <span className="text-[22rem] text-black/2 font-poppins font-bold absolute top-0">404</span>
                                     {/* ICON */}
                                     <Lottie
                                         animationData={EmptyState}
@@ -33,7 +35,7 @@ export default function notFound() {
                                        मिला
                                     </h2>
                                     <p className="max-w-md text-gray-500 text-sm md:text-xl mb-6">
-                                        क्षमा करें, जिस पेज को आप ढूंढ रहे हैं वह मौजूद नहीं है या हटा दिया गया है।
+                                        क्षमा करें, जिस पेज को आप ढूंढ रहे हैं वह मौजूद नहीं है <br/> या हटा दिया गया है।
                                     </p>
                                     <a href="/">
                                         <Button variant="outline" className="rounded-full border-2 px-6 py-5 text-sm border-black font-medium text-white bg-orange-500 hover:bg-orange-600 hover:text-white cursor-pointer"> होम पेज पर जाएं</Button>
