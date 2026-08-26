@@ -312,6 +312,20 @@ button.bg-background.border-2.border-black:active {
   min-height: 100vh;
 }
 
+.notfound-bg {
+  --ellipse-radius: 1318px;
+  --ellipse-color: #fbf2f5;
+
+  background:
+    radial-gradient(circle var(--ellipse-radius) at 30% 0, var(--ellipse-color) 0, transparent 50%),
+    radial-gradient(ellipse var(--ellipse-radius) var(--ellipse-radius) at 90% 0, var(--ellipse-color) 0, transparent 30%),
+    radial-gradient(ellipse var(--ellipse-radius) var(--ellipse-radius) at 95% 30%, var(--ellipse-color) 0, transparent 80%),
+    radial-gradient(ellipse var(--ellipse-radius) var(--ellipse-radius) at 5% 45%, var(--ellipse-color) 0, transparent 80%),
+    #f3fcf8;
+
+  min-height: 100vh;
+}
+
 
 .balkendra-bg {
   --ellipse-color: #b9cbff;
