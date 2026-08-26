@@ -183,7 +183,7 @@ export default function Navbar() {
         className={clsx(
           "fixed top-0 w-full z-40 transition-all duration-300 ease-in-out",
           scrolled
-            ? "bg-white/80 backdrop-blur-sm border-b border-neut-darkest/15"
+            ? "bg-white/95 backdrop-blur-sm border-b border-accent-foreground/5"
             : "bg-transparent"
         )}
       >

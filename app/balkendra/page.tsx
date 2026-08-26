@@ -438,11 +438,11 @@ export default function Page() {
             <TextAnimate by="line"
               delay={0.3}
               segmentClassName="block" animation="blurInUp" startOnView className="text-xl text-gray-500">
-              {`जहाँ वाणी से ज्ञान, संस्कारों से जीवन और प्रेम से आत्मा का जागरण होता है। \n ‘आत्मदर्शनम्’ केवल आध्यात्मिक ज्ञान की यात्रा नहीं, बल्कि बच्चों और युवाओं को वाणी, \nसंस्कार, प्रेम और सेवा से जोड़कर एक सुंदर, सदाचारी और आनंदमय जीवन की नींव रखने का प्रयास है। 💖`}
+              {`जहाँ वाणी से ज्ञान, संस्कारों से जीवन और प्रेम से आत्मा का जागरण होता है। \n‘आत्मदर्शनम्’ केवल आध्यात्मिक ज्ञान की यात्रा नहीं, बल्कि बच्चों और युवाओं को वाणी, \nसंस्कार, प्रेम और सेवा से जोड़कर एक सुंदर, सदाचारी और आनंदमय जीवन की नींव रखने का प्रयास है। 💖`}
             </TextAnimate>
           </div>
 
-          <div className="grid gap-8  md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8  md:grid-cols-2 lg:grid-cols-4 justify-center">
 
             {/* Card 1 */}
             <div className="bg-lime-200 rounded-3xl p-6 pb-0">
@@ -592,7 +592,7 @@ export default function Page() {
               ].map((card, i) => (
                 <CarouselItem
                   key={i}
-                  className="pl-4 md:basis-1/3 basis-[85%]"
+                  className="pl-4 md:basis-1/4 basis-[85%]"
                 >
                   <motion.div
                     key={i}
@@ -651,27 +651,20 @@ export default function Page() {
 
 
         <div className="relative sm:mt-20 mt-8 pt-0">
-          <div className="mb-4 text-center">
+         
+
+          <div className="grid md:grid-cols-1 gap-2 items-start mb-16">
+            {/* Left */}
             <TextAnimate animation="blurInUp" by="line"
               delay={0.1}
-              segmentClassName="block" startOnView className="text-red-600 text-xl block mb-4">
-              {` ब्रह्मवाणी और वर्णमाला से प्रेरित`}
+              segmentClassName="block" startOnView className="text-3xl font-bold text-black mb-1">
+              {`शिशु नाम और उनके अर्थ सूची`}
             </TextAnimate>
-            <h2 className="flex flex-row justify-center  text-3xl text-center md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 mb-3">
-              <TextAnimate animation="blurInUp" startOnView delay={0.3}>
-                शिशु नाम&nbsp;
-              </TextAnimate>{"  "}
-              <TextAnimate animation="blurInUp" startOnView delay={0.5} className="text-orange-500">
-                और उनके अर्थ सूची
-              </TextAnimate>
-            </h2>
             <TextAnimate by="line"
               delay={0.3}
-              segmentClassName="block" animation="blurInUp" startOnView className="text-muted-foreground text-xl sm:mb-24 mb-0">
-              {`बच्चे का नया नाम चुनना आसान और मज़ेदार लग सकता है, लेकिन ऐसा नाम ढूँढ़ना जो आपके दिल को छू जाए, इसके लिए समय चाहिए।\n इसलिए, आपकी मदद करने के लिए, हमने लड़कियों और लड़कों के लिए कुछ अनोखे भारतीय बेबी नेम खोजे हैं। इन भारतीय बेबी नेम का उल्लेख उनके अर्थों के साथ किया गया है, जिससे आपके लिए सही नाम चुनना आसान हो जाएगा।
-            `}
+              segmentClassName="block" animation="blurInUp" startOnView className="text-xl text-gray-500">
+              {`बच्चे का नया नाम चुनना आसान और मज़ेदार लग सकता है, लेकिन ऐसा नाम ढूँढ़ना जो आपके दिल को छू जाए, इसके लिए समय चाहिए।\nइसलिए, आपकी मदद करने के लिए, हमने लड़कियों और लड़कों के लिए कुछ अनोखे भारतीय बेबी नेम खोजे हैं। \nइन भारतीय बेबी नेम का उल्लेख उनके अर्थों के साथ किया गया है, जिससे आपके लिए सही नाम चुनना आसान हो जाएगा।`}
             </TextAnimate>
-
           </div>
 
           <div className="bg-white rounded-3xl flex flex-col max-h-[85vh] overflow-hidden">
