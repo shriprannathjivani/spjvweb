@@ -402,14 +402,15 @@ export default function Page() {
             </div>
 
             {/* CONTROLS */}
-            <div className="flex items-center justify-between sm:mt-0 mt-2 gap-2">
+            <div className="flex items-center justify-start sm:mt-0 mt-2 gap-4">
+              
               <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-                <SheetTrigger className="md:hidden flex gap-2 text-sm bg-white border px-3 py-2 rounded-xl">
-                  <BookOpenText size={18} /> पुस्तकें
+                <SheetTrigger className="md:hidden flex items-center gap-2 ">
+                  <BookOpenText  /> पुस्तकें
                 </SheetTrigger>
                 <SheetContent side="bottom">
                   <SheetHeader>
-                    <SheetTitle className="p-2 flex flex-col gap-2">
+                    <SheetTitle className="p-2 flex flex-col gap-2 ">
                       <span>📖 पुस्तकें ({uniqueBooks.length})</span>
                     </SheetTitle>
                     <div className="flex flex-col gap-1.5 p-2 overflow-y-auto max-h-[70vh]">
@@ -438,6 +439,25 @@ export default function Page() {
                   </SheetHeader>
                 </SheetContent>
               </Sheet>
+              <button
+                onClick={() => {
+                  const nextState = !isExact;
+                  setIsExact(nextState);
+                  if (activeQuery.trim()) {
+                    runFilter(activeQuery, selectedBook, nextState);
+                  }
+                }}
+                title={isExact ? "सटीक खोज (Exact Match) चालू है" : "मिलती-जुलती खोज (Fuzzy Match) चालू है"}
+                className={clsx(
+                  "md:hidden flex shrink-0  items-center gap-1.5 p-2 sm:px-2.5 sm:py-1.5 rounded-full text-sm font-medium border-2 border-black transition-all cursor-pointer",
+                  isExact
+                    ? "bg-green-600 text-white border-black"
+                    : "bg-gray-100 text-gray-900 border-gray-300"
+                )}
+              >
+                <SlidersHorizontal size={14} />
+                <span>{isExact ? "सटीक शब्द" : "सटीक शब्द"}</span>
+              </button>
 
               {results.length > 0 && (
                 <div className="shrink-0 flex items-center gap-2">
@@ -501,7 +521,7 @@ export default function Page() {
                   {query && (
                     <button
                       onClick={clearSearch}
-                      className="absolute right-12.5 sm:right-30.5 top-2 bg-red-600 border-2 border-black p-2 rounded-full text-white hover:text-white hover:bg-red-400 text-base cursor-pointer"
+                      className="absolute right-2.5 sm:right-30.5 top-2 bg-red-600 border-2 border-black p-2 rounded-full text-white hover:text-white hover:bg-red-400 text-base cursor-pointer"
                     >
                       <X size={14} />
                     </button>
@@ -517,21 +537,21 @@ export default function Page() {
                     }}
                     title={isExact ? "सटीक खोज (Exact Match) चालू है" : "मिलती-जुलती खोज (Fuzzy Match) चालू है"}
                     className={clsx(
-                      "absolute right-2.5 top-1.75 shrink-0 flex items-center gap-1.5 p-2 sm:px-2.5 sm:py-1.5 rounded-full text-sm font-medium border-2 border-black transition-all cursor-pointer",
+                      "hidden md:flex absolute right-2.5 top-1.75 shrink-0  items-center gap-1.5 p-2 sm:px-2.5 sm:py-1.5 rounded-full text-sm font-medium border-2 border-black transition-all cursor-pointer",
                       isExact
-                        ? "bg-orange-100 text-orange-600 border-orange-300"
+                        ? "bg-green-600 text-white border-black"
                         : "bg-gray-100 text-gray-900 border-gray-300"
                     )}
                   >
                     <SlidersHorizontal size={14} />
-                    <span className="hidden md:block">{isExact ? "सटीक शब्द" : "सटीक शब्द"}</span>
+                    <span className="">{isExact ? "सटीक शब्द" : "सटीक शब्द"}</span>
                   </button>
                 </div>
                 <Button
                   onClick={performSearch}
                   className="shrink-0 rounded-full border-2 border-black px-3.5! sm:px-6! py-5.5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 cursor-pointer"
                 >
-                  <Search size={18} className="md:hidden inline-block"/><span className="hidden md:inline-block">खोजें</span>
+                  <Search size={18} className="md:hidden inline-block" /><span className="hidden md:inline-block">खोजें</span>
                 </Button>
               </div>
             </div>
@@ -555,8 +575,8 @@ export default function Page() {
                   <div
                     onClick={() => handleSelectBook("ALL")}
                     className={`text-base p-2.5 rounded-xl border cursor-pointer font-medium transition-all flex justify-between items-center ${selectedBook === "ALL"
-                        ? "bg-orange-600 text-white border-orange-600 shadow-sm"
-                        : "bg-white text-gray-700 border-gray-200 hover:bg-orange-50 hover:text-orange-600"
+                      ? "bg-orange-600 text-white border-orange-600 shadow-sm"
+                      : "bg-white text-gray-700 border-gray-200 hover:bg-orange-50 hover:text-orange-600"
                       }`}
                   >
                     <span>सभी पुस्तकें</span>
@@ -570,8 +590,8 @@ export default function Page() {
                         key={book}
                         onClick={() => handleSelectBook(book)}
                         className={`text-base p-2.5 rounded-xl border cursor-pointer font-medium transition-all flex items-center justify-between ${isBookActive
-                            ? "bg-orange-600 text-white border-orange-600 shadow-sm"
-                            : "bg-white text-gray-700 border-gray-200 hover:bg-orange-50 hover:text-orange-600"
+                          ? "bg-orange-600 text-white border-orange-600 shadow-sm"
+                          : "bg-white text-gray-700 border-gray-200 hover:bg-orange-50 hover:text-orange-600"
                           }`}
                       >
                         <span className="line-clamp-1">{idx + 1}. {book}</span>

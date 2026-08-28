@@ -63,7 +63,7 @@ import {
 import { cva } from "class-variance-authority";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { MenuIcon, UsersRoundIcon, HouseIcon,  GamepadIcon, ShieldUserIcon, BookOpenCheckIcon, LogOutIcon, UserRoundIcon , LayoutListIcon, FileSpreadsheetIcon, MessageCircleHeartIcon, GamepadIconHandle } from "@animateicons/react/lucide";
+import { MenuIcon, UsersRoundIcon, HouseIcon, GamepadIcon, ShieldUserIcon, BookOpenCheckIcon, LogOutIcon, UserRoundIcon, LayoutListIcon, FileSpreadsheetIcon, MessageCircleHeartIcon, GamepadIconHandle } from "@animateicons/react/lucide";
 import type { IconHandle } from "@animateicons/react"
 
 const basePath =
@@ -109,10 +109,15 @@ export default function Navbar() {
     setLoggedIn(isUserLoggedIn());
   }, [pathname]);
 
-  // ✅ FIXED: logout
+  // ✅ UPDATED: clear storage, sync local state, and refresh
   const logout = () => {
     sessionStorage.clear();
-    router.replace(`/`);
+    setLoggedIn(false); // Instantly update state so UI re-renders
+    if (pathname === "/") {
+      router.refresh(); // Forces Next.js to revalidate state if already on default route
+    } else {
+      router.replace("/");
+    }
   };
   const navigationMenucustom = cva(
     `text-lg bg-transparent
@@ -376,7 +381,7 @@ export default function Navbar() {
                                 setIsMenuOpen(false);
                                 logout();
                               }}
-                              onMouseEnter={() => logOutIcon.current?.startAnimation()} onMouseLeave={() => logOutIcon.current?.stopAnimation()} 
+                              onMouseEnter={() => logOutIcon.current?.startAnimation()} onMouseLeave={() => logOutIcon.current?.stopAnimation()}
                               render={
                                 <span className="text-lg! my-0.5 px-4 py-1 flex items-center gap-2 border border-transparent hover:text-orange-500 bg-transparent hover:bg-gray rounded-full! focus:bg-transparent ">
                                   <LogOutIcon ref={logOutIcon} size={24} />  लॉगआउट
@@ -585,7 +590,7 @@ export default function Navbar() {
           <button
             onClick={() => setIsMenuOpen(true)}
             className="flex flex-col items-center justify-center hover:text-orange-500"
-            onMouseEnter={() => menuIcon.current?.startAnimation()} onMouseLeave={() => menuIcon.current?.stopAnimation()} 
+            onMouseEnter={() => menuIcon.current?.startAnimation()} onMouseLeave={() => menuIcon.current?.stopAnimation()}
           >
             <MenuIcon ref={menuIcon} size={20} />
             <span className="text-sm mt-1">मेनू</span>
