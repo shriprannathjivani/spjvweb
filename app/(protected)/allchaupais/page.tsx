@@ -382,7 +382,7 @@ export default function Page() {
         <div className={clsx(
           "max-w-370 mx-auto px-4 lg:px-8 sm:px-6 sm:py-6 pt-0 sticky z-20 transition-all duration-300 ease-in-out",
           scrolled
-            ? "sticky top-0 z-60 sm:top-12 px-0! sm:px-8!"
+            ? "sticky top-0 z-45 sm:top-12 px-0! sm:px-8!"
             : "px-0 py-0"
         )}
         >
