@@ -1,8 +1,9 @@
 import * as React from "react"
 import { ChevronRight, MoreHorizontal } from "lucide-react"
 import { Slot } from "radix-ui"
-
+import { ChevronLeftIcon, ChevronLeftIconHandle } from "@animateicons/react/lucide";
 import { cn } from "@/lib/utils"
+import { useRef } from "react"
 
 function Breadcrumb({ ...props }: React.ComponentProps<"nav">) {
   return <nav aria-label="breadcrumb" data-slot="breadcrumb" {...props} />
@@ -84,15 +85,22 @@ function BreadcrumbEllipsis({
   className,
   ...props
 }: React.ComponentProps<"span">) {
+  const ref = useRef<ChevronLeftIconHandle>(null)
+  
   return (
     <span
       data-slot="breadcrumb-ellipsis"
       role="presentation"
       aria-hidden="true"
-      className={cn("flex size-9 items-center justify-center", className)}
+      className={cn("flex size-9 items-center justify-center cursor-pointer", className)}
       {...props}
     >
-      <MoreHorizontal className="size-4" />
+      <ChevronLeftIcon 
+        ref={ref} 
+        className="size-4"
+        onMouseEnter={() => ref.current?.startAnimation()}
+        onMouseLeave={() => ref.current?.stopAnimation()}
+      />
       <span className="sr-only">More</span>
     </span>
   )

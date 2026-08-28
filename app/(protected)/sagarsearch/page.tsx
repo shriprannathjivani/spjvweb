@@ -26,6 +26,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
+import { ChevronLeftIconHandle, CircleChevronLeftIcon } from "@animateicons/react/lucide";
 /* ---------------- TYPES ---------------- */
 type Block = {
   chopai: string;
@@ -425,7 +426,7 @@ export default function Page() {
     // scroll top
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
+  const ref = useRef<ChevronLeftIconHandle>(null)
   return (
     <>
       <section className="min-h-screen bg-gray-50  pt-20">
@@ -437,8 +438,10 @@ export default function Page() {
                 <Link
                   href="/dashboard"
                   className="flex items-center text-orange-600 text-base"
+                  onMouseEnter={() => ref.current?.startAnimation()}
+                  onMouseLeave={() => ref.current?.stopAnimation()}
                 >
-                  <CircleChevronLeft className="me-2" size={16} />
+                  <CircleChevronLeftIcon className="me-2" size={16} ref={ref} />
                   डैशबोर्ड पर वापस
                 </Link>
               </BreadcrumbItem>

@@ -16,19 +16,21 @@ import Lottie from "lottie-react"
 import successAnimation from "@/public/Email icon animation.json"
 import doneAnimation from "@/public/Success Icon.json"
 import { toast } from "sonner"
+import { FacebookIcon } from "@animateicons/react/lucide";
+import { InstagramIcon } from "@animateicons/react/lucide";
 
 const socialLinks = [
   {
     name: "फेसबुक",
     href: "https://www.facebook.com/ShriPrannathJiVani/",
     className: "bg-blue-600 hover:bg-blue-600 hover:text-white",
-    icon: Facebook,
+    icon: FacebookIcon,
   },
   {
     name: "इंस्टाग्राम",
     href: "https://www.instagram.com/shriPrannathJiVani/",
     className: " bg-pink-600 hover:bg-pink-600 hover:text-white",
-    icon: Instagram,
+    icon: InstagramIcon,
   },
   {
     name: "यूट्यूब",
@@ -109,7 +111,7 @@ export default function Page() {
               delay: 0.6
             }}
           >
-            <div className="rounded-3xl bg-white p-8 ">
+            <div className="rounded-3xl bg-white p-8 border border-accent-foreground/10">
 
               {isSuccess ? (
 
@@ -222,6 +224,11 @@ export default function Page() {
                     <span className="w-1/4">सोमवार – शुक्रवार</span>
                     <span className="w-1/3">07:00 AM से 07:30 AM</span>
                   </li>
+                  <li className="flex justify-between">
+                    <span className="text-orange-900 w-1/3">बाल आत्मदर्शनम्</span>
+                    <span className="w-1/4">हर रविवार</span>
+                    <span className="w-1/3">03:00 PM से 04:15 PM</span>
+                  </li>
                 </ul>
               </div>
             </motion.div>
@@ -284,7 +291,7 @@ export default function Page() {
                       <Link
                         href={item.href}
                         key={item.name}
-                        className={`flex items-center gap-2 bg-white rounded-full px-5 py-2 text-sm  ${item.className}`}
+                        className={`flex items-center gap-2 bg-white border-2 border-black rounded-full px-5 py-2 text-sm  ${item.className}`}
                       >
                         <Icon size={16} />
                         {item.name}

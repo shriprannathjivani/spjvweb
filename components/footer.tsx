@@ -16,8 +16,18 @@ import {
 } from "lucide-react"
 import Lottie from "lottie-react";
 import { motion } from "framer-motion";
+import { SquarePlayIcon, MailIcon, FacebookIcon, InstagramIcon, MessageCircleHeartIcon, } from "@animateicons/react/lucide";
+import type { IconHandle } from "@animateicons/react"
+import { useRef } from "react";
 
 export default function Footer() {
+
+  const squarePlayIcon = useRef<IconHandle>(null)
+  const mailIcon = useRef<IconHandle>(null)
+  const facebookIcon = useRef<IconHandle>(null)
+  const instagramIcon = useRef<IconHandle>(null)
+  const messageCircleHeartIcon = useRef<IconHandle>(null)
+
   const year = new Date().getFullYear();
   return (
     <footer className="relative bg-[#4b2440] text-white overflow-hidden">
@@ -42,7 +52,7 @@ export default function Footer() {
             className="col-span-2 md:col-span-1"
           >
             {/* LEFT: LOGO + TEXT */}
-            <div className="flex items-center gap-4 sm:gap-16">
+            <div className="flex items-center gap-4 sm:gap-16 relative z-30">
               <Image
                 src="/footer_logo.svg"
                 alt="Shri Prannath Ji Vani"
@@ -128,10 +138,11 @@ export default function Footer() {
               href="https://www.facebook.com/ShriPrannathJiVani/"
               target="_blank"
               className="group flex flex-row items-center gap-2 text-start transition transition"
+              onMouseEnter={() => facebookIcon.current?.startAnimation()} onMouseLeave={() => facebookIcon.current?.stopAnimation()}
             >
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white 
       group-hover:bg-blue-500 group-hover:scale-110 transition-all duration-300">
-                <Facebook size={16} />
+                <FacebookIcon ref={facebookIcon} size={16} />
               </div>
               <span className="text-base leading-snug text-white/80 group-hover:text-orange-400">
                 फेसबुक<p className="text-xs flex mt-1 text-white/60">7700K + सब्सक्राइबर्स</p>
@@ -139,10 +150,12 @@ export default function Footer() {
             </Link>
 
             {/* YouTube */}
-            <Link href="https://www.youtube.com/@ShriPrannathJiVani/videos" target="_blank" className="group flex flex-row items-center gap-2 text-start transition">
+            <Link href="https://www.youtube.com/@ShriPrannathJiVani/videos" target="_blank" className="group flex flex-row items-center gap-2 text-start transition"
+              onMouseEnter={() => squarePlayIcon.current?.startAnimation()} onMouseLeave={() => squarePlayIcon.current?.stopAnimation()}
+            >
               <div className="flex h-8 w-8  items-center justify-center rounded-full bg-white/10
       group-hover:bg-rose-500 group-hover:scale-110 transition-all">
-                <Youtube size={16} />
+                <SquarePlayIcon ref={squarePlayIcon} size={16} />
               </div>
               <span className="text-base text-white/80 group-hover:text-orange-400">
                 यूट्यूब<p className="text-xs flex mt-1 text-white/60">45000k+ फॉलोअर्स</p>
@@ -150,10 +163,12 @@ export default function Footer() {
             </Link>
 
             {/* Instagram */}
-            <Link href="https://www.instagram.com/shriPrannathJiVani/" target="_blank" className="group flex flex-row items-center gap-2 text-start transition">
+            <Link href="https://www.instagram.com/shriPrannathJiVani/" target="_blank" className="group flex flex-row items-center gap-2 text-start transition"
+              onMouseEnter={() => instagramIcon.current?.startAnimation()} onMouseLeave={() => instagramIcon.current?.stopAnimation()}
+            >
               <div className="flex h-8 w-8  items-center justify-center rounded-full bg-white/10
       group-hover:bg-pink-600 group-hover:scale-110 transition-all">
-                <Instagram size={16} />
+                <InstagramIcon ref={instagramIcon} size={16} />
               </div>
               <span className="text-base text-white/90 group-hover:text-orange-400">
                 इंस्टाग्राम<p className="text-xs flex mt-1 text-white/60">1500+ फॉलोअर्स</p>
@@ -161,10 +176,12 @@ export default function Footer() {
             </Link>
 
             {/* WhatsApp */}
-            <Link href="#" target="_blank" className="group flex flex-row items-center gap-2 text-start transition">
+            <Link href="#" target="_blank" className="group flex flex-row items-center gap-2 text-start transition"
+              onMouseEnter={() => messageCircleHeartIcon.current?.startAnimation()} onMouseLeave={() => messageCircleHeartIcon.current?.stopAnimation()}
+            >
               <div className="flex h-8 w-8  items-center justify-center rounded-full bg-white/10
       group-hover:bg-green-600 group-hover:scale-110 transition-all">
-                <MessageCircleHeart size={16} />
+                <MessageCircleHeartIcon ref={messageCircleHeartIcon} size={16} />
               </div>
               <span className="text-base text-white/80 group-hover:text-green-400">
                 व्हाट्सएप चैनल<p className="flex mt-1 text-white/60 text-xs">24k+ फॉलोअर्स </p>
@@ -175,10 +192,11 @@ export default function Footer() {
             <Link
               href="mailto:shriprannathjivani@gmail.com"
               className="group flex flex-row items-center gap-2 text-start transition col-span-2 md:col-span-1"
+              onMouseEnter={() => mailIcon.current?.startAnimation()} onMouseLeave={() => mailIcon.current?.stopAnimation()}
             >
               <div className="flex h-8 w-8  items-center justify-center rounded-full bg-white/10
       group-hover:bg-red-500 group-hover:scale-110 transition-all">
-                <Mail size={16} />
+                <MailIcon ref={mailIcon} size={16} />
               </div>
               <span className="text-base text-white/80 group-hover:text-orange-400 break-all">
                 shriprannathjivani@gmail.com
@@ -186,8 +204,8 @@ export default function Footer() {
               </span>
             </Link>
           </div>
-          <Link href="#" className="text-sm text-white/60 text-center md:text-start">
-            <Copyright size={14} className="flex inline-flex" /> {year} spjv. made with love. <p className="md:flex inline-flex mt-1 text-white/60">All rights reserved.</p>
+          <Link href="#" className="text-sm text-white/60 text-center md:text-start relative z-10">
+            <Copyright size={14} className="inline-flex" /> {year} spjv. made with love. <p className="md:flex inline-flex mt-1 text-white/60">All rights reserved.</p>
           </Link>
         </motion.div>
       </div>

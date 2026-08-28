@@ -12,6 +12,9 @@ import {
 } from "@/components/ui/breadcrumb"
 import React from "react"
 import { CircleChevronLeft } from "lucide-react"
+import { useRef } from "react"
+import { CircleChevronLeftIcon, ChevronLeftIconHandle } from "@animateicons/react/lucide";
+
 
 const labelMap: Record<string, string> = {
   contact: "संपर्क करें",
@@ -37,6 +40,7 @@ export default function DynamicBreadcrumb({
 }) {
   const pathname = usePathname()
   const hiddenSegments = new Set(["book", "article", "quiz", "game"])
+    const ref = useRef<ChevronLeftIconHandle>(null)
 
   const segments = pathname
     .split("/")
@@ -52,8 +56,10 @@ export default function DynamicBreadcrumb({
             <Link
               href="/"
               className="flex items-center text-orange-600 text-base"
+              onMouseEnter={() => ref.current?.startAnimation()}
+        onMouseLeave={() => ref.current?.stopAnimation()}
             >
-              <CircleChevronLeft className="me-2" size={16} />
+              <CircleChevronLeftIcon className="me-2" size={16} ref={ref} />
               होम पर वापस
             </Link>
           </BreadcrumbLink>

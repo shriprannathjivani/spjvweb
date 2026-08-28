@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState, useMemo } from "react";
 import Link from "next/link";
 import Searching from "@/public/Searching.json";
-import Fuse from "fuse.js";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -23,7 +22,6 @@ import {
   BookMarked,
   Eye,
   EyeOff,
-  SlidersHorizontal,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Lottie from "lottie-react";
@@ -199,9 +197,6 @@ export default function Page() {
   const [activeChapter, setActiveChapter] = useState<number | null>(null);
   const [index, setIndex] = useState(-1);
 
-  // NEW: State for Exact vs Fuzzy Search Toggle (true = Exact, false = Fuzzy)
-  const [isExact, setIsExact] = useState<boolean>(false);
-
   const [showAllMeanings, setShowAllMeanings] = useState(false);
 
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -279,9 +274,9 @@ export default function Page() {
     }
   }, [index]);
 
-  /* CORE FILTER FUNCTION WITH EXACT / FUZZY LOGIC */
-  const runFilter = (searchQuery: string, bookName: string, exactMatch: boolean) => {
-    const nq = normalizeDigits(searchQuery.trim());
+  /* CORE FILTER FUNCTION */
+  const runFilter = (searchQuery: string, bookName: string) => {
+    const nq = normalizeDigits(searchQuery.toLowerCase().trim());
 
     if (!nq) {
       setResults([]);
@@ -289,29 +284,15 @@ export default function Page() {
       return;
     }
 
-    const datasetToSearch =
+    const pool =
       bookName === "ALL"
         ? allChaupais
         : allChaupais.filter((b) => b.bookName === bookName);
 
-    let filtered: ChaupaiItem[] = [];
-
-    if (exactMatch) {
-      // 1. Exact Match Search
-      filtered = datasetToSearch.filter((item) =>
-        normalizeDigits((item.title || "").toLowerCase()).includes(nq.toLowerCase())
-      );
-    } else {
-      // 2. Fuzzy Search using Fuse.js
-      const tempFuse = new Fuse(datasetToSearch, {
-        keys: ["title"],
-        threshold: 0.35,
-        ignoreLocation: true,
-        minMatchCharLength: 2,
-      });
-
-      filtered = tempFuse.search(nq).map((res) => res.item);
-    }
+    const filtered = pool.filter((b) => {
+      const c = normalizeDigits((b.title || "").toLowerCase());
+      return c.includes(nq);
+    });
 
     setResults(filtered);
     setIndex(filtered.length ? 0 : -1);
@@ -321,37 +302,35 @@ export default function Page() {
   const performSearch = () => {
     if (!query.trim()) return;
     setActiveQuery(query);
-    runFilter(query, selectedBook, isExact);
+    runFilter(query, selectedBook);
     setActiveChapter(null);
   };
 
-  /* CLEAR SEARCH */
+  /* CLEAR SEARCH (RESETS SEARCH & BOOK SELECTION TO ALL) */
   const clearSearch = () => {
     setQuery("");
     setActiveQuery("");
     setResults([]);
     setIndex(-1);
     setActiveChapter(null);
-    setSelectedBook("ALL");
+    setSelectedBook("ALL"); // पुस्तक फ़िल्टर को 'ALL' पर रीसेट करता है
     itemRefs.current = [];
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  /* SELECT BOOK */
+  /* SELECT BOOK: ACT AS FILTER CONTEXT ONLY */
   const handleSelectBook = (book: string) => {
     setSelectedBook(book);
     setIsMenuOpen(false);
 
     if (activeQuery.trim()) {
-      runFilter(activeQuery, book, isExact);
+      runFilter(activeQuery, book);
     } else {
       setResults([]);
       setIndex(-1);
     }
   };
-
-  const ref = useRef<ChevronLeftIconHandle>(null);
-
+  const ref = useRef<ChevronLeftIconHandle>(null)
   return (
     <>
       <section className="min-h-screen bg-gray-50 pt-20">
@@ -501,41 +480,21 @@ export default function Page() {
                   {query && (
                     <button
                       onClick={clearSearch}
-                      className="absolute right-12.5 sm:right-30.5 top-2 bg-red-600 border-2 border-black p-2 rounded-full text-white hover:text-white hover:bg-red-400 text-base cursor-pointer"
+                      className="absolute right-2.5 top-2 bg-red-600 border-2 border-black p-2 rounded-full text-white hover:text-white hover:bg-red-400 text-base cursor-pointer"
                     >
                       <X size={14} />
                     </button>
                   )}
-                  {/* EXACT / FUZZY TOGGLE BUTTON */}
-                  <button
-                    onClick={() => {
-                      const nextState = !isExact;
-                      setIsExact(nextState);
-                      if (activeQuery.trim()) {
-                        runFilter(activeQuery, selectedBook, nextState);
-                      }
-                    }}
-                    title={isExact ? "सटीक खोज (Exact Match) चालू है" : "मिलती-जुलती खोज (Fuzzy Match) चालू है"}
-                    className={clsx(
-                      "absolute right-2.5 top-1.75 shrink-0 flex items-center gap-1.5 p-2 sm:px-2.5 sm:py-1.5 rounded-full text-sm font-medium border-2 border-black transition-all cursor-pointer",
-                      isExact
-                        ? "bg-orange-100 text-orange-600 border-orange-300"
-                        : "bg-gray-100 text-gray-900 border-gray-300"
-                    )}
-                  >
-                    <SlidersHorizontal size={14} />
-                    <span className="hidden md:block">{isExact ? "सटीक शब्द" : "सटीक शब्द"}</span>
-                  </button>
                 </div>
                 <Button
                   onClick={performSearch}
-                  className="shrink-0 rounded-full border-2 border-black px-3.5! sm:px-6! py-5.5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 cursor-pointer"
+                  className="shrink-0 rounded-full border-2 border-black px-6 py-5.5 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 cursor-pointer"
                 >
-                  <Search size={18} className="md:hidden inline-block"/><span className="hidden md:inline-block">खोजें</span>
+                  खोजें
                 </Button>
               </div>
             </div>
-
+            
           </div>
         </div>
 
@@ -543,7 +502,7 @@ export default function Page() {
         <div className="max-w-370 mx-auto px-4 lg:px-8 pb-16 sm:px-6">
           <div className="flex sm:flex-row flex-col py-2 sm:py-4 gap-4">
 
-            {/* DESKTOP SIDEBAR */}
+            {/* DESKTOP SIDEBAR - DIRECT BOOKS LISTING ONLY */}
             <div className="w-70 hidden lg:block shrink-0">
               <div className="bg-white rounded-3xl border border-gray-100 overflow-hidden flex flex-col p-3.5">
                 <h2 className="font-bold text-gray-800 flex items-center gap-2 text-sm pb-3 border-b mb-3">
@@ -555,8 +514,8 @@ export default function Page() {
                   <div
                     onClick={() => handleSelectBook("ALL")}
                     className={`text-base p-2.5 rounded-xl border cursor-pointer font-medium transition-all flex justify-between items-center ${selectedBook === "ALL"
-                        ? "bg-orange-600 text-white border-orange-600 shadow-sm"
-                        : "bg-white text-gray-700 border-gray-200 hover:bg-orange-50 hover:text-orange-600"
+                      ? "bg-orange-600 text-white border-orange-600 shadow-sm"
+                      : "bg-white text-gray-700 border-gray-200 hover:bg-orange-50 hover:text-orange-600"
                       }`}
                   >
                     <span>सभी पुस्तकें</span>
@@ -570,8 +529,8 @@ export default function Page() {
                         key={book}
                         onClick={() => handleSelectBook(book)}
                         className={`text-base p-2.5 rounded-xl border cursor-pointer font-medium transition-all flex items-center justify-between ${isBookActive
-                            ? "bg-orange-600 text-white border-orange-600 shadow-sm"
-                            : "bg-white text-gray-700 border-gray-200 hover:bg-orange-50 hover:text-orange-600"
+                          ? "bg-orange-600 text-white border-orange-600 shadow-sm"
+                          : "bg-white text-gray-700 border-gray-200 hover:bg-orange-50 hover:text-orange-600"
                           }`}
                       >
                         <span className="line-clamp-1">{idx + 1}. {book}</span>
@@ -611,6 +570,7 @@ export default function Page() {
               {/* RESULTS LIST */}
               {!isIdle && (
                 <div className="space-y-4">
+                  {/* GLOBAL TOGGLE BAR FOR MEANINGS */}
                   <div className="bg-white p-3 px-4 rounded-2xl border border-gray-100 flex justify-between items-center text-xs">
                     <span className="text-gray-500 font-medium">
                       {selectedBook !== "ALL" && (
@@ -618,7 +578,7 @@ export default function Page() {
                           [{selectedBook}]
                         </span>
                       )}
-                      कुल परिणाम: {results.length} ({isExact ? "सटीक खोज" : "फजी खोज"})
+                      कुल चौपाइयाँ: {results.length}
                     </span>
                     {results.length > 0 && (
                       <button

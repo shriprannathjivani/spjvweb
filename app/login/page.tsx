@@ -23,9 +23,9 @@ import { PASSWORD_HASH } from "@/lib/auth";
 import { TextAnimate } from "@/components/ui/text-animate";
 const Quotes = [
     {
-        text: "ध्यान, वाणी मन्थन और सेवा ही सुन्दरसाथ की आत्मिक सम्पति है",
-        name: "श्री राजन स्वामी जी",
-        image: "/rajan_swamiji 2.png",
+        text: "वतन बिसारिया रे, छलें किए हैरान। धनी आप बुध भूलियां, सुध न रही वृद्धि हान।।",
+        name: "महामति जी",
+        image: "/satguruthree.jpg",
         tag: "श्री कुलजम स्वरूप"
     },
     {

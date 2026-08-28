@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { X, Youtube } from "lucide-react"
 import Image from "@/components/BaseImage";
+import { XIcon } from "@animateicons/react/lucide";
 
 export default function BottomBanner() {
   const [open, setOpen] = useState(false)
@@ -100,7 +101,7 @@ export default function BottomBanner() {
                   onClick={() => setOpen(false)}
                   className="rounded-full flex items-center justify-center border-2 w-10 text-center bg-red-600 h-10 border-black/30 p-2 hover:bg-orange-700 cursor-pointer"
                 >
-                  <X size={15} />
+                  <XIcon size={15} />
                 </button>
               </div>
             </div>

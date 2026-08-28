@@ -5,9 +5,11 @@ import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
+import { ChevronLeftIcon, ChevronRightIcon, ChevronLeftIconHandle, ChevronRightIconHandle } from "@animateicons/react/lucide";
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { useRef } from "react"
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -31,6 +33,8 @@ type CarouselContextProps = {
 } & CarouselProps
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null)
+
+
 
 function useCarousel() {
   const context = React.useContext(CarouselContext)
@@ -178,12 +182,15 @@ function CarouselPrevious({
   ...props
 }: React.ComponentProps<typeof Button>) {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
-
+  const ref = useRef<ChevronLeftIconHandle>(null)
+  
   return (
     <Button
       data-slot="carousel-previous"
       variant={variant}
       size={size}
+      onMouseEnter={() => ref.current?.startAnimation()}
+      onMouseLeave={() => ref.current?.stopAnimation()}
       className={cn(
         "absolute size-8 rounded-full",
         orientation === "horizontal"
@@ -195,7 +202,8 @@ function CarouselPrevious({
       onClick={scrollPrev}
       {...props}
     >
-      <ArrowLeft />
+      {/* Pass the ref down to the icon component */}
+      <ChevronLeftIcon ref={ref} size={24} />
       <span className="sr-only">Previous slide</span>
     </Button>
   )
@@ -208,12 +216,16 @@ function CarouselNext({
   ...props
 }: React.ComponentProps<typeof Button>) {
   const { orientation, scrollNext, canScrollNext } = useCarousel()
-
+  // Fixed type to ChevronRightIconHandle
+  const ref = useRef<ChevronRightIconHandle>(null)
+  
   return (
     <Button
       data-slot="carousel-next"
       variant={variant}
       size={size}
+      onMouseEnter={() => ref.current?.startAnimation()}
+      onMouseLeave={() => ref.current?.stopAnimation()}
       className={cn(
         "absolute size-8 rounded-full",
         orientation === "horizontal"
@@ -225,7 +237,8 @@ function CarouselNext({
       onClick={scrollNext}
       {...props}
     >
-      <ArrowRight />
+      {/* Pass the ref down and use ChevronRightIconHandle type import */}
+      <ChevronRightIcon ref={ref} size={24} />
       <span className="sr-only">Next slide</span>
     </Button>
   )

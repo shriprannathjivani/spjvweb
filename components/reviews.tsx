@@ -38,7 +38,7 @@ export default function ReviewsCarousel() {
   };
 
   return (
-    <section className="relative py-10 sm:py-20 sm:p-0 ">
+    <section className="relative py-10 sm:py-20 sm:pb-10 sm:p-0 ">
       <Image
         src="/halfflower.png"
         height={120}
@@ -50,7 +50,7 @@ export default function ReviewsCarousel() {
 
       <div className="max-w-370 mx-auto px-4 lg:px-8 ">
         {/* Heading */}
-        <h2 className="text-3xl font-bold text-black mb-14">
+        <h2 className="text-3xl font-bold text-black mb-14 relative z-1">
           परिवर्तन की प्रेरक कहानियाँ
         </h2>
 

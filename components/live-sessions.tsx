@@ -1,11 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "@/components/BaseImage";
 import { Plus, ArrowUpRight, Calendar, Calendars, CalendarPlus } from "lucide-react";
 import { Button } from "./ui/button";
 import { TextAnimate } from "./ui/text-animate";
+import { CalendarPlusIcon, CalendarPlusIconHandle } from "@animateicons/react/lucide";
 
 const events = [
   {
@@ -120,14 +121,76 @@ function downloadICS(event: any) {
   URL.revokeObjectURL(url);
 }
 
+// 1. Create a separate component for the individual event card 
+// so it can safely maintain its own independent useRef hook.
+function EventCard({ event, index }: { event: typeof events[0]; index: number }) {
+  const ref = useRef<CalendarPlusIconHandle>(null);
+
+  return (
+    <motion.div
+      initial={{ y: 60, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.2,
+      }}
+      style={{ willChange: "transform, opacity" }}
+      className={`group relative overflow-hidden rounded-[28px] bg-white shadow-[0_10px_35px_rgba(0,0,0,0.06)] transition-shadow duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] ${event.featured ? "sm:col-span-2 sm:row-span-2" : ""
+        }`}
+    >
+      {/* Background Image */}
+      <Image
+        src={event.image}
+        alt={event.title}
+        fill
+        className="object-cover transition-transform duration-700 group-hover:scale-105"
+      />
+
+      {/* Gradient */}
+      <div className="absolute inset-0 bg-linear-to-t from-[#4b2440]/90 via-[#4b2440]/30 to-transparent" />
+
+      {/* Calendar Button with its own isolated ref */}
+      <Button
+        onClick={() => downloadICS(event)}
+        onMouseEnter={() => ref.current?.startAnimation()}
+        onMouseLeave={() => ref.current?.stopAnimation()}
+        variant="outline"
+        className="absolute top-2 right-2 rounded-full border-2 border-black px-3 py-5 text-sm font-medium hover:bg-black hover:text-white cursor-pointer"
+      >
+        <CalendarPlusIcon ref={ref} size={17} />
+      </Button>
+
+      {/* Content */}
+      <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+        <div className="mb-2 flex items-center gap-2">
+          <span className="text-sm font-medium text-white/80">
+            {event.dateLabel} - {event.time}
+          </span>
+        </div>
+
+        <h3
+          className={`font-bold leading-tight text-white ${event.featured ? "text-2xl sm:text-3xl" : "text-lg"
+            }`}
+        >
+          {event.title}
+        </h3>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Events() {
   return (
-    <section className="relative overflow-hidden py-10 ">
-      {/* Decorative gradient bg-[radial-gradient(circle_at_top_left,rgba(255,128,0,0.35),transparent_70%)] */}
-      <div className="absolute left-0 top-0 h-48 w-48 " />
-      <Image src="/halfflower.png" height={40} width={40} alt="halfflower" className="absolute top-1 left-0 z-0 motion-safe:animate-wiggle w-17.5 h-auto sm:w-37.5 sm:h-auto" />
+    <section className="relative overflow-hidden py-10">
+      <div className="absolute left-0 top-0 h-48 w-48" />
+      <Image
+        src="/halfflower.png"
+        height={40}
+        width={40}
+        alt="halfflower"
+        className="absolute top-1 left-0 z-0 motion-safe:animate-wiggle w-17.5 h-auto sm:w-37.5 sm:h-auto"
+      />
       <div className="relative max-w-370 mx-auto px-4 lg:px-8">
-
         <div className="flex flex-row justify-between lg:flex-row lg:items-start lg:justify-between gap-8 mb-8">
           <div className="max-w-370">
             <TextAnimate
@@ -144,17 +207,17 @@ export default function Events() {
               animation="blurInUp"
               startOnView
               by="line"
-              delay={0.3} className="text-base sm:text-lg lg:text-xl text-black/60 max-w-3xl mb-3 sm:mb-8 leading-relaxed">
+              delay={0.3}
+              className="text-base sm:text-lg lg:text-xl text-black/60 max-w-3xl mb-3 sm:mb-8 leading-relaxed"
+            >
               श्री प्राणनाथ जी वाणी के साथ लाइव सेशन
             </TextAnimate>
           </div>
           <motion.div
             initial={{ y: 60, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{
-              duration: 0.6,
-              delay: 0.3
-            }}>
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             <a target="_blank" href="https://www.youtube.com/@ShriPrannathJiVani/streams">
               <Button
                 variant="outline"
@@ -167,91 +230,12 @@ export default function Events() {
         </div>
 
         {/* Bento Grid */}
-        <div className="grid auto-rows-[170px]  sm:auto-rows-[250px] grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-
+        <div className="grid auto-rows-[170px] sm:auto-rows-[250px] grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {events.map((event, index) => (
-            <motion.div
-              key={index}
-              initial={{ y: 60, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.2
-              }}
-              style={{ willChange: "transform, opacity" }} 
-              className={`
-                  group
-                  relative
-                  overflow-hidden
-                  rounded-[28px]
-                  bg-white
-                  shadow-[0_10px_35px_rgba(0,0,0,0.06)]
-                  transition-shadow
-                  duration-500
-                  hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]
-                  ${event.featured
-                  ? "sm:col-span-2 sm:row-span-2"
-                  : ""
-                }
-    `}
-            >
-              {/* Background Image */}
-              <Image
-                src={event.image}
-                alt={event.title}
-                fill
-                className="
-        object-cover
-        transition-transform
-        duration-700
-        group-hover:scale-105
-      "
-              />
-
-              {/* Gradient */}
-              <div
-                className="
-        absolute inset-0 bg-linear-to-t from-[#4b2440]/90 via-[#4b2440]/30 to-transparent
-      "
-              />
-
-              {/* Calendar */}
-              <Button
-                onClick={() => downloadICS(event)}
-                variant="outline"
-                className="absolute top-2 right-2 rounded-full border-2 border-black px-6 py-5 text-sm font-medium hover:bg-black hover:text-white cursor-pointer"
-              >
-                <CalendarPlus size={17} />
-              </Button>
-
-              {/* Content */}
-              <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-                <div className="mb-2 flex items-center gap-2">
-                  <span className="text-sm font-medium text-white/80">
-                    {event.dateLabel} - {event.time}
-                  </span>
-                </div>
-
-                <h3
-                  className={`
-          font-bold
-          leading-tight
-          text-white
-          ${event.featured
-                      ? "text-2xl sm:text-3xl"
-                      : "text-lg"
-                    }
-        `}
-                >
-                  {event.title}
-                </h3>
-              </div>
-            </motion.div>
+            <EventCard key={event.id || index} event={event} index={index} />
           ))}
-
         </div>
       </div>
-
     </section>
   );
 }

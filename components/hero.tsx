@@ -17,6 +17,7 @@ import { TextAnimate } from "@/components/ui/text-animate"
 import { motion } from "motion/react";
 import { Link } from "lucide-react";
 import AutoHeight from "embla-carousel-auto-height";
+import { ChevronLeftIcon, ChevronRightIcon } from "@animateicons/react/lucide";
 
 const slides = [
   {

@@ -63,6 +63,8 @@ import {
 import { cva } from "class-variance-authority";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { MenuIcon, UsersRoundIcon, HouseIcon,  GamepadIcon, ShieldUserIcon, BookOpenCheckIcon, LogOutIcon, UserRoundIcon , LayoutListIcon, FileSpreadsheetIcon, MessageCircleHeartIcon, GamepadIconHandle } from "@animateicons/react/lucide";
+import type { IconHandle } from "@animateicons/react"
 
 const basePath =
   process.env.NODE_ENV === "production" ? "" : "";
@@ -175,7 +177,13 @@ export default function Navbar() {
       ? "text-orange-600 font-bold"
       : ""
     }`;
-
+  const gamepad = useRef<IconHandle>(null)
+  const message = useRef<IconHandle>(null)
+  const file = useRef<IconHandle>(null)
+  const bookOpen = useRef<IconHandle>(null)
+  const logOutIcon = useRef<IconHandle>(null)
+  const userRoundIcon = useRef<IconHandle>(null)
+  const menuIcon = useRef<IconHandle>(null)
   return (
     <>
       {/* ================= HEADER ================= */}
@@ -238,10 +246,10 @@ export default function Navbar() {
                       <NavigationMenuContent className="">
                         <ul className="grid w-60 p-2">
                           <li>
-                            <NavigationMenuLink className="inline-flex" render={<Link href="/gamesnquiz#game" className="text-lg! my-0.5 px-4 py-1 border border-transparent hover:text-orange-500 bg-transparent hover:bg-gray rounded-full! focus:bg-transparent"><Gamepad2 size={24} />गेम क्विज़</Link>} />
-                            <NavigationMenuLink className="inline-flex" render={<Link href="/gamesnquiz#google" className="text-lg! my-0.5 px-4 py-1 border border-transparent hover:text-orange-500 bg-transparent hover:bg-gray rounded-full! focus:bg-transparent"><MessageCircleQuestionMark size={24} />गूगल क्विज़ </Link>} />
-                            <NavigationMenuLink className="inline-flex" render={<Link href="/gamesnquiz#live" className="text-lg! my-0.5 px-4 py-1 border border-transparent hover:text-orange-500 bg-transparent hover:bg-gray rounded-full! focus:bg-transparent"><Scroll size={24} />लाइव क्विज़</Link>} />
-                            <NavigationMenuLink className="inline-flex" render={<Link href="/gamesnquiz#antakshari" className="text-lg! my-0.5 px-4 py-1 border border-transparent hover:text-orange-500 bg-transparent hover:bg-gray rounded-full! focus:bg-transparent"><BookOpenCheck size={24} />ब्रह्मवाणी अंताक्षरी</Link>} />
+                            <NavigationMenuLink className="inline-flex" render={<Link href="/gamesnquiz#game" className="text-lg! my-0.5 px-4 py-1 border border-transparent hover:text-orange-500 bg-transparent hover:bg-gray rounded-full! focus:bg-transparent" onMouseEnter={() => gamepad.current?.startAnimation()} onMouseLeave={() => gamepad.current?.stopAnimation()} ><GamepadIcon ref={gamepad} size={24} />गेम क्विज़</Link>} />
+                            <NavigationMenuLink className="inline-flex" render={<Link href="/gamesnquiz#google" className="text-lg! my-0.5 px-4 py-1 border border-transparent hover:text-orange-500 bg-transparent hover:bg-gray rounded-full! focus:bg-transparent" onMouseEnter={() => message.current?.startAnimation()} onMouseLeave={() => message.current?.stopAnimation()}><MessageCircleHeartIcon size={24} ref={message} />गूगल क्विज़ </Link>} />
+                            <NavigationMenuLink className="inline-flex" render={<Link href="/gamesnquiz#live" className="text-lg! my-0.5 px-4 py-1 border border-transparent hover:text-orange-500 bg-transparent hover:bg-gray rounded-full! focus:bg-transparent" onMouseEnter={() => file.current?.startAnimation()} onMouseLeave={() => file.current?.stopAnimation()}><FileSpreadsheetIcon size={24} ref={file} />लाइव क्विज़</Link>} />
+                            <NavigationMenuLink className="inline-flex" render={<Link href="/gamesnquiz#antakshari" className="text-lg! my-0.5 px-4 py-1 border border-transparent hover:text-orange-500 bg-transparent hover:bg-gray rounded-full! focus:bg-transparent" onMouseEnter={() => bookOpen.current?.startAnimation()} onMouseLeave={() => bookOpen.current?.stopAnimation()}><BookOpenCheckIcon size={24} ref={bookOpen} />ब्रह्मवाणी अंताक्षरी</Link>} />
                           </li>
                         </ul>
                       </NavigationMenuContent>
@@ -356,7 +364,7 @@ export default function Navbar() {
                     }}
                   >
                     <NavigationMenuItem data-align="end">
-                      <NavigationMenuTrigger className={cn("text-lg px-4 me-1 py-5.5 rounded-full hover:bg-black/6! focus:bg-black/6! data-[state=open]:bg-black/6! data-open:bg-black/6! data-open:hover:bg-black/6! data-popup-open:bg-black/6! data-popup-open:hover:bg-black/6!  transition-all duration-200 cursor-pointer", pathname?.includes("/logout") ? "text-orange-600 bg-black/6" : "text-black hover:text-orange-600 bg-transparent")} > <CircleUserRound className="pe-2" size={32} /> सुंदरसाथ</NavigationMenuTrigger>
+                      <NavigationMenuTrigger className={cn("text-lg px-4 me-1 py-5.5 rounded-full hover:bg-black/6! focus:bg-black/6! data-[state=open]:bg-black/6! data-open:bg-black/6! data-open:hover:bg-black/6! data-popup-open:bg-black/6! data-popup-open:hover:bg-black/6!  transition-all duration-200 cursor-pointer", pathname?.includes("/logout") ? "text-orange-600 bg-black/6" : "text-black hover:text-orange-600 bg-transparent")} onMouseEnter={() => userRoundIcon.current?.startAnimation()} onMouseLeave={() => userRoundIcon.current?.stopAnimation()} > <UserRoundIcon className="pe-2" ref={userRoundIcon} size={18} /> सुंदरसाथ</NavigationMenuTrigger>
 
                       <NavigationMenuContent className="inline-flex" data-align="end">
                         <ul className="grid w-auto p-2">
@@ -368,9 +376,10 @@ export default function Navbar() {
                                 setIsMenuOpen(false);
                                 logout();
                               }}
+                              onMouseEnter={() => logOutIcon.current?.startAnimation()} onMouseLeave={() => logOutIcon.current?.stopAnimation()} 
                               render={
                                 <span className="text-lg! my-0.5 px-4 py-1 flex items-center gap-2 border border-transparent hover:text-orange-500 bg-transparent hover:bg-gray rounded-full! focus:bg-transparent ">
-                                  <LogOut size={24} />  लॉगआउट
+                                  <LogOutIcon ref={logOutIcon} size={24} />  लॉगआउट
                                 </span>
                               }
                             />
@@ -576,8 +585,9 @@ export default function Navbar() {
           <button
             onClick={() => setIsMenuOpen(true)}
             className="flex flex-col items-center justify-center hover:text-orange-500"
+            onMouseEnter={() => menuIcon.current?.startAnimation()} onMouseLeave={() => menuIcon.current?.stopAnimation()} 
           >
-            <Menu size={20} />
+            <MenuIcon ref={menuIcon} size={20} />
             <span className="text-sm mt-1">मेनू</span>
           </button>
         </div>
