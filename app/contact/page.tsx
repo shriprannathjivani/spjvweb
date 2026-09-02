@@ -18,6 +18,7 @@ import doneAnimation from "@/public/Success Icon.json"
 import { toast } from "sonner"
 import { FacebookIcon } from "@animateicons/react/lucide";
 import { InstagramIcon } from "@animateicons/react/lucide";
+import type { IconHandle } from "@animateicons/react"
 
 const socialLinks = [
   {
@@ -43,6 +44,12 @@ const socialLinks = [
 export default function Page() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+
+   const squarePlayIcon = useRef<IconHandle>(null)
+  const mailIcon = useRef<IconHandle>(null)
+  const facebookIcon = useRef<IconHandle>(null)
+  const instagramIcon = useRef<IconHandle>(null)
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setLoading(true);
