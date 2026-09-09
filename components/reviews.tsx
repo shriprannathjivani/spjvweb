@@ -12,7 +12,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { reviews } from "@/lib/reviewnew";
 import Link from "next/link";
 import {
@@ -22,11 +22,17 @@ import {
 } from "@/components/ui/hover-card"
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import Autoplay from "embla-carousel-autoplay";
 
 export default function ReviewsCarousel() {
   const [api, setApi] = React.useState<CarouselApi>();
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-
+   const autoplay = useRef(
+      Autoplay({
+        delay: 9000,
+        stopOnInteraction: false,
+      })
+    );
   const toggleExpand = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
@@ -57,8 +63,10 @@ export default function ReviewsCarousel() {
         {/* Carousel */}
         <Carousel
           setApi={setApi}
+          plugins={[autoplay.current]}
           opts={{
             align: "start",
+            loop: true 
           }}
         >
           <CarouselContent>
