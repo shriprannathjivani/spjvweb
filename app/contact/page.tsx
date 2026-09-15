@@ -222,6 +222,11 @@ export default function Page() {
                     <span className="w-1/3">04:30 AM से 06:00 AM</span>
                   </li>
                   <li className="flex justify-between">
+                    <span className="text-orange-900 w-1/3">प्रातः कालीन सेवा पूजा </span>
+                    <span className="w-1/4">सोमवार – शुक्रवार</span>
+                    <span className="w-1/3">04:30 AM से 06:00 AM</span>
+                  </li>
+                  <li className="flex justify-between">
                     <span className="text-orange-900 w-1/3">श्री बीतक मंथन</span>
                     <span className="w-1/4">सोमवार – शुक्रवार</span>
                     <span className="w-1/3">06:00 AM से 07:00 AM</span>

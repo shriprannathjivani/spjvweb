@@ -25,6 +25,19 @@ const events = [
   {
     id: 2,
     dateLabel: "सोमवार – शुक्रवार",
+    date: "2026-07-30",
+    time: "04:30 AM",
+    endTime: "06:00",
+    title: "प्रातः कालीन सेवा पूजा",
+    description:
+      "श्री प्राणनाथ जी वाणी के साथ दिव्य प्रातः कालीन सेवा पूजा से जुड़ें।",
+    image: "/Sevapujathumbnail.jpg",
+    color: "bg-pink-50",
+    featured: false,
+  },
+  {
+    id: 3,
+    dateLabel: "सोमवार – शुक्रवार",
     date: "2026-08-03",
     time: "06:00 AM",
     endTime: "07:00",
@@ -35,7 +48,7 @@ const events = [
     color: "bg-blue-50",
   },
   {
-    id: 3,
+    id: 4,
     dateLabel: "सोमवार – शुक्रवार",
     date: "2026-08-03",
     time: "07:00 AM",
@@ -47,7 +60,7 @@ const events = [
     color: "bg-green-50",
   },
   {
-    id: 4,
+    id: 5,
     dateLabel: "रविवार",
     date: "2026-08-02",
     time: "03:00 PM",
@@ -57,7 +70,7 @@ const events = [
       "बच्चों के लिए ज्ञान और संस्कार से जुड़ा विशेष कार्यक्रम।",
     image: "/balad.png",
     color: "bg-red-50",
-  },
+  }
 ];
 
 function formatICSDate(date: string, time: string) {
