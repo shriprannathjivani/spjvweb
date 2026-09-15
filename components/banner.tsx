@@ -20,6 +20,7 @@ export default function BottomBanner() {
 
   const schedule = [
     { title: "चितवन", time: "04:30 AM – 06:00 AM" },
+    { title: "प्रातः कालीन सेवा पूजा", time: "04:30 AM – 06:00 AM" },
     { title: "श्री बीतक मंथन", time: "06:00 AM – 07:00 AM" },
     { title: "श्री तारतम वाणी चर्चा", time: "07:00 AM – 07:30 AM" },
   ];
